@@ -9,6 +9,7 @@ namespace MadokaMagica.MamiTamoe
 
         public static void Init(AssetBundle assetBundle)
         {
+         
         }
     }
 }

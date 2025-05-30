@@ -29,9 +29,9 @@ namespace MadokaMagica.MamiTamoe
             string outro = "..and so he left, searching for a new identity.";
             string outroFailure = "..and so he vanished, forever a blank slate.";
 
-            Language.Add(prefix + "NAME", "Henry");
+            Language.Add(prefix + "NAME", "Mami Tamoe");
             Language.Add(prefix + "DESCRIPTION", desc);
-            Language.Add(prefix + "SUBTITLE", "The Chosen One");
+            Language.Add(prefix + "SUBTITLE", "Intense Striker");
             Language.Add(prefix + "LORE", "sample lore");
             Language.Add(prefix + "OUTRO_FLAVOR", outro);
             Language.Add(prefix + "OUTRO_FAILURE", outroFailure);
@@ -51,8 +51,8 @@ namespace MadokaMagica.MamiTamoe
             #endregion
 
             #region Secondary
-            Language.Add(prefix + "SECONDARY_GUN_NAME", "Handgun");
-            Language.Add(prefix + "SECONDARY_GUN_DESCRIPTION", Tokens.agilePrefix + $"Fire a handgun for <style=cIsDamage>{100f * MamiStaticValues.gunDamageCoefficient}% damage</style>.");
+            Language.Add(prefix + "SECONDARY_GUN_NAME", "Precision Strike");
+            Language.Add(prefix + "SECONDARY_GUN_DESCRIPTION", Tokens.agilePrefix + $"Fire a picked up gun for <style=cIsDamage>{100f * MamiStaticValues.gunDamageCoefficient}% damage</style>.");
             #endregion
 
             #region Utility

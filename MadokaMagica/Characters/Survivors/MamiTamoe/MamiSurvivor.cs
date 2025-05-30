@@ -111,7 +111,6 @@ namespace MadokaMagica.MamiTamoe
         private void AdditionalBodySetup()
         {
             AddHitboxes();
-
             //bodyPrefab.AddComponent<HuntressTrackerComopnent>();
             //anything else here
         }
@@ -129,7 +128,7 @@ namespace MadokaMagica.MamiTamoe
             Prefabs.ClearEntityStateMachines(bodyPrefab);
 
             //the main "Body" state machine has some special properties
-            Prefabs.AddMainEntityStateMachine(bodyPrefab, "Body", typeof(EntityStates.GenericCharacterMain), typeof(EntityStates.SpawnTeleporterState));
+            Prefabs.AddMainEntityStateMachine(bodyPrefab, "Body", typeof(MasterMamiSkillStates), typeof(EntityStates.SpawnTeleporterState));
             //if you set up a custom main characterstate, set it up here
             //don't forget to register custom entitystates in your HenryStates.cs
 
@@ -179,7 +178,7 @@ namespace MadokaMagica.MamiTamoe
                     MAMI_PREFIX + "PRIMARY_SLASH_NAME",
                     MAMI_PREFIX + "PRIMARY_SLASH_DESCRIPTION",
                     assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
-                    new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)),
+                    new EntityStates.SerializableEntityStateType(typeof(SkillStates.Scarf)),
                     "Weapon",
                     true
                 ));
@@ -197,15 +196,34 @@ namespace MadokaMagica.MamiTamoe
             //here is a basic skill def with all fields accounted for
             SkillDef secondarySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "HenryGun",
+                skillName = "PrecisionStrike",
                 skillNameToken = MAMI_PREFIX + "SECONDARY_GUN_NAME",
                 skillDescriptionToken = MAMI_PREFIX + "SECONDARY_GUN_DESCRIPTION",
                 keywordTokens = new string[] { "KEYWORD_AGILE" },
                 skillIcon = assetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Shoot)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PrecisionStrkie)),
                 activationStateMachineName = "Weapon2",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = float.MaxValue,
+
+                rechargeStock = 0,
+                requiredStock = 1,
+                stockToConsume = 1,
+                baseMaxStock = 2,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = false,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = true,
+
             });
 
             Skills.AddSecondarySkills(bodyPrefab, secondarySkillDef1);

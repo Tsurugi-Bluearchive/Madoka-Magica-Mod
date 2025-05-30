@@ -19,7 +19,6 @@ namespace MadokaMagica.MamiTamoe.Pickupables
         public void Awake()
         {
             thisBody = GetComponent<Rigidbody>();
-            this.MasterScript = this.gameObject.GetComponent<MasterMamiSkillStates>();
             this.Pickup = this.gameObject;
 
             this.WorldCollider = this.gameObject.transform.Find("WorldCollider")?.gameObject;
@@ -50,13 +49,14 @@ namespace MadokaMagica.MamiTamoe.Pickupables
             base.OnDrop(dropPosition + new Vector3(Random.Range(-10f, 10f), transform.position.y + 20f, Random.Range(-7f, 7f)));
         }
 
-        public void OnTriggerStay(Collider collision)
+        public void OnTriggerEnter(Collider collision)
         {
-            MasterMamiSkillStates Mami = collision.gameObject.GetComponent<MasterMamiSkillStates>();
-            if (Mami != null && Mami.gunCount <= Mami.gunMax)
-            {
-                Mami.gunCount++;
-            }
+
+                MasterMamiSkillStates Mami = collision.gameObject.GetComponent<MasterMamiSkillStates>();
+                if (Mami != null)
+                {
+                    Mami.PickupGun(this);
+                }          
         }
 
         public override void AddMe(GameObject add)

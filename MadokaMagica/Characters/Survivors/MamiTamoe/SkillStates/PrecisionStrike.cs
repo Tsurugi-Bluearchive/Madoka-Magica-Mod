@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using IL.RoR2.Skills;
 using MadokaMagica.MamiTamoe;
 using MadokaMagica.MamiTamoe.Pickupables;
 using RoR2;
@@ -6,11 +7,11 @@ using UnityEngine;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
-    public class Shoot : BaseSkillState
+    public class PrecisionStrkie : BaseSkillState
     {
         public static float damageCoefficient = MamiStaticValues.gunDamageCoefficient;
-        public static float procCoefficient = 1f;
-        public static float baseDuration = 0.6f;
+        public static float procCoefficient = 1.2f;
+        public static float baseDuration = 0.4f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
         public static float firePercentTime = 0.0f;
         public static float force = 800f;

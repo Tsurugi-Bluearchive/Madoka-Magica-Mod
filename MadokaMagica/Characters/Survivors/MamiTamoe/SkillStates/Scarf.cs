@@ -1,14 +1,24 @@
-﻿using MadokaMagica.Modules.BaseStates;
+﻿using MadokaMagica.MamiTamoe.BaseStates;
+using MadokaMagica.Modules.BaseStates;
 using RoR2;
 using UnityEngine;
+using System.Collections;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
-    public class SlashCombo : BaseMeleeAttack
+    public class Scarf : BaseMeleeAttack
     {
+        MasterMamiSkillStates masterStates;
+        private bool collectedGun;
+        private float timePassed;
+        private float collectDuration;
+        public void Awake()
+        {
+            masterStates = gameObject.GetComponent<MasterMamiSkillStates>();
+        }
         public override void OnEnter()
         {
-            hitboxGroupName = "SwordGroup";
+            hitboxGroupName = "ScarfGroup";
 
             damageType = DamageTypeCombo.GenericPrimary;
             damageCoefficient = MamiStaticValues.swordDamageCoefficient;
@@ -16,6 +26,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             pushForce = 300f;
             bonusForce = Vector3.zero;
             baseDuration = 1f;
+            collectDuration = 0.2f;
 
             //0-1 multiplier of baseduration, used to time when the hitbox is out (usually based on the run time of the animation)
             //for example, if attackStartPercentTime is 0.5, the attack will start hitting halfway through the ability. if baseduration is 3 seconds, the attack will start happening at 1.5 seconds
@@ -39,8 +50,22 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             impactSound = MamiAssets.swordHitSoundEvent.index;
 
             base.OnEnter();
-        }
 
+            masterStates.pickupGun = true;
+        }
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+
+            timePassed += Time.fixedDeltaTime;
+
+            if (masterStates.pickupGun && timePassed >= collectDuration) 
+            {
+                masterStates.pickupGun = false;
+            }
+
+
+        }
         protected override void PlayAttackAnimation()
         {
             PlayCrossfade("Gesture, Override", "Slash" + (1 + swingIndex), playbackRateParam, duration, 0.1f * duration);
