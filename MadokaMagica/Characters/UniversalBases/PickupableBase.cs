@@ -54,7 +54,6 @@ namespace MadokaMagica.Characters.UniversalBases
             {
                 if (IsStackable && stacksize < MaxStack && picker == t)
                 {
-                    gameObject.SetActive(false);
                     return this;
                 }
             }

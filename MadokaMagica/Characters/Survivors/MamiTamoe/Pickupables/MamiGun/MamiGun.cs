@@ -2,6 +2,7 @@
 using HenryMod.Modules;
 using MadokaMagica.Characters.UniversalBases;
 using MadokaMagica.MamiTamoe.BaseStates;
+using Rewired.Utils;
 using RoR2;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -21,24 +22,23 @@ namespace MadokaMagica.MamiTamoe.Pickupables
             this.MasterScript = this.gameObject.GetComponent<MasterMamiSkillStates>();
             this.Pickup = this.gameObject;
 
-
             this.WorldCollider = this.gameObject.transform.Find("WorldCollider")?.gameObject;
             if (this.WorldCollider != null)
             {
-                this.WorldCollider.layer = LayerIndex.world.intVal;
+                this.WorldCollider.gameObject.layer = LayerIndex.defaultLayer.intVal;
                 MamiGunWorldCollider = WorldCollider.gameObject.transform.GetComponent<MamiGunWorldCollider>();
                 MamiGunWorldCollider.MamiGun = this;
             }
             else
             {
+
                 Log.Error("Did you attach WorldCollider to MamiGun?");
             }
 
             thisBody = Pickup.GetComponent<Rigidbody>();
-            this.gameObject.layer = LayerIndex.playerBody.intVal;
+            this.gameObject.layer = LayerIndex.pickups.intVal;
             this.PickupableName = this.gameObject.name;
             this.PickupType = "Mami Gun";
-            this.gameObject.SetActive(false);
         }
         public override PickupableBase OnPickup(GameObject picker, long stacksize)
         {
@@ -47,7 +47,7 @@ namespace MadokaMagica.MamiTamoe.Pickupables
 
         public override void OnDrop(Vector3 dropPosition)
         {
-            base.OnDrop(dropPosition + (transform.up * 10f));
+            base.OnDrop(dropPosition + new Vector3(Random.Range(-10f, 10f), transform.position.y + 20f, Random.Range(-7f, 7f)));
         }
 
         public void OnTriggerStay(Collider collision)
@@ -56,7 +56,6 @@ namespace MadokaMagica.MamiTamoe.Pickupables
             if (Mami != null && Mami.gunCount <= Mami.gunMax)
             {
                 Mami.gunCount++;
-                this.gameObject.SetActive(false);
             }
         }
 
@@ -67,15 +66,17 @@ namespace MadokaMagica.MamiTamoe.Pickupables
 
         public void FixedUpdate()
         {
-            if (!impactedworld)
+            if (impactedworld && WorldCollider != null)
             {
-                thisBody.AddForce(Vector3.down * 0.1f);;
+                Destroy(this.WorldCollider);
+                Log.Debug("Destroyed worldcollider");
             }
         }
 
         public override bool CanBePickedUpBy(GameObject picker)
         {
             return base.CanBePickedUpBy(picker);
+
         }
     }
 }

@@ -16,8 +16,5 @@ namespace MadokaMagica.MamiTamoe.BaseStates
         public long gunCount;
         public long gunMax;
         public long gunsHeld;
-        public long gunsRemaining;
-
-
     }
 }

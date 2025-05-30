@@ -5,6 +5,7 @@ using HenryMod.Survivors.Henry.Components;
 using HenryMod.Survivors.Henry.SkillStates;
 using MadokaMagica.MamiTamoe.BaseStates;
 using MadokaMagica.MamiTamoe.Pickupables;
+using MadokaMagica.MamiTamoe.SkillStates;
 using R2API.Utils;
 using RoR2;
 using RoR2.Skills;
@@ -163,6 +164,7 @@ namespace HenryMod.Survivors.Henry
                 keywordToken = "KEYWORD_STUNNING",
                 icon = assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
             };
+            bodyPrefab.AddComponent<MamiGunPassive>();
         }
 
         //if this is your first look at skilldef creation, take a look at Secondary first
@@ -370,10 +372,6 @@ namespace HenryMod.Survivors.Henry
         private void RecalculateStatsAPI_GetStatCoefficients(CharacterBody sender, R2API.RecalculateStatsAPI.StatHookEventArgs args)
         {
 
-            if (sender.HasBuff(MamiBuffs.armorBuff))
-            {
-                args.armorAdd += 300;
-            }
         }
     }
 }

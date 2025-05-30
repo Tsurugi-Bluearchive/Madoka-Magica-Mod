@@ -23,13 +23,6 @@ namespace HenryMod.Survivors.Henry.SkillStates
         private bool hasFired;
         private string muzzleString;
 
-        private float cooldown;
-        private GameObject MamiGun;
-        public void Awake()
-        {
-            MamiGun = MamiAssets.MamiGun;
-        }
-
         public override void OnEnter()
         {
             base.OnEnter();
@@ -50,20 +43,6 @@ namespace HenryMod.Survivors.Henry.SkillStates
         {
             base.FixedUpdate();
 
-            cooldown += Time.fixedDeltaTime;
-            Log.Debug($"{cooldown}");
-            if (MamiGun != null && cooldown >= 0.2f)
-            {
-                Log.Debug("Spawned Mami Gun!");
-                GameObject clone = GameObject.Instantiate(MamiGun);
-                clone.name = "MamiGunSpawned";
-                clone.gameObject.GetComponent<MamiGun>().OnDrop(this.transform.position + (UnityEngine.Random.onUnitSphere * 10f));
-                cooldown = 0f;
-            }
-            else if (MamiGun = null)
-            {
-                Log.Error("Can't find Mami's Gun!");
-            }
             if (fixedAge >= fireTime)
             {
                 Fire();
