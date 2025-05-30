@@ -2,7 +2,7 @@
 using RoR2.CharacterAI;
 using UnityEngine;
 
-namespace HenryMod.Survivors.Henry
+namespace MadokaMagica.MamiTamoe
 {
     public static class MamiAI
     {

@@ -1,13 +1,13 @@
 ﻿using RoR2;
 using UnityEngine;
-using HenryMod.Modules;
+using MadokaMagica.Modules;
 using System;
 using RoR2.Projectile;
 using MadokaMagica.MamiTamoe.Pickupables;
 using MadokaMagica.MamiTamoe.BaseStates;
 using System.Runtime.CompilerServices;
 
-namespace HenryMod.Survivors.Henry
+namespace MadokaMagica.MamiTamoe
 {
     public static class MamiAssets
     {

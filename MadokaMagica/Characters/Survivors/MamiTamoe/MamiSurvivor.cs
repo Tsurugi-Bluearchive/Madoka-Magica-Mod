@@ -1,11 +1,10 @@
 ﻿using BepInEx.Configuration;
-using HenryMod.Modules;
-using HenryMod.Modules.Characters;
-using HenryMod.Survivors.Henry.Components;
-using HenryMod.Survivors.Henry.SkillStates;
+using MadokaMagica.MamiTamoe;
+using MadokaMagica.Modules.Characters;
+using MadokaMagica.Modules;
+using MadokaMagica.MamiTamoe.SkillStates;
 using MadokaMagica.MamiTamoe.BaseStates;
 using MadokaMagica.MamiTamoe.Pickupables;
-using MadokaMagica.MamiTamoe.SkillStates;
 using R2API.Utils;
 using RoR2;
 using RoR2.Skills;
@@ -13,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HenryMod.Survivors.Henry
+namespace MadokaMagica.MamiTamoe
 {
     public class MamiSurvivor : SurvivorBase<MamiSurvivor>
     {

@@ -1,5 +1,5 @@
-﻿using HenryMod;
-using HenryMod.Modules;
+﻿using MadokaMagica;
+using MadokaMagica.Modules;
 using MadokaMagica.Characters.UniversalBases;
 using MadokaMagica.MamiTamoe.BaseStates;
 using RoR2;
@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using MadokaMagica.MamiTamoe.Pickupables;
 using Rewired.Utils;
+using UnityEngine.UIElements;
 
 namespace MadokaMagica.MamiTamoe.Pickupables
 {
@@ -20,6 +21,11 @@ namespace MadokaMagica.MamiTamoe.Pickupables
             if (collision.gameObject.layer == LayerIndex.world.intVal)
             {
                 MamiGun.impactedworld = true;
+                Destroy(gameObject);
+            }
+            if (MamiGun == null)
+            {
+                Debug.Log("Erorr with mamigun!");
             }
         }
     }

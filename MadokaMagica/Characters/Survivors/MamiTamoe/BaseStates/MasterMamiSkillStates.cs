@@ -5,9 +5,9 @@ using UnityEngine;
 using MadokaMagica.MamiTamoe.Pickupables;
 using EntityStates;
 using RoR2;
-using HenryMod.Survivors.Henry;
-using HenryMod.Modules;
-using HenryMod.Modules.Characters;
+using MadokaMagica.MamiTamoe;
+using MadokaMagica.Modules;
+using MadokaMagica.Modules.Characters;
 
 namespace MadokaMagica.MamiTamoe.BaseStates
 {

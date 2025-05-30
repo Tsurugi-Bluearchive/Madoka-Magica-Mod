@@ -1,6 +1,7 @@
-﻿using HenryMod.Survivors.Henry.SkillStates;
+﻿using MadokaMagica.MamiTamoe.SkillStates;
+using MadokaMagica.Modules;
 
-namespace HenryMod.Survivors.Henry
+namespace MadokaMagica.MamiTamoe
 {
     public static class MamiStates
     {

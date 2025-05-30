@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 
-namespace HenryMod.Survivors.Henry
+namespace MadokaMagica.MamiTamoe
 {
     public static class MamiBuffs
     {

@@ -1,10 +1,10 @@
 ﻿using EntityStates;
-using HenryMod.Survivors.Henry;
+using MadokaMagica.MamiTamoe;
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace HenryMod.Survivors.Henry.SkillStates
+namespace MadokaMagica.MamiTamoe.SkillStates
 {
     public class Roll : BaseSkillState
     {

@@ -1,8 +1,8 @@
 ﻿using System;
-using HenryMod.Modules;
-using HenryMod.Survivors.Henry.Achievements;
+using MadokaMagica.Modules;
+using MadokaMagica.MamiTamoe.Achievements;
 
-namespace HenryMod.Survivors.Henry
+namespace MadokaMagica.MamiTamoe
 {
     public static class MamiTokens
     {

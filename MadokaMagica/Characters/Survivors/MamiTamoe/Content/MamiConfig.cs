@@ -1,7 +1,7 @@
 ﻿using BepInEx.Configuration;
-using HenryMod.Modules;
+using MadokaMagica.Modules;
 
-namespace HenryMod.Survivors.Henry
+namespace MadokaMagica.Modules
 {
     public static class MamiConfig
     {

@@ -1,9 +1,9 @@
 ﻿using EntityStates;
-using HenryMod.Survivors.Henry;
+using MadokaMagica.MamiTamoe;
 using MadokaMagica.MamiTamoe.Pickupables;
 using RoR2;
 using UnityEngine;
-using HenryMod;
+using MadokaMagica;
 using MadokaMagica.MamiTamoe.BaseStates;
 
 namespace MadokaMagica.MamiTamoe.SkillStates

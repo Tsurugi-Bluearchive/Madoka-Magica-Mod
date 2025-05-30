@@ -3,10 +3,10 @@ using RoR2;
 using RoR2.Skills;
 using System;
 using System.Collections.Generic;
-using HenryMod;
+using MadokaMagica;
 using UnityEngine;
 
-namespace HenryMod.Modules
+namespace MadokaMagica.Modules
 {
     internal static class Skills
     {
@@ -185,7 +185,7 @@ namespace HenryMod.Modules
 
             skillDef.keywordTokens = skillDefInfo.keywordTokens;
 
-            HenryMod.Modules.Content.AddSkillDef(skillDef);
+            MadokaMagica.Modules.Content.AddSkillDef(skillDef);
 
 
             return skillDef;

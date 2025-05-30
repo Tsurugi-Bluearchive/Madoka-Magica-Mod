@@ -2,7 +2,7 @@
 using BepInEx.Configuration;
 using UnityEngine;
 
-namespace HenryMod.Modules
+namespace MadokaMagica.Modules
 {
     public static class Config
     {

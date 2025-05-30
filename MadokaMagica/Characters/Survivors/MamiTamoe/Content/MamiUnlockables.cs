@@ -1,8 +1,8 @@
-﻿using HenryMod.Survivors.Henry.Achievements;
+﻿using MadokaMagica.MamiTamoe.Achievements;
 using RoR2;
 using UnityEngine;
 
-namespace HenryMod.Survivors.Henry
+namespace MadokaMagica.MamiTamoe
 {
     public static class MamiUnlockables
     {

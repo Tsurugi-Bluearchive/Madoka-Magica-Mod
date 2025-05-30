@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace HenryMod.Survivors.Henry.Components
+namespace MadokaMagica.MamiTamoe.Components
 {
-    internal class HenryWeaponComponent : MonoBehaviour
+    internal class MamiWeaponComponent : MonoBehaviour
     {
         private void Awake()
         {

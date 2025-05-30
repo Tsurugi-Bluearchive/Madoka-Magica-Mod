@@ -1,10 +1,10 @@
 ﻿using EntityStates;
-using HenryMod.Survivors.Henry;
+using MadokaMagica.MamiTamoe;
 using MadokaMagica.MamiTamoe.Pickupables;
 using RoR2;
 using UnityEngine;
 
-namespace HenryMod.Survivors.Henry.SkillStates
+namespace MadokaMagica.MamiTamoe.SkillStates
 {
     public class Shoot : BaseSkillState
     {

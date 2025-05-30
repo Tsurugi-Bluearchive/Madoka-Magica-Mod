@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HenryMod.Survivors.Henry
+namespace MadokaMagica.MamiTamoe
 {
     public static class MamiStaticValues
     {

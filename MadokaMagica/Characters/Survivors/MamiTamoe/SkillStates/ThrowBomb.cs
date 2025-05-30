@@ -1,10 +1,10 @@
 ﻿using EntityStates;
-using HenryMod.Survivors.Henry;
+using MadokaMagica.MamiTamoe;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
 
-namespace HenryMod.Survivors.Henry.SkillStates
+namespace MadokaMagica.MamiTamoe.SkillStates
 {
     public class ThrowBomb : GenericProjectileBaseState
     {

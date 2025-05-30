@@ -1,5 +1,5 @@
-﻿using HenryMod;
-using HenryMod.Modules;
+﻿using MadokaMagica;
+using MadokaMagica.Modules;
 using MadokaMagica.Characters.UniversalBases;
 using MadokaMagica.MamiTamoe.BaseStates;
 using Rewired.Utils;

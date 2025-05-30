@@ -1,4 +1,4 @@
-﻿namespace HenryMod.Modules
+﻿namespace MadokaMagica.Modules
 {
     internal static class Tokens
     {
