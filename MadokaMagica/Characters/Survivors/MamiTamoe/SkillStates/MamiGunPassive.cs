@@ -13,6 +13,8 @@ namespace MadokaMagica.MamiTamoe.SkillStates
 
         private float cooldown;
         private GameObject MamiGun;
+        public Scarf Scarf;
+        public MamiGun mmmgun;
         public void Awake()
         {
             MamiGun = MamiAssets.MamiGun;
@@ -20,8 +22,9 @@ namespace MadokaMagica.MamiTamoe.SkillStates
 
         public void FixedUpdate()
         {
+            Scarf = gameObject.GetComponent<Scarf>();
             cooldown += Time.fixedDeltaTime;
-            if (MamiGun != null && cooldown >= 1.5f)
+            if (MamiGun != null && cooldown >= 3f)
             {
                 GameObject clone = GameObject.Instantiate(MamiGun);
                 clone.name = "MamiGunSpawned";
@@ -29,13 +32,18 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                 cloneScript.OnDrop(this.transform.position);
                 cloneScript.AddMe(this.gameObject);
                 cloneScript.Master = this.gameObject;
-                cloneScript.MasterScript = this.gameObject.GetComponent<MasterMamiSkillStates>();
+                cloneScript.MasterScript = this;
                 cooldown = 0f;
             }
             else if (MamiGun == null)
             {
                 Log.Error("Can't find Mami's Gun!");
             }
+        }
+
+        public void PickingUpGun(MamiGun pass)
+        {
+            mmmgun = pass;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using EntityStates;
 using EntityStates.VoidRaidCrab.Leg;
+using IL.RoR2.Skills;
 using MadokaMagica.MamiTamoe.BaseStates;
 using System;
 using System.Collections.Generic;
@@ -8,13 +9,8 @@ namespace MadokaMagica.Characters.UniversalBases
 {
     public abstract class PickupableBase : MonoBehaviour
     {
-        [SerializeField]
         public GameObject Master;
-
-        [SerializeField]
-        public GenericCharacterMain MasterScript;
-
-        [SerializeField]
+        public BaseSkillState MasterScript;
         public GameObject WorldCollider;
 
         [SerializeField]
@@ -32,7 +28,7 @@ namespace MadokaMagica.Characters.UniversalBases
         {
             pickupAllocation.Add(add);
         }
-        public virtual void SetParent(GameObject parent, GenericCharacterMain parentsrcipt)
+        public virtual void SetParent(GameObject parent, BaseSkillState  parentsrcipt)
         {
             Master = parent;
             MasterScript = parentsrcipt;

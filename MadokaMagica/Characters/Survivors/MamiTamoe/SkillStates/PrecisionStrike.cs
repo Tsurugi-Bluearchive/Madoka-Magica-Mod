@@ -11,9 +11,9 @@ namespace MadokaMagica.MamiTamoe.SkillStates
     {
         public static float damageCoefficient = MamiStaticValues.gunDamageCoefficient;
         public static float procCoefficient = 1.2f;
-        public static float baseDuration = 0.4f;
+        public static float baseDuration = 0.5f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
-        public static float firePercentTime = 0.0f;
+        public static float firePercentTime = 1f;
         public static float force = 800f;
         public static float recoil = 3f;
         public static float range = 256f;

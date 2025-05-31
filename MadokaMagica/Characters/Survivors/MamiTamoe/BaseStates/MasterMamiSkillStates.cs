@@ -10,23 +10,31 @@ using MadokaMagica.Modules;
 using MadokaMagica.Modules.Characters;
 using IL.RoR2.Skills;
 using EntityStates.TitanMonster;
+using MadokaMagica.MamiTamoe.SkillStates;
+using Rewired.Utils;
 
 namespace MadokaMagica.MamiTamoe.BaseStates
 {
     public class MasterMamiSkillStates : GenericCharacterMain
     {
-        public long gunCount;
-        public long gunMax;
-        public long gunsHeld;
-        public bool pickupGun;
-
-        public void PickupGun(MamiGun collectedGun)
+        public EntityState Scarf;
+        public MamiGunPassive Mami;
+        public EntityState PrecisionStrike;
+        public override void FixedUpdate()
         {
-            var collectedGunObject = collectedGun.Pickup;
-            if (pickupGun && gunMax <= gunCount)
+            Scarf = EntityStateMachine.FindByCustomName(this.gameObject, "Weapon").state;
+            PrecisionStrike = EntityStateMachine.FindByCustomName(this.gameObject, "Weapon2").state;
+            Mami = this.gameObject.GetComponent<MamiGunPassive>();
+            base.FixedUpdate();
+            if (Scarf != null && Mami.mmmgun != null && Scarf.age <= 0.2f && skillLocator.secondary.maxStock <= skillLocator.secondary.stock)
             {
-                gunCount++;
-                skillLocator.secondary.stock += 1;
+                Destroy(Mami.mmmgun.gameObject);
+                skillLocator.secondary.AddOneStock();
+            }
+            if (PrecisionStrike != null && PrecisionStrike.age > 0)
+            {
+                Transform CurrentPosition = this.transform;
+                this.gameObject.transform.position = CurrentPosition.position;
             }
 
         }

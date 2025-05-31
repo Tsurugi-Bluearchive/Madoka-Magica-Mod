@@ -174,9 +174,9 @@ namespace MadokaMagica.MamiTamoe
             //it is also a SteppedSkillDef. Custom Skilldefs are very useful for custom behaviors related to casting a skill. see ror2's different skilldefs for reference
             SteppedSkillDef primarySkillDef1 = Skills.CreateSkillDef<SteppedSkillDef>(new SkillDefInfo
                 (
-                    "HenrySlash",
-                    MAMI_PREFIX + "PRIMARY_SLASH_NAME",
-                    MAMI_PREFIX + "PRIMARY_SLASH_DESCRIPTION",
+                    "Scarf",
+                    MAMI_PREFIX + "PRIMARY_SCARF_NAME",
+                    MAMI_PREFIX + "PRIMARY_SCARF_DESCRIPTION",
                     assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
                     new EntityStates.SerializableEntityStateType(typeof(SkillStates.Scarf)),
                     "Weapon",
