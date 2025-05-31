@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
-    public class Roll : BaseSkillState
+    public class Dash : BaseSkillState
     {
         public static float duration = 0.5f;
         public static float initialSpeedCoefficient = 5f;
@@ -52,9 +52,10 @@ namespace MadokaMagica.MamiTamoe.SkillStates
 
             if (NetworkServer.active)
             {
-            }
-        }
 
+            }
+
+        }
         private void RecalculateRollSpeed()
         {
             rollSpeed = moveSpeedStat * Mathf.Lerp(initialSpeedCoefficient, finalSpeedCoefficient, fixedAge / duration);

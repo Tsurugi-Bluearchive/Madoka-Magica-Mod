@@ -4,83 +4,61 @@ using RoR2;
 using UnityEngine;
 using System.Collections;
 using MadokaMagica.MamiTamoe.Pickupables;
+using EntityStates;
+using R2API;
+using UnityEngine;
+using MadokaMagica.MamiTamoe.Melee;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
-    public class Scarf : BaseMeleeAttack
+    public class Scarf : BaseSkillState
     {
-        private bool collectedGun;
-        private float timePassed;
-        private float collectDuration;
-        public long gunCount;
-        public long gunMax;
-        public long gunsHeld;
-        public bool pickupGun;
-        public MamiGunPassive passive;
+        public static float damageCoefficient = MamiStaticValues.swordDamageCoefficient;
+        public static float procCoefficient = 1.2f;
+        public static float baseDuration = 0.5f;
+        //delay on firing is usually ass-feeling. only set this if you know what you're doing
+        public static float firePercentTime = 0f;
+        public static float force = 800f;
+        public static float recoil = 3f;
+        public static float range = 256f;
+        private GameObject MamiScarf;
+        public static float duration;
+        public static float fireTime = 0.7f;
         public override void OnEnter()
         {
-            hitboxGroupName = "ScarfGroup";
-
-            damageType = DamageTypeCombo.GenericPrimary;
-            damageCoefficient = MamiStaticValues.swordDamageCoefficient;
-            procCoefficient = 1f;
-            pushForce = 300f;
-            bonusForce = Vector3.zero;
-            baseDuration = 1f;
-            collectDuration = 0.5f;
-
-            //0-1 multiplier of baseduration, used to time when the hitbox is out (usually based on the run time of the animation)
-            //for example, if attackStartPercentTime is 0.5, the attack will start hitting halfway through the ability. if baseduration is 3 seconds, the attack will start happening at 1.5 seconds
-            attackStartPercentTime = 0.2f;
-            attackEndPercentTime = 0.4f;
-
-            //this is the point at which the attack can be interrupted by itself, continuing a combo
-            earlyExitPercentTime = 0.6f;
-
-            hitStopDuration = 0.012f;
-            attackRecoil = 0.5f;
-            hitHopVelocity = 4f;
-
-            swingSoundString = "HenrySwordSwing";
-            hitSoundString = "";
-            muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
-            playbackRateParam = "Slash.playbackRate";
-            swingEffectPrefab = MamiAssets.swordSwingEffect;
-            hitEffectPrefab = MamiAssets.swordHitImpactEffect;
-
-            impactSound = MamiAssets.swordHitSoundEvent.index;
+            base.characterBody.armor += 400;
+            duration = baseDuration / attackSpeedStat;
+            fireTime = firePercentTime * duration;
             base.OnEnter();
-
-            this.pickupGun = true;
+            Swing();
         }
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
-            timePassed += Time.fixedDeltaTime;
-
-            if (this.pickupGun && timePassed >= collectDuration) 
+            if (fixedAge >= fireTime)
             {
-                this.pickupGun = false;
+
             }
 
-
+            if (fixedAge >= duration && isAuthority)
+            {
+                outer.SetNextStateToMain();
+                return;
+            }
         }
-        protected override void PlayAttackAnimation()
+
+        private void Swing()
         {
-            PlayCrossfade("Gesture, Override", "Slash" + (1 + swingIndex), playbackRateParam, duration, 0.1f * duration);
+            MamiScarf = MamiAssets.MamiScarf;
+            GameObject MamiSpawnedScarf = GameObject.Instantiate(MamiScarf);
+            MamiSpawnedScarf.transform.position = this.characterBody.transform.position;
+            ScarfObjectLogic MamiScarfScript = MamiSpawnedScarf.transform.Find("Scarf").GetComponent<ScarfObjectLogic>();
+            MamiScarfScript.dmaageValue = this.damageStat * damageCoefficient;
+            MamiScarfScript.procCoeff = procCoefficient;
+            MamiScarfScript.SearchOrigin = this.gameObject.transform;
+            MamiScarfScript.attacker = this.gameObject;
+            MamiScarfScript.team = this.teamComponent.teamIndex;
         }
-
-        protected override void PlaySwingEffect()
-        {
-            base.PlaySwingEffect();
-        }
-
-        protected override void OnHitEnemyAuthority()
-        {
-            base.OnHitEnemyAuthority();
-        }
-
         public override void OnExit()
         {
             base.OnExit();

@@ -29,7 +29,7 @@ namespace MadokaMagica.MamiTamoe
             string outro = "..and so he left, searching for a new identity.";
             string outroFailure = "..and so he vanished, forever a blank slate.";
 
-            Language.Add(prefix + "NAME", "Mami Tamoe");
+            Language.Add(prefix + "NAME", "Mami Tomoe");
             Language.Add(prefix + "DESCRIPTION", desc);
             Language.Add(prefix + "SUBTITLE", "Intense Striker");
             Language.Add(prefix + "LORE", "sample lore");
@@ -46,8 +46,8 @@ namespace MadokaMagica.MamiTamoe
             #endregion
 
             #region Primary
-            Language.Add(prefix + "PRIMARY_SLASH_NAME", "Sword");
-            Language.Add(prefix + "PRIMARY_SLASH_DESCRIPTION", Tokens.agilePrefix + $"Swing forward for <style=cIsDamage>{100f * MamiStaticValues.swordDamageCoefficient}% damage</style>.");
+            Language.Add(prefix + "PRIMARY_SCARF_NAME", "Scarf");
+            Language.Add(prefix + "PRIMARY_SCARF_DESCRIPTION", $"Swing forward for <style=cIsDamage>{100f * MamiStaticValues.swordDamageCoefficient}% damage</style>.");
             #endregion
 
             #region Secondary

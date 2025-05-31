@@ -49,7 +49,7 @@ namespace MadokaMagica.MamiTamoe.Pickupables
 
         public override void OnDrop(Vector3 dropPosition)
         {
-            base.OnDrop(dropPosition + new Vector3(Random.Range(-10f, 10f), transform.position.y + 20f, Random.Range(-7f, 7f)));
+            base.OnDrop(dropPosition + new Vector3(Random.Range(-5f, 5f), transform.position.y + 20f, Random.Range(-7f, 7f)));
         }
 
         public void OnTriggerStay(Collider collision)
@@ -72,7 +72,6 @@ namespace MadokaMagica.MamiTamoe.Pickupables
             if (impactedworld && WorldCollider != null)
             {
                 Destroy(this.WorldCollider);
-                Log.Debug("Destroyed worldcollider");
             }
         }
 

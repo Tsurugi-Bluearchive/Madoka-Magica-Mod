@@ -23,10 +23,11 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         private float fireTime;
         private bool hasFired;
         private string muzzleString;
-
         public override void OnEnter()
         {
             base.OnEnter();
+            base.characterBody.armor += 400;
+            base.characterMotor.OnDisable();
             duration = baseDuration / attackSpeedStat;
             fireTime = firePercentTime * duration;
             characterBody.SetAimTimer(2f);
@@ -38,18 +39,20 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public override void OnExit()
         {
             base.OnExit();
+            base.characterMotor.OnEnable();
+            base.characterMotor.velocity = Vector3.zero;
+            base.characterBody.armor -= 400;
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-
             if (fixedAge >= fireTime)
             {
                 Fire();
             }
 
-            if (fixedAge >= duration && isAuthority)
+            if (fixedAge >= duration && isAuthority && fixedAge >= firePercentTime * duration)
             {
                 outer.SetNextStateToMain();
                 return;

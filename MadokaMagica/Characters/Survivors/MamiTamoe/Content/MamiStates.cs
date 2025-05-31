@@ -12,7 +12,7 @@ namespace MadokaMagica.MamiTamoe
 
             Modules.Content.AddEntityState(typeof(PrecisionStrkie));
 
-            Modules.Content.AddEntityState(typeof(Roll));
+            Modules.Content.AddEntityState(typeof(Dash));
 
             Modules.Content.AddEntityState(typeof(ThrowBomb));
 

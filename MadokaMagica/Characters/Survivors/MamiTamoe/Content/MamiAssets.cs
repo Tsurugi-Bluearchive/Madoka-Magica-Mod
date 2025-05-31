@@ -6,6 +6,7 @@ using RoR2.Projectile;
 using MadokaMagica.MamiTamoe.Pickupables;
 using MadokaMagica.MamiTamoe.BaseStates;
 using System.Runtime.CompilerServices;
+using MadokaMagica.MamiTamoe.Melee;
 
 namespace MadokaMagica.MamiTamoe
 {
@@ -29,6 +30,8 @@ namespace MadokaMagica.MamiTamoe
 
         public static MamiGun MamiGunScript;
 
+        public static GameObject MamiScarf;
+
         public static void Init(AssetBundle assetBundle)
         {
 
@@ -41,6 +44,8 @@ namespace MadokaMagica.MamiTamoe
             CreateProjectiles();
 
             CreateMamiGun();
+
+            CreateMamiScarf();
         }
 
         #region effects
@@ -93,7 +98,12 @@ namespace MadokaMagica.MamiTamoe
             }
         }
 
-
+        private static void CreateMamiScarf()
+        {
+            MamiScarf = _assetBundle.LoadAsset<GameObject>("ScarfRotationBase");
+            Transform TrueMamiScarf = MamiScarf.transform.Find("Scarf");
+            TrueMamiScarf.gameObject.AddComponent<ScarfObjectLogic>();
+        }
         
         private static void CreateBombProjectile()
         {
