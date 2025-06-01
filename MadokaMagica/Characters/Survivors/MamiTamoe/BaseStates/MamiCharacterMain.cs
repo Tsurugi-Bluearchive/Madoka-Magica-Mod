@@ -26,8 +26,8 @@ namespace MadokaMagica.MamiTamoe.BaseStates
         public override void FixedUpdate()
         {
             var muzzleEffect = MamiAssets.MamiGunEffect;
-            Scarf = EntityStateMachine.FindByCustomName(this.gameObject, "Weapon").state;
-            PrecisionStrike = EntityStateMachine.FindByCustomName(this.gameObject, "Weapon2").state;
+            Scarf = EntityStateMachine.FindByCustomName(this.gameObject, "Weapon2").state;
+            PrecisionStrike = EntityStateMachine.FindByCustomName(this.gameObject, "Weapon").state;
             Mami = this.gameObject.GetComponent<MamiGunPassive>();
             base.FixedUpdate();
             if (Scarf != null && Mami.mmmgun != null && Scarf.fixedAge <= 0.1f && skillLocator.secondary.maxStock > skillLocator.secondary.stock && Scarf.isAuthority && isAuthority)

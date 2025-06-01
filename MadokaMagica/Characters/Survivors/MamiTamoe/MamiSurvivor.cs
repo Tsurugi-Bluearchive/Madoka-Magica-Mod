@@ -222,7 +222,7 @@ namespace MadokaMagica.MamiTamoe
                 skillIcon = assetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PrecisionStrkie)),
-                activationStateMachineName = "Weapon",
+                activationStateMachineName = "Weapon2",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseRechargeInterval = float.MaxValue,
@@ -235,7 +235,7 @@ namespace MadokaMagica.MamiTamoe
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
                 dontAllowPastMaxStocks = false,
-                mustKeyPress = true,
+                mustKeyPress = false,
                 beginSkillCooldownOnSkillEnd = false,
 
                 isCombatSkill = false,
@@ -300,7 +300,7 @@ namespace MadokaMagica.MamiTamoe
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PrecisionBlast)),
                 //setting this to the "weapon2" EntityStateMachine allows us to cast this skill at the same time primary, which is set to the "weapon" EntityStateMachine
-                activationStateMachineName = "Weapon2", interruptPriority = EntityStates.InterruptPriority.Skill,
+                activationStateMachineName = "Weapon", interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseMaxStock = 1,
                 baseRechargeInterval = 10f,

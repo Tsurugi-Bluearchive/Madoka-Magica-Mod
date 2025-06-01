@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
-    public class PrecisionBlast : GenericProjectileBaseState
+    public class PrecisionBlast : BaseSkillState
     {
         public static float damageCoefficient = MamiStaticValues.bigGunDamageCefficeient;
         public static float procCoefficient = 3f;
@@ -30,7 +30,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             base.characterMotor.enabled = false;
             duration = baseDuration / attackSpeedStat;
             fireTime = firePercentTime * duration;
-            characterBody.SetAimTimer(2f);
+            characterBody.SetAimTimer(3f);
             muzzleString = "Muzzle";
 
             PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);
@@ -83,7 +83,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                         falloffModel = BulletAttack.FalloffModel.None,
                         maxDistance = range,
                         force = force,
-                        hitMask = LayerIndex.CommonMasks.bullet,
+                        hitMask = LayerIndex.world.intVal,
                         minSpread = 0f,
                         maxSpread = 0f,
                         isCrit = RollCrit(),
@@ -92,9 +92,9 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                         smartCollision = true,
                         procChainMask = default,
                         procCoefficient = procCoefficient,
-                        radius = 0.75f,
+                        radius = 5f,
                         sniper = false,
-                        stopperMask = LayerIndex.CommonMasks.bullet,
+                        stopperMask = LayerIndex.world.intVal,
                         weapon = null,
                         tracerEffectPrefab = tracerEffectPrefab,
                         spreadPitchScale = 1f,
