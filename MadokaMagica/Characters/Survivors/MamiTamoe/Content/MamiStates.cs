@@ -8,13 +8,13 @@ namespace MadokaMagica.MamiTamoe
     {
         public static void Init()
         {
-            Modules.Content.AddEntityState(typeof(Scarf));
+            Modules.Content.AddEntityState(typeof(Collect));
 
             Modules.Content.AddEntityState(typeof(PrecisionStrkie));
 
             Modules.Content.AddEntityState(typeof(Dash));
 
-            Modules.Content.AddEntityState(typeof(ThrowBomb));
+            Modules.Content.AddEntityState(typeof(PrecisionBlast));
 
             Modules.Content.AddEntityState(typeof(MamiCharacterMain));
         }

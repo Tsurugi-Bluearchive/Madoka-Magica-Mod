@@ -1,18 +1,16 @@
 ﻿using EntityStates;
-using IL.RoR2.Skills;
 using MadokaMagica.MamiTamoe;
-using MadokaMagica.MamiTamoe.Components;
-using MadokaMagica.MamiTamoe.Pickupables;
 using RoR2;
+using RoR2.Projectile;
 using UnityEngine;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
-    public class PrecisionStrkie : BaseSkillState
+    public class PrecisionBlast : GenericProjectileBaseState
     {
-        public static float damageCoefficient = MamiStaticValues.gunDamageCoefficient;
-        public static float procCoefficient = 1.2f;
-        public static float baseDuration = 0.7f;
+        public static float damageCoefficient = MamiStaticValues.bigGunDamageCefficeient;
+        public static float procCoefficient = 3f;
+        public static float baseDuration = 3f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
         public static float firePercentTime = 0.7f;
         public static float force = 5000f;
@@ -28,7 +26,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public override void OnEnter()
         {
             base.OnEnter();
-            base.characterBody.armor += 400;
+            base.characterBody.armor += 900;
             base.characterMotor.enabled = false;
             duration = baseDuration / attackSpeedStat;
             fireTime = firePercentTime * duration;
@@ -43,7 +41,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             base.OnExit();
             base.characterMotor.enabled = true;
             base.characterMotor.velocity = Vector3.zero;
-            base.characterBody.armor -= 400;
+            base.characterBody.armor -= 900;
         }
 
         public override void FixedUpdate()
@@ -73,7 +71,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                 if (isAuthority)
                 {
                     Ray aimRay = GetAimRay();
-                    AddRecoil(-1f * recoil, -2f * recoil, -0.5f * recoil, 0.5f * recoil);
+                    AddRecoil(-0.5f * recoil, -0.5f * recoil, 1f * recoil, 2f * recoil);
                     new BulletAttack
                     {
                         bulletCount = 1,

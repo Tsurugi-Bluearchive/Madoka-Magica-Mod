@@ -8,6 +8,6 @@ namespace MadokaMagica.MamiTamoe
 
         public const float gunDamageCoefficient = 17f;
 
-        public const float bombDamageCoefficient = 16f;
+        public const float bigGunDamageCefficeient = 50f;
     }
 }

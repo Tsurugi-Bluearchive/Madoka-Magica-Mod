@@ -52,7 +52,7 @@ namespace MadokaMagica.MamiTamoe
             healthRegen = 1.5f,
             armor = 0f,
 
-            jumpCount = 1,
+            jumpCount = 5,
         };
 
         public override CustomRendererInfo[] customRendererInfos => new CustomRendererInfo[]
@@ -112,14 +112,14 @@ namespace MadokaMagica.MamiTamoe
         private void AdditionalBodySetup()
         {
             AddHitboxes();
-            //bodyPrefab.AddComponent<HuntressTrackerComopnent>();
+            //bodyPrefab.AddComponent<HuntressTracerComopnent>();
             //anything else here
         }
 
         public void AddHitboxes()
         {
             //example of how to create a HitBoxGroup. see summary for more details
-            Prefabs.SetupHitBoxGroup(characterModelObject, "SwordGroup", "SwordHitbox");
+            Prefabs.SetupHitBoxGroup(characterModelObject, "ScarfHitboxGroup", "ScarfHitType");
         }
 
         public override void InitializeEntityStateMachines() 
@@ -173,19 +173,37 @@ namespace MadokaMagica.MamiTamoe
 
             //the primary skill is created using a constructor for a typical primary
             //it is also a SteppedSkillDef. Custom Skilldefs are very useful for custom behaviors related to casting a skill. see ror2's different skilldefs for reference
-            SteppedSkillDef primarySkillDef1 = Skills.CreateSkillDef<SteppedSkillDef>(new SkillDefInfo
-                (
-                    "Scarf",
-                    MAMI_PREFIX + "PRIMARY_SCARF_NAME",
-                    MAMI_PREFIX + "PRIMARY_SCARF_DESCRIPTION",
-                    assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
-                    new EntityStates.SerializableEntityStateType(typeof(SkillStates.Scarf)),
-                    "Weapon",
-                    true
-                ));
-            //custom Skilldefs can have additional fields that you can set manually
-            primarySkillDef1.stepCount = 2;
-            primarySkillDef1.stepGraceDuration = 0.5f;
+            SkillDef primarySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "PrecisionStrike",
+                skillNameToken = MAMI_PREFIX + "PRIMARY_GUN_NAME",
+                skillDescriptionToken = MAMI_PREFIX + "PRIMARY_GUN_DESCRIPTION",
+                keywordTokens = new string[] { "KEWORD_IMPLANT" },
+                skillIcon = assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PrecisionStrkie)),
+                activationStateMachineName = "Weapon",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = float.MaxValue,
+
+                rechargeStock = 0,
+                requiredStock = 1,
+                stockToConsume = 1,
+                baseMaxStock = 4,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = false,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = true,
+
+            });
 
             Skills.AddPrimarySkills(bodyPrefab, primarySkillDef1);
         }
@@ -197,14 +215,14 @@ namespace MadokaMagica.MamiTamoe
             //here is a basic skill def with all fields accounted for
             SkillDef secondarySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "PrecisionStrike",
-                skillNameToken = MAMI_PREFIX + "SECONDARY_GUN_NAME",
-                skillDescriptionToken = MAMI_PREFIX + "SECONDARY_GUN_DESCRIPTION",
+                skillName = "Collect",
+                skillNameToken = MAMI_PREFIX + "SECONDARY_COLLECT_NAME",
+                skillDescriptionToken = MAMI_PREFIX + "SECONDARY_COLLECT_DESCRIPTION",
                 keywordTokens = new string[] { "KEWORD_IMPLANT" },
                 skillIcon = assetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PrecisionStrkie)),
-                activationStateMachineName = "Weapon2",
+                activationStateMachineName = "Weapon",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseRechargeInterval = float.MaxValue,
@@ -212,12 +230,12 @@ namespace MadokaMagica.MamiTamoe
                 rechargeStock = 0,
                 requiredStock = 1,
                 stockToConsume = 1,
-                baseMaxStock = 2,
+                baseMaxStock = 4,
 
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
                 dontAllowPastMaxStocks = false,
-                mustKeyPress = false,
+                mustKeyPress = true,
                 beginSkillCooldownOnSkillEnd = false,
 
                 isCombatSkill = false,
@@ -280,7 +298,7 @@ namespace MadokaMagica.MamiTamoe
                 skillDescriptionToken = MAMI_PREFIX + "SPECIAL_BOMB_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("texSpecialIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.ThrowBomb)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PrecisionBlast)),
                 //setting this to the "weapon2" EntityStateMachine allows us to cast this skill at the same time primary, which is set to the "weapon" EntityStateMachine
                 activationStateMachineName = "Weapon2", interruptPriority = EntityStates.InterruptPriority.Skill,
 

@@ -14,7 +14,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
 
         private float cooldown;
         private GameObject MamiGun;
-        public Scarf Scarf;
+        public Collect Scarf;
         public MamiGun mmmgun;
         public GameObject muzzleEffect;
         public void Awake()

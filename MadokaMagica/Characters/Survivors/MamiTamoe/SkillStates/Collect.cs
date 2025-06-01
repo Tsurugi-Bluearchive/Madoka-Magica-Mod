@@ -13,7 +13,7 @@ using MadokaMagica.MamiTamoe.SkillStates;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
-    public class Scarf : BaseSkillState
+    public class Collect : BaseSkillState
     {
         public static float damageCoefficient = MamiStaticValues.swordDamageCoefficient;
         public static float procCoefficient = 1.2f;

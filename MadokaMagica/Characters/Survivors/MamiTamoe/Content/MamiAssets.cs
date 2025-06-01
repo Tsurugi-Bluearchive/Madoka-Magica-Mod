@@ -96,8 +96,8 @@ namespace MadokaMagica.MamiTamoe
             GameObject worldCollision = MamiGun.transform.Find("WorldCollider").gameObject;
             worldCollision.AddComponent<MamiGunWorldCollider>();
             
-            MamiGunTracer = _assetBundle.LoadEffect("MamiGunTracer", false);
-            MamiGunTracer.AddComponent<BulletRotato>();
+            //MamiGunTracer = _assetBundle.LoadEffect("MamiGunTracer");
+            //MamiGunTracer.AddComponent<BulletRotato>();
         }
         private static void CreateBombProjectile()
         {
