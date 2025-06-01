@@ -16,7 +16,7 @@ namespace MadokaMagica.MamiTamoe
 
             Modules.Content.AddEntityState(typeof(ThrowBomb));
 
-            Modules.Content.AddEntityState(typeof(MasterMamiSkillStates));
+            Modules.Content.AddEntityState(typeof(MamiCharacterMain));
         }
     }
 }

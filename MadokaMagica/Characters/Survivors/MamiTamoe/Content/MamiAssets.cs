@@ -7,6 +7,8 @@ using MadokaMagica.MamiTamoe.Pickupables;
 using MadokaMagica.MamiTamoe.BaseStates;
 using System.Runtime.CompilerServices;
 using MadokaMagica.MamiTamoe.Melee;
+using R2API;
+using MadokaMagica.MamiTamoe.Components;
 
 namespace MadokaMagica.MamiTamoe
 {
@@ -26,11 +28,11 @@ namespace MadokaMagica.MamiTamoe
 
         public static GameObject MamiGun;
 
+        public static GameObject MamiGunEffect;
+
         private static AssetBundle _assetBundle;
 
         public static MamiGun MamiGunScript;
-
-        public static GameObject MamiScarf;
 
         public static void Init(AssetBundle assetBundle)
         {
@@ -44,8 +46,6 @@ namespace MadokaMagica.MamiTamoe
             CreateProjectiles();
 
             CreateMamiGun();
-
-            CreateMamiScarf();
         }
 
         #region effects
@@ -89,22 +89,26 @@ namespace MadokaMagica.MamiTamoe
 
         private static void CreateMamiGun()
         {
-            if (_assetBundle.LoadAsset<GameObject>("MamiGun") != null)
-            {
-                MamiGun = _assetBundle.LoadAsset<GameObject>("MamiGun");
-                MamiGun.AddComponent<MamiGun>();
-                GameObject worldCollision = MamiGun.transform.Find("WorldCollider").gameObject;
-                worldCollision.AddComponent<MamiGunWorldCollider>();
-            }
-        }
+            MamiGun = _assetBundle.LoadAsset<GameObject>("MamiGun");
+            MamiGun.AddComponent<MamiGun>();
+            GameObject worldCollision = MamiGun.transform.Find("WorldCollider").gameObject;
+            worldCollision.AddComponent<MamiGunWorldCollider>();
 
-        private static void CreateMamiScarf()
-        {
-            MamiScarf = _assetBundle.LoadAsset<GameObject>("ScarfRotationBase");
-            Transform TrueMamiScarf = MamiScarf.transform.Find("Scarf");
-            TrueMamiScarf.gameObject.AddComponent<ScarfObjectLogic>();
+
+            MamiGunEffect = _assetBundle.LoadAsset<GameObject>("MamiGunMuzzleEffect");
+            GameObject MamiTriangleMaster = MamiGunEffect.transform.Find("MuzzleFlashMaster/MuzzleTrianglesMaster").gameObject;
+            for (int i = 0; i <= 20; i++)
+            {
+                GameObject MamiTriangle = MamiGunEffect.transform.Find($"MuzzleFlashMaster/MuzzleTrianglesMaster/MuzzleTriangles ({i})").gameObject;
+                MamiTriangle.AddComponent<MuzzleTrianglesAnimator>();
+                Log.Debug($"Added Script To Component {i}");
+            }
+            GameObject MamiFlash = MamiGunEffect.transform.Find("MuzzleFlashMaster/MuzzleFlash").gameObject;
+            MamiFlash.AddComponent<MuzzleFlash>();
+            GameObject MamiBoolet = MamiGunEffect.transform.Find("Boolet").gameObject;
+            MamiBoolet.AddComponent<BulletBehavior>();
+
         }
-        
         private static void CreateBombProjectile()
         {
             //highly recommend setting up projectiles in editor, but this is a quick and dirty way to prototype if you want

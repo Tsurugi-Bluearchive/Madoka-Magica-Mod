@@ -14,9 +14,10 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public static float baseDuration = 0.5f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
         public static float firePercentTime = 1f;
-        public static float force = 800f;
-        public static float recoil = 3f;
+        public static float force = 5000f;
+        public static float recoil = 10f;
         public static float range = 256f;
+        public static GameObject muzzleEffect;
         public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
 
         private float duration;
@@ -27,11 +28,10 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         {
             base.OnEnter();
             base.characterBody.armor += 400;
-            base.characterMotor.OnDisable();
+            base.characterMotor.enabled = false;
             duration = baseDuration / attackSpeedStat;
             fireTime = firePercentTime * duration;
             characterBody.SetAimTimer(2f);
-            muzzleString = "Muzzle";
 
             PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);
         }
@@ -39,7 +39,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public override void OnExit()
         {
             base.OnExit();
-            base.characterMotor.OnEnable();
+            base.characterMotor.enabled = true;
             base.characterMotor.velocity = Vector3.zero;
             base.characterBody.armor -= 400;
         }
@@ -52,7 +52,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                 Fire();
             }
 
-            if (fixedAge >= duration && isAuthority && fixedAge >= firePercentTime * duration)
+            if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextStateToMain();
                 return;
@@ -66,9 +66,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                 hasFired = true;
 
                 characterBody.AddSpreadBloom(1.5f);
-                EffectManager.SimpleMuzzleFlash(EntityStates.Commando.CommandoWeapon.FirePistol2.muzzleEffectPrefab, gameObject, muzzleString, false);
                 Util.PlaySound("HenryShootPistol", gameObject);
-
                 if (isAuthority)
                 {
                     Ray aimRay = GetAimRay();
