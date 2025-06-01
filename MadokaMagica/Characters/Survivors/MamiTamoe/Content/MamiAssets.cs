@@ -34,6 +34,8 @@ namespace MadokaMagica.MamiTamoe
 
         public static MamiGun MamiGunScript;
 
+        public static GameObject MamiGunTracer;
+
         public static void Init(AssetBundle assetBundle)
         {
 
@@ -93,21 +95,9 @@ namespace MadokaMagica.MamiTamoe
             MamiGun.AddComponent<MamiGun>();
             GameObject worldCollision = MamiGun.transform.Find("WorldCollider").gameObject;
             worldCollision.AddComponent<MamiGunWorldCollider>();
-
-
-            MamiGunEffect = _assetBundle.LoadAsset<GameObject>("MamiGunMuzzleEffect");
-            GameObject MamiTriangleMaster = MamiGunEffect.transform.Find("MuzzleFlashMaster/MuzzleTrianglesMaster").gameObject;
-            for (int i = 0; i <= 20; i++)
-            {
-                GameObject MamiTriangle = MamiGunEffect.transform.Find($"MuzzleFlashMaster/MuzzleTrianglesMaster/MuzzleTriangles ({i})").gameObject;
-                MamiTriangle.AddComponent<MuzzleTrianglesAnimator>();
-                Log.Debug($"Added Script To Component {i}");
-            }
-            GameObject MamiFlash = MamiGunEffect.transform.Find("MuzzleFlashMaster/MuzzleFlash").gameObject;
-            MamiFlash.AddComponent<MuzzleFlash>();
-            GameObject MamiBoolet = MamiGunEffect.transform.Find("Boolet").gameObject;
-            MamiBoolet.AddComponent<BulletBehavior>();
-
+            
+            MamiGunTracer = _assetBundle.LoadEffect("MamiGunTracer", false);
+            MamiGunTracer.AddComponent<BulletRotato>();
         }
         private static void CreateBombProjectile()
         {

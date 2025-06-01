@@ -11,6 +11,7 @@ using RoR2.Skills;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using MadokaMagica.MamiTamoe.Components;
 
 namespace MadokaMagica.MamiTamoe
 {
@@ -199,7 +200,7 @@ namespace MadokaMagica.MamiTamoe
                 skillName = "PrecisionStrike",
                 skillNameToken = MAMI_PREFIX + "SECONDARY_GUN_NAME",
                 skillDescriptionToken = MAMI_PREFIX + "SECONDARY_GUN_DESCRIPTION",
-                keywordTokens = new string[] { "KEYWORD_AGILE" },
+                keywordTokens = new string[] { "KEWORD_IMPLANT" },
                 skillIcon = assetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PrecisionStrkie)),

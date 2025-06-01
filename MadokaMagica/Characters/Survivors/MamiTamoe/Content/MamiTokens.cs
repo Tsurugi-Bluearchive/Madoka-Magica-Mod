@@ -52,7 +52,7 @@ namespace MadokaMagica.MamiTamoe
 
             #region Secondary
             Language.Add(prefix + "SECONDARY_GUN_NAME", "Precision Strike");
-            Language.Add(prefix + "SECONDARY_GUN_DESCRIPTION", Tokens.agilePrefix + $"Fire a picked up gun for <style=cIsDamage>{100f * MamiStaticValues.gunDamageCoefficient}% damage</style>.");
+            Language.Add(prefix + "SECONDARY_GUN_DESCRIPTION", $"IMPLANT. Hold still and fire a picked up gun for <style=cIsDamage>{100f * MamiStaticValues.gunDamageCoefficient}% damage</style>.");
             #endregion
 
             #region Utility

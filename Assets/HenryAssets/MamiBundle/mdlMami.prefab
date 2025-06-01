@@ -173,6 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8211120800700773003}
   - component: {fileID: 8059587653852442149}
+  - component: {fileID: 4430553099472240505}
   m_Layer: 0
   m_Name: MainHurtbox
   m_TagString: Untagged
@@ -209,3 +210,15 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4430553099472240505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3904843942841532812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6933def7691ae3429e587da760774d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

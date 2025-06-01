@@ -1,6 +1,7 @@
 ﻿using EntityStates;
 using IL.RoR2.Skills;
 using MadokaMagica.MamiTamoe;
+using MadokaMagica.MamiTamoe.Components;
 using MadokaMagica.MamiTamoe.Pickupables;
 using RoR2;
 using UnityEngine;
@@ -11,14 +12,14 @@ namespace MadokaMagica.MamiTamoe.SkillStates
     {
         public static float damageCoefficient = MamiStaticValues.gunDamageCoefficient;
         public static float procCoefficient = 1.2f;
-        public static float baseDuration = 0.5f;
+        public static float baseDuration = 0.7f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
         public static float firePercentTime = 1f;
         public static float force = 5000f;
         public static float recoil = 10f;
         public static float range = 256f;
         public static GameObject muzzleEffect;
-        public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
+        public static GameObject tracerEffectPrefab = MamiAssets.MamiGunTracer;
 
         private float duration;
         private float fireTime;

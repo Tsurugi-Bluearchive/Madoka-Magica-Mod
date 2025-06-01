@@ -28,7 +28,7 @@ namespace MadokaMagica.MamiTamoe.BaseStates
             PrecisionStrike = EntityStateMachine.FindByCustomName(this.gameObject, "Weapon2").state;
             Mami = this.gameObject.GetComponent<MamiGunPassive>();
             base.FixedUpdate();
-            if (Scarf != null && Mami.mmmgun != null && Scarf.age <= 0.1f && skillLocator.secondary.maxStock > skillLocator.secondary.stock && Scarf.isAuthority)
+            if (Scarf != null && Mami.mmmgun != null && Scarf.fixedAge <= 0.1f && skillLocator.secondary.maxStock > skillLocator.secondary.stock && Scarf.isAuthority)
             {
                 Destroy(Mami.mmmgun.gameObject);
                 skillLocator.secondary.AddOneStock();

@@ -5,6 +5,7 @@ using RoR2;
 using UnityEngine;
 using MadokaMagica;
 using MadokaMagica.MamiTamoe.BaseStates;
+using MadokaMagica.MamiTamoe.Components;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
@@ -41,21 +42,6 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             {
                 Log.Error("Can't find Mami's Gun!");
             }
-
-            var PrecisionStrike = EntityStateMachine.FindByCustomName(this.gameObject, "Weapon2").state;
-            if (PrecisionStrike != null && PrecisionStrike.fixedAge >= 0.5f & precisionTick >= 1f && PrecisionStrike.isAuthority)
-            {
-                GameObject.Instantiate(muzzleEffect).transform.parent = this.gameObject.transform;
-                Transform Muzzle = this.gameObject.transform.Find("MamiGunMuzzleEffect");
-                Muzzle.transform.position = this.gameObject.transform.position;
-                Muzzle.transform.rotation = this.gameObject.transform.rotation;
-            }
-            if (PrecisionStrike != null && PrecisionStrike.fixedAge >= 0)
-            {
-                precisionTick += Time.fixedDeltaTime;
-            }
-
-
         }
 
         public void PickingUpGun(MamiGun pass)
