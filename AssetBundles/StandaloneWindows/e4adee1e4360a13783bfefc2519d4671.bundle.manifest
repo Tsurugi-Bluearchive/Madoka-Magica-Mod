@@ -1,0 +1,95 @@
+ManifestFileVersion: 0
+CRC: 1268237732
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f49693c04363db4370775e5c494c3407
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 34e83b3b3f3ad3a4ce069cff477f1a49
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1343443687, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 372142912, guid: d382a022563c7517aadbc92ca1060016, type: 3}
+- Class: 114
+  Script: {fileID: 1962479529, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -2108948543, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -335047464, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 296141222, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -270136354, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1895344032, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1466055214, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1752031980, guid: 2b6c926553287666f24ffd5af5ba21cb, type: 3}
+- Class: 114
+  Script: {fileID: -130519023, guid: 2b6c926553287666f24ffd5af5ba21cb, type: 3}
+- Class: 114
+  Script: {fileID: -210918009, guid: a9e21bc7bb762a5cf3086c00d123625f, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: AK.Wwise.Unity.API.WwiseTypes
+  ClassName: AK.Wwise.Event
+- AssemblyName: AK.Wwise.Unity.MonoBehaviour
+  ClassName: AkGameObjListenerList
+- AssemblyName: AK.Wwise.Unity.MonoBehaviour
+  ClassName: AkGameObjPositionOffsetData
+- AssemblyName: com.unity.multiplayer-hlapi.Runtime
+  ClassName: UnityEngine.Networking.NetworkHash128
+- AssemblyName: com.unity.multiplayer-hlapi.Runtime
+  ClassName: UnityEngine.Networking.NetworkSceneId
+Assets:
+- Assets/RoR2/Base/Items/Bandolier/matPickupsNoOffset.mat
+- Assets/RoR2/Base/Items/Bandolier/matPickups.mat
+- Assets/RoR2/Base/Items/Bandolier/AmmoPackPickupEffect.prefab
+- Assets/RoR2/Base/Items/Bandolier/AmmoPack.prefab
+- Assets/RoR2/Base/Items/Bandolier/matBandolier.mat
+Dependencies:
+- C:/Users/dmans/Thunderkit2/AssetBundles/StandaloneWindows/525df469ac9469cca75122228b4331f9.bundle
+- C:/Users/dmans/Thunderkit2/AssetBundles/StandaloneWindows/5ec0fd7669d0391f5993f38a3a5a5ce9.bundle
+- C:/Users/dmans/Thunderkit2/AssetBundles/StandaloneWindows/b41d356d3dfd186b32b988731d78c150.bundle
+- C:/Users/dmans/Thunderkit2/AssetBundles/StandaloneWindows/b74a37af7e29f30bfbaa61ee9f395841.bundle
+- C:/Users/dmans/Thunderkit2/AssetBundles/StandaloneWindows/bb7c7d2ebefe584f1d4065f77b1dc746.bundle
+- C:/Users/dmans/Thunderkit2/AssetBundles/StandaloneWindows/c12aeef012cb62671ec9a242b1e21e2b.bundle

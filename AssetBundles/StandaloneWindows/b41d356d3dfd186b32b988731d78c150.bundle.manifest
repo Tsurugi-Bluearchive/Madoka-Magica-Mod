@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 535469625
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b8176554dbf671e5734d99823b8064c1
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ce865e25612a70bca1cb3842194601bb
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: -210918009, guid: a9e21bc7bb762a5cf3086c00d123625f, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Wwise/ScriptableObjects/Event/6BC99AF3-5E69-445F-A66D-C16854D022CC.asset
+- Assets/Wwise/ScriptableObjects/Event/6AD88BF4-EF42-40D0-AD51-AB3C8CA2163A.asset
+- Assets/Wwise/ScriptableObjects/Event/4CE0D9C5-6694-4E1D-BD0B-2CC8BD5AED25.asset
+Dependencies: []

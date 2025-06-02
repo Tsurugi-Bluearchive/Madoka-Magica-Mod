@@ -1,0 +1,243 @@
+ManifestFileVersion: 0
+CRC: 707176031
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4b6a4c70f1713585785652a8b3ffd9ed
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: fe2e33359207270ef866d664ab0b4293
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1904172584, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1788389205, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -517518216, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9a68da65c907acb4eb4dbcd042f172e7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 68ee60b5bcd2668489cac0473619dffe, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 319
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: RoR2
+  ClassName: ChildLocator/NameTransformPair
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent
+Assets:
+- Assets/MamiBundle/Animation/clips/WalkL.anim
+- Assets/MamiBundle/MamiDisplay.prefab
+- Assets/MamiBundle/VFX/Textures/texPunchImpactShadow.png
+- Assets/MamiBundle/Animation/maskGesture.mask
+- Assets/MamiBundle/HenryDisplay.prefab
+- Assets/MamiBundle/Mesh/meshVergil.mesh
+- Assets/MamiBundle/VFX/Textures/texFistSwing.png
+- Assets/MamiBundle/Mesh/meshRebellion.mesh
+- Assets/MamiBundle/Mesh/meshNeoCoat.mesh
+- Assets/MamiBundle/Animation/clips/Ascend.anim
+- Assets/MamiBundle/Icons/texMasteryAchievement.png
+- Assets/MamiBundle/Materials/matHenry.mat
+- Assets/MamiBundle/VFX/HenryBazookaExplosionEffect.prefab
+- Assets/MamiBundle/Animation/clips/Roll.anim
+- Assets/MamiBundle/Animation/clips/WalkB.anim
+- Assets/MamiBundle/VFX/BombExplosionEffect 1.prefab
+- Assets/MamiBundle/VFX/Materials/matSwingEffect.mat
+- Assets/MamiBundle/Mesh/meshYamato.mesh
+- Assets/MamiBundle/Mesh/meshVergilCoat.mesh
+- Assets/MamiBundle/Icons/texMainSkin.png
+- Assets/MamiBundle/Animation/clips/SprintF.anim
+- Assets/MamiBundle/Icons/texShotgunIcon.png
+- Assets/MamiBundle/VFX/FistBarrageEffect 1.prefab
+- Assets/MamiBundle/VFX/HenryDustEffect.prefab
+- Assets/MamiBundle/Icons/texDanteAchievement.png
+- Assets/MamiBundle/Icons/texUtilityIcon.png
+- Assets/MamiBundle/VFX/Textures/texPunchImpact.png
+- Assets/MamiBundle/MamiGun.prefab
+- Assets/MamiBundle/VFX/Textures/texEmbers.png
+- Assets/MamiBundle/Mesh/meshDanteCoat.mesh
+- Assets/MamiBundle/Icons/texBazookaIconScepter.png
+- Assets/MamiBundle/Icons/texBazookaOutIcon.png
+- Assets/MamiBundle/Mesh/meshHenryNeo.mesh
+- Assets/MamiBundle/Animation/clips/Slash1.anim
+- Assets/MamiBundle/VFX/Textures/texFire.tga
+- Assets/MamiBundle/VFX/Materials/matPunchImpact.mat
+- Assets/MamiBundle/Animation/clips/MenuIdle.anim
+- Assets/MamiBundle/MamiGunMuzzleEffect.prefab
+- Assets/MamiBundle/Icons/texPrimaryIcon.png
+- Assets/MamiBundle/FBX/MamiGunFire.fbx
+- Assets/MamiBundle/VFX/Materials/matSwingShadow.mat
+- Assets/MamiBundle/Materials/matBazookaRocket.mat
+- Assets/MamiBundle/Icons/texPassiveIcon.png
+- Assets/MamiBundle/Animation/clips/WalkF.anim
+- Assets/MamiBundle/Animation/clips/ShootGun.anim
+- Assets/MamiBundle/HenryBombGhost.prefab
+- Assets/MamiBundle/Icons/texSpecialIcon.png
+- Assets/MamiBundle/Materials/matBazooka.mat
+- Assets/MamiBundle/Textures/texHenryJediEmission.png
+- Assets/MamiBundle/VFX/Materials/matAnimeShapes.mat
+- Assets/MamiBundle/Animation/clips/AimYaw.anim
+- Assets/MamiBundle/VFX/Mesh/meshBoxingGlove.mesh
+- Assets/MamiBundle/Icons/texBoxingGlovesIcon.png
+- Assets/MamiBundle/VFX/Textures/texSmoke.png
+- Assets/MamiBundle/VFX/HenryFistSwingEffect.prefab
+- Assets/MamiBundle/Textures/texHenry.png
+- Assets/MamiBundle/Mesh/meshUzi.mesh
+- Assets/MamiBundle/Animation/clips/LightImpact.anim
+- Assets/MamiBundle/Animation/clips/SprintL.anim
+- Assets/MamiBundle/Mesh/meshHenryAlt.mesh
+- Assets/MamiBundle/Icons/texGrandMasteryAchievement.png
+- Assets/MamiBundle/VFX/ImpactHenrySlash.prefab
+- Assets/MamiBundle/Animation/clips/AimPitch.anim
+- Assets/MamiBundle/Materials/matShotgun.mat
+- Assets/MamiBundle/Animation/maskImpact.mask
+- Assets/MamiBundle/Icons/texPistolIcon.png
+- Assets/MamiBundle/VFX/Materials/matHenrySwing2.mat
+- Assets/MamiBundle/VFX/ImpactHenryPunch.prefab
+- Assets/MamiBundle/Mesh/meshHenrySwordAlt.mesh
+- Assets/MamiBundle/Textures/texHenryVergil.png
+- Assets/MamiBundle/Animation/clips/Descend.anim
+- Assets/MamiBundle/Materials/matRoy.mat
+- Assets/MamiBundle/Textures/texBoxingGlove.png
+- Assets/MamiBundle/VFX/HenrySwordSwingEffect.prefab
+- Assets/MamiBundle/Animation/animHenry.controller
+- Assets/MamiBundle/Mesh/meshHenry.mesh
+- Assets/MamiBundle/Icons/texHenryAchievement.png
+- Assets/MamiBundle/Materials/matRebellion.mat
+- Assets/MamiBundle/Animation/maskAimYaw.mask
+- Assets/MamiBundle/VFX/TracerMamiGun.prefab
+- Assets/MamiBundle/VFX/Textures/texHitSpark.png
+- Assets/MamiBundle/FBX/MamiGunImpact.fbx
+- Assets/MamiBundle/Icons/texBazookaFireIcon.png
+- Assets/MamiBundle/Textures/texBazooka.png
+- Assets/MamiBundle/VFX/HenryBazookaMuzzleFlash.prefab
+- Assets/MamiBundle/Icons/texUziIcon.png
+- Assets/MamiBundle/VFX/Materials/matPunchImpactShadow.mat
+- Assets/MamiBundle/VFX/Materials/matEmbers.mat
+- Assets/MamiBundle/Textures/texHenryJedi.png
+- Assets/MamiBundle/Animation/clips/IdleAdditive.anim
+- Assets/MamiBundle/VFX/Textures/texHenrySwing2.png
+- Assets/MamiBundle/VFX/FistBarrageEffect.prefab
+- Assets/MamiBundle/Icons/texBazookaIcon.png
+- Assets/MamiBundle/VFX/Materials/matSlash.mat
+- Assets/MamiBundle/Textures/texHenryAlt.png
+- Assets/MamiBundle/Animation/maskLeftArm.mask
+- Assets/MamiBundle/VFX/Textures/texSwingEffect.png
+- Assets/MamiBundle/Textures/texHenryDante.png
+- Assets/MamiBundle/Icons/texVergilAchievement.png
+- Assets/MamiBundle/Animation/clips/IdleIn.anim
+- Assets/MamiBundle/Mesh/meshDante.mesh
+- Assets/MamiBundle/VFX/Materials/matPunchEffect.mat
+- Assets/MamiBundle/Animation/clips/RestIdleIn.anim
+- Assets/MamiBundle/Animation/clips/RestIdle.anim
+- Assets/MamiBundle/HenryMonsterMaster.prefab
+- Assets/MamiBundle/FBX/MamiGun 1.fbx
+- Assets/MamiBundle/MuzzleMaster.prefab
+- Assets/MamiBundle/VFX/Mesh/meshSwing.asset
+- Assets/MamiBundle/Animation/clips/SprintR.anim
+- Assets/MamiBundle/Animation/clips/ThrowBomb.anim
+- Assets/MamiBundle/Animation/clips/DescendFast.anim
+- Assets/MamiBundle/Animation/maskAimPitch.mask
+- Assets/MamiBundle/VFX/Materials/matHitSparkPunch.mat
+- Assets/MamiBundle/VFX/Materials/matFistSwing.mat
+- Assets/MamiBundle/Animation/clips/WalkR.anim
+- Assets/MamiBundle/Materials/matBoxingGlove.mat
+- Assets/MamiBundle/Textures/texHenryDanteEmission.png
+- Assets/MamiBundle/VFX/Materials/matTrail.mat
+- Assets/MamiBundle/Icons/texScepterSpecialIcon.png
+- Assets/MamiBundle/VFX/Textures/texDust.png
+- Assets/MamiBundle/Materials/matDante.mat
+- Assets/MamiBundle/Animation/maskBandana.mask
+- Assets/MamiBundle/VFX/Materials/matHitSpark.mat
+- Assets/MamiBundle/HenryBazookaRocketGhost.prefab
+- Assets/MamiBundle/Icons/texSecondaryIcon.png
+- Assets/MamiBundle/Materials/matHenryAlt.mat
+- Assets/MamiBundle/Textures/texHenryNeo.png
+- Assets/MamiBundle/VFX/Materials/matDust.mat
+- Assets/MamiBundle/Textures/Mami_Tomoe.png
+- Assets/MamiBundle/VFX/Textures/texRipple.png
+- Assets/MamiBundle/Animation/maskAimBazooka.mask
+- Assets/MamiBundle/VFX/Materials/matRipple.mat
+- Assets/MamiBundle/VFX/MuzzleFlashMami.prefab
+- Assets/MamiBundle/Materials/matVergil.mat
+- Assets/MamiBundle/Animation/clips/Jump.anim
+- Assets/MamiBundle/Materials/matHenryJedi.mat
+- Assets/MamiBundle/Mesh/MeshHenryGun.mesh
+- Assets/MamiBundle/Mesh/meshPistol.mesh
+- Assets/MamiBundle/VFX/BombExplosionEffect.prefab
+- Assets/MamiBundle/FBX/MamiGunFireTriangle.fbx
+- Assets/MamiBundle/Icons/texMamiIcon.png
+- Assets/MamiBundle/VFX/Materials/matFire.mat
+- Assets/MamiBundle/VFX/Materials/matSmoke.mat
+- Assets/MamiBundle/mdlMami.prefab
+- Assets/MamiBundle/VFX/Textures/texLightning.tif
+- Assets/MamiBundle/FBX/MamiGunBullet.fbx
+- Assets/MamiBundle/Animation/clips/Idle.anim
+- Assets/MamiBundle/Animation/clips/MenuIdleIn.anim
+- Assets/MamiBundle/Mesh/meshHenrySword.mesh
+- Assets/MamiBundle/VFX/Mesh/meshPunchShockwave.mesh
+- Assets/MamiBundle/Textures/texShotgun.png
+- Assets/MamiBundle/Animation/clips/Slash2.anim
+- Assets/MamiBundle/VFX/MamiGunTracer.prefab
+- Assets/MamiBundle/VFX/Textures/texSlash.png
+- Assets/MamiBundle/Materials/matHenryNeo.mat
+- Assets/MamiBundle/Animation/animHenryMenu.controller
+- Assets/MamiBundle/Animation/clips/DefaultPose.anim
+- Assets/MamiBundle/ScarfRotationBase.prefab
+- Assets/MamiBundle/Icons/texStingerIcon.png
+Dependencies: []
