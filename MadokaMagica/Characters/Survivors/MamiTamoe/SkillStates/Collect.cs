@@ -17,9 +17,9 @@ namespace MadokaMagica.MamiTamoe.SkillStates
     {
         public static float damageCoefficient = MamiStaticValues.bigGunDamageCefficeient;
         public static float procCoefficient = 3f;
-        public static float baseDuration = 3f;
+        public static float baseDuration = 0.4f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
-        public static float firePercentTime = 0.7f;
+        public static float firePercentTime = 0f;
         public static float force = 5000f;
         public static float recoil = 10f;
         public static float range = 256f;
@@ -30,17 +30,38 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         private float fireTime;
         private bool hasFired;
         private string muzzleString;
+
+        private int removeStock = 0;
+        private int previousStock;
         public override void OnEnter()
         {
             base.OnEnter();
-            base.characterBody.armor += 900;
-            base.characterMotor.enabled = false;
             duration = baseDuration / attackSpeedStat;
             fireTime = firePercentTime * duration;
             characterBody.SetAimTimer(2f);
-            muzzleString = "Muzzle";
+            if (skillLocator.primary.maxStock > skillLocator.primary.stock)
+            {
 
-            PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);
+                previousStock = skillLocator.secondary.stock;
+                removeStock = 1;
+                for (int i = 1; skillLocator.secondary.stock > removeStock && skillLocator.primary.maxStock > skillLocator.primary.stock; i++)
+                {
+                    removeStock = i;
+                    skillLocator.primary.AddOneStock();
+                }
+                skillLocator.secondary.stock = previousStock - removeStock;
+
+
+            }
+        }
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            if (fixedAge >= duration && isAuthority)
+            {
+                outer.SetNextStateToMain();
+                return;
+            }
         }
 
         public override void OnExit()
@@ -48,7 +69,6 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             base.OnExit();
             base.characterMotor.enabled = true;
             base.characterMotor.velocity = Vector3.zero;
-            base.characterBody.armor -= 900;
         }
 
         public override InterruptPriority GetMinimumInterruptPriority()

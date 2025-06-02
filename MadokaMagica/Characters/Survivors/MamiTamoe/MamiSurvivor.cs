@@ -48,7 +48,7 @@ namespace MadokaMagica.MamiTamoe
             crosshair = Asset.LoadCrosshair("Standard"),
             podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
 
-            maxHealth = 110f,
+            maxHealth = 200f,
             healthRegen = 1.5f,
             armor = 0f,
 
@@ -190,7 +190,7 @@ namespace MadokaMagica.MamiTamoe
                 rechargeStock = 0,
                 requiredStock = 1,
                 stockToConsume = 1,
-                baseMaxStock = 4,
+                baseMaxStock = 2,
 
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
@@ -221,16 +221,16 @@ namespace MadokaMagica.MamiTamoe
                 keywordTokens = new string[] { "KEWORD_IMPLANT" },
                 skillIcon = assetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PrecisionStrkie)),
-                activationStateMachineName = "Weapon2",
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Collect)),
+                activationStateMachineName = "Weapon",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseRechargeInterval = float.MaxValue,
 
                 rechargeStock = 0,
                 requiredStock = 1,
-                stockToConsume = 1,
-                baseMaxStock = 4,
+                stockToConsume = 0,
+                baseMaxStock = 8,
 
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
@@ -260,7 +260,7 @@ namespace MadokaMagica.MamiTamoe
                 skillDescriptionToken = MAMI_PREFIX + "UTILITY_ROLL_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("texUtilityIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(Dash)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SpawnGun)),
                 activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
 

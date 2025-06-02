@@ -18,36 +18,36 @@ namespace MadokaMagica.MamiTamoe.BaseStates
 {
     public class MamiCharacterMain : GenericCharacterMain
     {
-        public EntityState Scarf;
+        public EntityStateMachine Scarf;
         public MamiGunPassive Mami;
         public EntityState PrecisionStrike;
         private float precisionTick;
         private bool setAirControl = false;
         public override void FixedUpdate()
-        {
-            var muzzleEffect = MamiAssets.MamiGunEffect;
-            Scarf = EntityStateMachine.FindByCustomName(this.gameObject, "Weapon2").state;
-            PrecisionStrike = EntityStateMachine.FindByCustomName(this.gameObject, "Weapon").state;
+        {;
             Mami = this.gameObject.GetComponent<MamiGunPassive>();
-            base.FixedUpdate();
-            if (Scarf != null && Mami.mmmgun != null && Scarf.fixedAge <= 0.1f && skillLocator.secondary.maxStock > skillLocator.secondary.stock && Scarf.isAuthority && isAuthority)
+            Scarf = EntityStateMachine.FindByCustomName(this.gameObject, "Weapon");
+            if (Mami.mmmgun != null && skillLocator.secondary.maxStock > skillLocator.secondary.stock && isAuthority)
             {
                 Destroy(Mami.mmmgun.gameObject);
-                skillLocator.primary.AddOneStock();
+                skillLocator.secondary.AddOneStock();
             }
-            if (!characterBody.characterMotor.isGrounded && !setAirControl && isAuthority)
+
+            base.FixedUpdate();
+
+            if (!characterBody.characterMotor.isGrounded && !setAirControl)
             {
-                    characterBody.sprintingSpeedMultiplier = characterBody.sprintingSpeedMultiplier * 2;
+                    characterBody.sprintingSpeedMultiplier = characterBody.sprintingSpeedMultiplier * 1.5f;
                     setAirControl = true;
             }
-            else if (setAirControl && characterBody.characterMotor.isGrounded && isAuthority)
+            else if (setAirControl && characterBody.characterMotor.isGrounded)
             {
-                characterBody.sprintingSpeedMultiplier = characterBody.sprintingSpeedMultiplier / 2;
+                characterBody.sprintingSpeedMultiplier = characterBody.sprintingSpeedMultiplier / 1.5f;
                 setAirControl = false;
             }
             if (setAirControl && inputBank.jump.justPressed && isAuthority && characterBody.maxJumpCount > characterBody.characterMotor.jumpCount)
             {
-                characterBody.characterMotor.velocity += new Vector3(characterBody.characterMotor.velocity.x * 1.3f, 2f, characterBody.characterMotor.velocity.z * 1.3f);
+                characterBody.characterMotor.velocity += new Vector3(characterBody.characterMotor.velocity.x * 2f, 2f, characterBody.characterMotor.velocity.z * 2f);
             }
         }
     }

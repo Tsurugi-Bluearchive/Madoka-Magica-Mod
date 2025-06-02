@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
-    public class Dash : BaseSkillState
+    public class SpawnGun : BaseSkillState
     {
         public static float duration = 0.5f;
         public static float initialSpeedCoefficient = 5f;
@@ -21,44 +21,14 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         private Vector3 previousPosition;
 
         public override void OnEnter()
-        {
+        {            
             base.OnEnter();
-            animator = GetModelAnimator();
-
-            if (isAuthority && inputBank && characterDirection)
-            {
-                forwardDirection = (inputBank.moveVector == Vector3.zero ? characterDirection.forward : inputBank.moveVector).normalized;
-            }
-
-            Vector3 rhs = characterDirection ? characterDirection.forward : forwardDirection;
-            Vector3 rhs2 = Vector3.Cross(Vector3.up, rhs);
-
-            float num = Vector3.Dot(forwardDirection, rhs);
-            float num2 = Vector3.Dot(forwardDirection, rhs2);
-
-            RecalculateRollSpeed();
-
-            if (characterMotor && characterDirection)
-            {
-                characterMotor.velocity.y = 0f;
-                characterMotor.velocity = forwardDirection * rollSpeed;
-            }
-
-            Vector3 b = characterMotor ? characterMotor.velocity : Vector3.zero;
-            previousPosition = transform.position - b;
-
-            PlayAnimation("FullBody, Override", "Roll", "Roll.playbackRate", duration);
-            Util.PlaySound(dodgeSoundString, gameObject);
-
-            if (NetworkServer.active)
-            {
-
-            }
+            
 
         }
         private void RecalculateRollSpeed()
         {
-            rollSpeed = moveSpeedStat * Mathf.Lerp(initialSpeedCoefficient, finalSpeedCoefficient, fixedAge / duration);
+
         }
 
         public override void FixedUpdate()
@@ -107,5 +77,6 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             base.OnDeserialize(reader);
             forwardDirection = reader.ReadVector3();
         }
+
     }
 }
