@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using MadokaMagica.MamiTamoe.Melee;
 using R2API;
 using MadokaMagica.MamiTamoe.Components;
+using UnityEngine.Networking;
 
 namespace MadokaMagica.MamiTamoe
 {
@@ -93,9 +94,12 @@ namespace MadokaMagica.MamiTamoe
         {
             MamiGun = _assetBundle.LoadAsset<GameObject>("MamiGun");
             MamiGun.AddComponent<MamiGun>();
+            MamiGun.AddComponent<NetworkIdentity>();
             GameObject worldCollision = MamiGun.transform.Find("WorldCollider").gameObject;
             worldCollision.AddComponent<MamiGunWorldCollider>();
-            
+
+
+
             //MamiGunTracer = _assetBundle.LoadEffect("MamiGunTracer");
             //MamiGunTracer.AddComponent<BulletRotato>();
         }

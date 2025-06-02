@@ -50,8 +50,6 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                     skillLocator.primary.AddOneStock();
                 }
                 skillLocator.secondary.stock = previousStock - removeStock;
-
-
             }
         }
         public override void FixedUpdate()
