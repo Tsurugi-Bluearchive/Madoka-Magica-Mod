@@ -3,6 +3,7 @@ using MadokaMagica.MamiTamoe;
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
+using MadokaMagica.Modules.BaseStates;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
@@ -92,7 +93,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                         smartCollision = true,
                         procChainMask = default,
                         procCoefficient = procCoefficient,
-                        radius = 10f,
+                        radius = 5f,
                         sniper = false,
                         stopperMask = LayerIndex.world.mask,
                         weapon = null,
