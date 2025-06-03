@@ -39,7 +39,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         {
             base.FixedUpdate();
             tick += Time.fixedDeltaTime;
-            if (stocks > 0 && isAuthority && tick >= blastDuration)
+            if (stocks > 0 && isAuthority && tick >= blastDuration && (inputBank.skill2.down || inputBank.skill2.justPressed))
             {
                 stocks--;
                 if (skillLocator.secondary.stock > 0)
@@ -59,7 +59,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                     shotBarrage = true;
                 }
             }
-            else if(shotBarrage || stocks == 0 && isAuthority)
+            else if(shotBarrage || inputBank.skill2.justReleased)
             {
                 outer.SetNextStateToMain();
                 return;
@@ -73,8 +73,11 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             base.characterMotor.enabled = true;
             base.characterMotor.velocity = Vector3.zero;
             base.characterBody.armor -= 800;
-            skillLocator.secondary.SetSkillOverride(this.gameObject, MamiSurvivor.reload, GenericSkill.SkillOverridePriority.Default);
-            skillLocator.secondary.stock = previousStock;
+            if (skillLocator.primary.stock < 1)
+            {
+                skillLocator.secondary.SetSkillOverride(this.gameObject, MamiSurvivor.reload, GenericSkill.SkillOverridePriority.Default);
+                skillLocator.secondary.stock = previousStock;
+            }
         }
 
         private void Fire()
