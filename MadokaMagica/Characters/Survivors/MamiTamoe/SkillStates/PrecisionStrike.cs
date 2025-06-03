@@ -5,6 +5,8 @@ using MadokaMagica.MamiTamoe.Components;
 using MadokaMagica.MamiTamoe.Pickupables;
 using RoR2;
 using UnityEngine;
+using MadokaMagica.MamiTamoe.SkillStates;
+using MadokaMagica.Modules;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
@@ -44,6 +46,12 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             base.characterMotor.enabled = true;
             base.characterMotor.velocity = Vector3.zero;
             base.characterBody.armor -= 800;
+            if (skillLocator.primary.stock == 0)
+            {
+                var previousStock = skillLocator.secondary.stock;
+                skillLocator.secondary.SetSkillOverride(this.gameObject, MamiSurvivor.reload, GenericSkill.SkillOverridePriority.Default);
+                skillLocator.secondary.stock = previousStock;
+            }
         }
 
         public override void FixedUpdate()

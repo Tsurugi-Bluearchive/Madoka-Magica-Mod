@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1881990681, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: Railgunner
+  m_EditorClassIdentifier:
+  bodyPrefab: {fileID: 1896087876002032, guid: 151637d320d2c524784d939f0a64523b, type: 2}
+  displayPrefab: {fileID: 1705609487402001, guid: 4cd171a1d0e41b544b31afb558377611, type: 2}
+  unlockableName:
+  unlockableDef: {fileID: 0}
+  displayNameToken: RAILGUNNER_BODY_NAME
+  descriptionToken: RAILGUNNER_DESCRIPTION
+  outroFlavorToken: RAILGUNNER_OUTRO_FLAVOR
+  mainEndingEscapeFailureFlavorToken: RAILGUNNER_MAIN_ENDING_ESCAPE_FAILURE_FLAVOR
+  primaryColor: {r: 1, g: 0.2588235, b: 0.5717763, a: 1}
+  desiredSortPosition: 14
+  hidden: 0

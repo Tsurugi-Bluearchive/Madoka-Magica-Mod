@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1746479147, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: Skins.RailGunner.Alt2
+  m_EditorClassIdentifier:
+  nameToken: RAILGUNNER_SKIN_ALT2_NAME
+  displayModelPath:
+  displayModelPrefab: {fileID: 1724853595703351, guid: 5318b8b8d166400449bdbc539f5a54b5, type: 2}
+  hidden: 0
+  achievementIcon: {fileID: 21300000, guid: 6f9c1bda182e4134790efca986864ac4, type: 2}
+  requiredExpansion: {fileID: 11400000, guid: 60782634db142404ba73fd8bfa0845f7, type: 2}

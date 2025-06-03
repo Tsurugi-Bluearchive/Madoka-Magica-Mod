@@ -92,9 +92,9 @@ namespace MadokaMagica.MamiTamoe
 
         private static void CreateMamiGun()
         {
+
             MamiGun = _assetBundle.LoadAsset<GameObject>("MamiGun");
             MamiGun.AddComponent<MamiGun>();
-            MamiGun.AddComponent<NetworkIdentity>();
             GameObject worldCollision = MamiGun.transform.Find("WorldCollider").gameObject;
             worldCollision.AddComponent<MamiGunWorldCollider>();
 

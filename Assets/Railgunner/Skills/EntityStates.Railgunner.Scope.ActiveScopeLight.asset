@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 89795172, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: EntityStates.Railgunner.Scope.ActiveScopeLight
+  m_EditorClassIdentifier:
+  targetType:
+    assemblyQualifiedName: EntityStates.Railgunner.Scope.ActiveScopeLight, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  serializedFieldsCollection:
+    serializedFields:
+    - fieldName: cameraOverridePriority
+      fieldValue:
+        stringValue: 1
+        objectValue: {fileID: 0}
+    - fieldName: cameraParams
+      fieldValue:
+        stringValue:
+        objectValue: {fileID: 11400000, guid: dd3ab3e648b72c34c9eef6f3f1de8d2c, type: 2}
+    - fieldName: loopSound
+      fieldValue:
+        stringValue:
+        objectValue: {fileID: 11400000, guid: cfefbffb0f224b646b484b05226b1114, type: 2}
+    - fieldName: crosshairOverridePrefab
+      fieldValue:
+        stringValue:
+        objectValue: {fileID: 1771898321880437, guid: af65897bcad1d554998ab619c98976a8, type: 2}
+    - fieldName: scopeOverlayPrefab
+      fieldValue:
+        stringValue:
+        objectValue: {fileID: 1350371343604553, guid: f17c4c5f02063904d8c2f9112c0dfe06, type: 2}
+    - fieldName: primaryOverride
+      fieldValue:
+        stringValue:
+        objectValue: {fileID: 11400000, guid: b33f9d1cef959b84d8497ea643101540, type: 2}

@@ -13,6 +13,7 @@ using EntityStates.TitanMonster;
 using MadokaMagica.MamiTamoe.SkillStates;
 using Rewired.Utils;
 using MonoMod.RuntimeDetour;
+using UnityEngine.Networking;
 
 namespace MadokaMagica.MamiTamoe.BaseStates
 {
@@ -23,8 +24,10 @@ namespace MadokaMagica.MamiTamoe.BaseStates
         public EntityState PrecisionStrike;
         private float precisionTick;
         private bool setAirControl = false;
+        private EntityState reloadState;
         public override void FixedUpdate()
-        {;
+        {
+            base.FixedUpdate();
             Mami = this.gameObject.GetComponent<MamiGunPassive>();
             Scarf = EntityStateMachine.FindByCustomName(this.gameObject, "Weapon");
             if (Mami.mmmgun != null && skillLocator.secondary.maxStock > skillLocator.secondary.stock && isAuthority)
@@ -32,8 +35,6 @@ namespace MadokaMagica.MamiTamoe.BaseStates
                 Destroy(Mami.mmmgun.gameObject);
                 skillLocator.secondary.AddOneStock();
             }
-
-            base.FixedUpdate();
 
             if (!characterBody.characterMotor.isGrounded && !setAirControl)
             {
@@ -49,6 +50,12 @@ namespace MadokaMagica.MamiTamoe.BaseStates
             {
                 characterBody.characterMotor.velocity += new Vector3(characterBody.characterMotor.velocity.x * 2f, 2f, characterBody.characterMotor.velocity.z * 2f);
             }
+        }
+
+        public override void OnSerialize(NetworkWriter writer)
+        {
+            base.OnSerialize(writer);
+
         }
     }
 }

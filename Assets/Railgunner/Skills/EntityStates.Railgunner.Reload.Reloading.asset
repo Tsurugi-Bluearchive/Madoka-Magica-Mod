@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 89795172, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: EntityStates.Railgunner.Reload.Reloading
+  m_EditorClassIdentifier:
+  targetType:
+    assemblyQualifiedName: EntityStates.Railgunner.Reload.Reloading, RoR2, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  serializedFieldsCollection:
+    serializedFields:
+    - fieldName: animationStateName
+      fieldValue:
+        stringValue:
+        objectValue: {fileID: 0}
+    - fieldName: animationPlaybackRateParam
+      fieldValue:
+        stringValue:
+        objectValue: {fileID: 0}
+    - fieldName: animationLayerName
+      fieldValue:
+        stringValue:
+        objectValue: {fileID: 0}
+    - fieldName: primaryOverride
+      fieldValue:
+        stringValue:
+        objectValue: {fileID: 11400000, guid: a28732228a416d1428b54b06e159c269, type: 2}
+    - fieldName: overlayPrefab
+      fieldValue:
+        stringValue:
+        objectValue: {fileID: 1589308401625022, guid: ce3983540f24f10478fc52cf4895ed6e, type: 2}
+    - fieldName: overlayChildLocatorEntry
+      fieldValue:
+        stringValue: CrosshairExtras
+        objectValue: {fileID: 0}
+    - fieldName: loopSoundDef
+      fieldValue:
+        stringValue:
+        objectValue: {fileID: 0}
+    - fieldName: failSoundString
+      fieldValue:
+        stringValue: Play_railgunner_m2_reload_basic
+        objectValue: {fileID: 0}
+    - fieldName: endNoBoostSoundString
+      fieldValue:
+        stringValue: Play_railgunner_m2_reload_fail
+        objectValue: {fileID: 0}
+    - fieldName: boostWindowDuration
+      fieldValue:
+        stringValue: 0.25
+        objectValue: {fileID: 0}
+    - fieldName: boostWindowDelay
+      fieldValue:
+        stringValue: 0.5
+        objectValue: {fileID: 0}
+    - fieldName: boostGracePeriod
+      fieldValue:
+        stringValue: 0.0125
+        objectValue: {fileID: 0}
+    - fieldName: baseDuration
+      fieldValue:
+        stringValue: 1.5
+        objectValue: {fileID: 0}

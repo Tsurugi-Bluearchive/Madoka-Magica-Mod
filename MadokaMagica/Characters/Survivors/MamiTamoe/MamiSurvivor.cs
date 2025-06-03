@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using MadokaMagica.MamiTamoe.Components;
+using UnityEngine.Networking;
 
 namespace MadokaMagica.MamiTamoe
 {
@@ -74,6 +75,12 @@ namespace MadokaMagica.MamiTamoe
         public override GameObject displayPrefab { get; protected set; }
 
         public Component MamiGun;
+
+        public static SkillDef reload;
+
+        public static SkillDef precisionStrike;
+        public static SkillDef ceaselessBarage;
+
         public override void Initialize()
         {
             //uncomment if you have multiple characters
@@ -173,7 +180,7 @@ namespace MadokaMagica.MamiTamoe
 
             //the primary skill is created using a constructor for a typical primary
             //it is also a SteppedSkillDef. Custom Skilldefs are very useful for custom behaviors related to casting a skill. see ror2's different skilldefs for reference
-            SkillDef primarySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
+            precisionStrike = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "PrecisionStrike",
                 skillNameToken = MAMI_PREFIX + "PRIMARY_GUN_NAME",
@@ -190,7 +197,7 @@ namespace MadokaMagica.MamiTamoe
                 rechargeStock = 0,
                 requiredStock = 1,
                 stockToConsume = 1,
-                baseMaxStock = 2,
+                baseMaxStock = 6,
 
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
@@ -205,7 +212,8 @@ namespace MadokaMagica.MamiTamoe
 
             });
 
-            Skills.AddPrimarySkills(bodyPrefab, primarySkillDef1);
+
+            Skills.AddPrimarySkills(bodyPrefab, precisionStrike);
         }
 
         private void AddSecondarySkills()
@@ -213,15 +221,15 @@ namespace MadokaMagica.MamiTamoe
             Skills.CreateGenericSkillWithSkillFamily(bodyPrefab, SkillSlot.Secondary);
 
             //here is a basic skill def with all fields accounted for
-            SkillDef secondarySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
+            ceaselessBarage = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "Collect",
+                skillName = "Ceaseleass Barage",
                 skillNameToken = MAMI_PREFIX + "SECONDARY_COLLECT_NAME",
                 skillDescriptionToken = MAMI_PREFIX + "SECONDARY_COLLECT_DESCRIPTION",
                 keywordTokens = new string[] { "KEWORD_IMPLANT" },
                 skillIcon = assetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Collect)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.CeaselessBarrage)),
                 activationStateMachineName = "Weapon",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
@@ -230,7 +238,7 @@ namespace MadokaMagica.MamiTamoe
                 rechargeStock = 0,
                 requiredStock = 1,
                 stockToConsume = 0,
-                baseMaxStock = 8,
+                baseMaxStock = 6,
 
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
@@ -245,7 +253,39 @@ namespace MadokaMagica.MamiTamoe
 
             });
 
-            Skills.AddSecondarySkills(bodyPrefab, secondarySkillDef1);
+            reload = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "PrecisionReload",
+                skillNameToken = MAMI_PREFIX + "PRIMARY_GUN_NAME",
+                skillDescriptionToken = MAMI_PREFIX + "PRIMARY_GUN_DESCRIPTION",
+                keywordTokens = new string[] { "KEWORD_IMPLANT" },
+                skillIcon = assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
+
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Reload)),
+                activationStateMachineName = "Weapon",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseRechargeInterval = float.MaxValue,
+                rechargeStock = 0,
+                requiredStock = 1,
+                stockToConsume = 0,
+                baseMaxStock = 6,
+
+                resetCooldownTimerOnUse = false,
+                fullRestockOnAssign = true,
+                dontAllowPastMaxStocks = false,
+                mustKeyPress = false,
+                beginSkillCooldownOnSkillEnd = false,
+
+                isCombatSkill = false,
+                canceledFromSprinting = false,
+                cancelSprintingOnActivation = false,
+                forceSprintDuringState = true,
+
+            });
+
+
+            Skills.AddSecondarySkills(bodyPrefab, ceaselessBarage);
         }
 
         private void AddUtiitySkills()
