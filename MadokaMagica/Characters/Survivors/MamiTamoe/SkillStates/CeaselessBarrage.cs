@@ -8,7 +8,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
     {
         public static float damageCoefficient = MamiStaticValues.gunDamageCoefficient;
         public static float procCoefficient = 1f;
-        public static float baseDuration = 17f;
+        public static float baseDuration = 2f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
         public static float force = 5000f;
         public static float recoil = 10f;
@@ -20,9 +20,8 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         private float blastDuration;
         private string muzzleString;
         private int stocks;
+        private bool shotBarrage = false;
 
-        private int removeStock = 0;
-        private int previousStock;
         private float tick;
 
         public override void OnEnter()
@@ -42,18 +41,25 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             tick += Time.fixedDeltaTime;
             if (stocks > 0 && isAuthority && tick >= blastDuration)
             {
-                Fire();
                 stocks--;
                 if (skillLocator.secondary.stock > 0)
                 {
                     skillLocator.secondary.stock--;
+                    Fire();
+                    tick = 0;
                 }
                 else if (skillLocator.primary.stock > 0)
                 {
                     skillLocator.primary.stock--;
+                    Fire();
+                    tick = 0;
+                }
+                else
+                {
+                    shotBarrage = true;
                 }
             }
-            else if (fixedAge > duration)
+            else if(shotBarrage || stocks == 0 && isAuthority)
             {
                 outer.SetNextStateToMain();
                 return;
@@ -64,11 +70,11 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         {
             base.OnExit();
             var previousStock = skillLocator.secondary.stock;
-            skillLocator.secondary.SetSkillOverride(this.gameObject, MamiSurvivor.reload, GenericSkill.SkillOverridePriority.Default);
-            skillLocator.secondary.stock = previousStock;
             base.characterMotor.enabled = true;
             base.characterMotor.velocity = Vector3.zero;
             base.characterBody.armor -= 800;
+            skillLocator.secondary.SetSkillOverride(this.gameObject, MamiSurvivor.reload, GenericSkill.SkillOverridePriority.Default);
+            skillLocator.secondary.stock = previousStock;
         }
 
         private void Fire()
