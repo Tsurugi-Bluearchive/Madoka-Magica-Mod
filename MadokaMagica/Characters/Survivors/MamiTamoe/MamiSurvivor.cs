@@ -197,7 +197,7 @@ namespace MadokaMagica.MamiTamoe
                 rechargeStock = 0,
                 requiredStock = 1,
                 stockToConsume = 1,
-                baseMaxStock = 6,
+                baseMaxStock = 2,
 
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,

@@ -18,9 +18,9 @@ namespace MadokaMagica.MamiTamoe.SkillStates
     {
         public static float damageCoefficient = MamiStaticValues.gunDamageCoefficient;
         public static float procCoefficient = 3f;
-        public static float baseDuration = 0.4f;
+        public static float baseDuration = 3f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
-        public static float firePercentTime = 0f;
+        public static float firePercentTime = 0.2f;
         public static float force = 5000f;
         public static float recoil = 10f;
         public static float range = 256f;
@@ -28,39 +28,38 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
 
         private float duration;
-        private float fireTime;
+        private float blastDuration;
+        private float fireTime = 0.05f;
         private bool hasFired;
         private string muzzleString;
 
         private int removeStock = 0;
         private int previousStock;
-        private bool BOOM;
         public override void OnEnter()
         {
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             fireTime = firePercentTime * duration;
+            blastDuration = (skillLocator.primary.stock + skillLocator.secondary.stock) / (attackSpeedStat * 10);
             characterBody.SetAimTimer(2f);
 
         }
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            var tick = +Time.fixedDeltaTime;
 
-            if (fixedAge >= duration && isAuthority && !BOOM)
-            {
-                duration = (skillLocator.primary.stock + skillLocator.secondary.stock) / (attackSpeedStat * 10);
-                BOOM = true;
-            }
-            if (fixedAge >= duration && isAuthority && BOOM && skillLocator.secondary.stock > 0)
+            if (tick >= blastDuration && isAuthority && skillLocator.secondary.stock > 0)
             {
                 Fire();
                 skillLocator.secondary.stock--;
+                tick = 0;
             }
-            else if (fixedAge >= duration && isAuthority && BOOM && skillLocator.primary.stock > 0)
+            else if (tick >= blastDuration && isAuthority && skillLocator.primary.stock > 0)
             {
                 Fire();
                 skillLocator.primary.stock--;
+                tick = 0;
             }
             else
             {
@@ -72,8 +71,6 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public override void OnExit()
         {
             base.OnExit();
-            base.characterMotor.enabled = true;
-            base.characterMotor.velocity = Vector3.zero;
         }
 
         private void Fire()
