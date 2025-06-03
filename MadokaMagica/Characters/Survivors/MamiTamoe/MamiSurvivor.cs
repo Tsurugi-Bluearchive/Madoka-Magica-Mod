@@ -243,7 +243,7 @@ namespace MadokaMagica.MamiTamoe
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
                 dontAllowPastMaxStocks = false,
-                mustKeyPress = false,
+                mustKeyPress = true,
                 beginSkillCooldownOnSkillEnd = false,
 
                 isCombatSkill = false,
@@ -274,7 +274,7 @@ namespace MadokaMagica.MamiTamoe
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
                 dontAllowPastMaxStocks = false,
-                mustKeyPress = false,
+                mustKeyPress = true,
                 beginSkillCooldownOnSkillEnd = false,
 
                 isCombatSkill = false,
