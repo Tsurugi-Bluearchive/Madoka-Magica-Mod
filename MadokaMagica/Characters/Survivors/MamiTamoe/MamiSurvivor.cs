@@ -125,8 +125,6 @@ namespace MadokaMagica.MamiTamoe
 
         public void AddHitboxes()
         {
-            //example of how to create a HitBoxGroup. see summary for more details
-            Prefabs.SetupHitBoxGroup(characterModelObject, "ScarfHitboxGroup", "ScarfHitType");
         }
 
         public override void InitializeEntityStateMachines() 
@@ -186,7 +184,7 @@ namespace MadokaMagica.MamiTamoe
                 skillNameToken = MAMI_PREFIX + "PRIMARY_GUN_NAME",
                 skillDescriptionToken = MAMI_PREFIX + "PRIMARY_GUN_DESCRIPTION",
                 keywordTokens = new string[] { "KEWORD_IMPLANT" },
-                skillIcon = assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
+                skillIcon = assetBundle.LoadAsset<Sprite>("fir"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PrecisionStrkie)),
                 activationStateMachineName = "Weapon",
@@ -227,7 +225,7 @@ namespace MadokaMagica.MamiTamoe
                 skillNameToken = MAMI_PREFIX + "SECONDARY_COLLECT_NAME",
                 skillDescriptionToken = MAMI_PREFIX + "SECONDARY_COLLECT_DESCRIPTION",
                 keywordTokens = new string[] { "KEWORD_IMPLANT" },
-                skillIcon = assetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
+                skillIcon = assetBundle.LoadAsset<Sprite>("brrag"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.CeaselessBarrage)),
                 activationStateMachineName = "Weapon",
@@ -259,7 +257,7 @@ namespace MadokaMagica.MamiTamoe
                 skillNameToken = MAMI_PREFIX + "PRIMARY_GUN_NAME",
                 skillDescriptionToken = MAMI_PREFIX + "PRIMARY_GUN_DESCRIPTION",
                 keywordTokens = new string[] { "KEWORD_IMPLANT" },
-                skillIcon = assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
+                skillIcon = assetBundle.LoadAsset<Sprite>("rloead"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Reload)),
                 activationStateMachineName = "Weapon",
@@ -336,7 +334,7 @@ namespace MadokaMagica.MamiTamoe
                 skillName = "HenryBomb",
                 skillNameToken = MAMI_PREFIX + "SPECIAL_BOMB_NAME",
                 skillDescriptionToken = MAMI_PREFIX + "SPECIAL_BOMB_DESCRIPTION",
-                skillIcon = assetBundle.LoadAsset<Sprite>("texSpecialIcon"),
+                skillIcon = assetBundle.LoadAsset<Sprite>("blas"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PrecisionBlast)),
                 //setting this to the "weapon2" EntityStateMachine allows us to cast this skill at the same time primary, which is set to the "weapon" EntityStateMachine
