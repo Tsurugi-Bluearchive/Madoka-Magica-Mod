@@ -27,8 +27,12 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         private float fireTime;
         private bool hasFired;
         private string muzzleString;
+
+        private bool dashed;
+
         public override void OnEnter()
         {
+            dashed = false;
             base.OnEnter();
             base.characterBody.armor += 800;
             base.characterMotor.enabled = false;
@@ -43,15 +47,13 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public override void OnExit()
         {
             base.OnExit();
-            base.characterMotor.enabled = true;
-            base.characterMotor.velocity = Vector3.zero;
-            base.characterBody.armor -= 800;
             if (skillLocator.primary.stock == 0)
             {
                 var previousStock = skillLocator.secondary.stock;
                 skillLocator.secondary.SetSkillOverride(this.gameObject, MamiSurvivor.reload, GenericSkill.SkillOverridePriority.Default);
                 skillLocator.secondary.stock = previousStock;
             }
+            var dashdirection = inputBank.moveVector;
         }
 
         public override void FixedUpdate()
@@ -61,9 +63,17 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             {
                 Fire();
             }
-
-            if (fixedAge >= duration && isAuthority)
+            if (fixedAge < fireTime && inputBank.jump.justPressed)
             {
+                base.characterMotor.enabled = true;;
+                dashed = true;
+                outer.SetNextStateToMain();
+                return;
+            }
+            else if (fixedAge >= duration && isAuthority)
+            {
+                base.characterMotor.enabled = true;
+                base.characterMotor.velocity = Vector3.zero;
                 outer.SetNextStateToMain();
                 return;
             }
