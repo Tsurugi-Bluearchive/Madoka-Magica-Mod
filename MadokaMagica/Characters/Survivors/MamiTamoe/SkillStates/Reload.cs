@@ -29,17 +29,24 @@ namespace MadokaMagica.MamiTamoe.SkillStates
 
         private bool restocking;
 
-        public DamageSource damageSource;
+        private int secondaryStock;
+        private int secondaryMax;
 
-        public void ReturnOuter()
-        {
-            outer.SetNextStateToMain();
+        public DamageSource damageSource;
+        private void InitOnEnterVars() 
+        { 
+            damageSource = DamageSource.Secondary; duration = baseDuration / attackSpeedStat; 
         }
+        private void FetchFixedVars()
+        {
+            secondaryStock = skillLocator.secondary.stock;
+            secondaryMax = skillLocator.secondary.maxStock;
+        }
+
         public override void OnEnter()
         {
-            damageSource = DamageSource.Secondary;
+            InitOnEnterVars();
             base.OnEnter();
-            duration = baseDuration / attackSpeedStat;
             characterBody.SetAimTimer(2f);
         }
 
@@ -53,7 +60,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
 
         public override void FixedUpdate()
         {
-
+            FetchFixedVars();
             if (fixedAge > duration && !restocking || inputBank.skill2.justPressed)
             {
                 restocking = true;

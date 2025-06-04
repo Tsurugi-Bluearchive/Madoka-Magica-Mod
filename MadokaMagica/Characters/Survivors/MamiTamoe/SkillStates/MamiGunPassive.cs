@@ -17,6 +17,8 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public CeaselessBarrage Scarf;
         public MamiGun mmmgun;
         public GameObject muzzleEffect;
+
+        //MamiGunPassive.cs Code Start
         public void Awake()
         {
             MamiGun = MamiAssets.MamiGun;
@@ -27,6 +29,8 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         {
             float precisionTick = 0f;
             cooldown += Time.fixedDeltaTime;
+            
+            //MamiGunPassive.cs Gun Spawning Logic
             if (MamiGun != null && cooldown >= 4f)
             {
                 GameObject clone = GameObject.Instantiate(MamiGun);

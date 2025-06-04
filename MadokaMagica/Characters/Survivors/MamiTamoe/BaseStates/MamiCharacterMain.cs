@@ -27,41 +27,74 @@ namespace MadokaMagica.MamiTamoe.BaseStates
         private EntityState reloadState;
         private float tick;
         private bool justJumped;
+        private int secondaryStock;
+        private int secondaryMax;
+        private float sprintMult;
+        private float grounded;
+        private int utilityStock;
+        private int utilityMax;
+        private float attackSpeed;
+        private int jumpCount;
+        private Vector3 characterVelocity;
+        private void FetchVars()
+        {
+            secondaryStock = skillLocator.secondary.stock;
+            secondaryMax = skillLocator.secondary.maxStock;
+            utilityStock = skillLocator.utility.stock;
+            utilityMax = skillLocator.utility.maxStock;
+            attackSpeed = characterBody.attackSpeed;
+
+            sprintMult = characterBody.sprintingSpeedMultiplier;
+            jumpCount = characterBody.characterMotor.jumpCount;
+
+            characterVelocity = characterBody.characterMotor.velocity;
+
+            Mami = this.gameObject.GetComponent<MamiGunPassive>();
+        }
+
+        private void FetchTimers() => tick += Time.fixedDeltaTime;
+
+        //MamiCharacterMain.cs Code Start        
         public override void FixedUpdate()
         {
+            //Init
             base.FixedUpdate();
-            Mami = this.gameObject.GetComponent<MamiGunPassive>();
-            tick += Time.fixedDeltaTime;
-            Scarf = EntityStateMachine.FindByCustomName(this.gameObject, "Weapon");
-            if (Mami.mmmgun != null && skillLocator.secondary.maxStock > skillLocator.secondary.stock && isAuthority)
+            FetchVars();
+            FetchTimers();
+            
+            //MamiCharacterMain.cs Collection
+            if (Mami.mmmgun != null && secondaryMax > secondaryStock && isAuthority)
             {
                 Destroy(Mami.mmmgun.gameObject);
                 skillLocator.secondary.AddOneStock();
             }
 
-            if (!characterBody.characterMotor.isGrounded && !setAirControl)
+            //MamiCharacterMain.cs Aerial Speed Controller
+            if (!isGrounded && !setAirControl)
             {
-                    characterBody.sprintingSpeedMultiplier = characterBody.sprintingSpeedMultiplier * 1.5f;
+                    characterBody.sprintingSpeedMultiplier = sprintMult * 1.5f;
                     setAirControl = true;
             }
-            else if (setAirControl && characterBody.characterMotor.isGrounded)
+            else if (setAirControl && isGrounded)
             {
-                characterBody.sprintingSpeedMultiplier = characterBody.sprintingSpeedMultiplier / 1.5f;
+                characterBody.sprintingSpeedMultiplier = sprintMult / 1.5f;
                 setAirControl = false;
             }
-            if (skillLocator.utility.stock < skillLocator.utility.maxStock && tick > 2f * characterBody.attackSpeed)
+            if (utilityStock < utilityMax && tick > 2f * attackSpeed)
             {
                 skillLocator.utility.AddOneStock();
                 tick = 0;
             }
+
+            //MamiCharacterMain.cs Aerial Dash Controller
             if (inputBank.jump.justReleased)
             {
                 justJumped = false;
             }
-            if (inputBank.jump.justPressed && !characterBody.characterMotor.isGrounded && characterBody.characterMotor.jumpCount > 0 && !justJumped)
+            if (inputBank.jump.justPressed && isGrounded && jumpCount > 0 && !justJumped)
             {
                 justJumped = true;
-                characterBody.characterMotor.velocity = new Vector3(characterBody.characterMotor.velocity.x * 3, characterBody.characterMotor.velocity.y, characterBody.characterMotor.velocity.z * 3);
+                characterBody.characterMotor.velocity = new Vector3(characterVelocity.x * 3, characterVelocity.y, characterVelocity.z * 3);
             }
         }
 

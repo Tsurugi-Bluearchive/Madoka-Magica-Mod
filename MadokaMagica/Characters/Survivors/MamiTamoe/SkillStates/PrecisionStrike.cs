@@ -30,24 +30,57 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         private string muzzleString;
         private Vector3 originalpos;
 
+        private float secondaryStock;
+        private float secondaryStockMax;
+
         public DamageSource damageSource;
 
         private bool dashed;
+        private void DisableMovement()
+        {
+            if (isAuthority)
+            {
+                characterMotor.Motor.SetPosition(originalpos);
+                characterMotor.velocity = Vector3.zero;
+            }
+        }
+        private void FixedVariables()
+        {
+            m_damageCoefficient = damageCoefficient * (fixedAge / fireTime);
 
-        public override void OnEnter()
+        }
+        private void InitOnEnterVars()
         {
             dashed = false;
-            base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             fireTime = firePercentTime * duration;
             characterBody.SetAimTimer(2f);
             damageSource = DamageSource.Primary;
             muzzleString = "Muzzle";
-
-            PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);
             originalpos = characterBody.corePosition;
         }
-
+        private void Firing()
+        {
+            m_damageCoefficient = damageCoefficient;
+            Fire();
+            outer.SetNextStateToMain();
+            return;
+        }        
+        private void Dash()
+        {
+            characterBody.characterMotor.velocity = new Vector3(DashDirection.x * 100, 0, DashDirection.y * 100);
+            characterBody.characterMotor.jumpCount++;
+            outer.SetNextStateToMain();
+            return;
+        }
+        //PrecisionStrike.cs Code Start
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            InitOnEnterVars();
+            PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);
+        }
+        //PrecisionStrike.cs OnExit()
         public override void OnExit()
         {
             base.OnExit();
@@ -55,55 +88,33 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             {
                 var previousStock = skillLocator.secondary.stock;
                 skillLocator.secondary.SetSkillOverride(this.gameObject, MamiSurvivor.reload, GenericSkill.SkillOverridePriority.Default);
-                skillLocator.secondary.stock = previousStock;
+                secondaryStock = previousStock;
                 
             }
             characterBody.isSprinting = true;
         }
-
+        //PrecisionStrike.cs FixedUpdate()
         public override void FixedUpdate()
         {
             var DashDirection = inputBank.moveVector;
+            
             base.FixedUpdate();
 
             if (isAuthority)
             {
-                characterMotor.Motor.SetPosition(originalpos);
-                characterMotor.velocity = Vector3.zero;
-            }
-            if (fixedAge >= fireTime && isAuthority && inputBank.skill1.down || fireTime <= 0.2)
-            {
-                m_damageCoefficient = damageCoefficient;
-                Fire();
-                outer.SetNextStateToMain();
-                return;
-            }
-            if (inputBank.skill1.justReleased && fixedAge >= 0.2f)
-            {
-                m_damageCoefficient = damageCoefficient * (fixedAge/fireTime);
-                Fire();
-                outer.SetNextStateToMain();
-                return;
-            }
-            else if (fixedAge < 0.2f && !inputBank.skill1.down)
-            {
-                skillLocator.primary.stock++;
-                outer.SetNextStateToMain();
-                return;
+                DisableMovement();
             }
 
-            if (inputBank.jump.justPressed && isAuthority)
-            {
-                characterBody.characterMotor.velocity = new Vector3(DashDirection.x * 100, 0, DashDirection.y * 100);
-                characterBody.characterMotor.jumpCount++;
-                outer.SetNextStateToMain();
-                return;
-            }
+
+            //PrecisionStrike.cs Firing Logic
+            if (fixedAge >= fireTime && isAuthority && inputBank.skill1.down || fireTime <= 0.2) { Firing(); }
+            if (inputBank.skill1.justReleased && fixedAge >= 0.2f) { Firing(); }
+            else if (fixedAge < 0.2f && !inputBank.skill1.down) { Firing(); }
+
+            //PrecisionStrike.cs Jump Interrupt Logic
+            if (inputBank.jump.justPressed && isAuthority) { Dash(); }
             else if (isAuthority && !inputBank.jump.justPressed)
-            {
-                this.characterMotor.Motor.SetPosition(this.originalpos);
-                this.characterBody.characterMotor.velocity = Vector3.zero;
-            }
+            { DisableMovement();  }
         }
 
         private void Fire()

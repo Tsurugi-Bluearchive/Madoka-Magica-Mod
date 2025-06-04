@@ -21,6 +21,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         private string muzzleString;
         private int stocks;
         private bool shotBarrage = false;
+        private Vector3 originalPos;
 
         private float tick;
 
@@ -28,56 +29,57 @@ namespace MadokaMagica.MamiTamoe.SkillStates
 
         public DamageSource damageSource;
 
-        public override void OnEnter()
+        private void InitEnterVars()
         {
-            base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             characterBody.SetAimTimer(2f);
             stocks = skillLocator.primary.stock + skillLocator.secondary.stock;
-            blastDuration = duration/stocks;
+            blastDuration = duration / stocks;
             muzzleString = "Muzzle";
-            base.characterBody.armor += 800;
-            base.characterMotor.enabled = false;
+            originalPos = characterBody.corePosition;
             this.damageSource = DamageSource.Secondary;
         }
+        private void Firing() { skillLocator.secondary.stock--; Fire(); tick = 0; }
+        private void DisableMovement() { characterMotor.Motor.SetPosition(originalPos); characterMotor.velocity = Vector3.zero; }
+        
+        //CeaselessBarrage.cs Code Start
+        
+            //CeaselessBarage.cs OnEnter()
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            InitEnterVars();
+        }
+            //CeaselessBarrage.cs FixedUpdate()
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            DisableMovement();
+
             tick += Time.fixedDeltaTime;
+
+            //CeaselessBarrage.cs Firing Logic
             if (stocks > 0 && isAuthority && tick >= blastDuration && (inputBank.skill2.down || inputBank.skill2.justPressed))
             {
                 stocks--;
                 if (skillLocator.secondary.stock > 0)
-                {
-                    skillLocator.secondary.stock--;
-                    Fire();
-                    tick = 0;
-                }
-                else if (skillLocator.primary.stock > 0)
-                {
-                    skillLocator.primary.stock--;
-                    Fire();
-                    tick = 0;
-                }
-                else
-                {
-                    shotBarrage = true;
-                }
+                { Firing(); }
+                else if (skillLocator.primary.stock > 0)  { Firing(); }
+                else { shotBarrage = true; }
             }
+
+            //CeaselessBarrage.cs Release Logic
             else if(shotBarrage || inputBank.skill2.justReleased)
             {
                 outer.SetNextStateToMain();
                 return;
             }
         }
-
+        //CeaselessBarrage.cs Exit Logic
         public override void OnExit()
         {
             base.OnExit();
             var previousStock = skillLocator.secondary.stock;
-            base.characterMotor.enabled = true;
-            base.characterMotor.velocity = Vector3.zero;
-            base.characterBody.armor -= 800;
             if (skillLocator.primary.stock < 1)
             {
                 skillLocator.secondary.SetSkillOverride(this.gameObject, MamiSurvivor.reload, GenericSkill.SkillOverridePriority.Default);

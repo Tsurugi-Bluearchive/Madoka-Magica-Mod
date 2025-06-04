@@ -21,27 +21,47 @@ namespace MadokaMagica.MamiTamoe.SkillStates
 
         private float duration;
         private float fireTime;
+        private Vector3 originalPos;
 
         public DamageSource damageSource;
+        private void InitOnEnterVars()
+        {
+            duration = baseDuration / attackSpeedStat;
+            fireTime = duration / skillLocator.utility.stock;
+            originalPos = characterBody.corePosition;
+            this.damageSource = DamageSource.Utility;
+        }
+        private void DisableMovement()
+        {
+            if (isAuthority)
+            {
+                characterMotor.Motor.SetPosition(originalPos);
+                characterMotor.velocity = Vector3.zero;
+            }
+        }
+        //SpawnGun.cs Code Start
+        
+        //SpawnGun.cs OnEnter()
         public override void OnEnter()
         {
             base.OnEnter();
-            base.characterBody.armor += 800;
-            base.characterMotor.enabled = false;
-            duration = baseDuration / attackSpeedStat;
-            fireTime = duration / skillLocator.utility.stock;
+            InitOnEnterVars();
             characterBody.SetAimTimer(2f);
-            this.damageSource = DamageSource.Utility;
         }
 
+        //SpawnGun.cs OnExit()
         public override void OnExit()
         {
             base.OnExit();
         }
 
+        //SpawnGun.cs FixedUpdate()
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            DisableMovement();
+
+            //SpawnGun.cs Reload Logic
             if (fixedAge >= fireTime && skillLocator.utility.stock > 0 && skillLocator.secondary.stock < skillLocator.secondary.maxStock)
             {
                 skillLocator.secondary.AddOneStock();
