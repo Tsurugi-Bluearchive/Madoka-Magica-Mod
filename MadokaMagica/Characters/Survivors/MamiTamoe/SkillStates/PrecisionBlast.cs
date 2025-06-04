@@ -24,6 +24,9 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         private float fireTime;
         private bool hasFired;
         private string muzzleString;
+
+        public DamageSource damageSource;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -35,6 +38,8 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             muzzleString = "Muzzle";
 
             PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);
+
+            damageSource = DamageSource.Special;
         }
 
         public override void OnExit()

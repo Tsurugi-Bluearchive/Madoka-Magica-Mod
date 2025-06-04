@@ -49,7 +49,7 @@ namespace MadokaMagica.MamiTamoe
             crosshair = Asset.LoadCrosshair("Standard"),
             podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
 
-            maxHealth = 200f,
+            maxHealth = 120f,
             healthRegen = 1.5f,
             armor = 0f,
 
@@ -221,9 +221,9 @@ namespace MadokaMagica.MamiTamoe
             //here is a basic skill def with all fields accounted for
             ceaselessBarage = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "Ceaseleass Barage",
-                skillNameToken = MAMI_PREFIX + "SECONDARY_COLLECT_NAME",
-                skillDescriptionToken = MAMI_PREFIX + "SECONDARY_COLLECT_DESCRIPTION",
+                skillName = "CeaseleassBarage",
+                skillNameToken = MAMI_PREFIX + "SECONDARY_BARAGE_NAME",
+                skillDescriptionToken = MAMI_PREFIX + "SECONDARY_BARRAGE_DESCRIPTION",
                 keywordTokens = new string[] { "KEWORD_IMPLANT" },
                 skillIcon = assetBundle.LoadAsset<Sprite>("brrag"),
 
@@ -302,15 +302,14 @@ namespace MadokaMagica.MamiTamoe
                 activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
 
-                baseRechargeInterval = 4f,
-                baseMaxStock = 1,
+                baseMaxStock = 10,
 
-                rechargeStock = 1,
+                rechargeStock = 0,
                 requiredStock = 1,
                 stockToConsume = 1,
 
                 resetCooldownTimerOnUse = false,
-                fullRestockOnAssign = true,
+                fullRestockOnAssign = false,
                 dontAllowPastMaxStocks = false,
                 mustKeyPress = false,
                 beginSkillCooldownOnSkillEnd = false,
@@ -331,9 +330,9 @@ namespace MadokaMagica.MamiTamoe
             //a basic skill. some fields are omitted and will just have default values
             SkillDef specialSkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = "HenryBomb",
-                skillNameToken = MAMI_PREFIX + "SPECIAL_BOMB_NAME",
-                skillDescriptionToken = MAMI_PREFIX + "SPECIAL_BOMB_DESCRIPTION",
+                skillName = "MamiBlast",
+                skillNameToken = MAMI_PREFIX + "SPECIAL_BLAST_NAME",
+                skillDescriptionToken = MAMI_PREFIX + "SPECIAL_BLAST_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("blas"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PrecisionBlast)),

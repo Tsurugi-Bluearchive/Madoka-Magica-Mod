@@ -21,19 +21,17 @@ namespace MadokaMagica.MamiTamoe.SkillStates
 
         private float duration;
         private float fireTime;
-        private bool hasFired;
-        private string muzzleString;
+
+        public DamageSource damageSource;
         public override void OnEnter()
         {
             base.OnEnter();
             base.characterBody.armor += 800;
             base.characterMotor.enabled = false;
             duration = baseDuration / attackSpeedStat;
-            fireTime = firePercentTime * duration;
+            fireTime = duration / skillLocator.utility.stock;
             characterBody.SetAimTimer(2f);
-            muzzleString = "Muzzle";
-
-            PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);
+            this.damageSource = DamageSource.Utility;
         }
 
         public override void OnExit()
@@ -44,8 +42,10 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            if (fixedAge >= fireTime)
+            if (fixedAge >= fireTime && skillLocator.utility.stock > 0 && skillLocator.secondary.stock < skillLocator.secondary.maxStock)
             {
+                skillLocator.secondary.AddOneStock();
+                skillLocator.utility.stock--;
             }
 
             if (fixedAge >= duration && isAuthority)

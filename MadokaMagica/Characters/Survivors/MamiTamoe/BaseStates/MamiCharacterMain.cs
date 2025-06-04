@@ -25,10 +25,13 @@ namespace MadokaMagica.MamiTamoe.BaseStates
         private float precisionTick;
         private bool setAirControl = false;
         private EntityState reloadState;
+        private float tick;
+        private bool justJumped;
         public override void FixedUpdate()
         {
             base.FixedUpdate();
             Mami = this.gameObject.GetComponent<MamiGunPassive>();
+            tick += Time.fixedDeltaTime;
             Scarf = EntityStateMachine.FindByCustomName(this.gameObject, "Weapon");
             if (Mami.mmmgun != null && skillLocator.secondary.maxStock > skillLocator.secondary.stock && isAuthority)
             {
@@ -46,9 +49,19 @@ namespace MadokaMagica.MamiTamoe.BaseStates
                 characterBody.sprintingSpeedMultiplier = characterBody.sprintingSpeedMultiplier / 1.5f;
                 setAirControl = false;
             }
-            if (setAirControl && inputBank.jump.justPressed && isAuthority && characterBody.maxJumpCount > characterBody.characterMotor.jumpCount)
+            if (skillLocator.utility.stock < skillLocator.utility.maxStock && tick > 2f * characterBody.attackSpeed)
             {
-                characterBody.characterMotor.velocity += new Vector3(characterBody.characterMotor.velocity.x * 2f, 2f, characterBody.characterMotor.velocity.z * 2f);
+                skillLocator.utility.AddOneStock();
+                tick = 0;
+            }
+            if (inputBank.jump.justReleased)
+            {
+                justJumped = false;
+            }
+            if (inputBank.jump.justPressed && !characterBody.characterMotor.isGrounded && characterBody.characterMotor.jumpCount > 0 && !justJumped)
+            {
+                justJumped = true;
+                characterBody.characterMotor.velocity = new Vector3(characterBody.characterMotor.velocity.x * 3, characterBody.characterMotor.velocity.y, characterBody.characterMotor.velocity.z * 3);
             }
         }
 

@@ -16,12 +16,13 @@ namespace MadokaMagica.MamiTamoe.Pickupables
     public class MamiGun : PickupableBase
     {
         public bool impactedworld;
-        Rigidbody thisBody;
+        public Rigidbody thisBody;
         public MamiGunPassive MasterScript;
         private MamiGunWorldCollider MamiGunWorldCollider;
         public void Awake()
         {
             thisBody = GetComponent<Rigidbody>();
+            thisBody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
             this.Pickup = this.gameObject;
 
             this.WorldCollider = this.gameObject.transform.Find("WorldCollider")?.gameObject;
@@ -49,7 +50,7 @@ namespace MadokaMagica.MamiTamoe.Pickupables
 
         public override void OnDrop(Vector3 dropPosition)
         {
-            base.OnDrop(dropPosition + new Vector3(Random.Range(-5f, 5f), transform.position.y + 20f, Random.Range(-7f, 7f)));
+            base.OnDrop(dropPosition + new Vector3(Random.Range(-5f, 5f) , transform.position.y + 20f, Random.Range(-7f, 7f)));
         }
 
         public void OnTriggerStay(Collider collision)

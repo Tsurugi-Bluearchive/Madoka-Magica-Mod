@@ -8,7 +8,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
     {
         public static float damageCoefficient = MamiStaticValues.barrageDamageCefficient;
         public static float procCoefficient = 1f;
-        public static float baseDuration = 2f;
+        public static float baseDuration = 1.3f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
         public static float force = 5000f;
         public static float recoil = 10f;
@@ -24,6 +24,10 @@ namespace MadokaMagica.MamiTamoe.SkillStates
 
         private float tick;
 
+        private bool restocking;
+
+        public DamageSource damageSource;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -34,6 +38,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             muzzleString = "Muzzle";
             base.characterBody.armor += 800;
             base.characterMotor.enabled = false;
+            this.damageSource = DamageSource.Secondary;
         }
         public override void FixedUpdate()
         {

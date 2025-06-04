@@ -16,13 +16,10 @@ namespace MadokaMagica.MamiTamoe.Pickupables
     internal class MamiGunWorldCollider : MonoBehaviour
     {
         public MamiGun MamiGun;
-        public void OnCollisionEnter(Collision collision)
+        public void OnTriggerStay(Collider collision)
         {
-            if (collision.gameObject.layer == LayerIndex.world.intVal)
-            {
                 MamiGun.impactedworld = true;
-                Destroy(this.gameObject);
-            }
+                Destroy(MamiGun.thisBody);
             if (MamiGun == null)
             {
                 Debug.Log("Erorr with mamigun!");

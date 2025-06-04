@@ -13,8 +13,9 @@ namespace MadokaMagica.MamiTamoe.SkillStates
     public class PrecisionStrkie : BaseSkillState
     {
         public static float damageCoefficient = MamiStaticValues.gunDamageCoefficient;
+        private float m_damageCoefficient = damageCoefficient;
         public static float procCoefficient = 1.2f;
-        public static float baseDuration = 0.7f;
+        public static float baseDuration = 1f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
         public static float firePercentTime = 0.7f;
         public static float force = 5000f;
@@ -27,6 +28,9 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         private float fireTime;
         private bool hasFired;
         private string muzzleString;
+        private Vector3 originalpos;
+
+        public DamageSource damageSource;
 
         private bool dashed;
 
@@ -34,14 +38,14 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         {
             dashed = false;
             base.OnEnter();
-            base.characterBody.armor += 800;
-            base.characterMotor.enabled = false;
             duration = baseDuration / attackSpeedStat;
             fireTime = firePercentTime * duration;
             characterBody.SetAimTimer(2f);
+            damageSource = DamageSource.Primary;
             muzzleString = "Muzzle";
 
             PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);
+            originalpos = characterBody.corePosition;
         }
 
         public override void OnExit()
@@ -52,30 +56,53 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                 var previousStock = skillLocator.secondary.stock;
                 skillLocator.secondary.SetSkillOverride(this.gameObject, MamiSurvivor.reload, GenericSkill.SkillOverridePriority.Default);
                 skillLocator.secondary.stock = previousStock;
+                
             }
-            var dashdirection = inputBank.moveVector;
+            characterBody.isSprinting = true;
         }
 
         public override void FixedUpdate()
         {
+            var DashDirection = inputBank.moveVector;
             base.FixedUpdate();
-            if (fixedAge >= fireTime)
+
+            if (isAuthority)
             {
+                characterMotor.Motor.SetPosition(originalpos);
+                characterMotor.velocity = Vector3.zero;
+            }
+            if (fixedAge >= fireTime && isAuthority && inputBank.skill1.down || fireTime <= 0.2)
+            {
+                m_damageCoefficient = damageCoefficient;
                 Fire();
-            }
-            if (fixedAge < fireTime && inputBank.jump.justPressed)
-            {
-                base.characterMotor.enabled = true;;
-                dashed = true;
                 outer.SetNextStateToMain();
                 return;
             }
-            else if (fixedAge >= duration && isAuthority)
+            if (inputBank.skill1.justReleased && fixedAge >= 0.2f)
             {
-                base.characterMotor.enabled = true;
-                base.characterMotor.velocity = Vector3.zero;
+                m_damageCoefficient = damageCoefficient * (fixedAge/fireTime);
+                Fire();
                 outer.SetNextStateToMain();
                 return;
+            }
+            else if (fixedAge < 0.2f && !inputBank.skill1.down)
+            {
+                skillLocator.primary.stock++;
+                outer.SetNextStateToMain();
+                return;
+            }
+
+            if (inputBank.jump.justPressed && isAuthority)
+            {
+                characterBody.characterMotor.velocity = new Vector3(DashDirection.x * 100, 0, DashDirection.y * 100);
+                characterBody.characterMotor.jumpCount++;
+                outer.SetNextStateToMain();
+                return;
+            }
+            else if (isAuthority && !inputBank.jump.justPressed)
+            {
+                this.characterMotor.Motor.SetPosition(this.originalpos);
+                this.characterBody.characterMotor.velocity = Vector3.zero;
             }
         }
 
@@ -97,7 +124,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                         bulletCount = 1,
                         aimVector = aimRay.direction,
                         origin = aimRay.origin,
-                        damage = damageCoefficient * damageStat,
+                        damage = m_damageCoefficient * damageStat,
                         damageColorIndex = DamageColorIndex.Default,
                         damageType = DamageTypeCombo.GenericSecondary,
                         falloffModel = BulletAttack.FalloffModel.None,

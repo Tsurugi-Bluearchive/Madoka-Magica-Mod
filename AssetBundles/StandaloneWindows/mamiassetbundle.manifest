@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1572899511
+CRC: 742401448
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 29742b2e9be9f113ae505dfb5cd50042
+    Hash: e99a2604f43bc5546656345f0e814f53
   TypeTreeHash:
     serializedVersion: 2
     Hash: ab3dfda56157187bcdccd23c6daa108c
@@ -117,7 +117,6 @@ Assets:
 - Assets/MamiBundle/Animation/clips/MenuIdle.anim
 - Assets/MamiBundle/MamiGunMuzzleEffect.prefab
 - Assets/MamiBundle/FBX/MamiGunFire.fbx
-- Assets/MamiBundle/Icons/blas 1.png
 - Assets/MamiBundle/VFX/Materials/matSwingShadow.mat
 - Assets/MamiBundle/Materials/matBazookaRocket.mat
 - Assets/MamiBundle/Icons/texPassiveIcon.png
@@ -126,7 +125,6 @@ Assets:
 - Assets/MamiBundle/HenryBombGhost.prefab
 - Assets/MamiBundle/Materials/matBazooka.mat
 - Assets/MamiBundle/Textures/texHenryJediEmission.png
-- Assets/MamiBundle/Icons/fir 1.png
 - Assets/MamiBundle/VFX/Materials/matAnimeShapes.mat
 - Assets/MamiBundle/Animation/clips/AimYaw.anim
 - Assets/MamiBundle/VFX/Mesh/meshBoxingGlove.mesh
@@ -143,11 +141,10 @@ Assets:
 - Assets/MamiBundle/Animation/clips/AimPitch.anim
 - Assets/MamiBundle/Materials/matShotgun.mat
 - Assets/MamiBundle/Animation/maskImpact.mask
-- Assets/MamiBundle/Icons/rloead 1.png
+- Assets/MamiBundle/VFX/Materials/matHenrySwing2.mat
 - Assets/MamiBundle/VFX/ImpactHenryPunch.prefab
 - Assets/MamiBundle/Mesh/meshHenrySwordAlt.mesh
 - Assets/MamiBundle/Textures/texHenryVergil.png
-- Assets/MamiBundle/VFX/Materials/matHenrySwing2.mat
 - Assets/MamiBundle/Animation/clips/Descend.anim
 - Assets/MamiBundle/Materials/matRoy.mat
 - Assets/MamiBundle/Textures/texBoxingGlove.png
@@ -158,9 +155,8 @@ Assets:
 - Assets/MamiBundle/Materials/matRebellion.mat
 - Assets/MamiBundle/Animation/maskAimYaw.mask
 - Assets/MamiBundle/VFX/TracerMamiGun.prefab
-- Assets/MamiBundle/Icons/brrag 1.png
-- Assets/MamiBundle/FBX/MamiGunImpact.fbx
 - Assets/MamiBundle/VFX/Textures/texHitSpark.png
+- Assets/MamiBundle/FBX/MamiGunImpact.fbx
 - Assets/MamiBundle/Textures/texBazooka.png
 - Assets/MamiBundle/VFX/HenryBazookaMuzzleFlash.prefab
 - Assets/MamiBundle/VFX/Materials/matPunchImpactShadow.mat

@@ -27,7 +27,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         {
             float precisionTick = 0f;
             cooldown += Time.fixedDeltaTime;
-            if (MamiGun != null && cooldown >= 2f)
+            if (MamiGun != null && cooldown >= 4f)
             {
                 GameObject clone = GameObject.Instantiate(MamiGun);
                 clone.name = "MamiGunSpawned";

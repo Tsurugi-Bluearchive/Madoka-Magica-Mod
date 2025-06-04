@@ -9,6 +9,7 @@ using R2API;
 using MadokaMagica.MamiTamoe.Melee;
 using MadokaMagica.MamiTamoe.Achievements;
 using MadokaMagica.MamiTamoe.SkillStates;
+using EntityStates.Jellyfish;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
@@ -27,12 +28,16 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         private float duration;
 
         private bool restocking;
+
+        public DamageSource damageSource;
+
         public void ReturnOuter()
         {
             outer.SetNextStateToMain();
         }
         public override void OnEnter()
         {
+            damageSource = DamageSource.Secondary;
             base.OnEnter();
             duration = baseDuration / attackSpeedStat;
             characterBody.SetAimTimer(2f);
@@ -43,7 +48,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             base.OnExit();
             var previousStock = skillLocator.secondary.stock;
             skillLocator.secondary.UnsetSkillOverride(this.gameObject, MamiSurvivor.reload, GenericSkill.SkillOverridePriority.Default);
-            skillLocator.secondary.stock = previousStock;
+            skillLocator.secondary.stock = previousStock - skillLocator.primary.stock;
         }
 
         public override void FixedUpdate()
@@ -52,11 +57,15 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             if (fixedAge > duration && !restocking || inputBank.skill2.justPressed)
             {
                 restocking = true;
-                Log.Debug("Reloading!");
                 if (skillLocator.secondary.stock >= skillLocator.primary.maxStock)
                 {
                     skillLocator.primary.stock = skillLocator.primary.maxStock;
-                    skillLocator.secondary.stock -= skillLocator.primary.maxStock;
+                    outer.SetNextStateToMain();
+                    return;
+                }
+                else
+                {
+                    skillLocator.primary.stock = skillLocator.secondary.stock;
                     outer.SetNextStateToMain();
                     return;
                 }
