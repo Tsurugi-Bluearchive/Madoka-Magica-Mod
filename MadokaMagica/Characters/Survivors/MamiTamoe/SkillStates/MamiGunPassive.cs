@@ -1,11 +1,5 @@
-﻿using EntityStates;
-using MadokaMagica.MamiTamoe;
-using MadokaMagica.MamiTamoe.Pickupables;
-using RoR2;
+﻿using MadokaMagica.MamiTamoe.Pickupables;
 using UnityEngine;
-using MadokaMagica;
-using MadokaMagica.MamiTamoe.BaseStates;
-using MadokaMagica.MamiTamoe.Components;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {

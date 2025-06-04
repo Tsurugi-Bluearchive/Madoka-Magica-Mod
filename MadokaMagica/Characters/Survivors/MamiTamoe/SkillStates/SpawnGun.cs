@@ -8,7 +8,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
     {
         public static float damageCoefficient = MamiStaticValues.gunDamageCoefficient;
         public static float procCoefficient = 1.2f;
-        public static float baseDuration = 0.7f;
+        public static float baseDuration = 0.6f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
         public static float firePercentTime = 0.7f;
         public static float force = 5000f;
@@ -22,8 +22,6 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public DamageSource damageSource;
         private void InitOnEnterVars()
         {
-            duration = baseDuration / attackSpeedStat;
-            fireTime = duration / skillLocator.utility.stock;
             originalPos = characterBody.corePosition;
             this.damageSource = DamageSource.Utility;
         }
@@ -56,6 +54,8 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         {
             base.FixedUpdate();
             DisableMovement();
+            duration = baseDuration / attackSpeedStat;
+            fireTime = duration / skillLocator.utility.stock;
 
             //SpawnGun.cs Reload Logic
             if (fixedAge >= fireTime && skillLocator.utility.stock > 0 && skillLocator.secondary.stock < skillLocator.secondary.maxStock)

@@ -32,6 +32,14 @@ namespace MadokaMagica.MamiTamoe.Pickupables
             this.PickupableName = this.gameObject.name;
             this.PickupType = "Mami Gun";
         }
+        private float ClampedRange()
+        {
+            if (Random.Range(0, 1) > 0)
+            {
+                return Random.Range(5, 10);
+            }
+            return Random.Range(-10, -5);
+        }
         //MamiGun.cs Code Start
         public void Awake()
         {
@@ -44,9 +52,10 @@ namespace MadokaMagica.MamiTamoe.Pickupables
             return base.OnPickup(picker, stacksize);
         }
 
+        //MamiGun.cs OnDrop()
         public override void OnDrop(Vector3 dropPosition)
         {
-            base.OnDrop(dropPosition + new Vector3(Random.Range(-5f, 5f) , transform.position.y + 20f, Random.Range(-7f, 7f)));
+            base.OnDrop(dropPosition + new Vector3(ClampedRange(), transform.position.y + 20f, ClampedRange()));
         }
         //MamiGun.cs Trigger Logic
         public void OnTriggerStay(Collider collision)

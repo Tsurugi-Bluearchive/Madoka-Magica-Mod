@@ -301,12 +301,12 @@ namespace MadokaMagica.MamiTamoe
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SpawnGun)),
                 activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
-
-                baseMaxStock = 10,
-
+               
+                baseRechargeInterval = float.MaxValue,
                 rechargeStock = 0,
                 requiredStock = 1,
-                stockToConsume = 1,
+                stockToConsume = 0,
+                baseMaxStock = 10,
 
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = false,

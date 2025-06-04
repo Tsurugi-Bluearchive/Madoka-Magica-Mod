@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
-using MadokaMagica.MamiTamoe.Pickupables;
+﻿using UnityEngine;
 using EntityStates;
 using RoR2;
-using MadokaMagica.MamiTamoe;
-using MadokaMagica.Modules;
-using MadokaMagica.Modules.Characters;
-using IL.RoR2.Skills;
-using EntityStates.TitanMonster;
 using MadokaMagica.MamiTamoe.SkillStates;
-using Rewired.Utils;
-using MonoMod.RuntimeDetour;
 using UnityEngine.Networking;
 
 namespace MadokaMagica.MamiTamoe.BaseStates
@@ -80,9 +69,11 @@ namespace MadokaMagica.MamiTamoe.BaseStates
                 characterBody.sprintingSpeedMultiplier = sprintMult / 1.5f;
                 setAirControl = false;
             }
-            if (utilityStock < utilityMax && tick > 2f * attackSpeed)
+
+            //MAmiCharacterMain.cs Utility restock logic
+            if (utilityStock < utilityMax && tick > 6f * attackSpeed)
             {
-                skillLocator.utility.AddOneStock();
+                skillLocator.utility.stock++;
                 tick = 0;
             }
 
@@ -91,7 +82,7 @@ namespace MadokaMagica.MamiTamoe.BaseStates
             {
                 justJumped = false;
             }
-            if (inputBank.jump.justPressed && isGrounded && jumpCount > 0 && !justJumped)
+            if (inputBank.jump.justPressed && !isGrounded && jumpCount > 0 && !justJumped)
             {
                 justJumped = true;
                 characterBody.characterMotor.velocity = new Vector3(characterVelocity.x * 3, characterVelocity.y, characterVelocity.z * 3);

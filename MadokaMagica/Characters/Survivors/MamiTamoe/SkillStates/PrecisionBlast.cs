@@ -1,9 +1,6 @@
 ﻿using EntityStates;
-using MadokaMagica.MamiTamoe;
 using RoR2;
-using RoR2.Projectile;
 using UnityEngine;
-using MadokaMagica.Modules.BaseStates;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {

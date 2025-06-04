@@ -1,15 +1,8 @@
 ﻿using RoR2;
 using UnityEngine;
 using MadokaMagica.Modules;
-using System;
 using RoR2.Projectile;
 using MadokaMagica.MamiTamoe.Pickupables;
-using MadokaMagica.MamiTamoe.BaseStates;
-using System.Runtime.CompilerServices;
-using MadokaMagica.MamiTamoe.Melee;
-using R2API;
-using MadokaMagica.MamiTamoe.Components;
-using UnityEngine.Networking;
 
 namespace MadokaMagica.MamiTamoe
 {

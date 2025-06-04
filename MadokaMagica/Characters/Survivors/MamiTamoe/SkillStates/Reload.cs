@@ -1,15 +1,5 @@
-﻿using MadokaMagica.MamiTamoe.BaseStates;
-using MadokaMagica.Modules.BaseStates;
-using RoR2;
-using UnityEngine;
-using System.Collections;
-using MadokaMagica.MamiTamoe.Pickupables;
+﻿using RoR2;
 using EntityStates;
-using R2API;
-using MadokaMagica.MamiTamoe.Melee;
-using MadokaMagica.MamiTamoe.Achievements;
-using MadokaMagica.MamiTamoe.SkillStates;
-using EntityStates.Jellyfish;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {

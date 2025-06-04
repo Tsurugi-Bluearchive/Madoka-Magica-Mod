@@ -1,13 +1,6 @@
 ﻿using EntityStates;
-using IL.RoR2.Skills;
-using MadokaMagica.MamiTamoe;
-using MadokaMagica.MamiTamoe.Components;
-using MadokaMagica.MamiTamoe.Pickupables;
 using RoR2;
 using UnityEngine;
-using MadokaMagica.MamiTamoe.SkillStates;
-using MadokaMagica.Modules;
-
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
     public class PrecisionStrkie : BaseSkillState
@@ -44,16 +37,16 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                 characterMotor.velocity = Vector3.zero;
             }
         }
-        private void FixedVariables()
+        private void FetchFixedVars()
         {
             m_damageCoefficient = damageCoefficient * (fixedAge / fireTime);
+            duration = baseDuration / attackSpeedStat;
+            fireTime = firePercentTime * duration;
 
         }
         private void InitOnEnterVars()
         {
             dashed = false;
-            duration = baseDuration / attackSpeedStat;
-            fireTime = firePercentTime * duration;
             characterBody.SetAimTimer(2f);
             damageSource = DamageSource.Primary;
             muzzleString = "Muzzle";
@@ -100,22 +93,23 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             var DashDirection = inputBank.moveVector;
             
             base.FixedUpdate();
-
+            FetchFixedVars();
+            
             if (isAuthority)
             {
                 DisableMovement();
             }
 
-
             //PrecisionStrike.cs Firing Logic
             if (fixedAge >= fireTime && isAuthority && inputBank.skill1.down || fireTime <= 0.2) { Firing(); }
-            if (inputBank.skill1.justReleased && fixedAge >= 0.2f) { Firing(); }
-            else if (fixedAge < 0.2f && !inputBank.skill1.down) { Firing(); }
+            if (inputBank.skill1.justReleased && fixedAge > 0.2f) { Firing(); }
+            else if (fixedAge < 0.2f && !inputBank.skill1.down) { outer.SetNextStateToMain(); skillLocator.primary.stock++; return; }
 
             //PrecisionStrike.cs Jump Interrupt Logic
             if (inputBank.jump.justPressed && isAuthority) { Dash(); }
-            else if (isAuthority && !inputBank.jump.justPressed)
-            { DisableMovement();  }
+
+            //PrecisionStrike.cs Disable Movement
+            else if (isAuthority && !inputBank.jump.justPressed) { DisableMovement(); }
         }
 
         private void Fire()
