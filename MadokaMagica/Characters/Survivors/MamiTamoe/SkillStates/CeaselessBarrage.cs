@@ -62,8 +62,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             if (stocks > 0 && isAuthority && tick >= blastDuration && (inputBank.skill2.down || inputBank.skill2.justPressed))
             {
                 stocks--;
-                if (skillLocator.secondary.stock > 0)
-                { Firing(); }
+                if (skillLocator.secondary.stock > 0) { Firing(); }
                 else if (skillLocator.primary.stock > 0)  { Firing(); }
                 else { shotBarrage = true; }
             }

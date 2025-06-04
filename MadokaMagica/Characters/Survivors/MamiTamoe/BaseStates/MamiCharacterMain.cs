@@ -36,7 +36,7 @@ namespace MadokaMagica.MamiTamoe.BaseStates
         private float attackSpeed;
         private int jumpCount;
         private Vector3 characterVelocity;
-        private void FetchVars()
+        private void FetchFixedVars()
         {
             secondaryStock = skillLocator.secondary.stock;
             secondaryMax = skillLocator.secondary.maxStock;
@@ -59,7 +59,7 @@ namespace MadokaMagica.MamiTamoe.BaseStates
         {
             //Init
             base.FixedUpdate();
-            FetchVars();
+            FetchFixedVars();
             FetchTimers();
             
             //MamiCharacterMain.cs Collection

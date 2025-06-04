@@ -19,30 +19,26 @@ namespace MadokaMagica.MamiTamoe.Pickupables
         public Rigidbody thisBody;
         public MamiGunPassive MasterScript;
         private MamiGunWorldCollider MamiGunWorldCollider;
-        public void Awake()
+        private void FetchInitVars()
         {
             thisBody = GetComponent<Rigidbody>();
             thisBody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
             this.Pickup = this.gameObject;
-
             this.WorldCollider = this.gameObject.transform.Find("WorldCollider")?.gameObject;
-            if (this.WorldCollider != null)
-            {
-                this.WorldCollider.gameObject.layer = LayerIndex.defaultLayer.intVal;
-                MamiGunWorldCollider = WorldCollider.gameObject.transform.GetComponent<MamiGunWorldCollider>();
-                MamiGunWorldCollider.MamiGun = this;
-            }
-            else
-            {
-
-                Log.Error("Did you attach WorldCollider to MamiGun?");
-            }
-
-            thisBody = Pickup.GetComponent<Rigidbody>();
+        }
+        private void InitThisPickupbale()
+        {
             this.gameObject.layer = LayerIndex.pickups.intVal;
             this.PickupableName = this.gameObject.name;
             this.PickupType = "Mami Gun";
         }
+        //MamiGun.cs Code Start
+        public void Awake()
+        {
+            FetchInitVars();
+            InitThisPickupbale();
+        }
+        //MamiGun.cs Pickupable Base Configuration
         public override PickupableBase OnPickup(GameObject picker, long stacksize)
         {
             return base.OnPickup(picker, stacksize);
@@ -52,14 +48,11 @@ namespace MadokaMagica.MamiTamoe.Pickupables
         {
             base.OnDrop(dropPosition + new Vector3(Random.Range(-5f, 5f) , transform.position.y + 20f, Random.Range(-7f, 7f)));
         }
-
+        //MamiGun.cs Trigger Logic
         public void OnTriggerStay(Collider collision)
         {
             var mami = collision.gameObject.GetComponent<MamiGunPassive>();
-            if (mami != null)
-            {
-                collision.gameObject.GetComponent<MamiGunPassive>().PickingUpGun(this);
-            }
+            if (mami != null) { collision.gameObject.GetComponent<MamiGunPassive>().PickingUpGun(this); }
 
         }
 

@@ -68,6 +68,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         }        
         private void Dash()
         {
+            var DashDirection = inputBank.moveVector;
             characterBody.characterMotor.velocity = new Vector3(DashDirection.x * 100, 0, DashDirection.y * 100);
             characterBody.characterMotor.jumpCount++;
             outer.SetNextStateToMain();

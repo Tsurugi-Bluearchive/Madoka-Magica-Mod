@@ -31,18 +31,25 @@ namespace MadokaMagica.MamiTamoe.SkillStates
 
         private int secondaryStock;
         private int secondaryMax;
+        private int primaryStock;
+        private int primaryMax;
 
         public DamageSource damageSource;
         private void InitOnEnterVars() 
         { 
-            damageSource = DamageSource.Secondary; duration = baseDuration / attackSpeedStat; 
+            damageSource = DamageSource.Secondary; 
+            duration = baseDuration / attackSpeedStat; 
         }
         private void FetchFixedVars()
         {
             secondaryStock = skillLocator.secondary.stock;
             secondaryMax = skillLocator.secondary.maxStock;
+            primaryStock = skillLocator.primary.stock;
+            primaryMax = skillLocator.primary.maxStock;
         }
-
+        //Reload.cs Code Start
+        
+        //Reload.cs OnEnter()
         public override void OnEnter()
         {
             InitOnEnterVars();
@@ -50,6 +57,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             characterBody.SetAimTimer(2f);
         }
 
+        //Reload.cs OnExit()
         public override void OnExit()
         {
             base.OnExit();
@@ -58,25 +66,29 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             skillLocator.secondary.stock = previousStock - skillLocator.primary.stock;
         }
 
+        //Reload.cs FixedUpdate()
         public override void FixedUpdate()
         {
             FetchFixedVars();
+
+            //Reload.cs Reload Logic
             if (fixedAge > duration && !restocking || inputBank.skill2.justPressed)
             {
                 restocking = true;
-                if (skillLocator.secondary.stock >= skillLocator.primary.maxStock)
+                if (secondaryStock >= skillLocator.primary.maxStock)
                 {
-                    skillLocator.primary.stock = skillLocator.primary.maxStock;
+                    skillLocator.primary.stock = primaryMax;
                     outer.SetNextStateToMain();
                     return;
                 }
                 else
                 {
-                    skillLocator.primary.stock = skillLocator.secondary.stock;
+                    skillLocator.primary.stock = secondaryStock;
                     outer.SetNextStateToMain();
                     return;
                 }
             }
+
             if (fixedAge >= duration && isAuthority)
             {
                 outer.SetNextStateToMain();

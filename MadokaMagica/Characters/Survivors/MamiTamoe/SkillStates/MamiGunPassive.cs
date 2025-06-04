@@ -24,7 +24,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             MamiGun = MamiAssets.MamiGun;
             muzzleEffect = MamiAssets.MamiGunEffect;
         }
-
+        // MamiGunPassive.cs FixedUpdate()
         public void FixedUpdate()
         {
             float precisionTick = 0f;
@@ -47,7 +47,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                 Log.Error("Can't find Mami's Gun!");
             }
         }
-
+        // MamiGunPassive.cs PickingUpGun()
         public void PickingUpGun(MamiGun pass)
         {
             mmmgun = pass;

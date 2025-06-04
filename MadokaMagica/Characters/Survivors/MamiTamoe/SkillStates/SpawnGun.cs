@@ -1,8 +1,4 @@
 ﻿using EntityStates;
-using IL.RoR2.Skills;
-using MadokaMagica.MamiTamoe;
-using MadokaMagica.MamiTamoe.Components;
-using MadokaMagica.MamiTamoe.Pickupables;
 using RoR2;
 using UnityEngine;
 
