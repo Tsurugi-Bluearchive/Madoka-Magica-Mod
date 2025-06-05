@@ -82,7 +82,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             {
                 var previousStock = skillLocator.secondary.stock;
                 skillLocator.secondary.SetSkillOverride(this.gameObject, MamiSurvivor.reload, GenericSkill.SkillOverridePriority.Default);
-                secondaryStock = previousStock;
+                skillLocator.secondary.stock = previousStock;
                 
             }
             characterBody.isSprinting = true;
@@ -102,11 +102,12 @@ namespace MadokaMagica.MamiTamoe.SkillStates
 
             //PrecisionStrike.cs Firing Logic
             if (fixedAge >= fireTime && isAuthority && inputBank.skill1.down || fireTime <= 0.2) { Firing(); }
-            if (inputBank.skill1.justReleased && fixedAge > 0.2f) { Firing(); }
-            else if (fixedAge < 0.2f && !inputBank.skill1.down) { outer.SetNextStateToMain(); skillLocator.primary.stock++; return; }
+            else if (inputBank.skill1.justReleased && fixedAge > 0.2f) { Firing(); }
+            else if (fixedAge < 0.2f && !inputBank.skill1.down && !inputBank.skill1.justPressed && !hasFired) { skillLocator.primary.AddOneStock(); outer.SetNextStateToMain(); return;}
+            else if (inputBank.skill1.justReleased) { outer.SetNextStateToMain(); return; }
 
             //PrecisionStrike.cs Jump Interrupt Logic
-            if (inputBank.jump.justPressed && isAuthority) { Dash(); }
+            if (inputBank.jump.justPressed && isAuthority && !inputBank.skill1.down && skillLocator.primary.stock > 0) { Dash(); }
 
             //PrecisionStrike.cs Disable Movement
             else if (isAuthority && !inputBank.jump.justPressed) { DisableMovement(); }

@@ -20,6 +20,14 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         private Vector3 originalPos;
 
         public DamageSource damageSource;
+
+        private int SecondaryStock;
+        private int SecondaryMax;
+        private void FetchFixedVairables()
+        {
+            SecondaryMax = skillLocator.secondary.maxStock;
+            SecondaryStock = skillLocator.secondary.stock;
+        }
         private void InitOnEnterVars()
         {
             originalPos = characterBody.corePosition;
@@ -58,7 +66,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             fireTime = duration / skillLocator.utility.stock;
 
             //SpawnGun.cs Reload Logic
-            if (fixedAge >= fireTime && skillLocator.utility.stock > 0 && skillLocator.secondary.stock < skillLocator.secondary.maxStock)
+            if (fixedAge >= fireTime && SecondaryStock > 0 && SecondaryStock < SecondaryMax )
             {
                 skillLocator.secondary.AddOneStock();
                 skillLocator.utility.stock--;

@@ -239,7 +239,7 @@ namespace MadokaMagica.MamiTamoe
                 baseMaxStock = 6,
 
                 resetCooldownTimerOnUse = false,
-                fullRestockOnAssign = true,
+                fullRestockOnAssign = false,
                 dontAllowPastMaxStocks = false,
                 mustKeyPress = true,
                 beginSkillCooldownOnSkillEnd = false,
@@ -270,7 +270,7 @@ namespace MadokaMagica.MamiTamoe
                 baseMaxStock = 6,
 
                 resetCooldownTimerOnUse = false,
-                fullRestockOnAssign = true,
+                fullRestockOnAssign = false,
                 dontAllowPastMaxStocks = false,
                 mustKeyPress = true,
                 beginSkillCooldownOnSkillEnd = false,
@@ -279,7 +279,6 @@ namespace MadokaMagica.MamiTamoe
                 canceledFromSprinting = false,
                 cancelSprintingOnActivation = false,
                 forceSprintDuringState = true,
-
             });
 
 
@@ -306,7 +305,7 @@ namespace MadokaMagica.MamiTamoe
                 rechargeStock = 0,
                 requiredStock = 1,
                 stockToConsume = 0,
-                baseMaxStock = 10,
+                baseMaxStock = 4,
 
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = false,

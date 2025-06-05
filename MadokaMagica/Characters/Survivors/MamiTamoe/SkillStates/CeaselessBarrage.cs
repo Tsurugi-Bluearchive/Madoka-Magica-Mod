@@ -74,7 +74,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                 return;
             }
         }
-        //CeaselessBarrage.cs Exit Logic
+        //CeaselessBarrage.cs OnExit()
         public override void OnExit()
         {
             base.OnExit();
