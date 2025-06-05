@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MadokaMagica.MamiTamoe.Content;
 using MadokaMagica.MamiTamoe.SkillStates.BaseStates;
+using MadokaMagica.MamiTamoe.Components;
 
 namespace MadokaMagica.MamiTamoe
 {

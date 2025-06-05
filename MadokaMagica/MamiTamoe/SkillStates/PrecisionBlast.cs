@@ -1,11 +1,12 @@
 ﻿using EntityStates;
 using MadokaMagica.MamiTamoe.Content;
+using MadokaMagica.MamiTamoe.SkillStates.BaseStates;
 using RoR2;
 using UnityEngine;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
-    public class PrecisionBlast : BaseSkillState
+    public class PrecisionBlast : BaseMamiSkillState
     {
         public static float damageCoefficient = MamiStaticValues.bigGunDamageCefficeient;
         public static float procCoefficient = 3f;

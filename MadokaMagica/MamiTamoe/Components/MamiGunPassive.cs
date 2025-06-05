@@ -1,8 +1,9 @@
 ﻿using MadokaMagica.MamiTamoe.Content;
 using MadokaMagica.MamiTamoe.Pickupables.MamiGun;
+using MadokaMagica.MamiTamoe.SkillStates;
 using UnityEngine;
 
-namespace MadokaMagica.MamiTamoe.SkillStates
+namespace MadokaMagica.MamiTamoe.Components
 {
     public class MamiGunPassive : MonoBehaviour
     {
@@ -20,11 +21,11 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public void FixedUpdate()
         {
             cooldown += Time.fixedDeltaTime;
-            
+
             //MamiGunPassive.cs Gun Spawning Logic
             if (cooldown >= 4f)
             {
-                var clone = GameObject.Instantiate(MamiAssets.MamiGun);
+                var clone = Instantiate(MamiAssets.MamiGun);
                 clone.name = "MamiGunSpawned";
 
                 var cloneScript = clone.GetComponent<MamiGun>();

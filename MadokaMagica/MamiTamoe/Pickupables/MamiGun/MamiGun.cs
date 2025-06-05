@@ -1,6 +1,6 @@
 ﻿using RoR2;
 using UnityEngine;
-using MadokaMagica.MamiTamoe.SkillStates;
+using MadokaMagica.MamiTamoe.Components;
 
 namespace MadokaMagica.MamiTamoe.Pickupables.MamiGun
 {
