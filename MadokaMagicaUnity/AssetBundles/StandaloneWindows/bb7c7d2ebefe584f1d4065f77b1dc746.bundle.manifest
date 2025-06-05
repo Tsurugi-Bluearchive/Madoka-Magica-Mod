@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 2879673331
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6d98a10f9e99ad1fc41dde8dbd759a8e
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 60109ce66db3964cc40bd8a232cd8812
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/RoR2/Base/Items/Bandolier/BandolierShell.asset
+- Assets/RoR2/Base/Items/Bandolier/texBandolierDiffuse.png
+- Assets/RoR2/Base/Items/Bandolier/BandolierAmmoPack.asset
+Dependencies: []

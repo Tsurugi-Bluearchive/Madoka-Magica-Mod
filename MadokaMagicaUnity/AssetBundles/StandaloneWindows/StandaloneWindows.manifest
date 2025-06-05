@@ -1,0 +1,44 @@
+ManifestFileVersion: 0
+CRC: 2515861621
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: b74a37af7e29f30bfbaa61ee9f395841.bundle
+      Dependencies: {}
+    Info_1:
+      Name: 5ec0fd7669d0391f5993f38a3a5a5ce9.bundle
+      Dependencies: {}
+    Info_2:
+      Name: c12aeef012cb62671ec9a242b1e21e2b.bundle
+      Dependencies:
+        Dependency_0: b74a37af7e29f30bfbaa61ee9f395841.bundle
+        Dependency_1: 5ec0fd7669d0391f5993f38a3a5a5ce9.bundle
+        Dependency_2: a9b9be27f703fc023a818aa0e47aa233.bundle
+        Dependency_3: 9d8962a1005f58f17cc690569ef42450.bundle
+    Info_3:
+      Name: bb7c7d2ebefe584f1d4065f77b1dc746.bundle
+      Dependencies: {}
+    Info_4:
+      Name: b41d356d3dfd186b32b988731d78c150.bundle
+      Dependencies: {}
+    Info_5:
+      Name: e4adee1e4360a13783bfefc2519d4671.bundle
+      Dependencies:
+        Dependency_0: b74a37af7e29f30bfbaa61ee9f395841.bundle
+        Dependency_1: 5ec0fd7669d0391f5993f38a3a5a5ce9.bundle
+        Dependency_2: c12aeef012cb62671ec9a242b1e21e2b.bundle
+        Dependency_3: bb7c7d2ebefe584f1d4065f77b1dc746.bundle
+        Dependency_4: b41d356d3dfd186b32b988731d78c150.bundle
+        Dependency_5: 525df469ac9469cca75122228b4331f9.bundle
+    Info_6:
+      Name: 525df469ac9469cca75122228b4331f9.bundle
+      Dependencies: {}
+    Info_7:
+      Name: a9b9be27f703fc023a818aa0e47aa233.bundle
+      Dependencies: {}
+    Info_8:
+      Name: 9d8962a1005f58f17cc690569ef42450.bundle
+      Dependencies: {}
+    Info_9:
+      Name: mamiassetbundle
+      Dependencies: {}

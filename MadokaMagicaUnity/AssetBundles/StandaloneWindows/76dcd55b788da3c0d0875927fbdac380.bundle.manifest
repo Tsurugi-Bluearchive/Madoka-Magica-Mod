@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 1412936104
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a847f2c312a0c637d467243067a87708
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b0363f7088f9761414f730641bf9a24b
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/64x64 pixel tile checker for blender.png
+Dependencies: []
