@@ -51,10 +51,7 @@ namespace MadokaMagica.MamiTamoe
             jumpCount = 5,
         };
 
-        public override CustomRendererInfo[] customRendererInfos => new CustomRendererInfo[]
-        {
-
-        };
+        public override CustomRendererInfo[] customRendererInfos => [];
 
         public override UnlockableDef characterUnlockableDef => MamiUnlockables.characterUnlockableDef;
         
@@ -178,7 +175,7 @@ namespace MadokaMagica.MamiTamoe
                 skillName = "PrecisionStrike",
                 skillNameToken = MAMI_PREFIX + "PRIMARY_GUN_NAME",
                 skillDescriptionToken = MAMI_PREFIX + "PRIMARY_GUN_DESCRIPTION",
-                keywordTokens = new string[] { "KEWORD_IMPLANT" },
+                keywordTokens = ["KEWORD_IMPLANT"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("fir"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PrecisionStrkie)),
@@ -219,7 +216,7 @@ namespace MadokaMagica.MamiTamoe
                 skillName = "CeaseleassBarage",
                 skillNameToken = MAMI_PREFIX + "SECONDARY_BARAGE_NAME",
                 skillDescriptionToken = MAMI_PREFIX + "SECONDARY_BARRAGE_DESCRIPTION",
-                keywordTokens = new string[] { "KEWORD_IMPLANT" },
+                keywordTokens = ["KEWORD_IMPLANT"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("brrag"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.CeaselessBarrage)),
@@ -251,7 +248,7 @@ namespace MadokaMagica.MamiTamoe
                 skillName = "PrecisionReload",
                 skillNameToken = MAMI_PREFIX + "PRIMARY_GUN_NAME",
                 skillDescriptionToken = MAMI_PREFIX + "PRIMARY_GUN_DESCRIPTION",
-                keywordTokens = new string[] { "KEWORD_IMPLANT" },
+                keywordTokens = ["KEWORD_IMPLANT"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("rloead"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Reload)),

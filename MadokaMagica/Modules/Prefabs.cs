@@ -447,18 +447,18 @@ namespace MadokaMagica.Modules
 
             if (headHurtbox)
             {
-                hurtBoxGroup.hurtBoxes = new HurtBox[]
-                {
+                hurtBoxGroup.hurtBoxes =
+                [
                     mainHurtbox,
                     headHurtbox
-                };
+                ];
             }
             else
             {
-                hurtBoxGroup.hurtBoxes = new HurtBox[]
-                {
+                hurtBoxGroup.hurtBoxes =
+                [
                     mainHurtbox,
-                };
+                ];
             }
             hurtBoxGroup.mainHurtBox = mainHurtbox;
             hurtBoxGroup.bullseyeCount = 1;

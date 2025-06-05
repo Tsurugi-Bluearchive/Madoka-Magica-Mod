@@ -2,7 +2,7 @@
 
 namespace MadokaMagica.MamiTamoe.Pickupables.MamiGun
 {
-    internal class MamiGunWorldCollider : MonoBehaviour
+    public class MamiGunWorldCollider : MonoBehaviour
     {
         public MamiGun MamiGun;
         //MamiGunWorldCollider.cs Code Start

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MadokaMagica.MamiTamoe.Components
 {
-    internal class MuzzleTrianglesAnimator : MonoBehaviour
+    public class MuzzleTrianglesAnimator : MonoBehaviour
     {
         private float acc;
         private float existanceTime;

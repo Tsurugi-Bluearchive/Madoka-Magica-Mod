@@ -2,7 +2,7 @@
 
 namespace MadokaMagica.MamiTamoe.Components
 {
-    internal class BulletRotato : MonoBehaviour
+    public class BulletRotato : MonoBehaviour
     {
         public void FixedUpdate()
         {

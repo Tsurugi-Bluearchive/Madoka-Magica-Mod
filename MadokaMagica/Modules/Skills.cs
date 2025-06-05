@@ -77,7 +77,7 @@ namespace MadokaMagica.Modules
 
             var newFamily = ScriptableObject.CreateInstance<SkillFamily>();
             (newFamily as ScriptableObject).name = targetPrefab.name + familyName + "Family";
-            newFamily.variants = new SkillFamily.Variant[0];
+            newFamily.variants = [];
 
             skill._skillFamily = newFamily;
 
@@ -249,7 +249,7 @@ namespace MadokaMagica.Modules
 
             this.cancelSprintingOnActivation = !agile;
 
-            if (agile) this.keywordTokens = new string[] { "KEYWORD_AGILE" };
+            if (agile) this.keywordTokens = ["KEYWORD_AGILE"];
 
             this.interruptPriority = InterruptPriority.Any;
             this.isCombatSkill = true;
