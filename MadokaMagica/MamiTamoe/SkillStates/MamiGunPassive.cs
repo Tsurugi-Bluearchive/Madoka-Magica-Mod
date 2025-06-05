@@ -6,7 +6,6 @@ namespace MadokaMagica.MamiTamoe.SkillStates
 {
     public class MamiGunPassive : MonoBehaviour
     {
-
         private float cooldown;
         public CeaselessBarrage Scarf;
         public MamiGun mmmgun;
@@ -32,7 +31,6 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                 cloneScript.OnDrop(this.transform.position);
                 cloneScript.AddMe(this.gameObject);
                 cloneScript.Master = this.gameObject;
-                cloneScript.MasterScript = this;
                 cooldown = 0f;
             }
         }
