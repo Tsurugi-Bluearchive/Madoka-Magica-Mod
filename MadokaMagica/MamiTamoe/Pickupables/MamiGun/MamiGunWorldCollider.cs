@@ -1,13 +1,4 @@
-﻿using MadokaMagica.Modules;
-using MadokaMagica.Characters.UniversalBases;
-using MadokaMagica.MamiTamoe.BaseStates;
-using RoR2;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEngine;
-using UnityEngine.PlayerLoop;
-using Rewired.Utils;
-using UnityEngine.UIElements;
+﻿using UnityEngine;
 
 namespace MadokaMagica.MamiTamoe.Pickupables.MamiGun
 {
