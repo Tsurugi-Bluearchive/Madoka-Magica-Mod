@@ -1,5 +1,6 @@
 ﻿using RoR2;
 using EntityStates;
+using MadokaMagica.MamiTamoe.Content;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {

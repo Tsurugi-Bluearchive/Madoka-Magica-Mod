@@ -1,9 +1,7 @@
 ﻿using BepInEx.Configuration;
-using MadokaMagica.MamiTamoe;
 using MadokaMagica.Modules.Characters;
 using MadokaMagica.Modules;
 using MadokaMagica.MamiTamoe.SkillStates;
-using MadokaMagica.MamiTamoe.BaseStates;
 using MadokaMagica.MamiTamoe.Pickupables;
 using R2API.Utils;
 using RoR2;
@@ -13,6 +11,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using MadokaMagica.MamiTamoe.Components;
 using UnityEngine.Networking;
+using MadokaMagica.MamiTamoe.Content;
+using MadokaMagica.MamiTamoe.SkillStates.BaseStates;
 
 namespace MadokaMagica.MamiTamoe
 {

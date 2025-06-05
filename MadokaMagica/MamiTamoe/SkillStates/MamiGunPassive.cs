@@ -1,4 +1,5 @@
-﻿using MadokaMagica.MamiTamoe.Pickupables;
+﻿using MadokaMagica.MamiTamoe.Content;
+using MadokaMagica.MamiTamoe.Pickupables.MamiGun;
 using UnityEngine;
 
 namespace MadokaMagica.MamiTamoe.SkillStates

@@ -1,7 +1,7 @@
 ﻿using BepInEx.Configuration;
 using MadokaMagica.Modules;
 
-namespace MadokaMagica.Modules
+namespace MadokaMagica.MamiTamoe.Content
 {
     public static class MamiConfig
     {
@@ -11,7 +11,7 @@ namespace MadokaMagica.Modules
 
         public static void Init()
         {
-            string section = "Henry";
+            var section = "Henry";
 
             someConfigBool = Config.BindAndOptions(
                 section,

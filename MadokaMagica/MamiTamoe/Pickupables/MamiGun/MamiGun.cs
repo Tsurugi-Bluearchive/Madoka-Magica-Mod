@@ -1,6 +1,4 @@
-﻿using MadokaMagica;
-using MadokaMagica.Modules;
-using MadokaMagica.Characters.UniversalBases;
+﻿using MadokaMagica.Modules;
 using MadokaMagica.MamiTamoe.BaseStates;
 using Rewired.Utils;
 using RoR2;
@@ -11,7 +9,7 @@ using UnityEngine.PlayerLoop;
 using EntityStates;
 using MadokaMagica.MamiTamoe.SkillStates;
 
-namespace MadokaMagica.MamiTamoe.Pickupables
+namespace MadokaMagica.MamiTamoe.Pickupables.MamiGun
 {
     public class MamiGun : PickupableBase
     {
@@ -35,9 +33,7 @@ namespace MadokaMagica.MamiTamoe.Pickupables
         private float ClampedRange()
         {
             if (Random.Range(0, 1) > 0)
-            {
                 return Random.Range(5, 10);
-            }
             return Random.Range(-10, -5);
         }
         //MamiGun.cs Code Start
@@ -61,8 +57,7 @@ namespace MadokaMagica.MamiTamoe.Pickupables
         public void OnTriggerStay(Collider collision)
         {
             var mami = collision.gameObject.GetComponent<MamiGunPassive>();
-            if (mami != null) { collision.gameObject.GetComponent<MamiGunPassive>().PickingUpGun(this); }
-
+            if (mami != null) collision.gameObject.GetComponent<MamiGunPassive>().PickingUpGun(this);
         }
 
         public override void AddMe(GameObject add)
@@ -73,9 +68,7 @@ namespace MadokaMagica.MamiTamoe.Pickupables
         public void FixedUpdate()
         {
             if (impactedworld && WorldCollider != null)
-            {
                 Destroy(this.WorldCollider);
-            }
         }
 
         public override bool CanBePickedUpBy(GameObject picker)

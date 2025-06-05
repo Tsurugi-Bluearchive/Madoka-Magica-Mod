@@ -2,7 +2,7 @@
 using RoR2;
 using UnityEngine;
 
-namespace MadokaMagica.MamiTamoe
+namespace MadokaMagica.MamiTamoe.Content
 {
     public static class MamiUnlockables
     {
