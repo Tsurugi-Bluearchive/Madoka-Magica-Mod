@@ -11,7 +11,7 @@ using UnityEngine;
                     {localScale})
 */
 
-namespace MadokaMagica.MamiTamoe
+namespace MadokaMagica.MamiTamoe.Content
 {
     public class MamiItemDisplays : ItemDisplaysBase
     {

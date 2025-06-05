@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using MadokaMagica.MamiTamoe.Content;
 using RoR2;
 using UnityEngine;
 

@@ -2,20 +2,20 @@
 using RoR2.CharacterAI;
 using UnityEngine;
 
-namespace MadokaMagica.MamiTamoe
+namespace MadokaMagica.MamiTamoe.Content
 {
     public static class MamiAI
     {
         public static void Init(GameObject bodyPrefab, string masterName)
         {
-            GameObject master = Modules.Prefabs.CreateBlankMasterPrefab(bodyPrefab, masterName);
+            var master = Modules.Prefabs.CreateBlankMasterPrefab(bodyPrefab, masterName);
 
-            BaseAI baseAI = master.GetComponent<BaseAI>();
+            var baseAI = master.GetComponent<BaseAI>();
             baseAI.aimVectorDampTime = 0.1f;
             baseAI.aimVectorMaxSpeed = 360;
 
             //mouse over these fields for tooltips
-            AISkillDriver swingDriver = master.AddComponent<AISkillDriver>();
+            var swingDriver = master.AddComponent<AISkillDriver>();
             //Selection Conditions
             swingDriver.customName = "Use Primary Swing";
             swingDriver.skillSlot = SkillSlot.Primary;
@@ -42,9 +42,9 @@ namespace MadokaMagica.MamiTamoe
             swingDriver.moveInputScale = 1;
             swingDriver.aimType = AISkillDriver.AimType.AtMoveTarget;
             swingDriver.ignoreNodeGraph = false; //will chase relentlessly but be kind of stupid
-            swingDriver.shouldSprint = false; 
+            swingDriver.shouldSprint = false;
             swingDriver.shouldFireEquipment = false;
-            swingDriver.buttonPressType = AISkillDriver.ButtonPressType.Hold; 
+            swingDriver.buttonPressType = AISkillDriver.ButtonPressType.Hold;
 
             //Transition Behavior
             swingDriver.driverUpdateTimerOverride = -1;
@@ -53,7 +53,7 @@ namespace MadokaMagica.MamiTamoe
             swingDriver.nextHighPriorityOverride = null;
 
             //some fields omitted that aren't commonly changed. will be set to default values
-            AISkillDriver shootDriver = master.AddComponent<AISkillDriver>();
+            var shootDriver = master.AddComponent<AISkillDriver>();
             //Selection Conditions
             shootDriver.customName = "Use Secondary Shoot";
             shootDriver.skillSlot = SkillSlot.Secondary;
@@ -73,9 +73,9 @@ namespace MadokaMagica.MamiTamoe
             shootDriver.movementType = AISkillDriver.MovementType.ChaseMoveTarget;
             shootDriver.moveInputScale = 1;
             shootDriver.aimType = AISkillDriver.AimType.AtMoveTarget;
-            shootDriver.buttonPressType = AISkillDriver.ButtonPressType.Hold; 
-            
-            AISkillDriver rollDriver = master.AddComponent<AISkillDriver>();
+            shootDriver.buttonPressType = AISkillDriver.ButtonPressType.Hold;
+
+            var rollDriver = master.AddComponent<AISkillDriver>();
             //Selection Conditions
             rollDriver.customName = "Use Utility Roll";
             rollDriver.skillSlot = SkillSlot.Utility;
@@ -97,7 +97,7 @@ namespace MadokaMagica.MamiTamoe
             rollDriver.aimType = AISkillDriver.AimType.AtMoveTarget;
             rollDriver.buttonPressType = AISkillDriver.ButtonPressType.Hold;
 
-            AISkillDriver bombDriver = master.AddComponent<AISkillDriver>();
+            var bombDriver = master.AddComponent<AISkillDriver>();
             //Selection Conditions
             bombDriver.customName = "Use Special bomb";
             bombDriver.skillSlot = SkillSlot.Special;
@@ -119,7 +119,7 @@ namespace MadokaMagica.MamiTamoe
             bombDriver.aimType = AISkillDriver.AimType.AtMoveTarget;
             bombDriver.buttonPressType = AISkillDriver.ButtonPressType.Hold;
 
-            AISkillDriver chaseDriver = master.AddComponent<AISkillDriver>();
+            var chaseDriver = master.AddComponent<AISkillDriver>();
             //Selection Conditions
             chaseDriver.customName = "Chase";
             chaseDriver.skillSlot = SkillSlot.None;

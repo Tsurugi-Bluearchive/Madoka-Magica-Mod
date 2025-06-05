@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 
-namespace MadokaMagica.MamiTamoe
+namespace MadokaMagica.MamiTamoe.Content
 {
     public static class MamiBuffs
     {
@@ -9,7 +9,7 @@ namespace MadokaMagica.MamiTamoe
 
         public static void Init(AssetBundle assetBundle)
         {
-         
+
         }
     }
 }

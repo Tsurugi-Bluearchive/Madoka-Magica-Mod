@@ -5,7 +5,7 @@ using MadokaMagica.MamiTamoe.SkillStates;
 using UnityEngine.Networking;
 using R2API;
 
-namespace MadokaMagica.MamiTamoe.BaseStates
+namespace MadokaMagica.MamiTamoe.SkillStates.BaseStates
 {
     public class MamiCharacterMain : GenericCharacterMain
     {
@@ -59,7 +59,7 @@ namespace MadokaMagica.MamiTamoe.BaseStates
             base.FixedUpdate();
             FetchFixedVars();
             FetchTimers();
-            
+
             //MamiCharacterMain.cs Collection
             if (Mami.mmmgun != null && secondaryMax > secondaryStock && isAuthority)
             {
@@ -76,9 +76,7 @@ namespace MadokaMagica.MamiTamoe.BaseStates
 
             //MamiCharacterMain.cs Aerial Dash Controller
             if (inputBank.jump.justReleased)
-            {
                 justJumped = false;
-            }
             if (inputBank.jump.justPressed && !isGrounded && jumpCount > 0 && !justJumped)
             {
                 justJumped = true;

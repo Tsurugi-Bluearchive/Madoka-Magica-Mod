@@ -5,7 +5,7 @@ using MadokaMagica.MamiTamoe.BaseStates;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-namespace MadokaMagica.Characters.UniversalBases
+namespace MadokaMagica.MamiTamoe.Pickupables
 {
     public abstract class PickupableBase : MonoBehaviour
     {
@@ -28,7 +28,7 @@ namespace MadokaMagica.Characters.UniversalBases
         {
             pickupAllocation.Add(add);
         }
-        public virtual void SetParent(GameObject parent, BaseSkillState  parentsrcipt)
+        public virtual void SetParent(GameObject parent, BaseSkillState parentsrcipt)
         {
             Master = parent;
             MasterScript = parentsrcipt;
@@ -46,12 +46,10 @@ namespace MadokaMagica.Characters.UniversalBases
 
         public virtual PickupableBase OnPickup(GameObject picker, long stacksize)
         {
-            foreach (GameObject t in pickupAllocation)
+            foreach (var t in pickupAllocation)
             {
                 if (IsStackable && stacksize < MaxStack && picker == t)
-                {
                     return this;
-                }
             }
             return null;
         }
@@ -63,12 +61,10 @@ namespace MadokaMagica.Characters.UniversalBases
         }
         public virtual bool CanBePickedUpBy(GameObject picker)
         {
-            foreach (GameObject t in pickupAllocation)
+            foreach (var t in pickupAllocation)
             {
                 if (!t.activeSelf)
-                {
                     return false;
-                }
                 else if (t == picker)
                 {
                     return true;

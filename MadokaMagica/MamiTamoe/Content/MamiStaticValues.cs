@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MadokaMagica.MamiTamoe
+namespace MadokaMagica.MamiTamoe.Content
 {
     public static class MamiStaticValues
     {

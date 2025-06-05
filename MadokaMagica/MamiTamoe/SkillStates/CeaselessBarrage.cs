@@ -1,6 +1,7 @@
 ﻿using RoR2;
 using UnityEngine;
 using EntityStates;
+using MadokaMagica.MamiTamoe.Content;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
