@@ -33,14 +33,14 @@ namespace MadokaMagica.Modules.Achievements
             }
             if (runReport.gameEnding.isWin)
             {
-                DifficultyIndex difficultyIndex = runReport.ruleBook.FindDifficulty();
-                DifficultyDef difficultyDef = DifficultyCatalog.GetDifficultyDef(difficultyIndex);
+                var difficultyIndex = runReport.ruleBook.FindDifficulty();
+                var difficultyDef = DifficultyCatalog.GetDifficultyDef(difficultyIndex);
                 if (difficultyDef != null)
                 {
                     
-                    bool isDifficulty = difficultyDef.countsAsHardMode && difficultyDef.scalingValue >= RequiredDifficultyCoefficient;
-                    bool isInferno = difficultyDef.nameToken == "INFERNO_NAME";
-                    bool isEclipse = difficultyIndex >= DifficultyIndex.Eclipse1 && difficultyIndex <= DifficultyIndex.Eclipse8;
+                    var isDifficulty = difficultyDef.countsAsHardMode && difficultyDef.scalingValue >= RequiredDifficultyCoefficient;
+                    var isInferno = difficultyDef.nameToken == "INFERNO_NAME";
+                    var isEclipse = difficultyIndex >= DifficultyIndex.Eclipse1 && difficultyIndex <= DifficultyIndex.Eclipse8;
 
                     if (isDifficulty || isInferno || isEclipse)
                     {

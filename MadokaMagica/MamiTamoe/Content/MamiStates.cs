@@ -1,6 +1,4 @@
 ﻿using MadokaMagica.MamiTamoe.SkillStates;
-using MadokaMagica.Modules;
-using EntityStates;
 using MadokaMagica.MamiTamoe.SkillStates.BaseStates;
 
 

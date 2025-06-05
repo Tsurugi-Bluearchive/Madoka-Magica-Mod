@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MadokaMagica.MamiTamoe.Components
@@ -11,8 +9,8 @@ namespace MadokaMagica.MamiTamoe.Components
         public void Awake()
         {
             acc = 0f;
-            Rigidbody rb = this.transform.GetComponent<Rigidbody>();
-            Transform parent = this.gameObject.transform.parent;
+            var rb = this.transform.GetComponent<Rigidbody>();
+            var parent = this.gameObject.transform.parent;
             this.transform.position = parent.position;
             this.transform.position += new Vector3(0.75f, 0.95f, 0f);
             rb.velocity += transform.forward * Random.Range(10f, 15f);
@@ -33,8 +31,8 @@ namespace MadokaMagica.MamiTamoe.Components
         public void ReAwake()
         {
             acc = 0f;
-            Rigidbody rb = this.transform.GetComponent<Rigidbody>();
-            Transform parent = this.gameObject.transform.parent;
+            var rb = this.transform.GetComponent<Rigidbody>();
+            var parent = this.gameObject.transform.parent;
             this.transform.position = parent.position;
             this.transform.position += new Vector3(0.75f, 0.95f, 0f);
             rb.velocity += transform.forward * Random.Range(10f, 15f);

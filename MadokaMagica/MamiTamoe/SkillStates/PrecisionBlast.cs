@@ -74,7 +74,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                 Util.PlaySound("HenryShootPistol", gameObject);
                 if (isAuthority)
                 {
-                    Ray aimRay = GetAimRay();
+                    var aimRay = GetAimRay();
                     AddRecoil(-0.5f * recoil, -0.5f * recoil, 1f * recoil, 2f * recoil);
                     new BulletAttack
                     {

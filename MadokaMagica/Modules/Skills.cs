@@ -2,8 +2,6 @@
 using RoR2;
 using RoR2.Skills;
 using System;
-using System.Collections.Generic;
-using MadokaMagica;
 using UnityEngine;
 
 namespace MadokaMagica.Modules
@@ -19,9 +17,9 @@ namespace MadokaMagica.Modules
         /// <param name="slots">Order of slots to add to the body prefab.</param>
         public static void CreateSkillFamilies(GameObject targetPrefab, params SkillSlot[] slots)
         {
-            SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
+            var skillLocator = targetPrefab.GetComponent<SkillLocator>();
 
-            for (int i = 0; i < slots.Length; i++)
+            for (var i = 0; i < slots.Length; i++)
             {
                 switch (slots[i])
                 {
@@ -45,7 +43,7 @@ namespace MadokaMagica.Modules
 
         public static void ClearGenericSkills(GameObject targetPrefab)
         {
-            foreach (GenericSkill obj in targetPrefab.GetComponentsInChildren<GenericSkill>())
+            foreach (var obj in targetPrefab.GetComponentsInChildren<GenericSkill>())
             {
                 UnityEngine.Object.DestroyImmediate(obj);
             }
@@ -53,7 +51,7 @@ namespace MadokaMagica.Modules
 
         public static GenericSkill CreateGenericSkillWithSkillFamily(GameObject targetPrefab, SkillSlot skillSlot, bool hidden = false)
         {
-            SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
+            var skillLocator = targetPrefab.GetComponent<SkillLocator>();
             switch (skillSlot)
             {
                 case SkillSlot.Primary:
@@ -73,11 +71,11 @@ namespace MadokaMagica.Modules
         public static GenericSkill CreateGenericSkillWithSkillFamily(GameObject targetPrefab, string familyName, bool hidden = false) => CreateGenericSkillWithSkillFamily(targetPrefab, familyName, familyName, hidden);
         public static GenericSkill CreateGenericSkillWithSkillFamily(GameObject targetPrefab, string genericSkillName, string familyName, bool hidden = false)
         {
-            GenericSkill skill = targetPrefab.AddComponent<GenericSkill>();
+            var skill = targetPrefab.AddComponent<GenericSkill>();
             skill.skillName = genericSkillName;
             skill.hideInCharacterSelect = hidden;
 
-            SkillFamily newFamily = ScriptableObject.CreateInstance<SkillFamily>();
+            var newFamily = ScriptableObject.CreateInstance<SkillFamily>();
             (newFamily as ScriptableObject).name = targetPrefab.name + familyName + "Family";
             newFamily.variants = new SkillFamily.Variant[0];
 
@@ -105,7 +103,7 @@ namespace MadokaMagica.Modules
 
         public static void AddSkillsToFamily(SkillFamily skillFamily, params SkillDef[] skillDefs)
         {
-            foreach (SkillDef skillDef in skillDefs)
+            foreach (var skillDef in skillDefs)
             {
                 AddSkillToFamily(skillFamily, skillDef);
             }
@@ -136,9 +134,9 @@ namespace MadokaMagica.Modules
         /// </summary>
         public static void AddUnlockablesToFamily(SkillFamily skillFamily, params UnlockableDef[] unlockableDefs)
         {
-            for (int i = 0; i < unlockableDefs.Length; i++)
+            for (var i = 0; i < unlockableDefs.Length; i++)
             {
-                SkillFamily.Variant variant = skillFamily.variants[i];
+                var variant = skillFamily.variants[i];
                 variant.unlockableDef = unlockableDefs[i];
                 skillFamily.variants[i] = variant;
             }
@@ -154,7 +152,7 @@ namespace MadokaMagica.Modules
         public static T CreateSkillDef<T>(SkillDefInfo skillDefInfo) where T : SkillDef
         {
             //pass in a type for a custom skilldef, e.g. HuntressTrackingSkillDef
-            T skillDef = ScriptableObject.CreateInstance<T>();
+            var skillDef = ScriptableObject.CreateInstance<T>();
 
             skillDef.skillName = skillDefInfo.skillName;
             (skillDef as ScriptableObject).name = skillDefInfo.skillName;

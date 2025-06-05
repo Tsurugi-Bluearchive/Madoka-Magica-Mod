@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace MadokaMagica.MamiTamoe.Components
 {
@@ -9,7 +6,7 @@ namespace MadokaMagica.MamiTamoe.Components
     {
         public void FixedUpdate()
         {
-            float acc =+ 20f;
+            var acc =+ 20f;
             this.transform.rotation = Quaternion.Euler(0, 0, acc);
         }
     }

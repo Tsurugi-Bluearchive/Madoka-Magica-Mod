@@ -1,6 +1,4 @@
 ﻿using RoR2;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MadokaMagica.Modules.Characters
@@ -53,7 +51,7 @@ namespace MadokaMagica.Modules.Characters
         }
 
         public virtual void InitializeItemDisplays() {
-            ItemDisplayRuleSet itemDisplayRuleSet = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
+            var itemDisplayRuleSet = ScriptableObject.CreateInstance<ItemDisplayRuleSet>();
             itemDisplayRuleSet.name = "idrs" + bodyName;
             
             prefabCharacterModel.itemDisplayRuleSet = itemDisplayRuleSet;

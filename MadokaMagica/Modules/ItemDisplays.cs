@@ -48,23 +48,23 @@ namespace MadokaMagica.Modules
 
         private static void PopulateFromBody(string bodyName)
         {
-            ItemDisplayRuleSet itemDisplayRuleSet = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyName).GetComponent<ModelLocator>().modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet;
+            var itemDisplayRuleSet = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyName).GetComponent<ModelLocator>().modelTransform.GetComponent<CharacterModel>().itemDisplayRuleSet;
 
-            ItemDisplayRuleSet.KeyAssetRuleGroup[] itemRuleGroups = itemDisplayRuleSet.keyAssetRuleGroups;
+            var itemRuleGroups = itemDisplayRuleSet.keyAssetRuleGroups;
 
-            for (int i = 0; i < itemRuleGroups.Length; i++)
+            for (var i = 0; i < itemRuleGroups.Length; i++)
             {
-                ItemDisplayRule[] rules = itemRuleGroups[i].displayRuleGroup.rules;
+                var rules = itemRuleGroups[i].displayRuleGroup.rules;
 
                 KeyAssetDisplayPrefabs[itemRuleGroups[i].keyAsset] = rules;
                 KeyAssets[itemRuleGroups[i].keyAsset.name] = itemRuleGroups[i].keyAsset;
 
-                for (int j = 0; j < rules.Length; j++)
+                for (var j = 0; j < rules.Length; j++)
                 {
-                    GameObject followerPrefab = rules[j].followerPrefab;
+                    var followerPrefab = rules[j].followerPrefab;
                     if (followerPrefab)
                     {
-                        string key = followerPrefab.name?.ToLowerInvariant();
+                        var key = followerPrefab.name?.ToLowerInvariant();
                         if (!itemDisplayPrefabs.ContainsKey(key))
                         {
                             itemDisplayPrefabs[key] = followerPrefab;
@@ -83,9 +83,9 @@ namespace MadokaMagica.Modules
             //capacitor is hardcoded to track your "UpperArmR", "LowerArmR", and "HandR" bones.
             //this is for having the lightning on custom bones in your childlocator
 
-            GameObject display = R2API.PrefabAPI.InstantiateClone(itemDisplayPrefabs["displaylightningarmright"], "DisplayLightningCustom", false);
+            var display = R2API.PrefabAPI.InstantiateClone(itemDisplayPrefabs["displaylightningarmright"], "DisplayLightningCustom", false);
 
-            LimbMatcher limbMatcher = display.GetComponent<LimbMatcher>();
+            var limbMatcher = display.GetComponent<LimbMatcher>();
 
             limbMatcher.limbPairs[0].targetChildLimb = "LightningArm1";
             limbMatcher.limbPairs[1].targetChildLimb = "LightningArm2";
@@ -101,7 +101,7 @@ namespace MadokaMagica.Modules
 
                 if (itemDisplayPrefabs[name.ToLowerInvariant()]) {
 
-                    GameObject display = itemDisplayPrefabs[name.ToLowerInvariant()];
+                    var display = itemDisplayPrefabs[name.ToLowerInvariant()];
 
                     return display;
                 }

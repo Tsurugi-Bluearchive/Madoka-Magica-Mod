@@ -12,7 +12,7 @@ namespace MadokaMagica.Modules
         public static Material LoadMaterial(this AssetBundle assetBundle, string materialName) => CreateHopooMaterialFromBundle(assetBundle, materialName);
         public static Material CreateHopooMaterialFromBundle(this AssetBundle assetBundle, string materialName)
         {
-            Material tempMat = cachedMaterials.Find(mat =>
+            var tempMat = cachedMaterials.Find(mat =>
             {
                 materialName.Replace(" (Instance)", "");
                 return mat.name.Contains(materialName);
@@ -40,7 +40,7 @@ namespace MadokaMagica.Modules
                 return tempMat;
             }
 
-            string name = tempMat.shader.name.ToLowerInvariant();
+            var name = tempMat.shader.name.ToLowerInvariant();
             if (!name.StartsWith("standard") && !name.StartsWith("autodesk"))
             {
                 Log.Debug($"{tempMat.name} is not unity standard shader. aborting material conversion");

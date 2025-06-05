@@ -1,5 +1,4 @@
 ﻿using RoR2;
-using RoR2.ContentManagement;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -26,19 +25,19 @@ namespace MadokaMagica.Modules
         /// <param name="bodyName">decoration string for the console, if you're printing for multiple bodies</param>
         public static void PrintUnused(IEnumerable<ItemDisplayRuleSet.KeyAssetRuleGroup> ruleSet = null, string bodyName = "")
         {
-            string missingDisplays = $"generating item displays for {bodyName}";
+            var missingDisplays = $"generating item displays for {bodyName}";
 
             //grab all keyassets
             if(allDisplayedItems == null)
                 LazyGatherAllItems();
 
             //start with all items, and remove from the list items that we already have displays for
-            List<Object> missingKeyAssets = new List<Object>(allDisplayedItems);
+            var missingKeyAssets = new List<Object>(allDisplayedItems);
 
-            string firstCompatibleChild = "";
+            var firstCompatibleChild = "";
             if (ruleSet != null)
             {
-                foreach (ItemDisplayRuleSet.KeyAssetRuleGroup ruleGroup in ruleSet)
+                foreach (var ruleGroup in ruleSet)
                 {
                     if (ruleGroup.displayRuleGroup.rules.Length == 0)
                         continue;
@@ -58,9 +57,9 @@ namespace MadokaMagica.Modules
             }
 
             //print all display rules
-            foreach (Object keyAsset in missingKeyAssets)
+            foreach (var keyAsset in missingKeyAssets)
             {
-                string thing = $"";
+                var thing = $"";
                 if (ItemDisplays.KeyAssetDisplayPrefabs.ContainsKey(keyAsset))
                 {
                     //if we have a displayprefab for it (Populated in ItemDisplays.PopulateDisplays),
@@ -110,8 +109,8 @@ namespace MadokaMagica.Modules
                 return $"\n[NO DISPLAY RULES FOUND FOR THE KEYASSET {asset}";
 
             //generate item display rule
-            string newRule = $"\n            itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets[\"{asset.name}\"]";
-            for (int i = 0; i < displayRules.Length; i++)
+            var newRule = $"\n            itemDisplayRules.Add(ItemDisplays.CreateDisplayRuleGroupWithRules(ItemDisplays.KeyAssets[\"{asset.name}\"]";
+            for (var i = 0; i < displayRules.Length; i++)
             {
                 if(displayRules[i].limbMask == LimbFlags.None)
                 {

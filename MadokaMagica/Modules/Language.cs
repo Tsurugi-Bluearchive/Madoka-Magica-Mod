@@ -19,7 +19,7 @@ namespace MadokaMagica.Modules {
         }
 
         private static void Language_collectLanguageRootFolders(List<string> obj) {
-            string path = Path.Combine(Path.GetDirectoryName(MagicaPlugin.instance.Info.Location), "Language");
+            var path = Path.Combine(Path.GetDirectoryName(MagicaPlugin.instance.Info.Location), "Language");
             if (Directory.Exists(path)) {
                 obj.Add(path);
             }
@@ -40,14 +40,14 @@ namespace MadokaMagica.Modules {
             if (!printingEnabled) return;
 
             //wrap all tokens in a properly formatted language file
-            string strings = $"{{\n    strings:\n    {{{TokensOutput}\n    }}\n}}";
+            var strings = $"{{\n    strings:\n    {{{TokensOutput}\n    }}\n}}";
 
             //spit out language dump in console for copy paste if you want
             Log.Message($"{fileName}: \n{strings}");
 
             //write a language file next to your mod. must have a folder called Language next to your mod dll.
             if (!string.IsNullOrEmpty(fileName)) {
-                string path = Path.Combine(Directory.GetParent(MagicaPlugin.instance.Info.Location).FullName, "Language", "en", fileName);
+                var path = Path.Combine(Directory.GetParent(MagicaPlugin.instance.Info.Location).FullName, "Language", "en", fileName);
                 File.WriteAllText(path, strings);
             }
 

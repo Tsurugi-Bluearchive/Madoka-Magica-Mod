@@ -33,7 +33,7 @@ namespace MadokaMagica.Modules
         internal static void CreateSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string tokenPrefix, UnlockableDef unlockableDef) { CreateSurvivor(bodyPrefab, displayPrefab, charColor, tokenPrefix, unlockableDef, 100f); }
         internal static void CreateSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string tokenPrefix, UnlockableDef unlockableDef, float sortPosition)
         {
-            SurvivorDef survivorDef = ScriptableObject.CreateInstance<SurvivorDef>();
+            var survivorDef = ScriptableObject.CreateInstance<SurvivorDef>();
             survivorDef.bodyPrefab = bodyPrefab;
             survivorDef.displayPrefab = displayPrefab;
             survivorDef.primaryColor = charColor;
@@ -56,7 +56,7 @@ namespace MadokaMagica.Modules
         }
         internal static UnlockableDef CreateAndAddUnlockbleDef(string identifier, string nameToken, Sprite achievementIcon)
         {
-            UnlockableDef unlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
+            var unlockableDef = ScriptableObject.CreateInstance<UnlockableDef>();
             unlockableDef.cachedName = identifier;
             unlockableDef.nameToken = nameToken;
             unlockableDef.achievementIcon = achievementIcon;
@@ -87,7 +87,7 @@ namespace MadokaMagica.Modules
         }
         internal static BuffDef CreateAndAddBuff(string buffName, Sprite buffIcon, Color buffColor, bool canStack, bool isDebuff)
         {
-            BuffDef buffDef = ScriptableObject.CreateInstance<BuffDef>();
+            var buffDef = ScriptableObject.CreateInstance<BuffDef>();
             buffDef.name = buffName;
             buffDef.buffColor = buffColor;
             buffDef.canStack = canStack;
@@ -106,7 +106,7 @@ namespace MadokaMagica.Modules
         }
         internal static EffectDef CreateAndAddEffectDef(GameObject effectPrefab)
         {
-            EffectDef effectDef = new EffectDef(effectPrefab);
+            var effectDef = new EffectDef(effectPrefab);
 
             AddEffectDef(effectDef);
 
@@ -119,7 +119,7 @@ namespace MadokaMagica.Modules
         }
         internal static NetworkSoundEventDef CreateAndAddNetworkSoundEventDef(string eventName)
         {
-            NetworkSoundEventDef networkSoundEventDef = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
+            var networkSoundEventDef = ScriptableObject.CreateInstance<NetworkSoundEventDef>();
             networkSoundEventDef.akId = AkSoundEngine.GetIDFromString(eventName);
             networkSoundEventDef.eventName = eventName;
 

@@ -7,7 +7,7 @@ namespace MadokaMagica.Modules.Characters
     {
         public void SetItemDisplays(ItemDisplayRuleSet itemDisplayRuleSet)
         {
-            List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules = new List<ItemDisplayRuleSet.KeyAssetRuleGroup>();
+            var itemDisplayRules = new List<ItemDisplayRuleSet.KeyAssetRuleGroup>();
 
             ItemDisplays.LazyInit();
 

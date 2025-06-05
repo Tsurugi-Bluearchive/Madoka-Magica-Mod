@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using MadokaMagica.Modules.Characters;
 using RoR2.CharacterAI;
-using static RoR2.CharacterAI.AISkillDriver;
-using RoR2.Skills;
 using System;
 using System.Linq;
 
@@ -21,14 +19,14 @@ namespace MadokaMagica.Modules
 
         public static GameObject CreateDisplayPrefab(AssetBundle assetBundle, string displayPrefabName, GameObject prefab)
         {
-            GameObject display = assetBundle.LoadAsset<GameObject>(displayPrefabName);
+            var display = assetBundle.LoadAsset<GameObject>(displayPrefabName);
             if (display == null)
             {
                 Log.Error($"could not load display prefab {displayPrefabName}. Make sure this prefab exists in assetbundle {assetBundle.name}");
                 return null;
             }
 
-            CharacterModel characterModel = display.GetComponent<CharacterModel>();
+            var characterModel = display.GetComponent<CharacterModel>();
             if (!characterModel)
             {
                 characterModel = display.AddComponent<CharacterModel>();
@@ -44,7 +42,7 @@ namespace MadokaMagica.Modules
 
         public static GameObject LoadCharacterModel(AssetBundle assetBundle, string modelName)
         {
-            GameObject model = assetBundle.LoadAsset<GameObject>(modelName);
+            var model = assetBundle.LoadAsset<GameObject>(modelName);
             if (model == null)
             {
                 Log.Error($"could not load model prefab {modelName}. Make sure this prefab exists in assetbundle {assetBundle.name}");
@@ -55,7 +53,7 @@ namespace MadokaMagica.Modules
 
         public static GameObject LoadCharacterBody(AssetBundle assetBundle, string bodyName)
         {
-            GameObject body = assetBundle.LoadAsset<GameObject>(bodyName);
+            var body = assetBundle.LoadAsset<GameObject>(bodyName);
             if (body == null)
             {
                 Log.Error($"could not load body prefab {bodyName}. Make sure this prefab exists in assetbundle {assetBundle.name}");
@@ -66,16 +64,16 @@ namespace MadokaMagica.Modules
 
         public static GameObject CloneCharacterBody(BodyInfo bodyInfo)
         {
-            GameObject clonedBody = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyInfo.bodyNameToClone + "Body");
+            var clonedBody = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/" + bodyInfo.bodyNameToClone + "Body");
             if (!clonedBody)
             {
                 Log.Error(bodyInfo.bodyNameToClone + " Body to clone is not a valid body, character creation failed");
                 return null;
             }
 
-            GameObject newBodyPrefab = PrefabAPI.InstantiateClone(clonedBody, bodyInfo.bodyName);
+            var newBodyPrefab = PrefabAPI.InstantiateClone(clonedBody, bodyInfo.bodyName);
 
-            for (int i = newBodyPrefab.transform.childCount - 1; i >= 0; i--)
+            for (var i = newBodyPrefab.transform.childCount - 1; i >= 0; i--)
             {
                 UnityEngine.Object.DestroyImmediate(newBodyPrefab.transform.GetChild(i).gameObject);
             }
@@ -124,7 +122,7 @@ namespace MadokaMagica.Modules
 
             SetupCharacterBody(newBodyPrefab, bodyInfo);
 
-            Transform modelBaseTransform = AddCharacterModelToSurvivorBody(newBodyPrefab, model.transform, bodyInfo);
+            var modelBaseTransform = AddCharacterModelToSurvivorBody(newBodyPrefab, model.transform, bodyInfo);
 
             SetupModelLocator(newBodyPrefab, modelBaseTransform, model.transform);
             SetupCharacterDirection(newBodyPrefab, modelBaseTransform, model.transform);
@@ -139,7 +137,7 @@ namespace MadokaMagica.Modules
 
         private static void SetupCharacterBody(GameObject newBodyPrefab, BodyInfo bodyInfo)
         {
-            CharacterBody bodyComponent = newBodyPrefab.GetComponent<CharacterBody>();
+            var bodyComponent = newBodyPrefab.GetComponent<CharacterBody>();
             //identity
             bodyComponent.baseNameToken = bodyInfo.bodyNameToken;
             bodyComponent.subtitleNameToken = bodyInfo.subtitleNameToken;
@@ -214,7 +212,7 @@ namespace MadokaMagica.Modules
 
         private static Transform AddCharacterModelToSurvivorBody(GameObject bodyPrefab, Transform modelTransform, BodyInfo bodyInfo)
         {
-            Transform modelBase = bodyPrefab.transform.Find("ModelBase");
+            var modelBase = bodyPrefab.transform.Find("ModelBase");
             if (modelBase == null) // if these objects exist, you must have set them as you want them in editor
             {
                 modelBase = new GameObject("ModelBase").transform;
@@ -227,7 +225,7 @@ namespace MadokaMagica.Modules
             modelTransform.localPosition = Vector3.zero;
             modelTransform.localRotation = Quaternion.identity;
 
-            Transform cameraPivot = bodyPrefab.transform.Find("CameraPivot");
+            var cameraPivot = bodyPrefab.transform.Find("CameraPivot");
             if (cameraPivot == null)
             {
                 cameraPivot = new GameObject("CameraPivot").transform;
@@ -236,7 +234,7 @@ namespace MadokaMagica.Modules
                 cameraPivot.localRotation = Quaternion.identity;
             }
 
-            Transform aimOrigin = bodyPrefab.transform.Find("AimOrigin");
+            var aimOrigin = bodyPrefab.transform.Find("AimOrigin");
             if (aimOrigin == null)
             {
                 aimOrigin = new GameObject("AimOrigin").transform;
@@ -254,7 +252,7 @@ namespace MadokaMagica.Modules
             if (!prefab.GetComponent<CharacterDirection>())
                 return;
 
-            CharacterDirection characterDirection = prefab.GetComponent<CharacterDirection>();
+            var characterDirection = prefab.GetComponent<CharacterDirection>();
             characterDirection.targetTransform = modelBaseTransform;
             characterDirection.overrideAnimatorForwardTransform = null;
             characterDirection.rootMotionAccumulator = null;
@@ -265,14 +263,14 @@ namespace MadokaMagica.Modules
 
         private static void SetupCameraTargetParams(GameObject prefab, BodyInfo bodyInfo)
         {
-            CameraTargetParams cameraTargetParams = prefab.GetComponent<CameraTargetParams>();
+            var cameraTargetParams = prefab.GetComponent<CameraTargetParams>();
             cameraTargetParams.cameraParams = bodyInfo.cameraParams;
             cameraTargetParams.cameraPivotTransform = prefab.transform.Find("CameraPivot");
         }
 
         private static void SetupModelLocator(GameObject prefab, Transform modelBaseTransform, Transform modelTransform)
         {
-            ModelLocator modelLocator = prefab.GetComponent<ModelLocator>();
+            var modelLocator = prefab.GetComponent<ModelLocator>();
             modelLocator.modelTransform = modelTransform;
             modelLocator.modelBaseTransform = modelBaseTransform;
         }
@@ -286,7 +284,7 @@ namespace MadokaMagica.Modules
         private static void SetupCapsuleCollider(GameObject prefab)
         {
             //character collider MUST be commando's size!
-            CapsuleCollider capsuleCollider = prefab.GetComponent<CapsuleCollider>();
+            var capsuleCollider = prefab.GetComponent<CapsuleCollider>();
             capsuleCollider.center = new Vector3(0f, 0f, 0f);
             capsuleCollider.radius = 0.5f;
             capsuleCollider.height = 1.82f;
@@ -298,8 +296,8 @@ namespace MadokaMagica.Modules
         public static CharacterModel SetupCharacterModel(GameObject bodyPrefab, CustomRendererInfo[] customInfos = null)
         {
 
-            CharacterModel characterModel = bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<CharacterModel>();
-            bool preattached = characterModel != null;
+            var characterModel = bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.GetComponent<CharacterModel>();
+            var preattached = characterModel != null;
             if (!preattached)
                 characterModel = bodyPrefab.GetComponent<ModelLocator>().modelTransform.gameObject.AddComponent<CharacterModel>();
 
@@ -328,7 +326,7 @@ namespace MadokaMagica.Modules
 
         public static void SetupPreAttachedRendererInfos(CharacterModel characterModel)
         {
-            for (int i = 0; i < characterModel.baseRendererInfos.Length; i++)
+            for (var i = 0; i < characterModel.baseRendererInfos.Length; i++)
             {
                 if (characterModel.baseRendererInfos[i].defaultMaterial == null)
                 {
@@ -346,16 +344,16 @@ namespace MadokaMagica.Modules
         public static void SetupCustomRendererInfos(CharacterModel characterModel, CustomRendererInfo[] customInfos)
         {
 
-            ChildLocator childLocator = characterModel.GetComponent<ChildLocator>();
+            var childLocator = characterModel.GetComponent<ChildLocator>();
             if (!childLocator)
             {
                 Log.Error("Failed CharacterModel setup: ChildLocator component does not exist on the model");
                 return;
             }
 
-            List<CharacterModel.RendererInfo> rendererInfos = new List<CharacterModel.RendererInfo>();
+            var rendererInfos = new List<CharacterModel.RendererInfo>();
 
-            for (int i = 0; i < customInfos.Length; i++)
+            for (var i = 0; i < customInfos.Length; i++)
             {
                 if (!childLocator.FindChild(customInfos[i].childName))
                 {
@@ -363,11 +361,11 @@ namespace MadokaMagica.Modules
                 }
                 else
                 {
-                    Renderer rend = childLocator.FindChild(customInfos[i].childName).GetComponent<Renderer>();
+                    var rend = childLocator.FindChild(customInfos[i].childName).GetComponent<Renderer>();
                     if (rend)
                     {
 
-                        Material mat = customInfos[i].material;
+                        var mat = customInfos[i].material;
 
                         if (mat == null)
                         {
@@ -413,7 +411,7 @@ namespace MadokaMagica.Modules
                 return;
             }
 
-            ChildLocator childLocator = model.GetComponent<ChildLocator>();
+            var childLocator = model.GetComponent<ChildLocator>();
 
             if (string.IsNullOrEmpty(childLocator.FindChildNameInsensitive("MainHurtbox")))
             {
@@ -421,10 +419,10 @@ namespace MadokaMagica.Modules
                 return;
             }
 
-            HurtBoxGroup hurtBoxGroup = model.AddComponent<HurtBoxGroup>();
+            var hurtBoxGroup = model.AddComponent<HurtBoxGroup>();
 
             HurtBox headHurtbox = null;
-            GameObject headHurtboxObject = childLocator.FindChildGameObjectInsensitive("HeadHurtbox");
+            var headHurtboxObject = childLocator.FindChildGameObjectInsensitive("HeadHurtbox");
             if (headHurtboxObject)
             {
                 Log.Debug("HeadHurtboxFound. Setting up");
@@ -438,7 +436,7 @@ namespace MadokaMagica.Modules
                 headHurtbox.indexInGroup = 1;
             }
 
-            HurtBox mainHurtbox = childLocator.FindChildGameObjectInsensitive("MainHurtbox").AddComponent<HurtBox>();
+            var mainHurtbox = childLocator.FindChildGameObjectInsensitive("MainHurtbox").AddComponent<HurtBox>();
             mainHurtbox.gameObject.layer = LayerIndex.entityPrecise.intVal;
             mainHurtbox.healthComponent = bodyPrefab.GetComponent<HealthComponent>();
             mainHurtbox.isBullseye = true;
@@ -481,12 +479,12 @@ namespace MadokaMagica.Modules
 
         public static void SetHurtboxesHealthComponents(GameObject bodyPrefab)
         {
-            HealthComponent healthComponent = bodyPrefab.GetComponent<HealthComponent>();
+            var healthComponent = bodyPrefab.GetComponent<HealthComponent>();
 
-            foreach (HurtBoxGroup hurtboxGroup in bodyPrefab.GetComponentsInChildren<HurtBoxGroup>())
+            foreach (var hurtboxGroup in bodyPrefab.GetComponentsInChildren<HurtBoxGroup>())
             {
                 hurtboxGroup.mainHurtBox.healthComponent = healthComponent;
-                for (int i = 0; i < hurtboxGroup.hurtBoxes.Length; i++)
+                for (var i = 0; i < hurtboxGroup.hurtBoxes.Length; i++)
                 {
                     hurtboxGroup.hurtBoxes[i].healthComponent = healthComponent;
                 }
@@ -495,7 +493,7 @@ namespace MadokaMagica.Modules
 
         private static void SetupFootstepController(GameObject model)
         {
-            FootstepHandler footstepHandler = model.AddComponent<FootstepHandler>();
+            var footstepHandler = model.AddComponent<FootstepHandler>();
             footstepHandler.baseFootstepString = "Play_player_footstep";
             footstepHandler.sprintFootstepOverrideString = "";
             footstepHandler.enableFootstepDust = true;
@@ -504,18 +502,18 @@ namespace MadokaMagica.Modules
 
         private static void SetupRagdoll(GameObject model)
         {
-            RagdollController ragdollController = model.GetComponent<RagdollController>();
+            var ragdollController = model.GetComponent<RagdollController>();
 
             if (!ragdollController) return;
 
             if (ragdollMaterial == null) ragdollMaterial = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterBodies/CommandoBody").GetComponentInChildren<RagdollController>().bones[1].GetComponent<Collider>().material;
 
-            foreach (Transform boneTransform in ragdollController.bones)
+            foreach (var boneTransform in ragdollController.bones)
             {
                 if (boneTransform)
                 {
                     boneTransform.gameObject.layer = LayerIndex.ragdoll.intVal;
-                    Collider boneCollider = boneTransform.GetComponent<Collider>();
+                    var boneCollider = boneTransform.GetComponent<Collider>();
                     if (boneCollider)
                     {
                         //boneCollider.material = ragdollMaterial;
@@ -531,7 +529,7 @@ namespace MadokaMagica.Modules
 
         private static void SetupAimAnimator(GameObject prefab, GameObject model)
         {
-            AimAnimator aimAnimator = model.AddComponent<AimAnimator>();
+            var aimAnimator = model.AddComponent<AimAnimator>();
             aimAnimator.directionComponent = prefab.GetComponent<CharacterDirection>();
             aimAnimator.pitchRangeMax = 60f;
             aimAnimator.pitchRangeMin = -60f;
@@ -548,7 +546,7 @@ namespace MadokaMagica.Modules
         public static void CreateGenericDoppelganger(GameObject bodyPrefab, string masterName, string masterToCopy) => CloneDopplegangerMaster(bodyPrefab, masterName, masterToCopy);
         public static GameObject CloneDopplegangerMaster(GameObject bodyPrefab, string masterName, string masterToCopy)
         {
-            GameObject newMaster = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/" + masterToCopy + "MonsterMaster"), masterName, true);
+            var newMaster = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/" + masterToCopy + "MonsterMaster"), masterName, true);
             newMaster.GetComponent<CharacterMaster>().bodyPrefab = bodyPrefab;
 
             Modules.Content.AddMasterPrefab(newMaster);
@@ -557,15 +555,15 @@ namespace MadokaMagica.Modules
 
         public static GameObject CreateBlankMasterPrefab(GameObject bodyPrefab, string masterName)
         {
-            GameObject masterObject = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), masterName, true);
+            var masterObject = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/CharacterMasters/CommandoMonsterMaster"), masterName, true);
             //should the user call this themselves?
             Modules.ContentPacks.masterPrefabs.Add(masterObject);
 
-            CharacterMaster characterMaster = masterObject.GetComponent<CharacterMaster>();
+            var characterMaster = masterObject.GetComponent<CharacterMaster>();
             characterMaster.bodyPrefab = bodyPrefab;
 
-            AISkillDriver[] drivers = masterObject.GetComponents<AISkillDriver>();
-            for (int i = 0; i < drivers.Length; i++)
+            var drivers = masterObject.GetComponents<AISkillDriver>();
+            for (var i = 0; i < drivers.Length; i++)
             {
                 UnityEngine.Object.Destroy(drivers[i]);
             }
@@ -575,9 +573,9 @@ namespace MadokaMagica.Modules
 
         public static GameObject LoadMaster(this AssetBundle assetBundle, GameObject bodyPrefab, string assetName)
         {
-            GameObject newMaster = assetBundle.LoadAsset<GameObject>(assetName);
+            var newMaster = assetBundle.LoadAsset<GameObject>(assetName);
 
-            BaseAI baseAI = newMaster.GetComponent<BaseAI>();
+            var baseAI = newMaster.GetComponent<BaseAI>();
             if(baseAI == null)
             {
                 baseAI = newMaster.AddComponent<BaseAI>();
@@ -586,7 +584,7 @@ namespace MadokaMagica.Modules
             }
             baseAI.scanState = new EntityStates.SerializableEntityStateType(typeof(EntityStates.AI.Walker.Wander));
 
-            EntityStateMachine stateMachine = newMaster.GetComponent<EntityStateMachine>();
+            var stateMachine = newMaster.GetComponent<EntityStateMachine>();
             if(stateMachine == null)
             {
                 AddEntityStateMachine(newMaster, "AI", typeof(EntityStates.AI.Walker.Wander), typeof(EntityStates.AI.Walker.Wander));
@@ -594,7 +592,7 @@ namespace MadokaMagica.Modules
 
             baseAI.stateMachine = stateMachine;
 
-            CharacterMaster characterMaster = newMaster.GetComponent<CharacterMaster>();
+            var characterMaster = newMaster.GetComponent<CharacterMaster>();
             if(characterMaster == null)
             {
                 characterMaster = newMaster.AddComponent<CharacterMaster>();
@@ -614,23 +612,23 @@ namespace MadokaMagica.Modules
         /// <param name="bodyPrefab"></param>
         public static void ClearEntityStateMachines(GameObject bodyPrefab)
         {
-            EntityStateMachine[] machines = bodyPrefab.GetComponents<EntityStateMachine>();
+            var machines = bodyPrefab.GetComponents<EntityStateMachine>();
 
-            for (int i = machines.Length - 1; i >= 0; i--)
+            for (var i = machines.Length - 1; i >= 0; i--)
             {
                 UnityEngine.Object.DestroyImmediate(machines[i]);
             }
 
-            NetworkStateMachine networkMachine = bodyPrefab.GetComponent<NetworkStateMachine>();
+            var networkMachine = bodyPrefab.GetComponent<NetworkStateMachine>();
             networkMachine.stateMachines = Array.Empty<EntityStateMachine>();
 
-            CharacterDeathBehavior deathBehavior = bodyPrefab.GetComponent<CharacterDeathBehavior>();
+            var deathBehavior = bodyPrefab.GetComponent<CharacterDeathBehavior>();
             if (deathBehavior)
             {
                 deathBehavior.idleStateMachine = Array.Empty<EntityStateMachine>();
             }
 
-            SetStateOnHurt setStateOnHurt = bodyPrefab.GetComponent<SetStateOnHurt>();
+            var setStateOnHurt = bodyPrefab.GetComponent<SetStateOnHurt>();
             if (setStateOnHurt)
             {
                 setStateOnHurt.idleStateMachine = Array.Empty<EntityStateMachine>();
@@ -644,7 +642,7 @@ namespace MadokaMagica.Modules
         /// </summary>
         public static EntityStateMachine AddEntityStateMachine(GameObject prefab, string machineName, Type mainStateType = null, Type initalStateType = null, bool addToHurt = true, bool addToDeath = true)
         {
-            EntityStateMachine entityStateMachine = EntityStateMachine.FindByCustomName(prefab, machineName);
+            var entityStateMachine = EntityStateMachine.FindByCustomName(prefab, machineName);
             if (entityStateMachine == null)
             {
                 entityStateMachine = prefab.AddComponent<EntityStateMachine>();
@@ -669,7 +667,7 @@ namespace MadokaMagica.Modules
             entityStateMachine.initialStateType = new EntityStates.SerializableEntityStateType(initalStateType);
 
             //Add to NetworkStateMachine so it is networked, as it sounds
-            NetworkStateMachine networkMachine = prefab.GetComponent<NetworkStateMachine>();
+            var networkMachine = prefab.GetComponent<NetworkStateMachine>();
             if (networkMachine)
             {
                 networkMachine.stateMachines = networkMachine.stateMachines.Append(entityStateMachine).ToArray();
@@ -677,7 +675,7 @@ namespace MadokaMagica.Modules
 
             //Add to the array of "idle" StateMachines. For when the character dies.
             //This component sets that state machine to idle, stopping what it was doing
-            CharacterDeathBehavior deathBehavior = prefab.GetComponent<CharacterDeathBehavior>();
+            var deathBehavior = prefab.GetComponent<CharacterDeathBehavior>();
             if (deathBehavior && addToDeath)
             {
                 deathBehavior.idleStateMachine = deathBehavior.idleStateMachine.Append(entityStateMachine).ToArray();
@@ -685,7 +683,7 @@ namespace MadokaMagica.Modules
 
             //Add to the array of "idle" StateMachines.
             //Same as CharacterDeathBehavior but for stunning/freezing/etc
-            SetStateOnHurt setStateOnHurt = prefab.GetComponent<SetStateOnHurt>();
+            var setStateOnHurt = prefab.GetComponent<SetStateOnHurt>();
             if (setStateOnHurt && addToHurt)
             {
                 setStateOnHurt.idleStateMachine = setStateOnHurt.idleStateMachine.Append(entityStateMachine).ToArray();
@@ -700,7 +698,7 @@ namespace MadokaMagica.Modules
         /// </summary>
         public static EntityStateMachine AddMainEntityStateMachine(GameObject bodyPrefab, string machineName = "Body", Type mainStateType = null, Type initalStateType = null)
         {
-            EntityStateMachine entityStateMachine = EntityStateMachine.FindByCustomName(bodyPrefab, machineName);
+            var entityStateMachine = EntityStateMachine.FindByCustomName(bodyPrefab, machineName);
             if (entityStateMachine == null)
             {
                 entityStateMachine = bodyPrefab.AddComponent<EntityStateMachine>();
@@ -726,7 +724,7 @@ namespace MadokaMagica.Modules
             entityStateMachine.initialStateType = new EntityStates.SerializableEntityStateType(initalStateType);
 
             //Add to NetworkStateMachine so it is networked, as it sounds
-            NetworkStateMachine networkMachine = bodyPrefab.GetComponent<NetworkStateMachine>();
+            var networkMachine = bodyPrefab.GetComponent<NetworkStateMachine>();
             if (networkMachine)
             {
                 networkMachine.stateMachines = networkMachine.stateMachines.Append(entityStateMachine).ToArray();
@@ -735,7 +733,7 @@ namespace MadokaMagica.Modules
             //Add to the main state machine field of CharacterDeathBehavior for when the character dies.
             //This EntityStateMachine will enter the death state, while other state machines are set to idle
             //The death state is set elsewhere, (likely in the commando clone). It is typically GenericCharacterDeath, but you can set it to whatever you want.
-            CharacterDeathBehavior deathBehavior = bodyPrefab.GetComponent<CharacterDeathBehavior>();
+            var deathBehavior = bodyPrefab.GetComponent<CharacterDeathBehavior>();
             if (deathBehavior)
             {
                 deathBehavior.deathStateMachine = entityStateMachine;
@@ -743,7 +741,7 @@ namespace MadokaMagica.Modules
 
             //Add to the main state machine field of SetStateOnHurt for when the character is Stunned/Frozen/etc,
             //This EntityStateMachine will enter the relative state, while other state machines are set to idle.
-            SetStateOnHurt setStateOnHurt = bodyPrefab.GetComponent<SetStateOnHurt>();
+            var setStateOnHurt = bodyPrefab.GetComponent<SetStateOnHurt>();
             if (setStateOnHurt)
             {
                 setStateOnHurt.targetStateMachine = entityStateMachine;
@@ -759,10 +757,10 @@ namespace MadokaMagica.Modules
         /// <param name="hitboxChildNames">childname of the transform set up in editor</param>
         public static void SetupHitBoxGroup(GameObject modelPrefab, string hitBoxGroupName, params string[] hitboxChildNames)
         {
-            ChildLocator childLocator = modelPrefab.GetComponent<ChildLocator>();
+            var childLocator = modelPrefab.GetComponent<ChildLocator>();
 
-            Transform[] hitboxTransforms = new Transform[hitboxChildNames.Length];
-            for (int i = 0; i < hitboxChildNames.Length; i++)
+            var hitboxTransforms = new Transform[hitboxChildNames.Length];
+            for (var i = 0; i < hitboxChildNames.Length; i++)
             {
                 hitboxTransforms[i] = childLocator.FindChild(hitboxChildNames[i]);
 
@@ -780,16 +778,16 @@ namespace MadokaMagica.Modules
         /// <param name="hitBoxTransforms">the transforms to be used in this hitboxgroup</param>
         public static void SetupHitBoxGroup(GameObject prefab, string hitBoxGroupName, params Transform[] hitBoxTransforms)
         {
-            List<HitBox> hitBoxes = new List<HitBox>();
+            var hitBoxes = new List<HitBox>();
 
-            foreach (Transform i in hitBoxTransforms)
+            foreach (var i in hitBoxTransforms)
             {
                 if (i == null)
                 {
                     Log.Error($"Error setting up hitboxGroup for {hitBoxGroupName}: hitbox transform was null");
                     continue;
                 }
-                HitBox hitBox = i.gameObject.AddComponent<HitBox>();
+                var hitBox = i.gameObject.AddComponent<HitBox>();
                 i.gameObject.layer = LayerIndex.projectile.intVal;
                 hitBoxes.Add(hitBox);
             }
@@ -800,7 +798,7 @@ namespace MadokaMagica.Modules
                 return;
             }
 
-            HitBoxGroup hitBoxGroup = prefab.AddComponent<HitBoxGroup>();
+            var hitBoxGroup = prefab.AddComponent<HitBoxGroup>();
 
             hitBoxGroup.hitBoxes = hitBoxes.ToArray();
 

@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using EntityStates;
 using RoR2;
-using MadokaMagica.MamiTamoe.SkillStates;
 using UnityEngine.Networking;
-using R2API;
 
 namespace MadokaMagica.MamiTamoe.SkillStates.BaseStates
 {
