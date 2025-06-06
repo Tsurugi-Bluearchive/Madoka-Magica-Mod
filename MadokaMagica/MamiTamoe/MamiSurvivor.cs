@@ -1,18 +1,13 @@
-﻿using BepInEx.Configuration;
-using MadokaMagica.Modules.Characters;
+﻿using MadokaMagica.Modules.Characters;
 using MadokaMagica.Modules;
 using MadokaMagica.MamiTamoe.SkillStates;
-using MadokaMagica.MamiTamoe.Pickupables;
-using R2API.Utils;
 using RoR2;
 using RoR2.Skills;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using MadokaMagica.MamiTamoe.Components;
-using UnityEngine.Networking;
 using MadokaMagica.MamiTamoe.Content;
 using MadokaMagica.MamiTamoe.SkillStates.BaseStates;
+using MadokaMagica.MamiTamoe.Components;
 
 namespace MadokaMagica.MamiTamoe
 {
@@ -56,10 +51,7 @@ namespace MadokaMagica.MamiTamoe
             jumpCount = 5,
         };
 
-        public override CustomRendererInfo[] customRendererInfos => new CustomRendererInfo[]
-        {
-
-        };
+        public override CustomRendererInfo[] customRendererInfos => [];
 
         public override UnlockableDef characterUnlockableDef => MamiUnlockables.characterUnlockableDef;
         
@@ -183,7 +175,7 @@ namespace MadokaMagica.MamiTamoe
                 skillName = "PrecisionStrike",
                 skillNameToken = MAMI_PREFIX + "PRIMARY_GUN_NAME",
                 skillDescriptionToken = MAMI_PREFIX + "PRIMARY_GUN_DESCRIPTION",
-                keywordTokens = new string[] { "KEWORD_IMPLANT" },
+                keywordTokens = ["KEWORD_IMPLANT"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("fir"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PrecisionStrkie)),
@@ -224,7 +216,7 @@ namespace MadokaMagica.MamiTamoe
                 skillName = "CeaseleassBarage",
                 skillNameToken = MAMI_PREFIX + "SECONDARY_BARAGE_NAME",
                 skillDescriptionToken = MAMI_PREFIX + "SECONDARY_BARRAGE_DESCRIPTION",
-                keywordTokens = new string[] { "KEWORD_IMPLANT" },
+                keywordTokens = ["KEWORD_IMPLANT"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("brrag"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.CeaselessBarrage)),
@@ -256,7 +248,7 @@ namespace MadokaMagica.MamiTamoe
                 skillName = "PrecisionReload",
                 skillNameToken = MAMI_PREFIX + "PRIMARY_GUN_NAME",
                 skillDescriptionToken = MAMI_PREFIX + "PRIMARY_GUN_DESCRIPTION",
-                keywordTokens = new string[] { "KEWORD_IMPLANT" },
+                keywordTokens = ["KEWORD_IMPLANT"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("rloead"),
 
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Reload)),
@@ -290,7 +282,7 @@ namespace MadokaMagica.MamiTamoe
             Skills.CreateGenericSkillWithSkillFamily(bodyPrefab, SkillSlot.Utility);
 
             //here's a skilldef of a typical movement skill.
-            SkillDef utilitySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
+            var utilitySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "HenryRoll",
                 skillNameToken = MAMI_PREFIX + "UTILITY_ROLL_NAME",
@@ -327,7 +319,7 @@ namespace MadokaMagica.MamiTamoe
             Skills.CreateGenericSkillWithSkillFamily(bodyPrefab, SkillSlot.Special);
 
             //a basic skill. some fields are omitted and will just have default values
-            SkillDef specialSkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
+            var specialSkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "MamiBlast",
                 skillNameToken = MAMI_PREFIX + "SPECIAL_BLAST_NAME",
@@ -352,16 +344,14 @@ namespace MadokaMagica.MamiTamoe
         #region skins
         public override void InitializeSkins()
         {
-            ModelSkinController skinController = prefabCharacterModel.gameObject.AddComponent<ModelSkinController>();
-            ChildLocator childLocator = prefabCharacterModel.GetComponent<ChildLocator>();
+            var skinController = prefabCharacterModel.gameObject.AddComponent<ModelSkinController>();
+            var defaultRendererinfos = prefabCharacterModel.baseRendererInfos;
 
-            CharacterModel.RendererInfo[] defaultRendererinfos = prefabCharacterModel.baseRendererInfos;
-
-            List<SkinDef> skins = new List<SkinDef>();
+            var skins = new List<SkinDef>();
 
             #region DefaultSkin
             //this creates a SkinDef with all default fields
-            SkinDef defaultSkin = Skins.CreateSkinDef("DEFAULT_SKIN",
+            var defaultSkin = Skins.CreateSkinDef("DEFAULT_SKIN",
                 assetBundle.LoadAsset<Sprite>("texMainSkin"),
                 defaultRendererinfos,
                 prefabCharacterModel.gameObject);

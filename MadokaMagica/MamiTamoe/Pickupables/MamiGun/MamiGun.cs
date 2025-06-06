@@ -1,12 +1,6 @@
-﻿using MadokaMagica.Modules;
-using Rewired.Utils;
-using RoR2;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+﻿using RoR2;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using EntityStates;
-using MadokaMagica.MamiTamoe.SkillStates;
+using MadokaMagica.MamiTamoe.Components;
 
 namespace MadokaMagica.MamiTamoe.Pickupables.MamiGun
 {
@@ -14,8 +8,7 @@ namespace MadokaMagica.MamiTamoe.Pickupables.MamiGun
     {
         public bool impactedworld;
         public Rigidbody thisBody;
-        public MamiGunPassive MasterScript;
-        private MamiGunWorldCollider MamiGunWorldCollider;
+
         private void FetchInitVars()
         {
             thisBody = GetComponent<Rigidbody>();

@@ -42,7 +42,7 @@ namespace MadokaMagica.Modules
             {
                 description += " (restart required)";
             }
-            ConfigEntry<T> configEntry = MyConfig.Bind(section, name, defaultValue, description);
+            var configEntry = MyConfig.Bind(section, name, defaultValue, description);
 
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.rune580.riskofoptions"))
             {

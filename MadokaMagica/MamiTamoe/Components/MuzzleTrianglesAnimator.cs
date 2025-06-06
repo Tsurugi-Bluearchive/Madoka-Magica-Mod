@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MadokaMagica.MamiTamoe.Components
 {
-    internal class MuzzleTrianglesAnimator : MonoBehaviour
+    public class MuzzleTrianglesAnimator : MonoBehaviour
     {
         private float acc;
         private float existanceTime;
         public void Awake()
         {
             acc = 0f;
-            Rigidbody rb = this.transform.GetComponent<Rigidbody>();
-            Transform parent = this.gameObject.transform.parent;
+            var rb = this.transform.GetComponent<Rigidbody>();
+            var parent = this.gameObject.transform.parent;
             this.transform.position = parent.position;
             this.transform.position += new Vector3(0.75f, 0.95f, 0f);
             rb.velocity += transform.forward * Random.Range(10f, 15f);
@@ -33,8 +31,8 @@ namespace MadokaMagica.MamiTamoe.Components
         public void ReAwake()
         {
             acc = 0f;
-            Rigidbody rb = this.transform.GetComponent<Rigidbody>();
-            Transform parent = this.gameObject.transform.parent;
+            var rb = this.transform.GetComponent<Rigidbody>();
+            var parent = this.gameObject.transform.parent;
             this.transform.position = parent.position;
             this.transform.position += new Vector3(0.75f, 0.95f, 0f);
             rb.velocity += transform.forward * Random.Range(10f, 15f);

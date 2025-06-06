@@ -1,13 +1,13 @@
 ﻿using BepInEx;
 using MadokaMagica.MamiTamoe;
 using R2API.Utils;
-using RoR2;
-using System.Collections.Generic;
 using System.Security;
 using System.Security.Permissions;
 
 [module: UnverifiableCode]
+#pragma warning disable CS0618 // Type or member is obsolete
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
+#pragma warning restore CS0618 // Type or member is obsolete
 
 //rename this namespace
 namespace MadokaMagica
@@ -29,7 +29,7 @@ namespace MadokaMagica
 
         public static MagicaPlugin instance;
 
-        void Awake()
+        private void Awake()
         {
             instance = this;
 

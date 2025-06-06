@@ -1,15 +1,8 @@
-﻿using MadokaMagica.Modules;
-using RoR2;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEngine;
-using UnityEngine.PlayerLoop;
-using Rewired.Utils;
-using UnityEngine.UIElements;
+﻿using UnityEngine;
 
 namespace MadokaMagica.MamiTamoe.Pickupables.MamiGun
 {
-    internal class MamiGunWorldCollider : MonoBehaviour
+    public class MamiGunWorldCollider : MonoBehaviour
     {
         public MamiGun MamiGun;
         //MamiGunWorldCollider.cs Code Start

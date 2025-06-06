@@ -1,11 +1,8 @@
-﻿using System.Reflection;
-using R2API;
+﻿using R2API;
 using UnityEngine;
 using UnityEngine.Networking;
 using RoR2;
-using System.IO;
 using System.Collections.Generic;
-using RoR2.UI;
 using RoR2.Projectile;
 using Path = System.IO.Path;
 
@@ -45,7 +42,7 @@ namespace MadokaMagica.Modules
             if (RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/" + originalTracerName) == null) 
                 return null;
 
-            GameObject newTracer = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/" + originalTracerName), newTracerName, true);
+            var newTracer = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/" + originalTracerName), newTracerName, true);
 
             if (!newTracer.GetComponent<EffectComponent>()) newTracer.AddComponent<EffectComponent>();
             if (!newTracer.GetComponent<VFXAttributes>()) newTracer.AddComponent<VFXAttributes>();
@@ -63,7 +60,7 @@ namespace MadokaMagica.Modules
         {
             if (!objectToConvert) return;
 
-            foreach (MeshRenderer i in objectToConvert.GetComponentsInChildren<MeshRenderer>())
+            foreach (var i in objectToConvert.GetComponentsInChildren<MeshRenderer>())
             {
                 if (i)
                 {
@@ -74,7 +71,7 @@ namespace MadokaMagica.Modules
                 }
             }
 
-            foreach (SkinnedMeshRenderer i in objectToConvert.GetComponentsInChildren<SkinnedMeshRenderer>())
+            foreach (var i in objectToConvert.GetComponentsInChildren<SkinnedMeshRenderer>())
             {
                 if (i)
                 {
@@ -88,7 +85,7 @@ namespace MadokaMagica.Modules
 
         internal static GameObject LoadCrosshair(string crosshairName)
         {
-            GameObject loadedCrosshair = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair");
+            var loadedCrosshair = RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Crosshair/" + crosshairName + "Crosshair");
             if (loadedCrosshair == null)
             {
                 Log.Error($"could not load crosshair with the name {crosshairName}. defaulting to Standard");
@@ -102,7 +99,7 @@ namespace MadokaMagica.Modules
         internal static GameObject LoadEffect(this AssetBundle assetBundle, string resourceName, bool parentToTransform) => LoadEffect(assetBundle, resourceName, "", parentToTransform);
         internal static GameObject LoadEffect(this AssetBundle assetBundle, string resourceName, string soundName = "", bool parentToTransform = false)
         {
-            GameObject newEffect = assetBundle.LoadAsset<GameObject>(resourceName);
+            var newEffect = assetBundle.LoadAsset<GameObject>(resourceName);
 
             if (!newEffect)
             {
@@ -113,7 +110,7 @@ namespace MadokaMagica.Modules
             newEffect.AddComponent<DestroyOnTimer>().duration = 12;
             newEffect.AddComponent<NetworkIdentity>();
             newEffect.AddComponent<VFXAttributes>().vfxPriority = VFXAttributes.VFXPriority.Always;
-            EffectComponent effect = newEffect.AddComponent<EffectComponent>();
+            var effect = newEffect.AddComponent<EffectComponent>();
             effect.applyScale = false;
             effect.effectIndex = EffectIndex.Invalid;
             effect.parentToReferencedTransform = parentToTransform;
@@ -127,7 +124,7 @@ namespace MadokaMagica.Modules
 
         internal static GameObject CreateProjectileGhostPrefab(this AssetBundle assetBundle, string ghostName)
         {
-            GameObject ghostPrefab = assetBundle.LoadAsset<GameObject>(ghostName);
+            var ghostPrefab = assetBundle.LoadAsset<GameObject>(ghostName);
             if (ghostPrefab == null)
             {
                 Log.Error($"Failed to load ghost prefab {ghostName}");
@@ -142,13 +139,13 @@ namespace MadokaMagica.Modules
 
         internal static GameObject CloneProjectilePrefab(string prefabName, string newPrefabName)
         {
-            GameObject newPrefab = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/" + prefabName), newPrefabName);
+            var newPrefab = PrefabAPI.InstantiateClone(RoR2.LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/" + prefabName), newPrefabName);
             return newPrefab;
         }
 
         internal static GameObject LoadAndAddProjectilePrefab(this AssetBundle assetBundle, string newPrefabName)
         {
-            GameObject newPrefab = assetBundle.LoadAsset<GameObject>(newPrefabName);
+            var newPrefab = assetBundle.LoadAsset<GameObject>(newPrefabName);
             if(newPrefab == null)
             {
                 Log.ErrorAssetBundle(newPrefabName, assetBundle.name);

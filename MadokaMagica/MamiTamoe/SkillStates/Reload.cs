@@ -1,10 +1,11 @@
 ﻿using RoR2;
 using EntityStates;
 using MadokaMagica.MamiTamoe.Content;
+using MadokaMagica.MamiTamoe.SkillStates.BaseStates;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
-    public class Reload : BaseSkillState
+    public class Reload : BaseMamiSkillState
     {
         public static float damageCoefficient = MamiStaticValues.gunDamageCoefficient;
         public static float procCoefficient = 1.2f;

@@ -1,5 +1,4 @@
-﻿using BepInEx.Configuration;
-using RoR2;
+﻿using RoR2;
 using UnityEngine;
 using System.Collections.Generic;
 using RoR2.Skills;
@@ -40,7 +39,7 @@ namespace MadokaMagica.Modules.Characters
         #region CharacterSelectSurvivorPreviewDisplayController
         protected virtual void AddCssPreviewSkill(int indexFromEditor, SkillFamily skillFamily, SkillDef skillDef)
         {
-            CharacterSelectSurvivorPreviewDisplayController CSSPreviewDisplayConroller = displayPrefab.GetComponent<CharacterSelectSurvivorPreviewDisplayController>();
+            var CSSPreviewDisplayConroller = displayPrefab.GetComponent<CharacterSelectSurvivorPreviewDisplayController>();
             if (!CSSPreviewDisplayConroller)
             {
                 Log.Error("trying to add skillChangeResponse to null CharacterSelectSurvivorPreviewDisplayController.\nMake sure you created one on your Display prefab in editor");
@@ -53,7 +52,7 @@ namespace MadokaMagica.Modules.Characters
 
         protected virtual void AddCssPreviewSkin(int indexFromEditor, SkinDef skinDef)
         {
-            CharacterSelectSurvivorPreviewDisplayController CSSPreviewDisplayConroller = displayPrefab.GetComponent<CharacterSelectSurvivorPreviewDisplayController>();
+            var CSSPreviewDisplayConroller = displayPrefab.GetComponent<CharacterSelectSurvivorPreviewDisplayController>();
             if (!CSSPreviewDisplayConroller)
             {
                 Log.Error("trying to add skinChangeResponse to null CharacterSelectSurvivorPreviewDisplayController.\nMake sure you created one on your Display prefab in editor");
@@ -68,7 +67,7 @@ namespace MadokaMagica.Modules.Characters
             if (!displayPrefab)
                 return;
 
-            CharacterSelectSurvivorPreviewDisplayController CSSPreviewDisplayConroller = displayPrefab.GetComponent<CharacterSelectSurvivorPreviewDisplayController>();
+            var CSSPreviewDisplayConroller = displayPrefab.GetComponent<CharacterSelectSurvivorPreviewDisplayController>();
             if (!CSSPreviewDisplayConroller)
                 return;
 
@@ -76,9 +75,9 @@ namespace MadokaMagica.Modules.Characters
             CSSPreviewDisplayConroller.bodyPrefab = bodyPrefab;
 
             //clear list of null entries
-            List<CharacterSelectSurvivorPreviewDisplayController.SkillChangeResponse> newlist = new List<CharacterSelectSurvivorPreviewDisplayController.SkillChangeResponse>();
+            var newlist = new List<CharacterSelectSurvivorPreviewDisplayController.SkillChangeResponse>();
 
-            for (int i = 0; i < CSSPreviewDisplayConroller.skillChangeResponses.Length; i++)
+            for (var i = 0; i < CSSPreviewDisplayConroller.skillChangeResponses.Length; i++)
             {
                 if (CSSPreviewDisplayConroller.skillChangeResponses[i].triggerSkillFamily != null)
                 {

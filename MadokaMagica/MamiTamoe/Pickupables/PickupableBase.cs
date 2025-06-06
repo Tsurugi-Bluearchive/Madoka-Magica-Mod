@@ -1,9 +1,7 @@
 ﻿using EntityStates;
-using EntityStates.VoidRaidCrab.Leg;
-using IL.RoR2.Skills;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace MadokaMagica.MamiTamoe.Pickupables
 {
     public abstract class PickupableBase : MonoBehaviour

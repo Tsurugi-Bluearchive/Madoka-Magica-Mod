@@ -1,10 +1,11 @@
 ﻿using EntityStates;
 using MadokaMagica.MamiTamoe.Content;
+using MadokaMagica.MamiTamoe.SkillStates.BaseStates;
 using RoR2;
 using UnityEngine;
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
-    public class PrecisionStrkie : BaseSkillState
+    public class PrecisionStrkie : BaseMamiSkillState
     {
         public static float damageCoefficient = MamiStaticValues.gunDamageCoefficient;
         private float m_damageCoefficient = damageCoefficient;
@@ -125,7 +126,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                 Util.PlaySound("HenryShootPistol", gameObject);
                 if (isAuthority)
                 {
-                    Ray aimRay = GetAimRay();
+                    var aimRay = GetAimRay();
                     AddRecoil(-1f * recoil, -2f * recoil, -0.5f * recoil, 0.5f * recoil);
                     new BulletAttack
                     {
