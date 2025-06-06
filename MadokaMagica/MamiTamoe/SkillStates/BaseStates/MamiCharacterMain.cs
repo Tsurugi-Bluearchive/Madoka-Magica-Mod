@@ -64,6 +64,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates.BaseStates
             {
                 justJumped = true;
                 characterBody.characterMotor.velocity = new Vector3(CharacterVelocity.x * 3, CharacterVelocity.y, CharacterVelocity.z * 3);
+                JumpCount--;
             }
         }
     }
