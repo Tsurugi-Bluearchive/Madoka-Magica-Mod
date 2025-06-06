@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MadokaMagica.MamiTamoe.Content;
 using MadokaMagica.MamiTamoe.SkillStates.BaseStates;
+using MadokaMagica.MamiTamoe.Components;
 namespace MadokaMagica.MamiTamoe
 {
     public class MamiSurvivor : SurvivorBase<MamiSurvivor>
@@ -109,6 +110,7 @@ namespace MadokaMagica.MamiTamoe
         private void AdditionalBodySetup()
         {
             AddHitboxes();
+            bodyPrefab.AddComponent<MamiGunPassive>();
             //bodyPrefab.AddComponent<HuntressTracerComopnent>();
             //anything else here
         }

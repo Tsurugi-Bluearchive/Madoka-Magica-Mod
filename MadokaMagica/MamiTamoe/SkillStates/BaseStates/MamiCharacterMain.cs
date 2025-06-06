@@ -44,8 +44,6 @@ namespace MadokaMagica.MamiTamoe.SkillStates.BaseStates
             FetchFixedVars();
             FetchTimers();
 
-            Log.Debug($"Just Jumped {justJumped} Tick {tick2} Jump Count {JumpCount}");
-
             //MamiCharacterMain.cs Collection
             if (Mami.mmmgun != null && SecondaryMax > SecondaryStock && isAuthority)
             {
@@ -61,8 +59,8 @@ namespace MadokaMagica.MamiTamoe.SkillStates.BaseStates
             }
 
             //MamiCharacterMain.cs Aerial Dash Controller
-            if ((inputBank.jump.down || inputBank.jump.justReleased) && tick2 > 1f) { justJumped = false; tick2 = 0; }
-            else if (inputBank.jump.justPressed && !isGrounded && JumpCount > 0 && !justJumped && tick2 > 0f)
+            if ((inputBank.jump.justReleased) && tick2 > 0.5f) { justJumped = false; tick2 = 0; }
+            else if (inputBank.jump.justPressed && !isGrounded && JumpCount > 0 && !justJumped)
             {
                 justJumped = true;
                 characterBody.characterMotor.velocity = new Vector3(CharacterVelocity.x * 3, CharacterVelocity.y, CharacterVelocity.z * 3);

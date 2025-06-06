@@ -47,32 +47,6 @@ namespace MadokaMagica.MamiTamoe.Content
         #region effects
         private static void CreateEffects()
         {
-            CreateBombExplosionEffect();
-
-            swordSwingEffect = _assetBundle.LoadEffect("HenrySwordSwingEffect", true);
-            swordHitImpactEffect = _assetBundle.LoadEffect("ImpactHenrySlash");
-        }
-
-        private static void CreateBombExplosionEffect()
-        {
-            bombExplosionEffect = _assetBundle.LoadEffect("BombExplosionEffect", "HenryBombExplosion");
-
-            if (!bombExplosionEffect)
-                return;
-
-            var shakeEmitter = bombExplosionEffect.AddComponent<ShakeEmitter>();
-            shakeEmitter.amplitudeTimeDecay = true;
-            shakeEmitter.duration = 0.5f;
-            shakeEmitter.radius = 200f;
-            shakeEmitter.scaleShakeRadiusWithLocalScale = false;
-
-            shakeEmitter.wave = new Wave
-            {
-                amplitude = 1f,
-                frequency = 40f,
-                cycleOffset = 0f
-            };
-
         }
         #endregion effects
 
