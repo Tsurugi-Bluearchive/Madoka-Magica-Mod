@@ -66,8 +66,8 @@ namespace MadokaMagica.MamiTamoe.Content
             #endregion
 
             #region Achievements
-            Language.Add(Tokens.GetAchievementNameToken(MamiMasteryAchievement.identifier), "Henry: Mastery");
-            Language.Add(Tokens.GetAchievementDescriptionToken(MamiMasteryAchievement.identifier), "As Henry, beat the game or obliterate on Monsoon.");
+            Language.Add(Tokens.GetAchievementNameToken(ZiluMasteryAchievement.identifier), "Henry: Mastery");
+            Language.Add(Tokens.GetAchievementDescriptionToken(ZiluMasteryAchievement.identifier), "As Henry, beat the game or obliterate on Monsoon.");
             #endregion
         }
     }

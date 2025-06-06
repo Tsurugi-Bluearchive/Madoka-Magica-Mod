@@ -103,7 +103,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             }
 
             //PrecisionStrike.cs Firing Logic
-            if (fixedAge >= fireTime && isAuthority && inputBank.skill1.down || fireTime <= 0.2) { Firing(); }
+            if (fixedAge >= fireTime && isAuthority && inputBank.skill1.down) { Firing(); }
             else if (inputBank.skill1.justReleased && fixedAge > 0.2f) { Firing(); }
             else if (fixedAge < 0.2f && !inputBank.skill1.down && !inputBank.skill1.justPressed && !hasFired) { skillLocator.primary.AddOneStock(); outer.SetNextStateToMain(); return;}
             else if (inputBank.skill1.justReleased) { outer.SetNextStateToMain(); return; }

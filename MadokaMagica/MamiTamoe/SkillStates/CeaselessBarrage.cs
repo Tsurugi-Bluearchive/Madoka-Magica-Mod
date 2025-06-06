@@ -41,7 +41,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             originalPos = characterBody.corePosition;
             this.damageSource = DamageSource.Secondary;
         }
-        private void Firing() { skillLocator.secondary.stock--; Fire(); tick = 0; }
+        private void Firing() { Fire(); tick = 0; }
         private void DisableMovement() { characterMotor.Motor.SetPosition(originalPos); characterMotor.velocity = Vector3.zero; }
         
         //CeaselessBarrage.cs Code Start
@@ -64,8 +64,8 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             if (stocks > 0 && isAuthority && tick >= blastDuration && (inputBank.skill2.down || inputBank.skill2.justPressed))
             {
                 stocks--;
-                if (skillLocator.secondary.stock > 0) { Firing(); }
-                else if (skillLocator.primary.stock > 0)  { Firing(); }
+                if (skillLocator.secondary.stock > 0) { Firing(); skillLocator.secondary.stock--; }
+                else if (skillLocator.primary.stock > 0)  { Firing(); skillLocator.primary.stock--; }
                 else { shotBarrage = true; }
             }
 

@@ -22,22 +22,19 @@ namespace MadokaMagica.MamiTamoe.SkillStates.BaseStates
         public EntityState PrecisionStrike;
 
         private float tick;
+        private float tick2;
         private bool justJumped;
-        
+
         private void FetchFixedVars()
         {
             Mami ??= this.GetComponent<MamiGunPassive>();
-
-            characterBody.characterMotor.airControl = 1.5f;
         }
 
-        private Vector3 ClampedDashVelocity(float x, float y, float z) => 
-            new Vector3(
-                Mathf.Clamp(CharacterVelocity.x * x, 70, 70),
-                Mathf.Clamp(CharacterVelocity.y * y, -40, 40),
-                Mathf.Clamp(CharacterVelocity.z * z, 70, 70));
-
-        private void FetchTimers() => tick += Time.fixedDeltaTime;
+        private void FetchTimers()
+        {
+            tick += Time.fixedDeltaTime;
+            tick2 += Time.fixedDeltaTime;
+        }
 
         //MamiCharacterMain.cs Code Start        
         public override void FixedUpdate()
@@ -46,6 +43,8 @@ namespace MadokaMagica.MamiTamoe.SkillStates.BaseStates
             base.FixedUpdate();
             FetchFixedVars();
             FetchTimers();
+
+            Log.Debug($"Just Jumped {justJumped} Tick {tick2} Jump Count {JumpCount}");
 
             //MamiCharacterMain.cs Collection
             if (Mami.mmmgun != null && SecondaryMax > SecondaryStock && isAuthority)
@@ -62,13 +61,11 @@ namespace MadokaMagica.MamiTamoe.SkillStates.BaseStates
             }
 
             //MamiCharacterMain.cs Aerial Dash Controller
-            if (inputBank.jump.justReleased)
-                justJumped = false;
-
-            if (inputBank.jump.justPressed && !isGrounded && JumpCount > 0 && !justJumped)
+            if ((inputBank.jump.down || inputBank.jump.justReleased) && tick2 > 1f) { justJumped = false; tick2 = 0; }
+            else if (inputBank.jump.justPressed && !isGrounded && JumpCount > 0 && !justJumped && tick2 > 0f)
             {
                 justJumped = true;
-                characterBody.characterMotor.velocity = ClampedDashVelocity(17, 1, 17);
+                characterBody.characterMotor.velocity = new Vector3(CharacterVelocity.x * 3, CharacterVelocity.y, CharacterVelocity.z * 3);
             }
         }
     }

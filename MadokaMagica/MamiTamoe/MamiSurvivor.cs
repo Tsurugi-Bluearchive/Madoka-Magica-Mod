@@ -7,8 +7,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using MadokaMagica.MamiTamoe.Content;
 using MadokaMagica.MamiTamoe.SkillStates.BaseStates;
-using MadokaMagica.MamiTamoe.Components;
-
 namespace MadokaMagica.MamiTamoe
 {
     public class MamiSurvivor : SurvivorBase<MamiSurvivor>
@@ -96,7 +94,7 @@ namespace MadokaMagica.MamiTamoe
             MamiTokens.Init();
 
             MamiAssets.Init(assetBundle);
-            MamiBuffs.Init(assetBundle);
+            MamiAssets.Init(assetBundle);
 
             InitializeEntityStateMachines();
             InitializeSkills();
@@ -160,7 +158,6 @@ namespace MadokaMagica.MamiTamoe
                 keywordToken = "KEYWORD_STUNNING",
                 icon = assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
             };
-            bodyPrefab.AddComponent<MamiGunPassive>();
         }
 
         //if this is your first look at skilldef creation, take a look at Secondary first
