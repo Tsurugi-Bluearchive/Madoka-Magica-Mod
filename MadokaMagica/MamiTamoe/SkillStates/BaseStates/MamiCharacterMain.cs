@@ -46,9 +46,9 @@ namespace MadokaMagica.MamiTamoe.SkillStates.BaseStates
         private Vector3 ClampedDashVelocity(float x, float y, float z)
         {
             return this.characterVelocity = new Vector3(
-                Mathf.Clamp(characterVelocity.x * x, 0, 10),
-                Mathf.Clamp(characterVelocity.y * y, 0, 10),
-                Mathf.Clamp(characterVelocity.z * z, 0, 10));
+                Mathf.Clamp(characterVelocity.x * x, -70, 70),
+                Mathf.Clamp(characterVelocity.y * y, -70, 70),
+                Mathf.Clamp(characterVelocity.z * z, -40, 40));
         }
         private void FetchTimers() => tick += Time.fixedDeltaTime;
 
@@ -80,7 +80,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates.BaseStates
             if (inputBank.jump.justPressed && !isGrounded && jumpCount > 0 && !justJumped)
             {
                 justJumped = true;
-                characterBody.characterMotor.velocity = ClampedDashVelocity(3, 1, 3);
+                characterBody.characterMotor.velocity = ClampedDashVelocity(15, 1, 15);
             }
         }
 

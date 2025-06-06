@@ -61,6 +61,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         //SpawnGun.cs FixedUpdate()
         public override void FixedUpdate()
         {
+            FetchFixedVairables();
             base.FixedUpdate();
             DisableMovement();
             duration = baseDuration / attackSpeedStat;

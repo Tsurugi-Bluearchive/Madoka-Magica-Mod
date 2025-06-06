@@ -1,7 +1,6 @@
 ﻿using EntityStates;
 using EntityStates.VoidRaidCrab.Leg;
 using IL.RoR2.Skills;
-using MadokaMagica.MamiTamoe.BaseStates;
 using System;
 using System.Collections.Generic;
 using UnityEngine;

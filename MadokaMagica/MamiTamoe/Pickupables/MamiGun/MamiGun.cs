@@ -1,5 +1,4 @@
 ﻿using MadokaMagica.Modules;
-using MadokaMagica.MamiTamoe.BaseStates;
 using Rewired.Utils;
 using RoR2;
 using System.Collections.Generic;

@@ -35,8 +35,6 @@ namespace MadokaMagica.MamiTamoe.Content
 
             _assetBundle = assetBundle;
 
-            swordHitSoundEvent = Content.CreateAndAddNetworkSoundEventDef("HenrySwordHit");
-
             CreateEffects();
 
             CreateProjectiles();
@@ -80,7 +78,6 @@ namespace MadokaMagica.MamiTamoe.Content
         private static void CreateProjectiles()
         {
             CreateBombProjectile();
-            Content.AddProjectilePrefab(bombProjectilePrefab);
         }
 
         private static void CreateMamiGun()
@@ -111,7 +108,6 @@ namespace MadokaMagica.MamiTamoe.Content
             bombImpactExplosion.destroyOnEnemy = true;
             bombImpactExplosion.lifetime = 12f;
             bombImpactExplosion.impactEffect = bombExplosionEffect;
-            bombImpactExplosion.lifetimeExpiredSound = Content.CreateAndAddNetworkSoundEventDef("HenryBombExplosion");
             bombImpactExplosion.timerAfterImpact = true;
             bombImpactExplosion.lifetimeAfterImpact = 0.1f;
 
