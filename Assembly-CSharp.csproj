@@ -61,8 +61,14 @@
     <Compile Include="Assets\MamiBundle\ExplosionSphereExpansion.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\RoR2\Base\Shaders\UI\HGUIBarRemap.shader" />
+    <None Include="Assets\RoR2\Base\Shaders\UI\HGUIAnimateAlpha.shader" />
     <None Include="Assets\RoR2\Base\Shaders\Deferred\HGStandard.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\RoR2\Base\Shaders\FX\HGCloudRemap.shader" />
+    <None Include="Assets\RoR2\Base\Shaders\UI\HealthBar.shader" />
+    <None Include="Assets\TextMesh Pro\FormerResources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

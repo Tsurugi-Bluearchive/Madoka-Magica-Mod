@@ -16,8 +16,6 @@ namespace MadokaMagica.MamiTamoe.Content
             Modules.Content.AddEntityState(typeof(SpawnGun));
 
             Modules.Content.AddEntityState(typeof(PrecisionBlast));
-
-            Modules.Content.AddEntityState(typeof(MamiCharacterMain));
         }
     }
 }
