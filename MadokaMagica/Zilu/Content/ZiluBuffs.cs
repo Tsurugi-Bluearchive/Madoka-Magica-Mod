@@ -10,7 +10,7 @@ namespace MadokaMagica.Zilu.Content
         public static BuffDef ziluCorruption;
         public static void Init(AssetBundle assetBundle)
         {
-            ziluCorruption = Modules.Content.CreateAndAddBuff("HenryArmorBuff",
+            ziluCorruption = Modules.Content.CreateAndAddBuff("ZuluCorruption",
                 LegacyResourcesAPI.Load<BuffDef>("BuffDefs/HiddenInvincibility").iconSprite,
                 Color.white,
                 false,
