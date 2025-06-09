@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 4179559788
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d1d6b010a5336275330f516df313347f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b0363f7088f9761414f730641bf9a24b
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/RoR2/Base/Characters/Commando/texCommandoIcon.png
+Dependencies: []

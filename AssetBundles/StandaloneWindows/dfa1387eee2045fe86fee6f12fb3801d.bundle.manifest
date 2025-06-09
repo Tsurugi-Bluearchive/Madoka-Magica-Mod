@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 3537571206
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 8f336ece7f7022c3fc099f47f5d74bf9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/RoR2/Junk/Characters/Bandit/Skills/texBanditSkill3Icon.png
+- Assets/RoR2/Junk/Characters/Bandit/Skills/texBanditSkill3Icon.asset
+Dependencies: []

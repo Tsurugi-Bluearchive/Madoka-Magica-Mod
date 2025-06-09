@@ -1,0 +1,188 @@
+ManifestFileVersion: 0
+CRC: 3003370796
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: b74a37af7e29f30bfbaa61ee9f395841.bundle
+      Dependencies: {}
+    Info_1:
+      Name: 5ec0fd7669d0391f5993f38a3a5a5ce9.bundle
+      Dependencies: {}
+    Info_2:
+      Name: c12aeef012cb62671ec9a242b1e21e2b.bundle
+      Dependencies:
+        Dependency_0: b74a37af7e29f30bfbaa61ee9f395841.bundle
+        Dependency_1: 5ec0fd7669d0391f5993f38a3a5a5ce9.bundle
+        Dependency_2: a9b9be27f703fc023a818aa0e47aa233.bundle
+        Dependency_3: 9d8962a1005f58f17cc690569ef42450.bundle
+    Info_3:
+      Name: bb7c7d2ebefe584f1d4065f77b1dc746.bundle
+      Dependencies: {}
+    Info_4:
+      Name: b41d356d3dfd186b32b988731d78c150.bundle
+      Dependencies: {}
+    Info_5:
+      Name: e4adee1e4360a13783bfefc2519d4671.bundle
+      Dependencies:
+        Dependency_0: b74a37af7e29f30bfbaa61ee9f395841.bundle
+        Dependency_1: 5ec0fd7669d0391f5993f38a3a5a5ce9.bundle
+        Dependency_2: c12aeef012cb62671ec9a242b1e21e2b.bundle
+        Dependency_3: bb7c7d2ebefe584f1d4065f77b1dc746.bundle
+        Dependency_4: b41d356d3dfd186b32b988731d78c150.bundle
+        Dependency_5: 525df469ac9469cca75122228b4331f9.bundle
+    Info_6:
+      Name: 525df469ac9469cca75122228b4331f9.bundle
+      Dependencies: {}
+    Info_7:
+      Name: a9b9be27f703fc023a818aa0e47aa233.bundle
+      Dependencies: {}
+    Info_8:
+      Name: 9d8962a1005f58f17cc690569ef42450.bundle
+      Dependencies: {}
+    Info_9:
+      Name: mamiassetbundle
+      Dependencies:
+        Dependency_0: myassetbundle
+    Info_10:
+      Name: b618f6d86ab1fa06cc27d60dcbafb526.bundle
+      Dependencies: {}
+    Info_11:
+      Name: 1202c65a0ff6548763c2eced4674f5c8.bundle
+      Dependencies: {}
+    Info_12:
+      Name: 73e931569ab9d0e5d0deb59f7a84e227.bundle
+      Dependencies:
+        Dependency_0: be83c3e727c92050185e896b04f98fc2.bundle
+    Info_13:
+      Name: db2ed9aeceb3bf9e2612a7c665fe4ccb.bundle
+      Dependencies:
+        Dependency_0: b74a37af7e29f30bfbaa61ee9f395841.bundle
+        Dependency_1: 5ec0fd7669d0391f5993f38a3a5a5ce9.bundle
+        Dependency_2: 9d8962a1005f58f17cc690569ef42450.bundle
+        Dependency_3: b618f6d86ab1fa06cc27d60dcbafb526.bundle
+        Dependency_4: 1202c65a0ff6548763c2eced4674f5c8.bundle
+        Dependency_5: 73e931569ab9d0e5d0deb59f7a84e227.bundle
+        Dependency_6: dfa1387eee2045fe86fee6f12fb3801d.bundle
+        Dependency_7: cdf2b0ed019cc4451e07d4792f630cc6.bundle
+        Dependency_8: f1438a591930f61d570c8bdcc006ef20.bundle
+        Dependency_9: a4f0065780d5a72942ea433e2c217212.bundle
+        Dependency_10: a14056b24a91c6f66fc800cf101300b2.bundle
+        Dependency_11: 1b44dd122c24d7cf1699fda8f1a6a94f.bundle
+        Dependency_12: aa981868d323a7abf8a468ce15f768ca.bundle
+        Dependency_13: dae9bd1797eff48f7c2f3de0c385c5ff.bundle
+        Dependency_14: eddf91943924301139a2ae1e96d76262.bundle
+        Dependency_15: 392b31e129de4aa837974bcac0a0b864.bundle
+        Dependency_16: 8d4eda269922904f4e83024d26ba6cfe.bundle
+        Dependency_17: 9ef4aacd9f1d8cdf26be7d101cd6c132.bundle
+        Dependency_18: c535d0246b912cf39e15b5df74a84f06.bundle
+        Dependency_19: b399b06e953d9c9f57934217a2247509.bundle
+        Dependency_20: a18ee60d5f27db42068d4eb1eccff061.bundle
+        Dependency_21: 21312bc000d607d4d3fd39bb0e42fc2b.bundle
+        Dependency_22: aba8e654797dbbfb82d51ab1e69f6960.bundle
+    Info_14:
+      Name: dfa1387eee2045fe86fee6f12fb3801d.bundle
+      Dependencies: {}
+    Info_15:
+      Name: cdf2b0ed019cc4451e07d4792f630cc6.bundle
+      Dependencies:
+        Dependency_0: 9d8962a1005f58f17cc690569ef42450.bundle
+        Dependency_1: 1202c65a0ff6548763c2eced4674f5c8.bundle
+        Dependency_2: 73e931569ab9d0e5d0deb59f7a84e227.bundle
+        Dependency_3: db2ed9aeceb3bf9e2612a7c665fe4ccb.bundle
+        Dependency_4: 1b44dd122c24d7cf1699fda8f1a6a94f.bundle
+    Info_16:
+      Name: f1438a591930f61d570c8bdcc006ef20.bundle
+      Dependencies: {}
+    Info_17:
+      Name: a4f0065780d5a72942ea433e2c217212.bundle
+      Dependencies:
+        Dependency_0: 5ec0fd7669d0391f5993f38a3a5a5ce9.bundle
+        Dependency_1: 9e53c0f14758ac2585836fc92d083331.bundle
+        Dependency_2: 413b4f69e566367dd4277dadc72a13e8.bundle
+    Info_18:
+      Name: a14056b24a91c6f66fc800cf101300b2.bundle
+      Dependencies: {}
+    Info_19:
+      Name: be83c3e727c92050185e896b04f98fc2.bundle
+      Dependencies: {}
+    Info_20:
+      Name: 1b44dd122c24d7cf1699fda8f1a6a94f.bundle
+      Dependencies: {}
+    Info_21:
+      Name: aa981868d323a7abf8a468ce15f768ca.bundle
+      Dependencies:
+        Dependency_0: 9d8962a1005f58f17cc690569ef42450.bundle
+        Dependency_1: 1202c65a0ff6548763c2eced4674f5c8.bundle
+        Dependency_2: 73e931569ab9d0e5d0deb59f7a84e227.bundle
+        Dependency_3: db2ed9aeceb3bf9e2612a7c665fe4ccb.bundle
+        Dependency_4: 1b44dd122c24d7cf1699fda8f1a6a94f.bundle
+    Info_22:
+      Name: 9e53c0f14758ac2585836fc92d083331.bundle
+      Dependencies: {}
+    Info_23:
+      Name: dae9bd1797eff48f7c2f3de0c385c5ff.bundle
+      Dependencies: {}
+    Info_24:
+      Name: eddf91943924301139a2ae1e96d76262.bundle
+      Dependencies:
+        Dependency_0: 5ec0fd7669d0391f5993f38a3a5a5ce9.bundle
+        Dependency_1: 1b44dd122c24d7cf1699fda8f1a6a94f.bundle
+    Info_25:
+      Name: 392b31e129de4aa837974bcac0a0b864.bundle
+      Dependencies: {}
+    Info_26:
+      Name: 8d4eda269922904f4e83024d26ba6cfe.bundle
+      Dependencies: {}
+    Info_27:
+      Name: 9ef4aacd9f1d8cdf26be7d101cd6c132.bundle
+      Dependencies: {}
+    Info_28:
+      Name: c535d0246b912cf39e15b5df74a84f06.bundle
+      Dependencies:
+        Dependency_0: b74a37af7e29f30bfbaa61ee9f395841.bundle
+        Dependency_1: 5ec0fd7669d0391f5993f38a3a5a5ce9.bundle
+        Dependency_2: a9b9be27f703fc023a818aa0e47aa233.bundle
+        Dependency_3: 9d8962a1005f58f17cc690569ef42450.bundle
+        Dependency_4: 1202c65a0ff6548763c2eced4674f5c8.bundle
+        Dependency_5: 73e931569ab9d0e5d0deb59f7a84e227.bundle
+        Dependency_6: db2ed9aeceb3bf9e2612a7c665fe4ccb.bundle
+        Dependency_7: 1b44dd122c24d7cf1699fda8f1a6a94f.bundle
+        Dependency_8: a353317b41f67c2ce20287a6110fc840.bundle
+    Info_29:
+      Name: b399b06e953d9c9f57934217a2247509.bundle
+      Dependencies: {}
+    Info_30:
+      Name: a18ee60d5f27db42068d4eb1eccff061.bundle
+      Dependencies:
+        Dependency_0: f1438a591930f61d570c8bdcc006ef20.bundle
+    Info_31:
+      Name: 413b4f69e566367dd4277dadc72a13e8.bundle
+      Dependencies:
+        Dependency_0: 5ec0fd7669d0391f5993f38a3a5a5ce9.bundle
+        Dependency_1: 392b31e129de4aa837974bcac0a0b864.bundle
+    Info_32:
+      Name: 21312bc000d607d4d3fd39bb0e42fc2b.bundle
+      Dependencies:
+        Dependency_0: a9b9be27f703fc023a818aa0e47aa233.bundle
+        Dependency_1: 1202c65a0ff6548763c2eced4674f5c8.bundle
+        Dependency_2: db2ed9aeceb3bf9e2612a7c665fe4ccb.bundle
+    Info_33:
+      Name: a353317b41f67c2ce20287a6110fc840.bundle
+      Dependencies: {}
+    Info_34:
+      Name: aba8e654797dbbfb82d51ab1e69f6960.bundle
+      Dependencies:
+        Dependency_0: 9d8962a1005f58f17cc690569ef42450.bundle
+        Dependency_1: 1202c65a0ff6548763c2eced4674f5c8.bundle
+        Dependency_2: 73e931569ab9d0e5d0deb59f7a84e227.bundle
+        Dependency_3: db2ed9aeceb3bf9e2612a7c665fe4ccb.bundle
+        Dependency_4: 1b44dd122c24d7cf1699fda8f1a6a94f.bundle
+        Dependency_5: c535d0246b912cf39e15b5df74a84f06.bundle
+        Dependency_6: a353317b41f67c2ce20287a6110fc840.bundle
+    Info_35:
+      Name: myassetbundle
+      Dependencies: {}
+    Info_36:
+      Name: jetassetbundle
+      Dependencies:
+        Dependency_0: myassetbundle

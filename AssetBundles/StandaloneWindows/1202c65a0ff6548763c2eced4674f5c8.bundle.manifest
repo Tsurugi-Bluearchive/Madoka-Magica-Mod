@@ -1,0 +1,64 @@
+ManifestFileVersion: 0
+CRC: 3973344419
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 63860f6c9fa0cfd683b5ec30820acf66
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIHighlightHeader.png
+- Assets/RoR2/Base/UI/AR/texUICornerTier2.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIHighlightBoxOutline.png
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIAnimateSlice4.png
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUICleanButton.png
+- Assets/RoR2/Base/UI/AR/texUICornerTier2.png
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIHighlightBoxOutline.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUICleanPanel.png
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIHighlightHeader.asset
+- Assets/RoR2/Base/UI/HUD/texHitmarker1.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIBottomUpFade.png
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUICombatHealthbar.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIBottomUpFade.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIPopupRect.png
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUICleanButton.asset
+- Assets/RoR2/Base/UI/texDetailPanel.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIBackdropFadedEnds.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texSimpleTriangle.png
+- Assets/RoR2/Base/UI/texDefaultSocialUserIcon.png
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIMainHealthbar.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIBackdropFadedEnds.png
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUICombatHealthbar.png
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIHeaderDouble.png
+- Assets/RoR2/Base/UI/HUD/texCoinsIcon.png
+- Assets/RoR2/Base/UI/HUD/texCoinsIcon.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIOutlineOnly.png
+- Assets/RoR2/Base/UI/HUD/texHitmarker1.png
+- Assets/RoR2/Base/UI/LobbyControlPanel/UnmuteIcon.png
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIPopupRect.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIBackdrop.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIOutlineOnly.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIAnimateSlice4.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIMainHealthbar.png
+- Assets/RoR2/Base/UI/texDetailPanel.png
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUINonsegmentedHealthbar.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texSimpleTriangle.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUICleanPanel.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUIBackdrop.png
+- Assets/RoR2/Base/UI/texBasicArrowRight.png
+- Assets/RoR2/Base/UI/HUD/texUIFlashSquare1.png
+- Assets/RoR2/Base/UI/HUD/texUIFlashSquare1.asset
+- Assets/RoR2/Base/UI/Generic UI/Textures/texUINonsegmentedHealthbar.png
+- Assets/RoR2/Base/UI/SpecialUIMaterials/texUIAnimateRampHighlights.png
+- Assets/RoR2/Base/UI/texDefaultSocialUserIcon.asset
+- Assets/RoR2/Base/UI/SpecialUIMaterials/texUISSOverlay2.png
+- Assets/RoR2/Base/UI/Crosshair/RemapCrosshairs/texCooldownRemap.png
+Dependencies: []

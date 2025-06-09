@@ -2,7 +2,7 @@
 
 namespace MadokaMagica.Zilu.SkillStates.BaseStates
 {
-    public class BaseZiluSkillState : BaseSkillState
+    public class BaseJetSkillState : BaseSkillState
     {
     }
 }

@@ -8,6 +8,7 @@ using UnityEngine;
 using MadokaMagica.MamiTamoe.Content;
 using MadokaMagica.MamiTamoe.SkillStates.BaseStates;
 using MadokaMagica.MamiTamoe.Components;
+using BepInEx.Configuration;
 namespace MadokaMagica.MamiTamoe
 {
     public class MamiSurvivor : SurvivorBase<MamiSurvivor>
@@ -74,11 +75,10 @@ namespace MadokaMagica.MamiTamoe
 
         public override void Initialize()
         {
-            //uncomment if you have multiple characters
-            //ConfigEntry<bool> characterEnabled = Config.CharacterEnableConfig("Survivors", "Henry");
+            ConfigEntry<bool> characterEnabled = Config.CharacterEnableConfig("Survivors", "Henry");
 
-            //if (!characterEnabled.Value)
-            //    return;
+              if (!characterEnabled.Value)
+              return;
 
             base.Initialize();
         }

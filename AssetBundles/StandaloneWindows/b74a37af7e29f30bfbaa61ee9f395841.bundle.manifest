@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 553834563
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 761d6c60ba2d5ced6c0a5bef0c70d699
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b0363f7088f9761414f730641bf9a24b
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/RoR2/Base/Common/ColorRamps/texRampWhiteAlphaOnly.png
+- Assets/RoR2/Base/Common/ColorRamps/texRampSkillCooldown.png
+- Assets/RoR2/Base/Common/ColorRamps/texRampWhite.png
+- Assets/RoR2/Base/Common/ColorRamps/texRampDefault.png
+- Assets/RoR2/Base/Common/ColorRamps/texRampTritone2.png
+- Assets/RoR2/Base/Common/ColorRamps/texRampTwotoneWhite.png
+- Assets/RoR2/Base/Common/ColorRamps/texRampGenericFire.png
+Dependencies: []

@@ -1,0 +1,48 @@
+ManifestFileVersion: 0
+CRC: 1772726066
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d026c194a1d30646f123bec97d68d296
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 21f13ee3d4c497c1347dc46634480cd8
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: -667331979, guid: 67dfb1fdfb2b407222eda8e23ac8b724, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
+Assets:
+- Assets/RoR2/Base/Common/Fonts/Bombardier/tmpBombStandard Material.mat
+- Assets/RoR2/Base/Common/Fonts/Bombardier/tmpBombDropshadow Atlas.png
+- Assets/RoR2/Base/Common/Fonts/Bombardier/tmpBombDropshadow.asset
+Dependencies:
+- C:/Users/dmans/MadokaMagicaMod/Madoka-Magica-Mod/AssetBundles/StandaloneWindows/be83c3e727c92050185e896b04f98fc2.bundle

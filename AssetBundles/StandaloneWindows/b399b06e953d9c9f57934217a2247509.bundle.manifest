@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2541029512
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6195f448efa365d99fd02f77d74d0351
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/RoR2/Base/Items/Syringe/texSyringeIcon.asset
+- Assets/RoR2/Base/Items/Syringe/texSyringeIcon.png
+Dependencies: []

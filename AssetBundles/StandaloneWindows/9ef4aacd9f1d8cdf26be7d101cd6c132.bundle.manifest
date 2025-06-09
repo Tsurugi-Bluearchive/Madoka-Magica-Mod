@@ -1,0 +1,17 @@
+ManifestFileVersion: 0
+CRC: 1316801556
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 382e199747017d7be615e3cac0064890
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b0363f7088f9761414f730641bf9a24b
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/RoR2/Base/Characters/Engi/texEngiShieldBlurred.png
+Dependencies: []

@@ -9,15 +9,15 @@ namespace MadokaMagica.Zilu.Content
         public static void Init()
         {
 
-            Modules.Content.AddEntityState(typeof(CeaselessBarrage));
+            Modules.Content.AddEntityState(typeof(CurseWitCounter));
 
             Modules.Content.AddEntityState(typeof(PrecisionStrkie));
 
-            Modules.Content.AddEntityState(typeof(SpawnGun));
+            Modules.Content.AddEntityState(typeof(Missile));
 
-            Modules.Content.AddEntityState(typeof(PrecisionBlast));
+            Modules.Content.AddEntityState(typeof(CurseWitTeleport));
 
-            Modules.Content.AddEntityState(typeof(ZiluCharacterMain));
+            Modules.Content.AddEntityState(typeof(JetCharacterMain));
         }
     }
 }

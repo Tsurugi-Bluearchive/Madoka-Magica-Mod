@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 2335782467
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 813ca825e81ad5327bc454ab7c0bca4a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/RoR2/Base/Common/VFX/ParticleMasks/texWideGlowMask.png
+- Assets/RoR2/Base/Common/VFX/ParticleMasks/texAlphaGradient2.png
+- Assets/RoR2/Base/Common/VFX/ParticleMasks/texAlphaGradient3.png
+- Assets/RoR2/Base/Common/VFX/ParticleMasks/texLightning3Mask.png
+- Assets/RoR2/Base/Common/VFX/ParticleMasks/texAlphaGradient2Mask.png
+Dependencies: []

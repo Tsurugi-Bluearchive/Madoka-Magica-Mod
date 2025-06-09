@@ -1,0 +1,206 @@
+ManifestFileVersion: 0
+CRC: 2442008597
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7c1249b4dc9b48baefb8e1afba869da0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7898bae791e3cac3ce85138c51a90f4a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 9a68da65c907acb4eb4dbcd042f172e7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 68ee60b5bcd2668489cac0473619dffe, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 319
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: RoR2
+  ClassName: ChildLocator/NameTransformPair
+Assets:
+- Assets/JetBundle/Icons/texPrimaryIcon.png
+- Assets/JetBundle/Materials/matHenryJedi.mat
+- Assets/JetBundle/Mesh/meshHenryNeo.mesh
+- Assets/JetBundle/Icons/texSecondaryIcon.png
+- Assets/JetBundle/VFX/Materials/matSwingEffect.mat
+- Assets/JetBundle/Animation/maskBandana.mask
+- Assets/JetBundle/Animation/maskAimYaw.mask
+- Assets/JetBundle/Icons/texHenryIcon.png
+- Assets/JetBundle/Animation/clips/Slash2.anim
+- Assets/JetBundle/Icons/texMainSkin.png
+- Assets/JetBundle/Icons/texScepterSpecialIcon.png
+- Assets/JetBundle/Icons/texPistolIcon.png
+- Assets/JetBundle/HenryMonsterMaster.prefab
+- Assets/JetBundle/VFX/Materials/matDust.mat
+- Assets/JetBundle/VFX/HenryBazookaExplosionEffect.prefab
+- Assets/JetBundle/Materials/matDante.mat
+- Assets/JetBundle/VFX/Textures/texPunchImpactShadow.png
+- Assets/JetBundle/Icons/texBazookaIconScepter.png
+- Assets/JetBundle/Animation/clips/SprintL.anim
+- Assets/JetBundle/Animation/clips/SprintF.anim
+- Assets/JetBundle/VFX/ImpactHenrySlash.prefab
+- Assets/JetBundle/Animation/clips/IdleIn.anim
+- Assets/JetBundle/Materials/matHenry.mat
+- Assets/JetBundle/Mesh/meshRebellion.mesh
+- Assets/JetBundle/Mesh/meshHenrySword.mesh
+- Assets/JetBundle/Animation/clips/Roll.anim
+- Assets/JetBundle/Animation/clips/ShootGun.anim
+- Assets/JetBundle/Animation/maskGesture.mask
+- Assets/JetBundle/Animation/maskImpact.mask
+- Assets/JetBundle/Animation/clips/WalkB.anim
+- Assets/JetBundle/VFX/Materials/matPunchImpactShadow.mat
+- Assets/JetBundle/Mesh/meshDante.mesh
+- Assets/JetBundle/Animation/clips/IdleAdditive.anim
+- Assets/JetBundle/VFX/Textures/texHenrySwing2.png
+- Assets/JetBundle/VFX/Materials/matHitSpark.mat
+- Assets/JetBundle/Materials/matHenryNeo.mat
+- Assets/JetBundle/VFX/Textures/texFistSwing.png
+- Assets/JetBundle/Animation/clips/RestIdle.anim
+- Assets/JetBundle/VFX/Materials/matFire.mat
+- Assets/JetBundle/Mesh/meshHenry.mesh
+- Assets/JetBundle/VFX/Materials/matFistSwing.mat
+- Assets/JetBundle/Materials/matRebellion.mat
+- Assets/JetBundle/VFX/Materials/matHitSparkPunch.mat
+- Assets/JetBundle/Mesh/meshVergilCoat.mesh
+- Assets/JetBundle/Animation/clips/RestIdleIn.anim
+- Assets/JetBundle/Materials/matBazooka.mat
+- Assets/JetBundle/Icons/texShotgunIcon.png
+- Assets/JetBundle/Icons/texDanteAchievement.png
+- Assets/JetBundle/Materials/matVergil.mat
+- Assets/JetBundle/Textures/texBazooka.png
+- Assets/JetBundle/VFX/Textures/texRipple.png
+- Assets/JetBundle/Textures/texShotgun.png
+- Assets/JetBundle/Textures/texHenryJediEmission.png
+- Assets/JetBundle/VFX/Materials/matSwingShadow.mat
+- Assets/JetBundle/Animation/clips/MenuIdleIn.anim
+- Assets/JetBundle/VFX/Materials/matPunchImpact.mat
+- Assets/JetBundle/Icons/texBazookaFireIcon.png
+- Assets/JetBundle/Animation/clips/MenuIdle.anim
+- Assets/JetBundle/Icons/texHenryAchievement.png
+- Assets/JetBundle/Animation/clips/WalkR.anim
+- Assets/JetBundle/HenryBazookaRocketGhost.prefab
+- Assets/JetBundle/Icons/texMasteryAchievement.png
+- Assets/JetBundle/VFX/Textures/texSmoke.png
+- Assets/JetBundle/Textures/texHenryNeo.png
+- Assets/JetBundle/Icons/texStingerIcon.png
+- Assets/JetBundle/VFX/Textures/texSlash.png
+- Assets/JetBundle/Animation/clips/WalkL.anim
+- Assets/JetBundle/VFX/Materials/matAnimeShapes.mat
+- Assets/JetBundle/Textures/texHenryVergil.png
+- Assets/JetBundle/VFX/Materials/matSmoke.mat
+- Assets/JetBundle/Mesh/meshHenrySwordAlt.mesh
+- Assets/JetBundle/Mesh/meshVergil.mesh
+- Assets/JetBundle/VFX/HenryDustEffect.prefab
+- Assets/JetBundle/VFX/HenrySwordSwingEffect.prefab
+- Assets/JetBundle/VFX/Mesh/meshBoxingGlove.mesh
+- Assets/JetBundle/VFX/Textures/texHitSpark.png
+- Assets/JetBundle/Materials/matShotgun.mat
+- Assets/JetBundle/Mesh/meshNeoCoat.mesh
+- Assets/JetBundle/Animation/clips/DefaultPose.anim
+- Assets/JetBundle/Animation/clips/Jump.anim
+- Assets/JetBundle/VFX/BombExplosionEffect.prefab
+- Assets/JetBundle/Icons/texVergilAchievement.png
+- Assets/JetBundle/Textures/texHenryJedi.png
+- Assets/JetBundle/Icons/texSpecialIcon.png
+- Assets/JetBundle/Icons/texBazookaOutIcon.png
+- Assets/JetBundle/Textures/texHenryAlt.png
+- Assets/JetBundle/Animation/animHenryMenu.controller
+- Assets/JetBundle/Icons/texGrandMasteryAchievement.png
+- Assets/JetBundle/Materials/matRoy.mat
+- Assets/JetBundle/Icons/texUziIcon.png
+- Assets/JetBundle/Animation/clips/WalkF.anim
+- Assets/JetBundle/Textures/texHenryDante.png
+- Assets/JetBundle/VFX/Mesh/meshSwing.asset
+- Assets/JetBundle/VFX/Materials/matPunchEffect.mat
+- Assets/JetBundle/VFX/HenryBazookaMuzzleFlash.prefab
+- Assets/JetBundle/Animation/clips/SprintR.anim
+- Assets/JetBundle/Animation/maskLeftArm.mask
+- Assets/JetBundle/VFX/FistBarrageEffect.prefab
+- Assets/JetBundle/Textures/texHenry.png
+- Assets/JetBundle/mldJet.prefab
+- Assets/JetBundle/Icons/texBoxingGlovesIcon.png
+- Assets/JetBundle/Textures/texHenryDanteEmission.png
+- Assets/JetBundle/VFX/Textures/texDust.png
+- Assets/JetBundle/Materials/matBoxingGlove.mat
+- Assets/JetBundle/Animation/clips/AimYaw.anim
+- Assets/JetBundle/VFX/Materials/matRipple.mat
+- Assets/JetBundle/Animation/clips/Slash1.anim
+- Assets/JetBundle/VFX/ImpactHenryPunch.prefab
+- Assets/JetBundle/VFX/Materials/matSlash.mat
+- Assets/JetBundle/VFX/Textures/texSwingEffect.png
+- Assets/JetBundle/jet.fbx
+- Assets/JetBundle/VFX/Textures/texPunchImpact.png
+- Assets/JetBundle/Materials/matHenryAlt.mat
+- Assets/JetBundle/VFX/Textures/texEmbers.png
+- Assets/JetBundle/Mesh/meshUzi.mesh
+- Assets/JetBundle/VFX/Materials/matHenrySwing2.mat
+- Assets/JetBundle/Icons/texPassiveIcon.png
+- Assets/JetBundle/Animation/clips/DescendFast.anim
+- Assets/JetBundle/VFX/Materials/matEmbers.mat
+- Assets/JetBundle/Animation/clips/ThrowBomb.anim
+- Assets/JetBundle/Icons/texUtilityIcon.png
+- Assets/JetBundle/Mesh/meshHenryAlt.mesh
+- Assets/JetBundle/HenryBombGhost.prefab
+- Assets/JetBundle/VFX/Materials/matTrail.mat
+- Assets/JetBundle/Textures/texBoxingGlove.png
+- Assets/JetBundle/Mesh/meshPistol.mesh
+- Assets/JetBundle/Materials/matBazookaRocket.mat
+- Assets/JetBundle/Animation/animHenry.controller
+- Assets/JetBundle/Animation/maskAimBazooka.mask
+- Assets/JetBundle/Mesh/MeshHenryGun.mesh
+- Assets/JetBundle/Animation/clips/Ascend.anim
+- Assets/JetBundle/Mesh/meshYamato.mesh
+- Assets/JetBundle/VFX/Mesh/meshPunchShockwave.mesh
+- Assets/JetBundle/Animation/clips/LightImpact.anim
+- Assets/JetBundle/Animation/maskAimPitch.mask
+- Assets/JetBundle/VFX/Textures/texFire.tga
+- Assets/JetBundle/VFX/HenryFistSwingEffect.prefab
+- Assets/JetBundle/Icons/texBazookaIcon.png
+- Assets/JetBundle/Mesh/meshDanteCoat.mesh
+- Assets/JetBundle/Animation/clips/Descend.anim
+- Assets/JetBundle/Animation/clips/Idle.anim
+- Assets/JetBundle/VFX/Textures/texLightning.tif
+- Assets/JetBundle/Animation/clips/AimPitch.anim
+Dependencies:
+- C:/Users/dmans/MadokaMagicaMod/Madoka-Magica-Mod/AssetBundles/StandaloneWindows/myassetbundle

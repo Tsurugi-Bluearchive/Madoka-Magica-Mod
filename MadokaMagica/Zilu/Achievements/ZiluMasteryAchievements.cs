@@ -7,8 +7,8 @@ namespace MadokaMagica.Zilu.Achievements
     [RegisterAchievement(identifier, unlockableIdentifier, null, 10, null)]
     public class ZiluMasteryAchievements : BaseMasteryAchievement
     {
-        public const string identifier = ZiluSurvivor.MAMI_PREFIX + "masteryAchievement";
-        public const string unlockableIdentifier = ZiluSurvivor.MAMI_PREFIX + "masteryUnlockable";
+        public const string identifier = ZiluSurvivor.ZILU_PREFIX + "masteryAchievement";
+        public const string unlockableIdentifier = ZiluSurvivor.ZILU_PREFIX + "masteryUnlockable";
 
         public override string RequiredCharacterBody => ZiluSurvivor.instance.bodyName;
 

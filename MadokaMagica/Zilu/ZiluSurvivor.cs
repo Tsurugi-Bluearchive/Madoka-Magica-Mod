@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MadokaMagica.Zilu.Content;
 using MadokaMagica.Zilu.SkillStates.BaseStates;
+using BepInEx.Configuration;
 namespace MadokaMagica.Zilu
 {
     public class ZiluSurvivor : SurvivorBase<ZiluSurvivor>
@@ -15,25 +16,25 @@ namespace MadokaMagica.Zilu
         public override string assetBundleName => "mamiassetbundle"; //if you do not change this, you are giving permission to deprecate the mod
 
         //the name of the prefab we will create. conventionally ending in "Body". must be unique
-        public override string bodyName => "MamiBody"; //if you do not change this, you get the point by now
+        public override string bodyName => "ZiluBody"; //if you do not change this, you get the point by now
 
         //name of the ai master for vengeance and goobo. must be unique
-        public override string masterName => "MamiMonsterMaster"; //if you do not
+        public override string masterName => "ZiluMonsterMaster"; //if you do not
 
         //the names of the prefabs you set up in unity that we will use to build your character
         public override string modelPrefabName => "mdlMami";
         public override string displayPrefabName => "MamiDisplay";
 
-        public const string MAMI_PREFIX = MagicaPlugin.DEVELOPER_PREFIX + "_MAMI_";
+        public const string ZILU_PREFIX = MagicaPlugin.DEVELOPER_PREFIX + "_ZILU_";
 
         //used when registering your survivor's language tokens
-        public override string survivorTokenPrefix => MAMI_PREFIX;
+        public override string survivorTokenPrefix => ZILU_PREFIX;
         
         public override BodyInfo bodyInfo => new BodyInfo
         {
             bodyName = bodyName,
-            bodyNameToken = MAMI_PREFIX + "NAME",
-            subtitleNameToken = MAMI_PREFIX + "SUBTITLE",
+            bodyNameToken = ZILU_PREFIX + "NAME",
+            subtitleNameToken = ZILU_PREFIX + "SUBTITLE",
 
             characterPortrait = assetBundle.LoadAsset<Texture>("texMAMIIcon"),
             bodyColor = Color.white,
@@ -73,11 +74,10 @@ namespace MadokaMagica.Zilu
 
         public override void Initialize()
         {
-            //uncomment if you have multiple characters
-            //ConfigEntry<bool> characterEnabled = Config.CharacterEnableConfig("Survivors", "Henry");
+            ConfigEntry<bool> characterEnabled = Config.CharacterEnableConfig("Survivors", "Henry");
 
-            //if (!characterEnabled.Value)
-            //    return;
+             if (!characterEnabled.Value)
+             return;
 
             base.Initialize();
         }
@@ -109,6 +109,7 @@ namespace MadokaMagica.Zilu
         private void AdditionalBodySetup()
         {
             AddHitboxes();
+
             //bodyPrefab.AddComponent<HuntressTracerComopnent>();
             //anything else here
         }
@@ -124,7 +125,7 @@ namespace MadokaMagica.Zilu
             Prefabs.ClearEntityStateMachines(bodyPrefab);
 
             //the main "Body" state machine has some special properties
-            Prefabs.AddMainEntityStateMachine(bodyPrefab, "Body", typeof(ZiluCharacterMain), typeof(EntityStates.SpawnTeleporterState));
+            Prefabs.AddMainEntityStateMachine(bodyPrefab, "Body", typeof(JetCharacterMain), typeof(EntityStates.SpawnTeleporterState));
             //if you set up a custom main characterstate, set it up here
             //don't forget to register custom entitystates in your HenryStates.cs
 
@@ -153,8 +154,8 @@ namespace MadokaMagica.Zilu
             bodyPrefab.GetComponent<SkillLocator>().passiveSkill = new SkillLocator.PassiveSkill
             {
                 enabled = true,
-                skillNameToken = MAMI_PREFIX + "PASSIVE_NAME",
-                skillDescriptionToken = MAMI_PREFIX + "PASSIVE_DESCRIPTION",
+                skillNameToken = ZILU_PREFIX + "PASSIVE_NAME",
+                skillDescriptionToken = ZILU_PREFIX + "PASSIVE_DESCRIPTION",
                 keywordToken = "KEYWORD_STUNNING",
                 icon = assetBundle.LoadAsset<Sprite>("texPrimaryIcon"),
             };
@@ -170,8 +171,8 @@ namespace MadokaMagica.Zilu
             precisionStrike = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "PrecisionStrike",
-                skillNameToken = MAMI_PREFIX + "PRIMARY_GUN_NAME",
-                skillDescriptionToken = MAMI_PREFIX + "PRIMARY_GUN_DESCRIPTION",
+                skillNameToken = ZILU_PREFIX + "PRIMARY_GUN_NAME",
+                skillDescriptionToken = ZILU_PREFIX + "PRIMARY_GUN_DESCRIPTION",
                 keywordTokens = ["KEWORD_IMPLANT"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("fir"),
 
@@ -211,12 +212,12 @@ namespace MadokaMagica.Zilu
             ceaselessBarage = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "CeaseleassBarage",
-                skillNameToken = MAMI_PREFIX + "SECONDARY_BARAGE_NAME",
-                skillDescriptionToken = MAMI_PREFIX + "SECONDARY_BARRAGE_DESCRIPTION",
+                skillNameToken = ZILU_PREFIX + "SECONDARY_BARAGE_NAME",
+                skillDescriptionToken = ZILU_PREFIX + "SECONDARY_BARRAGE_DESCRIPTION",
                 keywordTokens = ["KEWORD_IMPLANT"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("brrag"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.CeaselessBarrage)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.CurseWitCounter)),
                 activationStateMachineName = "Weapon",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
@@ -243,12 +244,12 @@ namespace MadokaMagica.Zilu
             reload = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "PrecisionReload",
-                skillNameToken = MAMI_PREFIX + "PRIMARY_GUN_NAME",
-                skillDescriptionToken = MAMI_PREFIX + "PRIMARY_GUN_DESCRIPTION",
+                skillNameToken = ZILU_PREFIX + "PRIMARY_GUN_NAME",
+                skillDescriptionToken = ZILU_PREFIX + "PRIMARY_GUN_DESCRIPTION",
                 keywordTokens = ["KEWORD_IMPLANT"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("rloead"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Reload)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PerforatingKill)),
                 activationStateMachineName = "Weapon",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
@@ -282,11 +283,11 @@ namespace MadokaMagica.Zilu
             var utilitySkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "HenryRoll",
-                skillNameToken = MAMI_PREFIX + "UTILITY_ROLL_NAME",
-                skillDescriptionToken = MAMI_PREFIX + "UTILITY_ROLL_DESCRIPTION",
+                skillNameToken = ZILU_PREFIX + "UTILITY_ROLL_NAME",
+                skillDescriptionToken = ZILU_PREFIX + "UTILITY_ROLL_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("texUtilityIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SpawnGun)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(Missile)),
                 activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
                
@@ -319,11 +320,11 @@ namespace MadokaMagica.Zilu
             var specialSkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "MamiBlast",
-                skillNameToken = MAMI_PREFIX + "SPECIAL_BLAST_NAME",
-                skillDescriptionToken = MAMI_PREFIX + "SPECIAL_BLAST_DESCRIPTION",
+                skillNameToken = ZILU_PREFIX + "SPECIAL_BLAST_NAME",
+                skillDescriptionToken = ZILU_PREFIX + "SPECIAL_BLAST_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("blas"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.PrecisionBlast)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.CurseWitTeleport)),
                 //setting this to the "weapon2" EntityStateMachine allows us to cast this skill at the same time primary, which is set to the "weapon" EntityStateMachine
                 activationStateMachineName = "Weapon", interruptPriority = EntityStates.InterruptPriority.Skill,
 
@@ -370,7 +371,7 @@ namespace MadokaMagica.Zilu
             #region MasterySkin
             
             ////creating a new skindef as we did before
-            //SkinDef masterySkin = Modules.Skins.CreateSkinDef(MAMI_PREFIX + "MASTERY_SKIN_NAME",
+            //SkinDef masterySkin = Modules.Skins.CreateSkinDef(ZILU_PREFIX + "MASTERY_SKIN_NAME",
             //    assetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
             //    defaultRendererinfos,
             //    prefabCharacterModel.gameObject,

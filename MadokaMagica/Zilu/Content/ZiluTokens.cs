@@ -1,4 +1,6 @@
 ﻿using System;
+using MadokaMagica.Jet;
+using MadokaMagica.Jet.Achievements;
 using MadokaMagica.Modules;
 using MadokaMagica.Zilu.Achievements;
 
@@ -18,7 +20,7 @@ namespace MadokaMagica.Zilu.Content
 
         public static void AddHenryTokens()
         {
-            var prefix = ZiluSurvivor.MAMI_PREFIX;
+            var prefix = JetSurvivor.JET_PREFIX;
 
             var desc = "Henry is a skilled fighter who makes use of a wide arsenal of weaponry to take down his foes.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine
              + "< ! > Sword is a good all-rounder while Boxing Gloves are better for laying a beatdown on more powerful foes." + Environment.NewLine + Environment.NewLine
@@ -66,8 +68,8 @@ namespace MadokaMagica.Zilu.Content
             #endregion
 
             #region Achievements
-            Language.Add(Tokens.GetAchievementNameToken(ZiluMasteryAchievements.identifier), "Henry: Mastery");
-            Language.Add(Tokens.GetAchievementDescriptionToken(ZiluMasteryAchievements.identifier), "As Henry, beat the game or obliterate on Monsoon.");
+            Language.Add(Tokens.GetAchievementNameToken(JetMasteryAchievements.identifier), "Henry: Mastery");
+            Language.Add(Tokens.GetAchievementDescriptionToken(JetMasteryAchievements.identifier), "As Henry, beat the game or obliterate on Monsoon.");
             #endregion
         }
     }
