@@ -8,7 +8,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates
     public class PrecisionStrkie : BaseMamiSkillState
     {
         public static float damageCoefficient = MamiStaticValues.gunDamageCoefficient;
-        private float m_damageCoefficient = damageCoefficient;
+        private float m_damageCoefficient => damageCoefficient * (fixedAge / fireTime);
         public static float procCoefficient = 1.2f;
         public static float baseDuration = 1f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
@@ -19,16 +19,17 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public static GameObject muzzleEffect;
         public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
 
-        private float duration;
-        private float fireTime;
+        private float duration => baseDuration / attackSpeedStat;
+        private float fireTime => firePercentTime * duration;
         private bool hasFired;
-        private string muzzleString;
-        private Vector3 originalpos;
+        private Vector2 DashDirection => inputBank.moveVector;
+        private string muzzleString => "Muzzle";
+        private Vector3 originalpos => characterBody.corePosition;
 
         private float secondaryStock;
         private float secondaryStockMax;
 
-        public DamageSource damageSource;
+        public DamageSource damageSource => DamageSource.Secondary;
 
         private bool dashed;
         private void DisableMovement()
@@ -39,31 +40,19 @@ namespace MadokaMagica.MamiTamoe.SkillStates
                 characterMotor.velocity = Vector3.zero;
             }
         }
-        private void FetchFixedVars()
-        {
-            m_damageCoefficient = damageCoefficient * (fixedAge / fireTime);
-            duration = baseDuration / attackSpeedStat;
-            fireTime = firePercentTime * duration;
-
-        }
         private void InitOnEnterVars()
         {
-            dashed = false;
             characterBody.SetAimTimer(2f);
-            damageSource = DamageSource.Primary;
-            muzzleString = "Muzzle";
-            originalpos = characterBody.corePosition;
         }
         private void Firing()
         {
-            m_damageCoefficient = damageCoefficient;
             Fire();
             outer.SetNextStateToMain();
             return;
         }        
         private void Dash()
         {
-            var DashDirection = inputBank.moveVector;
+
             characterBody.characterMotor.velocity = new Vector3(DashDirection.x * 100, 0, DashDirection.y * 100);
             characterBody.characterMotor.jumpCount++;
             outer.SetNextStateToMain();
@@ -74,7 +63,6 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         {
             base.OnEnter();
             InitOnEnterVars();
-            PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);
         }
         //PrecisionStrike.cs OnExit()
         public override void OnExit()
@@ -95,7 +83,6 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             var DashDirection = inputBank.moveVector;
             
             base.FixedUpdate();
-            FetchFixedVars();
             
             if (isAuthority)
             {

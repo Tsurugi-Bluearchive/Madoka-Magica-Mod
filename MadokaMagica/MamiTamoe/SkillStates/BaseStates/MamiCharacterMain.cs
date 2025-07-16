@@ -25,6 +25,24 @@ namespace MadokaMagica.MamiTamoe.SkillStates.BaseStates
         private float tick2;
         private bool justJumped;
 
+        private bool Dashable()
+        {
+            if (inputBank.jump.justPressed && !isGrounded && JumpCount > 0 && !justJumped)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool SecondaryIsReloadable()
+        {
+            if (Mami.mmmgun != null && SecondaryMax > SecondaryStock && isAuthority)
+            {
+                Destroy(Mami.mmmgun.gameObject);
+                return true;
+            }
+            return false;
+        }
         private void FetchFixedVars()
         {
             Mami ??= this.GetComponent<MamiGunPassive>();
@@ -45,26 +63,12 @@ namespace MadokaMagica.MamiTamoe.SkillStates.BaseStates
             FetchTimers();
 
             //MamiCharacterMain.cs Collection
-            if (Mami.mmmgun != null && SecondaryMax > SecondaryStock && isAuthority)
-            {
-                Destroy(Mami.mmmgun.gameObject);
-                skillLocator.secondary.AddOneStock();
-            }
-
-            //MAmiCharacterMain.cs Utility restock logic
-            if (UtilityStock < UtilityMax && tick > 12f * AttackSpeed)
-            {
-                skillLocator.utility.stock++;
-                tick = 0;
-            }
+            skillLocator.secondary.stock = SecondaryIsReloadable() ? skillLocator.secondary.stock++ : skillLocator.secondary.stock;
 
             //MamiCharacterMain.cs Aerial Dash Controller
-            if ((inputBank.jump.justReleased) && tick2 > 0.5f) { justJumped = false; tick2 = 0; }
-            else if (inputBank.jump.justPressed && !isGrounded && JumpCount > 0 && !justJumped)
-            {
-                justJumped = true;
-                characterBody.characterMotor.velocity = new Vector3(CharacterVelocity.x * 3, CharacterVelocity.y, CharacterVelocity.z * 3);
-            }
+            tick2 = inputBank.jump.justReleased && tick2 > 0.5f && justJumped ? 0 : tick2;
+            characterBody.characterMotor.velocity = !Dashable() ? CharacterVelocity : new Vector3(CharacterVelocity.x * 3, CharacterVelocity.y, CharacterVelocity.z * 3);
+            justJumped = !Dashable() ? false : true;
         }
     }
 }

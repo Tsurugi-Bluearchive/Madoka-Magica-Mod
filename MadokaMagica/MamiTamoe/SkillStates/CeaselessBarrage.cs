@@ -3,6 +3,8 @@ using UnityEngine;
 using EntityStates;
 using MadokaMagica.MamiTamoe.Content;
 using MadokaMagica.MamiTamoe.SkillStates.BaseStates;
+using EntityStates.BrotherMonster;
+using BepInEx.Configuration;
 
 namespace MadokaMagica.MamiTamoe.SkillStates
 {
@@ -18,28 +20,41 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public static GameObject muzzleEffect;
         public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
 
-        private float duration;
-        private float blastDuration;
-        private string muzzleString;
-        private int stocks;
+        private float duration => baseDuration / attackSpeedStat;
+        private int primaryStock
+        {
+            get => skillLocator.primary.stock;
+            set => skillLocator.primary.stock = value;
+        }
+        private int secondaryStock
+        {
+            get => skillLocator.secondary.stock;
+            set => skillLocator.secondary.stock = value;
+        }
+        private bool eatingSecondary;
+        private float blastDuration => duration / (skillLocator.primary.stock + skillLocator.secondary.stock);
+        private string muzzleString => "Muzzle";
         private bool shotBarrage = false;
-        private Vector3 originalPos;
+        private Vector3 originalPos => characterBody.corePosition;
 
         private float tick;
 
         private bool restocking;
 
-        public DamageSource damageSource;
+        public DamageSource damageSource => DamageSource.Secondary;
+        
+        private bool secondaryActive()
+        {
+            if (inputBank.skill2.down || inputBank.skill2.justPressed)
+            {
+                return true;
+            }
+            return false;
+        }
 
         private void InitEnterVars()
         {
-            duration = baseDuration / attackSpeedStat;
             characterBody.SetAimTimer(2f);
-            stocks = skillLocator.primary.stock + skillLocator.secondary.stock;
-            blastDuration = duration / stocks;
-            muzzleString = "Muzzle";
-            originalPos = characterBody.corePosition;
-            this.damageSource = DamageSource.Secondary;
         }
         private void Firing() { Fire(); tick = 0; }
         private void DisableMovement() { characterMotor.Motor.SetPosition(originalPos); characterMotor.velocity = Vector3.zero; }
@@ -61,16 +76,16 @@ namespace MadokaMagica.MamiTamoe.SkillStates
             tick += Time.fixedDeltaTime;
 
             //CeaselessBarrage.cs Firing Logic
-            if (stocks > 0 && isAuthority && tick >= blastDuration && (inputBank.skill2.down || inputBank.skill2.justPressed))
+            if (isAuthority && tick >= blastDuration && secondaryActive() && !shotBarrage)
             {
-                stocks--;
-                if (skillLocator.secondary.stock > 0) { Firing(); skillLocator.secondary.stock--; }
-                else if (skillLocator.primary.stock > 0)  { Firing(); skillLocator.primary.stock--; }
-                else { shotBarrage = true; }
+                eatingSecondary = secondaryStock > 0 ? true : false;
+                primaryStock = secondaryStock > 0 && !eatingSecondary ? primaryStock-- : primaryStock;
+                secondaryStock = secondaryStock > 0 && eatingSecondary? secondaryStock-- : secondaryStock;
+                shotBarrage = secondaryStock > 0 && primaryStock > 0 ? false : true;
             }
 
             //CeaselessBarrage.cs Release Logic
-            else if(shotBarrage || inputBank.skill2.justReleased)
+            else if(secondaryActive())
             {
                 outer.SetNextStateToMain();
                 return;
@@ -80,11 +95,11 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public override void OnExit()
         {
             base.OnExit();
-            var previousStock = skillLocator.secondary.stock;
-            if (skillLocator.primary.stock < 1)
+            var previousStock = secondaryStock;
+            if (primaryStock < 1)
             {
                 skillLocator.secondary.SetSkillOverride(this.gameObject, MamiSurvivor.reload, GenericSkill.SkillOverridePriority.Default);
-                skillLocator.secondary.stock = previousStock;
+                secondaryStock = previousStock;
             }
         }
 

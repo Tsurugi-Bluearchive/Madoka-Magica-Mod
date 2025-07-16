@@ -29,7 +29,6 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public override void OnEnter()
         {
             base.OnEnter();
-            base.characterBody.armor += 900;
             base.characterMotor.enabled = false;
             duration = baseDuration / attackSpeedStat;
             fireTime = firePercentTime * duration;

@@ -17,24 +17,18 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public static float recoil = 10f;
         public static float range = 256f;
 
-        private float duration;
-        private float fireTime;
-        private Vector3 originalPos;
+        private float duration => baseDuration / attackSpeedStat;
+        private float fireTime => duration / skillLocator.utility.stock;
+        private Vector3 originalPos => characterBody.corePosition;
 
-        public DamageSource damageSource;
+        public DamageSource damageSource => DamageSource.Utility;
 
-        private int SecondaryStock;
-        private int SecondaryMax;
-        private void FetchFixedVairables()
+        private int SecondaryStock
         {
-            SecondaryMax = skillLocator.secondary.maxStock;
-            SecondaryStock = skillLocator.secondary.stock;
-        }
-        private void InitOnEnterVars()
-        {
-            originalPos = characterBody.corePosition;
-            this.damageSource = DamageSource.Utility;
-        }
+            get => skillLocator.secondary.stock;
+            set => skillLocator.secondary.stock = value;
+        } 
+        private int SecondaryMax => skillLocator.secondary.maxStock;
         private void DisableMovement()
         {
             if (isAuthority)
@@ -49,7 +43,6 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         public override void OnEnter()
         {
             base.OnEnter();
-            InitOnEnterVars();
             characterBody.SetAimTimer(2f);
         }
 
@@ -62,11 +55,8 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         //SpawnGun.cs FixedUpdate()
         public override void FixedUpdate()
         {
-            FetchFixedVairables();
             base.FixedUpdate();
             DisableMovement();
-            duration = baseDuration / attackSpeedStat;
-            fireTime = duration / skillLocator.utility.stock;
 
             //SpawnGun.cs Reload Logic
             if (fixedAge >= fireTime && SecondaryStock > 0 && SecondaryStock < SecondaryMax )
