@@ -56,10 +56,14 @@ namespace MadokaMagica.MamiTamoe.SkillStates
         {
 
             //Reload.cs Reload Logic
-            primaryStock = primaryStock <= secondaryStock && !restocked ? primaryMax : secondaryStock;
-            secondaryStock = primaryStock <= secondaryStock && !restocked ? secondaryStock - primaryMax : 0;
-            restocked = true;
-            if (fixedAge >= duration && isAuthority)
+            if (!restocked)
+            {
+                primaryStock = primaryStock <= secondaryStock ? primaryMax : secondaryStock;
+                secondaryStock = primaryStock <= secondaryStock ? secondaryStock - primaryMax : 0;
+                restocked = true;
+            }
+
+            if (restocked)
             {
                 outer.SetNextStateToMain();
                 return;

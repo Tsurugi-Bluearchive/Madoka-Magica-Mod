@@ -66,7 +66,7 @@ namespace MadokaMagica.MamiTamoe.SkillStates.BaseStates
             skillLocator.secondary.stock = SecondaryIsReloadable() ? skillLocator.secondary.stock++ : skillLocator.secondary.stock;
 
             //MamiCharacterMain.cs Aerial Dash Controller
-            tick2 = inputBank.jump.justReleased && tick2 > 0.5f && justJumped ? 0 : tick2;
+            tick2 = inputBank.jump.justReleased && tick2 > 0.5f && justJumped && JumpCount > 0 ? 0 : tick2;
             characterBody.characterMotor.velocity = !Dashable() ? CharacterVelocity : new Vector3(CharacterVelocity.x * 3, CharacterVelocity.y, CharacterVelocity.z * 3);
             justJumped = !Dashable() ? false : true;
         }
