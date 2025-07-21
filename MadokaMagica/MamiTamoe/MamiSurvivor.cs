@@ -8,6 +8,7 @@ using UnityEngine;
 using MadokaMagica.MamiTamoe.Content;
 using MadokaMagica.MamiTamoe.SkillStates.BaseStates;
 using MadokaMagica.MamiTamoe.Components;
+using MadokaMagica.Megumin.Content;
 namespace MadokaMagica.MamiTamoe
 {
     public class MamiSurvivor : SurvivorBase<MamiSurvivor>
@@ -419,7 +420,7 @@ namespace MadokaMagica.MamiTamoe
             //Modules.Prefabs.CloneDopplegangerMaster(bodyPrefab, masterName, "Merc");
 
             //how to set up AI in code
-            MamiAI.Init(bodyPrefab, masterName);
+            MeguminAI.Init(bodyPrefab, masterName);
 
             //how to load a master set up in unity, can be an empty gameobject with just AISkillDriver components
             //assetBundle.LoadMaster(bodyPrefab, masterName);

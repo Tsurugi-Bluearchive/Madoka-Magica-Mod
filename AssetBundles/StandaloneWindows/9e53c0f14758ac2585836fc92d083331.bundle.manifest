@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 2655841764
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ff5136e07941db4a2eda51924e07b644
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: daf466baa32584ba67e29c66fdbe7b33
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/RoR2/Base/Items/Bear/texBearIcon.png
+- Assets/RoR2/Base/Items/Bear/texBearNormal.png
+- Assets/RoR2/Base/Items/Bear/mdlBearAvatar.asset
+- Assets/RoR2/Base/Items/Bear/texBearDiffuse.png
+- Assets/RoR2/Base/Items/Bear/texBearIcon.asset
+- Assets/RoR2/Base/Items/Bear/BearMesh.asset
+Dependencies: []

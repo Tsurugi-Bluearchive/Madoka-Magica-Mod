@@ -1,0 +1,34 @@
+ManifestFileVersion: 0
+CRC: 3949427225
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 49a38a0da80592b239df08f7a84c8676
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: c21d61fe394c58399df3c6fb5c7c99b3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/RoR2/Base/Common/HealthBarStyles/texUIHurtHealthbar.asset
+- Assets/RoR2/Base/Common/HealthBarStyles/texCurseBar.png
+- Assets/RoR2/Base/Common/HealthBarStyles/texUIHurtHealthbar.png
+- Assets/RoR2/Base/Common/TiledTextures/Clouds/texCloudOrganic1.png
+- Assets/RoR2/Base/Common/HealthBarStyles/texUILunarRuinHPBar.asset
+- Assets/RoR2/Base/Common/HealthBarStyles/texUIOSPBar.png
+- Assets/RoR2/Base/Common/HealthBarStyles/texBarrierBarPlaceholder.png
+- Assets/RoR2/Base/Common/HealthBarStyles/texUIHurtTrailHealthbar.asset
+- Assets/RoR2/Base/Common/HealthBarStyles/texUIHighlightExecute.asset
+- Assets/RoR2/Base/Common/HealthBarStyles/texCurseBar.asset
+- Assets/RoR2/Base/Common/HealthBarStyles/texUIHurtTrailHealthbar.png
+- Assets/RoR2/Base/Common/HealthBarStyles/texUIOSPBar.asset
+- Assets/RoR2/Base/Common/HealthBarStyles/texUILunarRuinHPBar.png
+- Assets/RoR2/Base/Common/HealthBarStyles/texUIHighlightExecute.png
+- Assets/RoR2/Base/Common/HealthBarStyles/texBarrierBarPlaceholder.asset
+- Assets/RoR2/Base/Common/TiledTextures/Clouds/texCloudDifferenceBW2.png
+Dependencies: []

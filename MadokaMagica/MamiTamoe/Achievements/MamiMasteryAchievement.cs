@@ -6,7 +6,7 @@ namespace MadokaMagica.MamiTamoe.Achievements
 {
     //automatically creates language tokens "ACHIEVMENT_{identifier.ToUpper()}_NAME" and "ACHIEVMENT_{identifier.ToUpper()}_DESCRIPTION" 
     [RegisterAchievement(identifier, unlockableIdentifier, null, 10, null)]
-    public class ZiluMasteryAchievement : BaseMasteryAchievement
+    public class MamiMasteryAchievements : BaseMasteryAchievement
     {
         public const string identifier = MamiSurvivor.MAMI_PREFIX + "masteryAchievement";
         public const string unlockableIdentifier = MamiSurvivor.MAMI_PREFIX + "masteryUnlockable";

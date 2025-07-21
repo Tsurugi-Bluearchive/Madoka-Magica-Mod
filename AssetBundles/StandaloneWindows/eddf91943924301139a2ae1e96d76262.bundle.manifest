@@ -1,0 +1,44 @@
+ManifestFileVersion: 0
+CRC: 1713255360
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f7f509df6c7004d9940581c250df12ef
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f11d83b30fe706377ad27d32885abef9
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: -1284244208, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1864444436, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/RoR2/Base/Items/WardOnLevel/WardOnLevel.asset
+- Assets/RoR2/Base/Items/WardOnLevel/matWarbannerPole.mat
+- Assets/RoR2/Base/Items/WardOnLevel/matWarbannerFlag.mat
+- Assets/RoR2/Base/Items/WardOnLevel/PickupWarbanner.prefab
+Dependencies:
+- C:/Users/dmans/MadokaMagicaMod/Madoka-Magica-Mod/AssetBundles/StandaloneWindows/1b44dd122c24d7cf1699fda8f1a6a94f.bundle
+- C:/Users/dmans/MadokaMagicaMod/Madoka-Magica-Mod/AssetBundles/StandaloneWindows/5ec0fd7669d0391f5993f38a3a5a5ce9.bundle

@@ -12,8 +12,8 @@ namespace MadokaMagica.MamiTamoe.Content
         public static void Init()
         {
             masterySkinUnlockableDef = Modules.Content.CreateAndAddUnlockbleDef(
-                ZiluMasteryAchievement.unlockableIdentifier,
-                Modules.Tokens.GetAchievementNameToken(ZiluMasteryAchievement.identifier),
+                MamiMasteryAchievements.unlockableIdentifier,
+                Modules.Tokens.GetAchievementNameToken(MamiMasteryAchievements.identifier),
                 MamiSurvivor.instance.assetBundle.LoadAsset<Sprite>("texMasteryAchievement"));
         }
     }

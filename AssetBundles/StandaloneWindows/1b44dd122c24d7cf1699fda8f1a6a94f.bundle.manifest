@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 3812197662
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 49ea0da1b1cac159f2132bbdc1d11315
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4e32ec39638f0040c27fba0017e88396
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/RoR2/Base/Items/WardOnLevel/texWarbannerIcon.png
+- Assets/RoR2/Base/Items/WardOnLevel/texWarbannerDiffuse.png
+- Assets/RoR2/Base/Items/WardOnLevel/texWarbannerIcon.asset
+- Assets/RoR2/Base/Items/WardOnLevel/Cylinder.asset
+- Assets/RoR2/Base/Items/WardOnLevel/Plane.asset
+Dependencies: []
