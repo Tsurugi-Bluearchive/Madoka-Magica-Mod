@@ -41,7 +41,7 @@ namespace MadokaMagica
             Modules.Language.Init();
 
             // character initialization
-            new MeguminSurvivor().Initialize();
+            new CrystalSurvivor().Initialize();
             new MamiSurvivor().Initialize();
 
             // make a content pack and add it. this has to be last

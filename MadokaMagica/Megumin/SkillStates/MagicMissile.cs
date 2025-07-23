@@ -6,6 +6,7 @@ using MadokaMagica.Megumin.MeguminComponents;
 using MadokaMagica.Megumin.SkillStates.BaseStates;
 using R2API;
 using RoR2;
+using RoR2.Orbs;
 using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,13 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.SendMouseEvents;
 
 namespace MadokaMagica.Megumin.SkillStates
 {
     public class MagicMissile : BaseMeguminSkillState
     {
-        public float damageCoefficient = MeguminStaticValues.bigGunDamageCefficeient;
+        public float damageCoefficient = MeguminStaticValues.magicMissleCoeffiicent;
         public float procCoefficient = 3f;
         public float baseDuration = 3f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
@@ -30,22 +32,26 @@ namespace MadokaMagica.Megumin.SkillStates
         private bool hasFired;
         private BullseyeSearch magicSearch;
         private Vector3 originalpos;
+        private bool setNewPosition = false;
+        private MagicMissleOrb missile;
+        private float arrivalTime;
+        private bool appliedDOT = false;
+        private HurtBox previousRandomHurtbox;
         public override void OnEnter()
         {
             base.OnEnter();
             characterBody.SetAimTimer(3f);
             magicSearch = new BullseyeSearch();
             magicSearch.minAngleFilter = 0f;
-            magicSearch.maxAngleFilter = 180f;
+            magicSearch.maxAngleFilter = 360f;
             magicSearch.maxDistanceFilter = float.MaxValue;
             magicSearch.minDistanceFilter = 5f;
             magicSearch.viewer = this.characterBody;
-            magicSearch.searchOrigin = this.characterBody.aimOrigin;
+            magicSearch.searchOrigin = this.GetAimRay().direction;
             magicSearch.searchDirection = this.characterDirection.forward;
             magicSearch.sortMode = BullseyeSearch.SortMode.Angle;
             magicSearch.teamMaskFilter = TeamMask.all;
             magicSearch.FilterOutGameObject(this.characterBody.gameObject);
-
             PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);
         }
 
@@ -59,13 +65,69 @@ namespace MadokaMagica.Megumin.SkillStates
 
         public override void FixedUpdate()
         {
+ 
+            originalpos = !setNewPosition ? new Vector3(
+    characterMotor.transform.position.x,
+    characterMotor.transform.position.y + 20,
+    characterMotor.transform.position.z) : originalpos;
+            setNewPosition = true;
+
             DisableMovement();
             base.FixedUpdate();
-            float tick = fixedAge % 0.3f;
+            float tick = fixedAge % 0.2f;
+
+            if (tick > 0.1f && !appliedDOT && fixedAge > 1f)
+            {
+                appliedDOT = true;
+                var overcharge = new InflictDotInfo
+                {
+                    attackerObject = this.gameObject,
+                    victimObject = this.gameObject,
+                    totalDamage = this.healthComponent.fullCombinedHealth * 0.05f,
+                    damageMultiplier = 2,
+                    dotIndex = CrystalBuffs.PrimaryOverCharge,
+                    maxStacksFromAttacker = 1u,
+                    duration = 0.4f
+                };
+                DotController.InflictDot(ref overcharge);
+            }
+            else if (tick < 0.1f)
+            {
+                appliedDOT = false;
+            }
+            if (isAuthority && inputBank.skill1.down)
+            {
+                DisableMovement();
+            }
+
             if (inputBank.skill3.down && isAuthority && tick > 0.1f && !hasFired)
             {
-                Fire();
+
+                magicSearch.RefreshCandidates();
+                List<HurtBox> list = CollectionPool<HurtBox, List<HurtBox>>.RentCollection();
+                foreach (HurtBox result in magicSearch.GetResults())
+                {
+                    list.Add(result);
+                }
+                Util.ShuffleList(list);
+                var randomHurtbox = list.FirstOrDefault();
+                CollectionPool<HurtBox, List<HurtBox>>.ReturnCollection(list);
                 hasFired = true;
+
+                arrivalTime = Vector3.Distance(this.transform.position, randomHurtbox.transform.position) / 300;
+                missile = new MagicMissleOrb
+                {
+                    arrivalTime = arrivalTime,
+                    origin = this.transform.position,
+                    target = randomHurtbox,
+                    damageCoefficient = damageCoefficient,
+                    damageStat = damageStat,
+                    teamIndex = this.teamComponent.teamIndex,
+                    gameObject = this.gameObject,
+                    targetPos = randomHurtbox.transform.position,
+                    nextOrb = missile
+                };
+                OrbManager.instance.AddOrb(missile);
             }
             else if (tick < 0.1f && inputBank.skill3.down)
             {
@@ -79,50 +141,9 @@ namespace MadokaMagica.Megumin.SkillStates
         }
 
         private void Fire()
-        {
-            // Generate a random index
-            magicSearch.RefreshCandidates();
-            List<HurtBox> list = CollectionPool<HurtBox, List<HurtBox>>.RentCollection();
-            foreach (HurtBox result in magicSearch.GetResults())
-            {
-                list.Add(result);
-            }
-
-            Util.ShuffleList(list);
-
-            var randomHurtbox = list.FirstOrDefault();
-
-            Log.Debug($"{randomHurtbox}");
-
-            CollectionPool<HurtBox, List<HurtBox>>.ReturnCollection(list);
-            if (randomHurtbox != null)
-            {
-                var missile = new FireProjectileInfo
-                {
-                    projectilePrefab = MeguminAssets.magicMissle,
-                    position = this.characterBody.aimOrigin + (characterDirection.forward * 3),
-                    owner = this.teamComponent.gameObject,
-                    damage = this.damageStat * damageCoefficient,
-                    crit = RollCrit(),
-                    damageColorIndex = DamageColorIndex.Default,
-                    target = randomHurtbox.gameObject,
-                    maxDistance = 200,
-                    procChainMask = default,
-                    damageTypeOverride = DamageType.Generic,
-                };
-                ModifyProjectileInfo(ref missile);
-                ProjectileManager.instance.FireProjectile(missile);
-            }
-        }                   
-        
-
-        public void ModifyProjectileInfo(ref FireProjectileInfo fireProjectileInfo)
-        {
-            DamageTypeCombo damage = DamageTypeCombo.Generic;
-            DamageAPI.AddModdedDamageType(ref damage, MeguminCustomDamageTypes.HealorHurt);
-            fireProjectileInfo.damageTypeOverride = damage;
-            Log.Debug($"{damage} Damage Type");
+        {   
         }
+        
         public override InterruptPriority GetMinimumInterruptPriority()
         {
             return InterruptPriority.PrioritySkill;

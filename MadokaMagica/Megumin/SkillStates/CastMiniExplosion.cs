@@ -2,7 +2,6 @@
 using HG;
 using MadokaMagica.MamiTamoe.Content;
 using MadokaMagica.Megumin.SkillStates.BaseStates;
-using Newtonsoft.Json.Utilities;
 using RoR2;
 using System;
 using UnityEngine;
@@ -17,7 +16,7 @@ namespace MadokaMagica.Megumin.SkillStates
 {
     public class CastMiniExplosion : BaseMeguminSkillState
     {
-        public static float damageCoefficient = MamiStaticValues.gunDamageCoefficient;
+        public static float damageCoefficient = MeguminStaticValues.gunDamageCoefficient;
         public static float procCoefficient = 1.2f;
         public static float nonManaDuration = 1f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
@@ -88,7 +87,7 @@ namespace MadokaMagica.Megumin.SkillStates
                     victimObject = this.gameObject,
                     totalDamage = this.healthComponent.fullCombinedHealth * 0.1f,
                     damageMultiplier = 2,
-                    dotIndex = MeguminBuffs.PrimaryOverCharge,
+                    dotIndex = CrystalBuffs.PrimaryOverCharge,
                     maxStacksFromAttacker = 1u,
                     duration = 0.4f
                 };

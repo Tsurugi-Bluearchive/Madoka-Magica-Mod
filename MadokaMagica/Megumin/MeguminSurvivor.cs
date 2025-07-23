@@ -10,7 +10,7 @@ using MadokaMagica.Megumin.SkillStates.BaseStates;
 using MadokaMagica.MamiTamoe.Content;
 namespace MadokaMagica.Megumin
 {
-    public class MeguminSurvivor : SurvivorBase<MeguminSurvivor>
+    public class CrystalSurvivor : SurvivorBase<CrystalSurvivor>
     {
         //used to load the assetbundle for this character. must be unique
         public override string assetBundleName => "meguminassetbundle"; //if you do not change this, you are giving permission to deprecate the mod
@@ -89,7 +89,6 @@ namespace MadokaMagica.Megumin
 
             base.InitializeCharacter();
 
-            MeguminConfig.Init();
             MeguminStates.Init();
             MeguminTokens.Init();
 

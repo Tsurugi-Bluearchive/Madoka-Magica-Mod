@@ -1,9 +1,11 @@
 ﻿using BepInEx.Configuration;
 using MadokaMagica.Modules;
+using R2API;
 
 namespace MadokaMagica.Megumin.Content
 {
-    public static class MeguminConfig
+
+    public static class CrystalConfig
     {
         public static ConfigEntry<bool> someConfigBool;
         public static ConfigEntry<float> someConfigFloat;

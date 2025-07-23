@@ -56,7 +56,6 @@ namespace MadokaMagica.Megumin.Content
         private static void CreateProjectiles()
         {
             magicMissle = _assetBundle.LoadAsset<GameObject>("MagicMissile");
-            magicMissle.gameObject.AddComponent<MagicMissleController>();
         }
         #endregion projectiles
 

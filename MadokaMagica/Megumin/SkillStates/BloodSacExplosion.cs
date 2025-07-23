@@ -92,7 +92,7 @@ namespace MadokaMagica.Megumin.SkillStates
                     victimObject = this.gameObject,
                     totalDamage = this.healthComponent.fullCombinedHealth * 0.5f,
                     damageMultiplier = 4,
-                    dotIndex = MeguminBuffs.PrimaryOverCharge,
+                    dotIndex = CrystalBuffs.PrimaryOverCharge,
                     maxStacksFromAttacker = 1u,
                     duration = 0.1f
                 };
@@ -187,7 +187,7 @@ namespace MadokaMagica.Megumin.SkillStates
                 bulletAttack.Fire();
                 var blastAttackHits = blastAttack.CollectHits();
 
-                this.healthComponent.Heal(Mathf.RoundToInt(this.healthComponent.fullCombinedHealth) * 0.1f * (blastAttackHits.Count()), default, false);
+                this.healthComponent.Heal(Mathf.RoundToInt(this.healthComponent.fullCombinedHealth) * 0.2f * ((blastAttackHits.Count() * 5)), default, false);
             }
 
         }

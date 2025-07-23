@@ -14,7 +14,7 @@ namespace MadokaMagica.Megumin.Content
             masterySkinUnlockableDef = Modules.Content.CreateAndAddUnlockbleDef(
                 MegmuminMasteryAchievements.unlockableIdentifier,
                 Modules.Tokens.GetAchievementNameToken(MegmuminMasteryAchievements.identifier),
-                MeguminSurvivor.instance.assetBundle.LoadAsset<Sprite>("texMasteryAchievement"));
+                CrystalSurvivor.instance.assetBundle.LoadAsset<Sprite>("texMasteryAchievement"));
         }
     }
 }

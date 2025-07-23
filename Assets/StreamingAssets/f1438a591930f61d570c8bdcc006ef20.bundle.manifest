@@ -1,0 +1,27 @@
+ManifestFileVersion: 0
+CRC: 1826388264
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 903d22149c083f07e3d6473eaca79392
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4a8cb3a612dd51145548641678a37788
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/RoR2/DLC1/Characters/VoidSurvivor/Skills/Passive/texVoidSurvivorCorruptionGaugeOutlined.png
+- Assets/RoR2/DLC1/Characters/VoidSurvivor/texVoidSurvivorNib.png
+- Assets/RoR2/DLC1/Characters/VoidSurvivor/Skills/Passive/texVoidSurvivorCorruptionGaugeOutlined.asset
+- Assets/RoR2/DLC1/Characters/VoidSurvivor/Skills/Passive/texVoidSurvivorCorruptionGauge.png
+- Assets/RoR2/DLC1/Characters/VoidSurvivor/texVoidSurvivorNib.asset
+- Assets/RoR2/DLC1/Characters/VoidSurvivor/Skills/Passive/animVoidSurvivorUIPulse.anim
+- Assets/RoR2/DLC1/Characters/VoidSurvivor/Skills/Passive/texVoidSurvivorCorruptionGauge.asset
+Dependencies: []

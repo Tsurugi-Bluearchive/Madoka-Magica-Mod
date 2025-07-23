@@ -6,7 +6,7 @@
 
         public const float gunDamageCoefficient = 5f;
 
-        public const float bigGunDamageCefficeient = 100f;
+        public const float magicMissleCoeffiicent = 3f;
 
         public const float barrageDamageCefficient = 9f;
     }

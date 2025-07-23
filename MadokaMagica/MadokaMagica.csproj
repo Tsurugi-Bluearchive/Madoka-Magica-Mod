@@ -45,6 +45,10 @@
 		<PackageReference Include="R2API.Language" Version="1.*" />
 		<PackageReference Include="R2API.Sound" Version="1.*" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Crystal\CrystalComponents\" />
+	</ItemGroup>
     
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
         <Exec Command="./weave.bat $(TargetDir)" />

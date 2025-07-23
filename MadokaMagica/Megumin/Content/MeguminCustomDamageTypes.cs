@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using IL.RoR2.ContentManagement;
 using R2API;
 using RoR2;
-using UnityEngine.Networking;
-using static UnityEngine.SendMouseEvents;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace MadokaMagica.Megumin.Content
 {
-
     internal class MeguminCustomDamageTypes
     {
         public static DamageAPI.ModdedDamageType HealorHurt = DamageAPI.ReserveDamageType();

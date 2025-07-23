@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 namespace MadokaMagica.Megumin.Content
 {
-    public static class MeguminBuffs
+    public static class CrystalBuffs
     {
         // armor buff gained during roll
         public static DotController.DotIndex PrimaryOverCharge = DotAPI.RegisterDotDef(0.25f, 0.25f, DamageColorIndex.SuperBleed, OverchargePrimaryDebuff);

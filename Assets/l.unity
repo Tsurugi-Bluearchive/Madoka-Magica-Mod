@@ -869,6 +869,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7361139762983988538, guid: 1c538689a7151554bab9a8d1a275a48b, type: 3}
+      propertyPath: applyDot
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7361139762983988538, guid: 1c538689a7151554bab9a8d1a275a48b, type: 3}
+      propertyPath: lifetime
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 1909568607010197, guid: 1c538689a7151554bab9a8d1a275a48b, type: 3}
       propertyPath: m_Name
       value: MissileProjectile

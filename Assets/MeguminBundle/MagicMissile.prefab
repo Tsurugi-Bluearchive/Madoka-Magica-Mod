@@ -22,6 +22,9 @@ GameObject:
   - component: {fileID: 114213976817708656}
   - component: {fileID: 114994497708649062}
   - component: {fileID: 114418186523689137}
+  - component: {fileID: -7361139762983988538}
+  - component: {fileID: 2707132188956875165}
+  - component: {fileID: 7308497619504326478}
   m_Layer: 14
   m_Name: MagicMissile
   m_TagString: Untagged
@@ -40,8 +43,7 @@ Transform:
   m_LocalPosition: {x: 120.944, y: 10.296, z: 62.444}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6898381868246893706}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
@@ -104,13 +106,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   catalogIndex: 97
-  ghostPrefab: {fileID: 0}
-  ghostTransformAnchor: {fileID: 0}
+  ghostPrefab: {fileID: 1388773678679328, guid: 1d38da7f0c2c925418edce355c3d69cd, type: 3}
+  ghostTransformAnchor: {fileID: 4809485739830964}
   startSound: 
-  cannotBeDeleted: 0
+  cannotBeDeleted: 1
   authorityHandlesCollisionEvents: 0
   flightSoundLoop: {fileID: 0}
-  canImpactOnTrigger: 1
+  canImpactOnTrigger: 0
   allowPrediction: 1
   owner: {fileID: 0}
   localCollisionHappened: 0
@@ -140,13 +142,13 @@ MonoBehaviour:
   m_Script: {fileID: 1389097793, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVelocity: 30
-  rollVelocity: 3
-  acceleration: 10
-  delayTimer: 0.3
-  giveupTimer: 8
+  maxVelocity: 20
+  rollVelocity: 0
+  acceleration: 20
+  delayTimer: 0
+  giveupTimer: 16
   deathTimer: 16
-  turbulence: 2
+  turbulence: 0
   maxSeekDistance: 400
 --- !u!114 &114559819892823022
 MonoBehaviour:
@@ -160,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 1952984350, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyWhenNotAlive: 1
+  destroyWhenNotAlive: 0
   destroyOnWorld: 0
   impactEffect: {fileID: 0}
   hitSoundString: 
@@ -175,7 +177,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -285,7 +287,7 @@ MonoBehaviour:
   m_positionOffsetData:
     KeepMe: 0
     positionOffset: {x: 0, y: 0, z: 0}
-  doOrientation: 0
+  doOrientation: 1
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
 --- !u!114 &114418186523689137
@@ -317,92 +319,93 @@ MonoBehaviour:
   eventIdInternal: 0
   valueGuidInternal: 
   m_callbackDataInternal: {fileID: 0}
---- !u!1001 &130415101963361641
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 4809485739830964}
-    m_Modifications:
-    - target: {fileID: 855988182197715243, guid: 739851b7ab4d788459603713abccbe29, type: 3}
-      propertyPath: m_Name
-      value: MeguminMagicMissle
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806251968395565539, guid: 739851b7ab4d788459603713abccbe29, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806251968395565539, guid: 739851b7ab4d788459603713abccbe29, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.13776398
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806251968395565539, guid: 739851b7ab4d788459603713abccbe29, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.069028854
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806251968395565539, guid: 739851b7ab4d788459603713abccbe29, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.6500015
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806251968395565539, guid: 739851b7ab4d788459603713abccbe29, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806251968395565539, guid: 739851b7ab4d788459603713abccbe29, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806251968395565539, guid: 739851b7ab4d788459603713abccbe29, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806251968395565539, guid: 739851b7ab4d788459603713abccbe29, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806251968395565539, guid: 739851b7ab4d788459603713abccbe29, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806251968395565539, guid: 739851b7ab4d788459603713abccbe29, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6806251968395565539, guid: 739851b7ab4d788459603713abccbe29, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 739851b7ab4d788459603713abccbe29, type: 3}
---- !u!1 &733602332617251906 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 855988182197715243, guid: 739851b7ab4d788459603713abccbe29, type: 3}
-  m_PrefabInstance: {fileID: 130415101963361641}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4542859739052199287
+--- !u!114 &-7361139762983988538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 733602332617251906}
+  m_GameObject: {fileID: 1909568607010197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1790887305, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Script: {fileID: -317677761, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  crit: 0
-  force: 0
-  damageColorIndex: 0
-  damageType:
-    damageType: 0
-    damageTypeExtended: 0
-    damageSource: 0
-  useDotMaxStacksFromAttacker: 0
-  dotMaxStacksFromAttacker: 4294967295
---- !u!4 &6898381868246893706 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6806251968395565539, guid: 739851b7ab4d788459603713abccbe29, type: 3}
-  m_PrefabInstance: {fileID: 130415101963361641}
+  falloffModel: 1
+  blastRadius: 0
+  blastDamageCoefficient: 0
+  blastProcCoefficient: 1
+  blastAttackerFiltering: 0
+  bonusBlastForce: {x: 0, y: 0, z: 0}
+  canRejectForce: 1
+  projectileHealthComponent: {fileID: 0}
+  explosionEffect: {fileID: 1836869327073354, guid: ca5b09171a5c0dc479fbed3b49b8bd4f, type: 3}
+  preserveExplosionOrientation: 0
+  explosionSoundString: 
+  fireChildren: 0
+  childrenProjectilePrefab: {fileID: 0}
+  childrenCount: 0
+  childrenDamageCoefficient: 0
+  childrenInheritDamageType: 0
+  minAngleOffset: {x: 0, y: 0, z: 0}
+  maxAngleOffset: {x: 0, y: 0, z: 0}
+  minRollDegrees: 0
+  rangeRollDegrees: 0
+  minPitchDegrees: 0
+  rangePitchDegrees: 0
+  useLocalSpaceForChildren: 0
+  applyDot: 0
+  dotIndex: -1
+  dotDuration: 0
+  dotDamageMultiplier: 1
+  applyMaxStacksFromAttacker: 0
+  maxStacksFromAttacker: 4294967295
+  calculateTotalDamage: 0
+  totalDamageMultiplier: 0
+  impactEffect: {fileID: 0}
+  lifetimeExpiredSoundString: 
+  lifetimeExpiredSound: {fileID: 0}
+  offsetForLifetimeExpiredSound: 0
+  destroyOnEnemy: 1
+  destroyOnWorld: 0
+  destroyOnDistance: 0
+  maxDistance: 0
+  impactOnWorld: 1
+  timerAfterImpact: 0
+  lifetime: 0
+  lifetimeAfterImpact: 0
+  lifetimeRandomOffset: 0
+  minimumPhysicsStepsToKeepAliveAfterImpact: 0
+  transformSpace: 1
+  explodeOnLifeTimeExpiration: 0
+--- !u!114 &2707132188956875165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909568607010197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2053006600, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customName: MagicMisslePID
+  PID: {x: 20, y: 20, z: 20}
+  inputQuat: {x: 0, y: 0, z: 0, w: 1}
+  targetQuat: {x: 0, y: 0, z: 0, w: 1}
+  outputVector: {x: 0, y: 0, z: 0}
+  gain: 30
+--- !u!114 &7308497619504326478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909568607010197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 2105391550, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localForce: {x: 0, y: 20, z: 0}

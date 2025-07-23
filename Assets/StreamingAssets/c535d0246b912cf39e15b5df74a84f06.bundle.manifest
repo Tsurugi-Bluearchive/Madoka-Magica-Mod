@@ -1,0 +1,85 @@
+ManifestFileVersion: 0
+CRC: 2426947404
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 9bf2e15449b16cf12e71fad1804a05d5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7dae5b8bcafe69b2a7288871f3e0c9c7
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+- Class: 114
+  Script: {fileID: -667331979, guid: 67dfb1fdfb2b407222eda8e23ac8b724, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: -586095555, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 733712478, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -951972390, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 649313124, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -573374155, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 488236779, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1295853813, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 225
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.VertexGradient
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.ArgumentCache
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentListenerMode
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.RectOffset
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
+Assets:
+- Assets/RoR2/DLC1/UI/HUD/NotificationPanels/matUIIconVoidTransformation.mat
+- Assets/RoR2/DLC1/UI/HUD/NotificationPanels/VoidTransformationNotificationPanel.prefab
+Dependencies:
+- C:/Users/dmans/MadokaMagicaMod/Madoka-Magica-Mod/AssetBundles/StandaloneWindows/1202c65a0ff6548763c2eced4674f5c8.bundle
+- C:/Users/dmans/MadokaMagicaMod/Madoka-Magica-Mod/AssetBundles/StandaloneWindows/1b44dd122c24d7cf1699fda8f1a6a94f.bundle
+- C:/Users/dmans/MadokaMagicaMod/Madoka-Magica-Mod/AssetBundles/StandaloneWindows/5ec0fd7669d0391f5993f38a3a5a5ce9.bundle
+- C:/Users/dmans/MadokaMagicaMod/Madoka-Magica-Mod/AssetBundles/StandaloneWindows/73e931569ab9d0e5d0deb59f7a84e227.bundle
+- C:/Users/dmans/MadokaMagicaMod/Madoka-Magica-Mod/AssetBundles/StandaloneWindows/9d8962a1005f58f17cc690569ef42450.bundle
+- C:/Users/dmans/MadokaMagicaMod/Madoka-Magica-Mod/AssetBundles/StandaloneWindows/a353317b41f67c2ce20287a6110fc840.bundle
+- C:/Users/dmans/MadokaMagicaMod/Madoka-Magica-Mod/AssetBundles/StandaloneWindows/a9b9be27f703fc023a818aa0e47aa233.bundle
+- C:/Users/dmans/MadokaMagicaMod/Madoka-Magica-Mod/AssetBundles/StandaloneWindows/b74a37af7e29f30bfbaa61ee9f395841.bundle
+- C:/Users/dmans/MadokaMagicaMod/Madoka-Magica-Mod/AssetBundles/StandaloneWindows/db2ed9aeceb3bf9e2612a7c665fe4ccb.bundle
