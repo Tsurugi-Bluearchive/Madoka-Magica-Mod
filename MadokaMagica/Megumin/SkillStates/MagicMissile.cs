@@ -16,20 +16,16 @@ namespace MadokaMagica.Megumin.SkillStates
 {
     public class MagicMissile : GenericProjectileBaseState
     {
-        public static float damageCoefficient = MeguminStaticValues.bigGunDamageCefficeient;
-        public static float procCoefficient = 3f;
-        public static float baseDuration = 3f;
+        public float damageCoefficient = MeguminStaticValues.bigGunDamageCefficeient;
+        public float procCoefficient = 3f;
+        public float baseDuration = 3f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
         public static float firePercentTime = 0.7f;
-        public static float force = 5000f;
         public static float recoil = 10f;
         public static float range = 256f;
         public static GameObject muzzleEffect;
         public static GameObject tracerEffectPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/Tracers/TracerGoldGat");
-        private float duration;
-        private float fireTime;
         private bool hasFired;
-        private string muzzleString;
         private BullseyeSearch magicSearch;
         private Vector3 originalpos;
 
@@ -45,11 +41,8 @@ namespace MadokaMagica.Megumin.SkillStates
         {
             originalpos = characterBody.corePosition;
             base.OnEnter();
-            base.characterMotor.enabled = false;
             duration = baseDuration / attackSpeedStat;
-            fireTime = firePercentTime * duration;
             characterBody.SetAimTimer(3f);
-            muzzleString = "Muzzle";
             magicSearch = new BullseyeSearch();
             magicSearch.minAngleFilter = 180f;
             magicSearch.maxAngleFilter = 180f;
@@ -100,41 +93,33 @@ namespace MadokaMagica.Megumin.SkillStates
                 hurtboxPool = new List<HurtBox>(magicSearch.GetResults());
                 int randomIndex = UnityEngine.Random.Range(0, hurtboxPool.Count - 1);
                 Log.Debug($"hurtpool count {hurtboxPool.Count}, random index {randomIndex}");
-
-                foreach (HurtBox hurtbox in hurtboxPool)
+                HurtBox hurtBox = hurtboxPool[randomIndex];
+                if (hurtBox != null && hurtboxPool.Count > 0)
                 {
-
-                    if (hurtboxPool != null && hurtboxPool.Count > 0)
+                    HurtBox randomTarget = hurtboxPool[randomIndex];
+                    // Check conditions and fire missile
+                    if (randomTarget == hurtBox)
                     {
-
-                        HurtBox randomTarget = hurtboxPool[randomIndex];
-
-                        // Check conditions and fire missile
-                        if (randomTarget == hurtbox)
+                        var missile = new FireProjectileInfo
                         {
-                            var missile = new FireProjectileInfo
-                            {
-                                projectilePrefab = MeguminAssets.magicMissle,
-                                position = this.characterBody.aimOrigin + (characterDirection.forward * 3),
-                                owner = this.teamComponent.gameObject,
-                                damage = this.damageStat * damageCoefficient,
-                                crit = RollCrit(),
-                                force = 5,
-                                damageColorIndex = DamageColorIndex.Default,
-                                target = hurtbox.gameObject,
-                                speedOverride = 10,
-                                maxDistance = 200,
-                                procChainMask = default,
-                                damageTypeOverride = DamageType.Generic
-                            };
-                            ModifyProjectileInfo(ref missile);
-                            ProjectileManager.instance.FireProjectile(missile);
-                        }
+                            projectilePrefab = MeguminAssets.magicMissle,
+                            position = this.characterBody.aimOrigin + (characterDirection.forward * 3),
+                            owner = this.teamComponent.gameObject,
+                            damage = this.damageStat * damageCoefficient,
+                            crit = RollCrit(),
+                            force = 5,
+                            damageColorIndex = DamageColorIndex.Default,
+                            target = hurtBox.gameObject,
+                            speedOverride = 10,
+                            maxDistance = 200,
+                            procChainMask = default,
+                            damageTypeOverride = DamageType.Generic
+                        };
+                        ModifyProjectileInfo(ref missile);
+                        ProjectileManager.instance.FireProjectile(missile);
                     }
-
-                    
                 }
-            }
+            }                   
         }
 
         public override void ModifyProjectileInfo(ref FireProjectileInfo fireProjectileInfo)
