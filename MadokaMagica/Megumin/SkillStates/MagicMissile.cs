@@ -9,12 +9,14 @@ using RoR2;
 using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace MadokaMagica.Megumin.SkillStates
 {
-    public class MagicMissile : GenericProjectileBaseState
+    public class MagicMissile : BaseMeguminSkillState
     {
         public float damageCoefficient = MeguminStaticValues.bigGunDamageCefficeient;
         public float procCoefficient = 3f;
@@ -28,26 +30,21 @@ namespace MadokaMagica.Megumin.SkillStates
         private bool hasFired;
         private BullseyeSearch magicSearch;
         private Vector3 originalpos;
-
-        public void DisableMovement()
-        {
-            if (isAuthority)
-            {
-                characterMotor.Motor.SetPosition(originalpos);
-                characterMotor.velocity = Vector3.zero;
-            }
-        }
         public override void OnEnter()
         {
-            originalpos = characterBody.corePosition;
             base.OnEnter();
-            duration = baseDuration / attackSpeedStat;
             characterBody.SetAimTimer(3f);
             magicSearch = new BullseyeSearch();
-            magicSearch.minAngleFilter = 180f;
+            magicSearch.minAngleFilter = 0f;
             magicSearch.maxAngleFilter = 180f;
-            magicSearch.sortMode = BullseyeSearch.SortMode.DistanceAndAngle;
-            magicSearch.FilterOutGameObject(this.gameObject);
+            magicSearch.maxDistanceFilter = float.MaxValue;
+            magicSearch.minDistanceFilter = 5f;
+            magicSearch.viewer = this.characterBody;
+            magicSearch.searchOrigin = this.characterBody.aimOrigin;
+            magicSearch.searchDirection = this.characterDirection.forward;
+            magicSearch.sortMode = BullseyeSearch.SortMode.Angle;
+            magicSearch.teamMaskFilter = TeamMask.all;
+            magicSearch.FilterOutGameObject(this.characterBody.gameObject);
 
             PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);
         }
@@ -65,7 +62,6 @@ namespace MadokaMagica.Megumin.SkillStates
             DisableMovement();
             base.FixedUpdate();
             float tick = fixedAge % 0.2f;
-
             if (inputBank.skill3.down && isAuthority && tick > 0.1f && !hasFired)
             {
                 Fire();
@@ -85,46 +81,46 @@ namespace MadokaMagica.Megumin.SkillStates
         private void Fire()
         {
             // Generate a random index
-            magicSearch.RefreshCandidates();
-            List<HurtBox> hurtboxPool = new List<HurtBox>();
-            Log.Debug($"{MeguminAssets.magicMissle}");
+            List<HurtBox> list = CollectionPool<HurtBox, List<HurtBox>>.RentCollection();
+            foreach (HurtBox result in magicSearch.GetResults())
+            {
+                list.Add(result);
+            }
+
+            Util.ShuffleList(list);
+
+            var randomHurtbox = list.FirstOrDefault();
+
+            CollectionPool<HurtBox, List<HurtBox>>.ReturnCollection(list);
+
             if (magicSearch.GetResults() != null)
             {
-                hurtboxPool = new List<HurtBox>(magicSearch.GetResults());
-                int randomIndex = UnityEngine.Random.Range(0, hurtboxPool.Count - 1);
-                Log.Debug($"hurtpool count {hurtboxPool.Count}, random index {randomIndex}");
-                HurtBox hurtBox = hurtboxPool[randomIndex];
-                if (hurtBox != null && hurtboxPool.Count > 0)
+                if (randomHurtbox != null)
                 {
-                    HurtBox randomTarget = hurtboxPool[randomIndex];
-                    // Check conditions and fire missile
-                    if (randomTarget == hurtBox)
+                    var missile = new FireProjectileInfo
                     {
-                        var missile = new FireProjectileInfo
-                        {
-                            projectilePrefab = MeguminAssets.magicMissle,
-                            position = this.characterBody.aimOrigin + (characterDirection.forward * 3),
-                            owner = this.teamComponent.gameObject,
-                            damage = this.damageStat * damageCoefficient,
-                            crit = RollCrit(),
-                            force = 5,
-                            damageColorIndex = DamageColorIndex.Default,
-                            target = hurtBox.gameObject,
-                            speedOverride = 10,
-                            maxDistance = 200,
-                            procChainMask = default,
-                            damageTypeOverride = DamageType.Generic
-                        };
-                        ModifyProjectileInfo(ref missile);
-                        ProjectileManager.instance.FireProjectile(missile);
-                    }
+                        projectilePrefab = MeguminAssets.magicMissle,
+                        position = this.characterBody.aimOrigin + (characterDirection.forward * 3),
+                        owner = this.teamComponent.gameObject,
+                        damage = this.damageStat * damageCoefficient,
+                        crit = RollCrit(),
+                        force = 5,
+                        damageColorIndex = DamageColorIndex.Default,
+                        target = randomHurtbox.gameObject,
+                        speedOverride = 10,
+                        maxDistance = 200,
+                        procChainMask = default,
+                        damageTypeOverride = DamageType.Generic
+                    };
+                    ModifyProjectileInfo(ref missile);
+                    ProjectileManager.instance.FireProjectile(missile);
                 }
-            }                   
-        }
+            }
+        }                   
+        
 
-        public override void ModifyProjectileInfo(ref FireProjectileInfo fireProjectileInfo)
+        public void ModifyProjectileInfo(ref FireProjectileInfo fireProjectileInfo)
         {
-            base.ModifyProjectileInfo(ref fireProjectileInfo);
             DamageTypeCombo damage = DamageTypeCombo.Generic;
             DamageAPI.AddModdedDamageType(ref damage, MeguminCustomDamageTypes.HealorHurt);
             fireProjectileInfo.damageTypeOverride = damage;
