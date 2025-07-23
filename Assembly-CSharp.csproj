@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\MamiBundle\ExplosionSphereExpansion.cs" />
+    <Compile Include="Assets\MeguminBundle\MissileSetter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\RoR2\Base\Shaders\UI\HGUIBarRemap.shader" />

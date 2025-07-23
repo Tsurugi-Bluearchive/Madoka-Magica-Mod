@@ -9,7 +9,7 @@ using R2API;
 
 namespace MadokaMagica.Megumin.MeguminComponents
 {
-    internal class MagicMissleController : MonoBehaviour
+    public class MagicMissleController : MonoBehaviour
     {
         private GameObject missile;
         public BoxCollider boxCollider;
@@ -20,19 +20,11 @@ namespace MadokaMagica.Megumin.MeguminComponents
         public Transform target;
         public Vector3 originPos;
         public TeamIndex teamIndex;
-        private ProjectileController projectileController;
-        public void Awake()
+        public void UpdateTarget()
         {
             missile = GameObject.Find("MagicMissle");
             missileController = missile.gameObject.GetComponent<MissileController>();
-            boxCollider = missile.gameObject.AddComponent<BoxCollider>();
-            rb = missile.gameObject.GetComponent<Rigidbody>();
-            projectileController = gameObject.GetComponent<ProjectileController>();
-
-            rb.velocity = castDirection;
             missileController.targetComponent.target = target;
-            GetComponent<TeamComponent>().teamIndex = teamIndex;
-            missile.transform.position = originPos;
         }
     }
 }

@@ -31,8 +31,6 @@ namespace MadokaMagica.Megumin.Content
         public static Sprite P_Overcharge;
 
         public static GameObject magicMissle;
-
-        public static DamageType magicMissleDamage;
         public static void Init(AssetBundle assetBundle)
         {
 
@@ -58,6 +56,7 @@ namespace MadokaMagica.Megumin.Content
         private static void CreateProjectiles()
         {
             magicMissle = _assetBundle.LoadAsset<GameObject>("MagicMissile");
+            magicMissle.gameObject.AddComponent<MagicMissleController>();
         }
         #endregion projectiles
 

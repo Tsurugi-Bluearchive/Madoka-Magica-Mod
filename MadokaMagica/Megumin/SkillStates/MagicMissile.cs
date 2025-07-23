@@ -61,7 +61,7 @@ namespace MadokaMagica.Megumin.SkillStates
         {
             DisableMovement();
             base.FixedUpdate();
-            float tick = fixedAge % 0.2f;
+            float tick = fixedAge % 0.3f;
             if (inputBank.skill3.down && isAuthority && tick > 0.1f && !hasFired)
             {
                 Fire();
@@ -81,6 +81,7 @@ namespace MadokaMagica.Megumin.SkillStates
         private void Fire()
         {
             // Generate a random index
+            magicSearch.RefreshCandidates();
             List<HurtBox> list = CollectionPool<HurtBox, List<HurtBox>>.RentCollection();
             foreach (HurtBox result in magicSearch.GetResults())
             {
@@ -91,30 +92,26 @@ namespace MadokaMagica.Megumin.SkillStates
 
             var randomHurtbox = list.FirstOrDefault();
 
-            CollectionPool<HurtBox, List<HurtBox>>.ReturnCollection(list);
+            Log.Debug($"{randomHurtbox}");
 
-            if (magicSearch.GetResults() != null)
+            CollectionPool<HurtBox, List<HurtBox>>.ReturnCollection(list);
+            if (randomHurtbox != null)
             {
-                if (randomHurtbox != null)
+                var missile = new FireProjectileInfo
                 {
-                    var missile = new FireProjectileInfo
-                    {
-                        projectilePrefab = MeguminAssets.magicMissle,
-                        position = this.characterBody.aimOrigin + (characterDirection.forward * 3),
-                        owner = this.teamComponent.gameObject,
-                        damage = this.damageStat * damageCoefficient,
-                        crit = RollCrit(),
-                        force = 5,
-                        damageColorIndex = DamageColorIndex.Default,
-                        target = randomHurtbox.gameObject,
-                        speedOverride = 10,
-                        maxDistance = 200,
-                        procChainMask = default,
-                        damageTypeOverride = DamageType.Generic
-                    };
-                    ModifyProjectileInfo(ref missile);
-                    ProjectileManager.instance.FireProjectile(missile);
-                }
+                    projectilePrefab = MeguminAssets.magicMissle,
+                    position = this.characterBody.aimOrigin + (characterDirection.forward * 3),
+                    owner = this.teamComponent.gameObject,
+                    damage = this.damageStat * damageCoefficient,
+                    crit = RollCrit(),
+                    damageColorIndex = DamageColorIndex.Default,
+                    target = randomHurtbox.gameObject,
+                    maxDistance = 200,
+                    procChainMask = default,
+                    damageTypeOverride = DamageType.Generic,
+                };
+                ModifyProjectileInfo(ref missile);
+                ProjectileManager.instance.FireProjectile(missile);
             }
         }                   
         
