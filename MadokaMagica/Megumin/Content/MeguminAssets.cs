@@ -2,10 +2,11 @@
 using UnityEngine;
 using MadokaMagica.Modules;
 using RoR2.Projectile;
+using MadokaMagica.Megumin.MeguminComponents;
 
 namespace MadokaMagica.Megumin.Content
 {
-    public static class MegmuminAssets
+    public static class MeguminAssets
     {
         // particle effects
         public static GameObject swordSwingEffect;
@@ -27,6 +28,11 @@ namespace MadokaMagica.Megumin.Content
 
         public static GameObject MeguminGunTracer;
 
+        public static Sprite P_Overcharge;
+
+        public static GameObject magicMissle;
+
+        public static DamageType magicMissleDamage;
         public static void Init(AssetBundle assetBundle)
         {
 
@@ -34,22 +40,33 @@ namespace MadokaMagica.Megumin.Content
 
             swordHitSoundEvent = Modules.Content.CreateAndAddNetworkSoundEventDef("HenrySwordHit");
 
+            InitializeHooks();
+
             CreateEffects();
 
             CreateProjectiles();
         }
-
         #region effects
         private static void CreateEffects()
         {
+            P_Overcharge = _assetBundle.LoadAsset<Sprite>("texPOvercharge");
+
         }
         #endregion effects
 
         #region projectiles
         private static void CreateProjectiles()
         {
-            MeguminPrimaryExplosion = _assetBundle.LoadAsset<GameObject>("MeguminPrimaryProjectile");
+            magicMissle = _assetBundle.LoadAsset<GameObject>("MagicMissile");
+            ContentPacks.projectilePrefabs.Add(magicMissle);
         }
         #endregion projectiles
+
+        #region customDamage
+        private static void InitializeHooks()
+        {
+            MeguminHooks.Init();
+        }
+        #endregion
     }
 }

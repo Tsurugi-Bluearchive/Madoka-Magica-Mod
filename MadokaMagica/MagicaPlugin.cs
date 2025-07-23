@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using MadokaMagica.MamiTamoe;
 using MadokaMagica.Megumin;
 using R2API.Utils;
 using System.Security;
@@ -41,6 +42,7 @@ namespace MadokaMagica
 
             // character initialization
             new MeguminSurvivor().Initialize();
+            new MamiSurvivor().Initialize();
 
             // make a content pack and add it. this has to be last
             new Modules.ContentPacks().Initialize();

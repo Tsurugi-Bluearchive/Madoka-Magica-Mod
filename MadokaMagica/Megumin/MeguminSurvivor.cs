@@ -68,6 +68,7 @@ namespace MadokaMagica.Megumin
         public static SkillDef reload;
 
         public static SkillDef explosionCast;
+        public static SkillDef explosionCharge;
         public static SkillDef ceaselessBarage;
 
         public override void Initialize()
@@ -92,8 +93,8 @@ namespace MadokaMagica.Megumin
             MeguminStates.Init();
             MeguminTokens.Init();
 
-            MegmuminAssets.Init(assetBundle);
-            MegmuminAssets.Init(assetBundle);
+            MeguminAssets.Init(assetBundle);
+            MeguminAssets.Init(assetBundle);
 
             InitializeEntityStateMachines();
             InitializeSkills();
@@ -174,16 +175,16 @@ namespace MadokaMagica.Megumin
                 keywordTokens = ["KEWORD_IMPLANT"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("fir"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.ExplosionCast)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.CastMiniExplosion)),
                 activationStateMachineName = "Weapon",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
                 baseRechargeInterval = 5,
 
                 rechargeStock = 0,
-                requiredStock = 1,
-                stockToConsume = 1,
-                baseMaxStock = 2,
+                requiredStock = 0,
+                stockToConsume = 0,
+                baseMaxStock = 0,
 
                 resetCooldownTimerOnUse = false,
                 fullRestockOnAssign = true,
@@ -197,7 +198,6 @@ namespace MadokaMagica.Megumin
                 forceSprintDuringState = true,
 
             });
-
 
             Skills.AddPrimarySkills(bodyPrefab, explosionCast);
         }
@@ -215,7 +215,7 @@ namespace MadokaMagica.Megumin
                 keywordTokens = ["KEWORD_IMPLANT"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("brrag"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Idontknowwhattonamethis)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.BloodSacExplosion)),
                 activationStateMachineName = "Weapon",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
@@ -285,7 +285,7 @@ namespace MadokaMagica.Megumin
                 skillDescriptionToken = MEGUMIN_PREFIX + "UTILITY_ROLL_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("texUtilityIcon"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SpawnGun)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(MagicMissile)),
                 activationStateMachineName = "Body",
                 interruptPriority = EntityStates.InterruptPriority.PrioritySkill,
                
@@ -322,7 +322,7 @@ namespace MadokaMagica.Megumin
                 skillDescriptionToken = MEGUMIN_PREFIX + "SPECIAL_BLAST_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("blas"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.ManaRecharge)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.OutofMana)),
                 //setting this to the "weapon2" EntityStateMachine allows us to cast this skill at the same time primary, which is set to the "weapon" EntityStateMachine
                 activationStateMachineName = "Weapon", interruptPriority = EntityStates.InterruptPriority.Skill,
 

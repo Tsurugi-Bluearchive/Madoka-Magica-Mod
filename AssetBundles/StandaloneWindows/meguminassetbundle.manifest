@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3989976838
+CRC: 9481630
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 582d4523116bba9f924f128bd3c57d4b
+    Hash: 3a7c211ea1201cd5f3bde770dded540f
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 6eea70b0cf26a75fba002e5ee838a03e
+    Hash: 921a332c02a382cb471bbbb23f2f41a9
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -25,29 +25,83 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 96
+  Script: {instanceID: 0}
+- Class: 108
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1389097793, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 511512695, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1431018688, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 372142912, guid: d382a022563c7517aadbc92ca1060016, type: 3}
 - Class: 114
   Script: {fileID: -226763392, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
+  Script: {fileID: -335047464, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: -1848696948, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1790887305, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 678291247, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: -317677761, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
+  Script: {fileID: -270136354, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 1952984350, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 717380117, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -2053006600, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: -517518216, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
+  Script: {fileID: -565067572, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: -1895344032, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: 816898038, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
+  Script: {fileID: -1752031980, guid: 2b6c926553287666f24ffd5af5ba21cb, type: 3}
+- Class: 114
+  Script: {fileID: -130519023, guid: 2b6c926553287666f24ffd5af5ba21cb, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 135
   Script: {instanceID: 0}
 - Class: 136
   Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
+- AssemblyName: AK.Wwise.Unity.API.WwiseTypes
+  ClassName: AK.Wwise.Event
+- AssemblyName: AK.Wwise.Unity.MonoBehaviour
+  ClassName: AkGameObjListenerList
+- AssemblyName: AK.Wwise.Unity.MonoBehaviour
+  ClassName: AkGameObjPositionOffsetData
 - AssemblyName: RoR2
   ClassName: ChildLocator/NameTransformPair
+- AssemblyName: RoR2
+  ClassName: RoR2.DamageTypeCombo
+- AssemblyName: RoR2
+  ClassName: Wave
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.UnityEvent
 - AssemblyName: com.unity.multiplayer-hlapi.Runtime
   ClassName: UnityEngine.Networking.NetworkHash128
 - AssemblyName: com.unity.multiplayer-hlapi.Runtime
@@ -57,12 +111,14 @@ Assets:
 - Assets/MeguminBundle/mana7.png
 - Assets/MeguminBundle/placeholderglitter.png
 - Assets/MeguminBundle/mana0.png
-- Assets/MeguminBundle/MeguminPrimaryProjectile.prefab
+- Assets/MeguminBundle/MissileGhost.prefab
+- Assets/MeguminBundle/MagicMissile.prefab
 - Assets/MeguminBundle/mana5.png
 - Assets/MeguminBundle/mdlMegumin.prefab
 - Assets/MeguminBundle/mana9.png
 - Assets/MeguminBundle/mana1.png
 - Assets/MeguminBundle/placeholderring.png
+- Assets/MeguminBundle/MissileExplosionVFX.prefab
 - Assets/MeguminBundle/ManaBarColour.png
 - Assets/MeguminBundle/mana3.png
 - Assets/MeguminBundle/manaslash.png

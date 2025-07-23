@@ -1,7 +1,7 @@
 ﻿using BepInEx.Configuration;
 using MadokaMagica.Modules;
 
-namespace MadokaMagica.MamiTamoe.Content
+namespace MadokaMagica.Megumin.Content
 {
     public static class MeguminConfig
     {

@@ -9,9 +9,9 @@ namespace MadokaMagica.Megumin.Content
         public static void Init()
         {
 
-            Modules.Content.AddEntityState(typeof(Idontknowwhattonamethis));
+            Modules.Content.AddEntityState(typeof(BloodSacExplosion));
 
-            Modules.Content.AddEntityState(typeof(ExplosionCast));
+            Modules.Content.AddEntityState(typeof(CastMiniExplosion));
 
             Modules.Content.AddEntityState(typeof(SpawnGun));
 

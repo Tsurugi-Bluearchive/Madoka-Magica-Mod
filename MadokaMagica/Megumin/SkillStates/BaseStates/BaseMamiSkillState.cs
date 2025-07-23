@@ -4,7 +4,13 @@ namespace MadokaMagica.Megumin.SkillStates.BaseStates
 {
     public class BaseMeguminSkillState : BaseSkillState
     {
-        private Vector3 originalpos => characterBody.corePosition;
+        private Vector3 originalpos;
+
+        public override void OnEnter()
+        {
+            originalpos = characterBody.corePosition;
+            base.OnEnter();
+        }
         public void DisableMovement()
         {
             if (isAuthority)

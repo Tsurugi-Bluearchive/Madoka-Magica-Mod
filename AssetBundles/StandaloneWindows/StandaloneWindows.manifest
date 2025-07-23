@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 2432986918
+CRC: 1214231181
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -173,8 +173,11 @@ AssetBundleManifest:
         Dependency_5: c535d0246b912cf39e15b5df74a84f06.bundle
         Dependency_6: a353317b41f67c2ce20287a6110fc840.bundle
     Info_33:
-      Name: mamiassetbundle
+      Name: dfa1387eee2045fe86fee6f12fb3801d.bundle
       Dependencies: {}
     Info_34:
-      Name: dfa1387eee2045fe86fee6f12fb3801d.bundle
+      Name: meguminassetbundle
+      Dependencies: {}
+    Info_35:
+      Name: mamiassetbundle
       Dependencies: {}
