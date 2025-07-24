@@ -8,9 +8,10 @@ using UnityEngine;
 using MadokaMagica.Megumin.Content;
 using MadokaMagica.Megumin.SkillStates.BaseStates;
 using MadokaMagica.MamiTamoe.Content;
+using MadokaMagica.Megumin.MeguminComponents;
 namespace MadokaMagica.Megumin
 {
-    public class CrystalSurvivor : SurvivorBase<CrystalSurvivor>
+    public class MeguminSurvivor : SurvivorBase<MeguminSurvivor>
     {
         //used to load the assetbundle for this character. must be unique
         public override string assetBundleName => "meguminassetbundle"; //if you do not change this, you are giving permission to deprecate the mod
@@ -109,7 +110,7 @@ namespace MadokaMagica.Megumin
         private void AdditionalBodySetup()
         {
             AddHitboxes();
-            //bodyPrefab.AddComponent<HuntressTracerComopnent>();
+            bodyPrefab.AddComponent<MeguminNetworkBehavior>();
             //anything else here
         }
 
