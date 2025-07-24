@@ -96,13 +96,14 @@ namespace MadokaMagica.Megumin.SkillStates
                 crit = crit,
                 falloffModel = BlastAttack.FalloffModel.None
             }.Fire();
-
+            bigExplosion.GetComponent<BigExplosionNetworking>().Explode();
             meguminNetworkBehavior.masterCaster = null;
         }
 
         //Reload.cs FixedUpdate()
         public override void FixedUpdate()
         {
+            bigExplosion.GetComponent<BigExplosionNetworking>().FixedUpdate();
             if (fixedAge <= 70 && inputBank.skill4.down && MasterCaster)
             {
                 magicSearch.RefreshCandidates();

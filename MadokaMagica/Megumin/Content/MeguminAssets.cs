@@ -45,6 +45,8 @@ namespace MadokaMagica.Megumin.Content
             CreateEffects();
 
             CreateProjectiles();
+
+            InitializeHooks();
         }
         #region effects
         private static void CreateEffects()
@@ -57,8 +59,8 @@ namespace MadokaMagica.Megumin.Content
         #region projectiles
         private static void CreateProjectiles()
         {
-            magicMissle = _assetBundle.LoadAsset<GameObject>("MagicMissile");
-            bigExplosion = _assetBundle.LoadAsset<GameObject>("MeguminMasterExplosion");
+            bigExplosion = _assetBundle.LoadAsset<GameObject>("BigExplosionOrigin");
+            bigExplosion.AddComponent<BigExplosionNetworking>();
         }
         #endregion projectiles
 
@@ -68,5 +70,6 @@ namespace MadokaMagica.Megumin.Content
             MeguminHooks.Init();
         }
         #endregion
+
     }
 }

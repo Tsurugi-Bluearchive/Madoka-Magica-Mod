@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2925089923
+CRC: 4078020351
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9e89a049a6679d312b6ea8e286606157
+    Hash: 2a49a34bbf081c721143b9fa8b0f6297
   TypeTreeHash:
     serializedVersion: 2
-    Hash: d9b4a0e52aefcb1a4111e1ac1773fbc6
+    Hash: 2d605c69990a6956eda45cb31225ca5c
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -48,6 +48,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -335047464, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
+  Script: {fileID: -492659515, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
+- Class: 114
   Script: {fileID: -1848696948, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
 - Class: 114
   Script: {fileID: 1790887305, guid: 951ce57ad999ac1f040a4dceb5f8b763, type: 3}
@@ -76,6 +78,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: -130519023, guid: 2b6c926553287666f24ffd5af5ba21cb, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 120
   Script: {instanceID: 0}
 - Class: 136
   Script: {instanceID: 0}
@@ -115,6 +119,7 @@ Assets:
 - Assets/MeguminBundle/MagicMissile.prefab
 - Assets/MeguminBundle/mana5.png
 - Assets/MeguminBundle/mdlMegumin.prefab
+- Assets/MeguminBundle/BigExplosionOrigin.prefab
 - Assets/MeguminBundle/mana9.png
 - Assets/MeguminBundle/mana1.png
 - Assets/MeguminBundle/placeholderring.png
