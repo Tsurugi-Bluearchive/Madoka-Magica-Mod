@@ -43,15 +43,13 @@ namespace MadokaMagica.Megumin.SkillStates
             characterBody.SetAimTimer(3f);
             magicSearch = new BullseyeSearch();
             magicSearch.minAngleFilter = 0f;
-            magicSearch.maxAngleFilter = 360f;
+            magicSearch.maxAngleFilter = 90f;
             magicSearch.maxDistanceFilter = float.MaxValue;
             magicSearch.minDistanceFilter = 5f;
             magicSearch.viewer = this.characterBody;
-            magicSearch.searchOrigin = this.GetAimRay().direction;
-            magicSearch.searchDirection = this.characterDirection.forward;
+            magicSearch.searchOrigin = this.characterBody.transform.position;
             magicSearch.sortMode = BullseyeSearch.SortMode.Angle;
             magicSearch.teamMaskFilter = TeamMask.all;
-            magicSearch.FilterOutGameObject(this.characterBody.gameObject);
             PlayAnimation("LeftArm, Override", "ShootGun", "ShootGun.playbackRate", 1.8f);
         }
 
@@ -101,8 +99,7 @@ namespace MadokaMagica.Megumin.SkillStates
             }
 
             if (inputBank.skill3.down && isAuthority && tick > 0.1f && !hasFired)
-            {
-
+            {;
                 magicSearch.RefreshCandidates();
                 List<HurtBox> list = CollectionPool<HurtBox, List<HurtBox>>.RentCollection();
                 foreach (HurtBox result in magicSearch.GetResults())

@@ -70,7 +70,8 @@ namespace MadokaMagica.Megumin
         public static SkillDef explosionCast;
         public static SkillDef explosionCharge;
         public static SkillDef ceaselessBarage;
-
+        public static SkillDef coChannel;
+        public static SkillDef masterChannel;
         public override void Initialize()
         {
             //uncomment if you have multiple characters
@@ -246,7 +247,7 @@ namespace MadokaMagica.Megumin
                 keywordTokens = ["KEWORD_IMPLANT"],
                 skillIcon = assetBundle.LoadAsset<Sprite>("rloead"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.OutofMana)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.CastBigExplosion)),
                 activationStateMachineName = "Weapon",
                 interruptPriority = EntityStates.InterruptPriority.Skill,
 
@@ -314,14 +315,14 @@ namespace MadokaMagica.Megumin
             Skills.CreateGenericSkillWithSkillFamily(bodyPrefab, SkillSlot.Special);
 
             //a basic skill. some fields are omitted and will just have default values
-            var specialSkillDef1 = Skills.CreateSkillDef(new SkillDefInfo
+            masterChannel = Skills.CreateSkillDef(new SkillDefInfo
             {
                 skillName = "MeguminBlast",
                 skillNameToken = MEGUMIN_PREFIX + "SPECIAL_BLAST_NAME",
                 skillDescriptionToken = MEGUMIN_PREFIX + "SPECIAL_BLAST_DESCRIPTION",
                 skillIcon = assetBundle.LoadAsset<Sprite>("blas"),
 
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.OutofMana)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.CastBigExplosion)),
                 //setting this to the "weapon2" EntityStateMachine allows us to cast this skill at the same time primary, which is set to the "weapon" EntityStateMachine
                 activationStateMachineName = "Weapon", interruptPriority = EntityStates.InterruptPriority.Skill,
 
@@ -331,8 +332,26 @@ namespace MadokaMagica.Megumin
                 isCombatSkill = true,
                 mustKeyPress = false,
             });
+            coChannel = Skills.CreateSkillDef(new SkillDefInfo
+            {
+                skillName = "MeguminBlast",
+                skillNameToken = MEGUMIN_PREFIX + "SPECIAL_BLAST_NAME",
+                skillDescriptionToken = MEGUMIN_PREFIX + "SPECIAL_BLAST_DESCRIPTION",
+                skillIcon = assetBundle.LoadAsset<Sprite>("blas"),
 
-            Skills.AddSpecialSkills(bodyPrefab, specialSkillDef1);
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.CoWorkCastBigExplosion)),
+                //setting this to the "weapon2" EntityStateMachine allows us to cast this skill at the same time primary, which is set to the "weapon" EntityStateMachine
+                activationStateMachineName = "Weapon",
+                interruptPriority = EntityStates.InterruptPriority.Skill,
+
+                baseMaxStock = 1,
+                baseRechargeInterval = 10f,
+
+                isCombatSkill = true,
+                mustKeyPress = false,
+            });
+
+            Skills.AddSpecialSkills(bodyPrefab, masterChannel);
         }
         #endregion skills
         

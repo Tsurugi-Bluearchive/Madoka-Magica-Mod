@@ -13,7 +13,7 @@ namespace MadokaMagica.Megumin.SkillStates
 {
     public class BloodSacExplosion : BaseMeguminSkillState
     {
-        public static float damageCoefficient = MeguminStaticValues.barrageDamageCefficient;
+        public static float damageCoefficient = MeguminStaticValues.BloodSacExplosionCoefficient;
         public static float procCoefficient = 1f;
         public static float baseDuration = 5f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing
@@ -108,7 +108,7 @@ namespace MadokaMagica.Megumin.SkillStates
             {
                 DisableMovement();
             }
-            else if (inputBank.skill1.justReleased || fixedAge > baseDuration)
+            else if (inputBank.skill2.justReleased || fixedAge > baseDuration)
             {
                 Fire();
                 outer.SetNextStateToMain();
@@ -187,7 +187,7 @@ namespace MadokaMagica.Megumin.SkillStates
                 bulletAttack.Fire();
                 var blastAttackHits = blastAttack.CollectHits();
 
-                this.healthComponent.Heal(Mathf.RoundToInt(this.healthComponent.fullCombinedHealth) * 0.2f * ((blastAttackHits.Count() * 5)), default, false);
+                this.healthComponent.Heal(Mathf.RoundToInt(this.healthComponent.fullCombinedHealth) * 0.3f * ((blastAttackHits.Count())), default, false);
             }
 
         }

@@ -16,7 +16,7 @@ namespace MadokaMagica.Megumin.SkillStates
 {
     public class CastMiniExplosion : BaseMeguminSkillState
     {
-        public static float damageCoefficient = MeguminStaticValues.gunDamageCoefficient;
+        public static float damageCoefficient = MeguminStaticValues.miniExplosionCoefficient;
         public static float procCoefficient = 1.2f;
         public static float nonManaDuration = 1f;
         //delay on firing is usually ass-feeling. only set this if you know what you're doing

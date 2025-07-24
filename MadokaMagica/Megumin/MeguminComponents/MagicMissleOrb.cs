@@ -30,7 +30,7 @@ namespace MadokaMagica.Megumin.MeguminComponents
                 damageType = damage,
                 baseForce = 0.2f,
                 position = this.targetPos,
-                radius = 10f,
+                radius = 3f,
                 falloffModel = BlastAttack.FalloffModel.None,
                 bonusForce = Vector3.zero,
                 damageColorIndex = DamageColorIndex.Default,
