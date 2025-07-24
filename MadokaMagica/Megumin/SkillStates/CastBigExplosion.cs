@@ -40,7 +40,8 @@ namespace MadokaMagica.Megumin.SkillStates
             magicSearch.searchOrigin = this.characterBody.transform.position;
             magicSearch.sortMode = BullseyeSearch.SortMode.Angle;
             magicSearch.teamMaskFilter = TeamMask.AllExcept(TeamIndex.Player);
-            
+            bigExplosion.GetComponent<BigExplosionNetworking>().SpawnExplosionPrefab();
+
             if (meguminNetworkBehavior.masterCaster == null)
             {
                 meguminNetworkBehavior.masterCaster = this.gameObject;
@@ -115,7 +116,7 @@ namespace MadokaMagica.Megumin.SkillStates
                 var Hurtbox = list.FirstOrDefault();
                 CollectionPool<HurtBox, List<HurtBox>>.ReturnCollection(list);
 
-                meguminNetworkBehavior.bigExplosion.transform.position = Hurtbox.transform.position;
+                meguminNetworkBehavior.bigExplosion.GetComponent<BigExplosionNetworking>().ExplosionPosition = Hurtbox.transform.position;
                 castAddition = ((fixedAge - passedTime) / 70) * (damageStat * damageCoefficient);
                 meguminNetworkBehavior.damage += castAddition;
                 passedTime = fixedAge;
