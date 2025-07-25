@@ -3,7 +3,6 @@ using EntityStates;
 using MadokaMagica.Megumin.Content;
 using MadokaMagica.Megumin.SkillStates.BaseStates;
 using UnityEngine.Networking;
-using IL.RoR2.Projectile;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;

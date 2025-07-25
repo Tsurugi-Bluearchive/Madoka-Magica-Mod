@@ -48,12 +48,12 @@ namespace MadokaMagica.Megumin.Content
 
             #region Primary
             Language.Add(prefix + "PRIMARY_SCARF_NAME", "Scarf");
-            Language.Add(prefix + "PRIMARY_SCARF_DESCRIPTION", $"Swing forward for <style=cIsDamage>{100f * MeguminStaticValues.swordDamageCoefficient}% damage</style>.");
+            Language.Add(prefix + "PRIMARY_SCARF_DESCRIPTION", $"Swing forward for <style=cIsDamage>{100f * MeguminStaticValues.miniExplosionCoefficient}% damage</style>.");
             #endregion
 
             #region Secondary
             Language.Add(prefix + "SECONDARY_GUN_NAME", "Precision Strike");
-            Language.Add(prefix + "SECONDARY_GUN_DESCRIPTION", $"IMPLANT. Hold still and fire a picked up gun for <style=cIsDamage>{100f * MeguminStaticValues.gunDamageCoefficient}% damage</style>.");
+            Language.Add(prefix + "SECONDARY_GUN_DESCRIPTION", $"IMPLANT. Hold still and fire a picked up gun for <style=cIsDamage>{100f * MeguminStaticValues.BloodSacExplosionCoefficient}% damage</style>.");
             #endregion
 
             #region Utility

@@ -18,7 +18,6 @@ namespace MadokaMagica.Megumin.SkillStates
         public DamageSource damageSource => DamageSource.Secondary;
         bool MasterCaster;
         GameObject bigExplosion;
-        BigExplosionNetworking bigExplosionObjectNW; 
         float castAddition;
         float passedTime;
         MeguminNetworkBehavior meguminNetworkBehavior;
@@ -40,24 +39,7 @@ namespace MadokaMagica.Megumin.SkillStates
             magicSearch.searchOrigin = this.characterBody.transform.position;
             magicSearch.sortMode = BullseyeSearch.SortMode.Angle;
             magicSearch.teamMaskFilter = TeamMask.AllExcept(TeamIndex.Player);
-            bigExplosion.GetComponent<BigExplosionNetworking>().SpawnExplosionPrefab();
-
-            if (meguminNetworkBehavior.masterCaster == null)
-            {
-                meguminNetworkBehavior.masterCaster = this.gameObject;
-                meguminNetworkBehavior.bigExplosion = GameObject.Instantiate<GameObject>(MeguminAssets.bigExplosion);
-                meguminNetworkBehavior.masterBigExplosionSkill = this;
-                MasterCaster = true;
-            }
-            else
-            {
-                MasterCaster = false;
-            }
-
-            if (!MasterCaster)
-            {
-                skillLocator.special.SetSkillOverride(this.gameObject, MeguminSurvivor.coChannel, GenericSkill.SkillOverridePriority.Default);
-            }
+            meguminNetworkBehavior.masterCaster = meguminNetworkBehavior.masterCaster == null ? this.gameObject : meguminNetworkBehavior.masterCaster;
         }
 
         //Reload.cs OnExit()
@@ -68,7 +50,7 @@ namespace MadokaMagica.Megumin.SkillStates
 
             new BlastAttack
             {
-                position = meguminNetworkBehavior.bigExplosion.transform.position,
+                position = meguminNetworkBehavior.explosionLocation,
                 damageColorIndex = DamageColorIndex.Default,
                 baseDamage = meguminNetworkBehavior.damage * 0.5f,
                 radius = float.MaxValue,
@@ -84,7 +66,7 @@ namespace MadokaMagica.Megumin.SkillStates
 
             new BlastAttack
             {
-                position = meguminNetworkBehavior.bigExplosion.transform.position,
+                position = meguminNetworkBehavior.explosionLocation,
                 damageColorIndex = DamageColorIndex.Default,
                 baseDamage = meguminNetworkBehavior.damage * 0.5f,
                 radius = 100,
@@ -100,12 +82,10 @@ namespace MadokaMagica.Megumin.SkillStates
             bigExplosion.GetComponent<BigExplosionNetworking>().Explode();
             meguminNetworkBehavior.masterCaster = null;
         }
-
         //Reload.cs FixedUpdate()
         public override void FixedUpdate()
         {
-            bigExplosion.GetComponent<BigExplosionNetworking>().FixedUpdate();
-            if (fixedAge <= 70 && inputBank.skill4.down && MasterCaster)
+            if (fixedAge <= 70 && inputBank.skill4.down && isAuthority)
             {
                 magicSearch.RefreshCandidates();
                 List<HurtBox> list = CollectionPool<HurtBox, List<HurtBox>>.RentCollection();
@@ -116,12 +96,12 @@ namespace MadokaMagica.Megumin.SkillStates
                 var Hurtbox = list.FirstOrDefault();
                 CollectionPool<HurtBox, List<HurtBox>>.ReturnCollection(list);
 
-                meguminNetworkBehavior.bigExplosion.GetComponent<BigExplosionNetworking>().ExplosionPosition = Hurtbox.transform.position;
+                meguminNetworkBehavior.explosionLocation = Hurtbox.transform.position;
                 castAddition = ((fixedAge - passedTime) / 70) * (damageStat * damageCoefficient);
                 meguminNetworkBehavior.damage += castAddition;
                 passedTime = fixedAge;
             }
-            else if (inputBank.skill4.justReleased)
+            else if (inputBank.skill4.justReleased && isAuthority)
             {
                 outer.SetNextStateToMain();
                 return;

@@ -1,4 +1,4 @@
-﻿using IL.RoR2;
+﻿using RoR2;
 using MadokaMagica.Megumin.SkillStates;
 using System;
 using System.Collections.Generic;
@@ -15,12 +15,14 @@ namespace MadokaMagica.Megumin.MeguminComponents
         public Vector3 ExplosionPosition;
         [SyncVar]
         public byte ExplosionStage;
+        [SyncVar]
+        public GameObject Caster;
         
-        public void FixedUpdate()
+        public void UpdatePosition()
         {
             this.transform.position = this.ExplosionPosition;
             GameObject.Find("ExplosionLaser").GetComponent<LineBetweenTransforms>().enabled = false;
-            GameObject.Find("TargetingLaser").GetComponent<LineBetweenTransforms>().enabled = true;
+            GameObject.Find("AimLaser").GetComponent<LineBetweenTransforms>().enabled = true;
             GameObject.Find("ExplosionLaser").GetComponent<Light>().enabled = false;
         }
 
@@ -31,7 +33,7 @@ namespace MadokaMagica.Megumin.MeguminComponents
         public void Explode()
         {
             GameObject.Find("ExplosionLaser").GetComponent<LineBetweenTransforms>().enabled = true;
-            GameObject.Find("TargetingLaser").GetComponent<LineBetweenTransforms>().enabled = false;
+            GameObject.Find("AimLaser").GetComponent<LineBetweenTransforms>().enabled = false;
             GameObject.Find("ExplosionLaser").GetComponent<Light>().enabled = true;
         }
     }

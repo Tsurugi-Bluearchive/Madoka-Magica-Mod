@@ -13,8 +13,6 @@ namespace MadokaMagica.Megumin.Content
 
             Modules.Content.AddEntityState(typeof(CastMiniExplosion));
 
-            Modules.Content.AddEntityState(typeof(SpawnGun));
-
             Modules.Content.AddEntityState(typeof(CastBigExplosion));
 
             Modules.Content.AddEntityState(typeof(MeguminCharacterMain));
