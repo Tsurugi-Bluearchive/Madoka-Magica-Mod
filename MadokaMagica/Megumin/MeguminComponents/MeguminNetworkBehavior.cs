@@ -15,10 +15,10 @@ namespace MadokaMagica.Megumin.MeguminComponents
         [SyncVar]
         public GameObject bigExplosion;
 
-        [SyncVar(hook = nameof(CmdSpawnExplosion))]
+        [SyncVar]
         public GameObject masterCaster;
 
-        [SyncVar(hook = nameof(CmdUpdateLocation))]
+        [SyncVar(hook = nameof(UpdateLocation))]
         public Vector3 explosionLocation;
 
         [SyncVar]
@@ -30,18 +30,21 @@ namespace MadokaMagica.Megumin.MeguminComponents
         [Command]
         public void CmdSpawnExplosion(GameObject masterCaster)
         {
-            bigExplosion = GameObject.Instantiate<GameObject>(MeguminAssets.bigExplosion);
-            var networking = bigExplosion.GetComponent<BigExplosionNetworking>();
-            networking.SpawnExplosionPrefab();
-            networking.ExplosionPosition = explosionLocation;
-            networking.Caster = masterCaster;
-            RpcUpdateCasters();
+            if (!NetworkManager.singleton.spawnPrefabs.Contains(MeguminAssets.bigExplosion)) { NetworkManager.singleton.spawnPrefabs.Add(MeguminAssets.bigExplosion); }
+            if (bigExplosion != null) { Log.Debug("Already Spawned Explosion! Aborting"); return; }
+            if (MeguminAssets.bigExplosion == null) { Log.Error($"The fuck you mean {MeguminAssets.bigExplosion}"); return; }
+            if (masterCaster == null) { Log.Error("You forgot to pass the master caster!"); return; }
+            bigExplosion = GameObject.Instantiate<GameObject>(MeguminAssets.bigExplosion, masterCaster.transform);
+            NetworkServer.Spawn(this.bigExplosion);
+            var explosionNetworking = bigExplosion.GetComponent<BigExplosionNetworking>();
+            this.masterCaster = masterCaster;
         }
+
 
         [ClientRpc]
         private void RpcUpdateCasters()
         {
-            if (this.gameObject != masterCaster)
+            if (this.gameObject != masterCaster && masterCaster != null)
             {
                 this.gameObject.transform.GetComponent<SkillLocator>().special.SetSkillOverride(this.gameObject, MeguminSurvivor.coChannel, GenericSkill.SkillOverridePriority.Default);
             }
@@ -50,11 +53,11 @@ namespace MadokaMagica.Megumin.MeguminComponents
                 this.gameObject.transform.GetComponent<SkillLocator>().special.UnsetSkillOverride(this.gameObject, MeguminSurvivor.coChannel, GenericSkill.SkillOverridePriority.Default);
             }
         }
-        void CmdUpdateLocation(Vector3 explosionLocation)
+
+        void UpdateLocation(Vector3 explosionLocation)
         {
             var networking = bigExplosion.GetComponent<BigExplosionNetworking>();
             networking.ExplosionPosition = explosionLocation;
-            networking.UpdatePosition();
             RpcUpdateCasters();
         }
     }

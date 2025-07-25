@@ -24,6 +24,7 @@ namespace MadokaMagica.Megumin.SkillStates
         BullseyeSearch magicSearch;
         float damageCoefficient = MeguminStaticValues.bigExplosionDamageCoefficient;
         private bool master;
+        bool initialized;
         public override void OnEnter()
         {
             base.OnEnter();
@@ -39,7 +40,10 @@ namespace MadokaMagica.Megumin.SkillStates
             magicSearch.searchOrigin = this.characterBody.transform.position;
             magicSearch.sortMode = BullseyeSearch.SortMode.Angle;
             magicSearch.teamMaskFilter = TeamMask.AllExcept(TeamIndex.Player);
-            meguminNetworkBehavior.masterCaster = meguminNetworkBehavior.masterCaster == null ? this.gameObject : meguminNetworkBehavior.masterCaster;
+
+            meguminNetworkBehavior.CmdSpawnExplosion(this.gameObject);
+            meguminNetworkBehavior.explosionLocation = this.gameObject.transform.position;
+            initialized = true;
         }
 
         //Reload.cs OnExit()
@@ -85,8 +89,9 @@ namespace MadokaMagica.Megumin.SkillStates
         //Reload.cs FixedUpdate()
         public override void FixedUpdate()
         {
-            if (fixedAge <= 70 && inputBank.skill4.down && isAuthority)
+            if (fixedAge <= 70 && inputBank.skill4.down && isAuthority && meguminNetworkBehavior.bigExplosion != null)
             {
+
                 magicSearch.RefreshCandidates();
                 List<HurtBox> list = CollectionPool<HurtBox, List<HurtBox>>.RentCollection();
                 foreach (HurtBox result in magicSearch.GetResults())
@@ -95,7 +100,6 @@ namespace MadokaMagica.Megumin.SkillStates
                 }
                 var Hurtbox = list.FirstOrDefault();
                 CollectionPool<HurtBox, List<HurtBox>>.ReturnCollection(list);
-
                 meguminNetworkBehavior.explosionLocation = Hurtbox.transform.position;
                 castAddition = ((fixedAge - passedTime) / 70) * (damageStat * damageCoefficient);
                 meguminNetworkBehavior.damage += castAddition;

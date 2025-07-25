@@ -15,20 +15,13 @@ namespace MadokaMagica.Megumin.MeguminComponents
         public Vector3 ExplosionPosition;
         [SyncVar]
         public byte ExplosionStage;
-        [SyncVar]
-        public GameObject Caster;
-        
-        public void UpdatePosition()
+
+        public void FixedUpdate()
         {
             this.transform.position = this.ExplosionPosition;
             GameObject.Find("ExplosionLaser").GetComponent<LineBetweenTransforms>().enabled = false;
             GameObject.Find("AimLaser").GetComponent<LineBetweenTransforms>().enabled = true;
             GameObject.Find("ExplosionLaser").GetComponent<Light>().enabled = false;
-        }
-
-        public void SpawnExplosionPrefab()
-        {
-            NetworkServer.Spawn(this.gameObject);
         }
         public void Explode()
         {

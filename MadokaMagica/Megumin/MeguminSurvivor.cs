@@ -9,6 +9,7 @@ using MadokaMagica.Megumin.Content;
 using MadokaMagica.Megumin.SkillStates.BaseStates;
 using MadokaMagica.MamiTamoe.Content;
 using MadokaMagica.Megumin.MeguminComponents;
+using UnityEngine.Networking;
 namespace MadokaMagica.Megumin
 {
     public class MeguminSurvivor : SurvivorBase<MeguminSurvivor>
@@ -95,7 +96,6 @@ namespace MadokaMagica.Megumin
             MeguminTokens.Init();
 
             MeguminAssets.Init(assetBundle);
-            MeguminAssets.Init(assetBundle);
 
             InitializeEntityStateMachines();
             InitializeSkills();
@@ -111,6 +111,7 @@ namespace MadokaMagica.Megumin
         {
             AddHitboxes();
             bodyPrefab.AddComponent<MeguminNetworkBehavior>();
+            bodyPrefab.AddComponent<NetworkIdentity>();
             //anything else here
         }
 
