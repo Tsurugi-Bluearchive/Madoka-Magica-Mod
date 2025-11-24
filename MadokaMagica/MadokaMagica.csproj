@@ -47,7 +47,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Crystal\CrystalComponents\" />
+	  <Reference Include="ExtraSkillSlots">
+	    <HintPath>Libraries\ExtraSkillSlots.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
     
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">

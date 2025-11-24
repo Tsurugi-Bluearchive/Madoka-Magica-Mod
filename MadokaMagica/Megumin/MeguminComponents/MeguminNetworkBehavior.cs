@@ -30,7 +30,6 @@ namespace MadokaMagica.Megumin.MeguminComponents
         [Command]
         public void CmdSpawnExplosion(GameObject masterCaster)
         {
-            if (!NetworkManager.singleton.spawnPrefabs.Contains(MeguminAssets.bigExplosion)) { NetworkManager.singleton.spawnPrefabs.Add(MeguminAssets.bigExplosion); }
             if (bigExplosion != null) { Log.Debug("Already Spawned Explosion! Aborting"); return; }
             if (MeguminAssets.bigExplosion == null) { Log.Error($"The fuck you mean {MeguminAssets.bigExplosion}"); return; }
             if (masterCaster == null) { Log.Error("You forgot to pass the master caster!"); return; }

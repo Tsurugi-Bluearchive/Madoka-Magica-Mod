@@ -60,6 +60,8 @@
   <ItemGroup>
     <Compile Include="Assets\MamiBundle\ExplosionSphereExpansion.cs" />
     <Compile Include="Assets\MeguminBundle\MissileSetter.cs" />
+    <Compile Include="Assets\CrystalBundle\OrbHandler.cs" />
+    <Compile Include="Assets\CrystalBundle\OrbHandlerUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\RoR2\Base\Shaders\UI\HGUIBarRemap.shader" />
@@ -400,144 +402,24 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.33f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="EOS">
-      <HintPath>Packages\Risk of Rain 2\EOS.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Assets\Plugins\Unity.TextMeshPro.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Decalicious">
-      <HintPath>Packages\Risk of Rain 2\Decalicious.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="RoR2">
-      <HintPath>Packages\Risk of Rain 2\RoR2.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="KinematicCharacterController">
-      <HintPath>Packages\Risk of Rain 2\KinematicCharacterController.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="AK.Wwise.Unity.Timeline">
-      <HintPath>Packages\Risk of Rain 2\AK.Wwise.Unity.Timeline.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="SonyPS4CommonDialog">
-      <HintPath>Packages\Risk of Rain 2\SonyPS4CommonDialog.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="LegacyResourcesAPI">
-      <HintPath>Packages\Risk of Rain 2\LegacyResourcesAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MMHOOK_KinematicCharacterController">
       <HintPath>Packages\mmhook-assemblies\MMHOOK_KinematicCharacterController.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="SonyPS4SaveData">
-      <HintPath>Packages\Risk of Rain 2\SonyPS4SaveData.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rewired_Core">
-      <HintPath>Packages\Risk of Rain 2\Rewired_Core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="AK.Wwise.Unity.MonoBehaviour">
-      <HintPath>Packages\Risk of Rain 2\AK.Wwise.Unity.MonoBehaviour.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="GenericIK">
-      <HintPath>Packages\Risk of Rain 2\GenericIK.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="ReportGeneratorMerged">
       <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.4\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rewired_Windows">
-      <HintPath>Packages\Risk of Rain 2\Rewired_Windows.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Grumpy">
-      <HintPath>Packages\Risk of Rain 2\Grumpy.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Tayx.Graphy">
-      <HintPath>Packages\Risk of Rain 2\Tayx.Graphy.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="SimpleJSON">
-      <HintPath>Packages\Risk of Rain 2\SimpleJSON.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rewired_CSharp">
-      <HintPath>Packages\Risk of Rain 2\Rewired_CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Ak.Wwise.Api.WAAPI">
-      <HintPath>Packages\Risk of Rain 2\Ak.Wwise.Api.WAAPI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="AK.Wwise.Unity.API">
-      <HintPath>Packages\Risk of Rain 2\AK.Wwise.Unity.API.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.MemoryProfiler">
-      <HintPath>Packages\Risk of Rain 2\Unity.MemoryProfiler.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="com.unity.multiplayer-hlapi.Runtime">
-      <HintPath>Packages\Risk of Rain 2\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="AK.Wwise.Unity.API.WwiseTypes">
-      <HintPath>Packages\Risk of Rain 2\AK.Wwise.Unity.API.WwiseTypes.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="SonyNP">
-      <HintPath>Packages\Risk of Rain 2\SonyNP.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ModLoader">
-      <HintPath>Packages\Risk of Rain 2\ModLoader.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="HGCSharpUtils">
-      <HintPath>Packages\Risk of Rain 2\HGCSharpUtils.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="HGSignup">
-      <HintPath>Packages\Risk of Rain 2\HGSignup.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MMHOOK_RoR2">
       <HintPath>Packages\mmhook-assemblies\MMHOOK_RoR2.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Zio">
-      <HintPath>Packages\Risk of Rain 2\Zio.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Facepunch.Steamworks">
-      <HintPath>Packages\Risk of Rain 2\Facepunch.Steamworks.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rewired_Windows_Functions">
-      <HintPath>Packages\Risk of Rain 2\Rewired_Windows_Functions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>Packages\Risk of Rain 2\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="HGUnityUtils">
-      <HintPath>Packages\Risk of Rain 2\HGUnityUtils.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">

@@ -4,6 +4,7 @@ using MadokaMagica.Modules;
 using RoR2.Projectile;
 using MadokaMagica.Megumin.MeguminComponents;
 using UnityEngine.Networking;
+using R2API;
 
 namespace MadokaMagica.Megumin.Content
 {
@@ -60,7 +61,7 @@ namespace MadokaMagica.Megumin.Content
         #region projectiles
         private static void CreateProjectiles()
         {
-            bigExplosion = _assetBundle.LoadAsset<GameObject>("BigExplosionOrigin");
+            bigExplosion = _assetBundle.LoadAsset<GameObject>("BigExplosionOrigin").InstantiateClone("BigExplosionOirigin", true);
             bigExplosion.AddComponent<BigExplosionNetworking>();
             bigExplosion.AddComponent<NetworkIdentity>();
         }
